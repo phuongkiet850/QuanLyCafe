@@ -36,8 +36,6 @@ namespace GUI_QuanLyCafe
             OldIdTable = Order_frm.IdTable;
             bill.IdTable = OldIdTable;
             OldIdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
-
-           
         }
 
         void LoadTable()
