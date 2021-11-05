@@ -18,6 +18,7 @@ namespace DTO_QuanLyCafe
         private string idVoucher;
         private string idPayment;
         private string idStaff;
+        private string note;
 
         public int IdBill { get => idBill; set => idBill = value; }
 
@@ -36,5 +37,7 @@ namespace DTO_QuanLyCafe
         public string IdPayment { get => idPayment; set => idPayment = value; }
 
         public string IdStaff { get => idStaff; set => idStaff = value; }
+
+        public string Note { get => note; set => note = value; }
     }
 }

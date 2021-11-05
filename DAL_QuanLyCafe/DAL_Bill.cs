@@ -128,5 +128,54 @@ namespace DAL_QuanLyCafe
                 return true;
             }
         }
+
+        public bool Delete(DTO_Bill bill)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_Delete @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
+
+        public bool Merge(int NewIdTable, int OldIdTable, int NewIdBill, int OldIdBill)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_Merge @NewIdTable = " + NewIdTable + ", @OldIdTable = " + OldIdTable + ", @NewIdBill = " + NewIdBill + ", @OldIdBill = " + OldIdBill + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+
+        }
+
+        public bool Switch(int NewIdTable, int OldIdTable)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_Switch @NewIdTable = " + NewIdTable + ", @OldIdTable = " + OldIdTable + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
+
+        public bool AddDesertToBill(DTO_Bill bill)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_AddDesertToBill @IdTable = " + bill.IdTable + ", @IdMenu = " + bill.IdMenu + ", @Amount = " + bill.Amount + ", @Note = N'" + bill.Note + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
     }
 }

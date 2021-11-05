@@ -34,7 +34,6 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Delete_btn = new System.Windows.Forms.Button();
             this.Menu_tc = new System.Windows.Forms.TabControl();
             this.CF = new System.Windows.Forms.TabPage();
             this.Cafe_flp = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,11 +46,12 @@ namespace GUI_QuanLyCafe
             this.SD = new System.Windows.Forms.TabPage();
             this.SoftDrink_flp = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.Name_lbl = new System.Windows.Forms.Label();
-            this.Add_btn = new System.Windows.Forms.Button();
             this.ListOrder_dgv = new System.Windows.Forms.DataGridView();
+            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Menu_tc.SuspendLayout();
             this.CF.SuspendLayout();
             this.FZ.SuspendLayout();
@@ -62,17 +62,6 @@ namespace GUI_QuanLyCafe
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder_dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Delete_btn
-            // 
-            this.Delete_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delete_btn.Location = new System.Drawing.Point(1312, 591);
-            this.Delete_btn.Name = "Delete_btn";
-            this.Delete_btn.Size = new System.Drawing.Size(141, 63);
-            this.Delete_btn.TabIndex = 29;
-            this.Delete_btn.Text = "Xóa món";
-            this.Delete_btn.UseVisualStyleBackColor = true;
             // 
             // Menu_tc
             // 
@@ -201,14 +190,25 @@ namespace GUI_QuanLyCafe
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Name_lbl);
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(878, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(575, 128);
             this.panel1.TabIndex = 27;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(398, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 153;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -220,17 +220,6 @@ namespace GUI_QuanLyCafe
             this.label1.TabIndex = 152;
             this.label1.Text = "HighLands Coffee";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(385, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
-            this.pictureBox2.TabStop = false;
-            // 
             // Name_lbl
             // 
             this.Name_lbl.AutoSize = true;
@@ -239,17 +228,6 @@ namespace GUI_QuanLyCafe
             this.Name_lbl.Size = new System.Drawing.Size(48, 21);
             this.Name_lbl.TabIndex = 0;
             this.Name_lbl.Text = "Tên :";
-            // 
-            // Add_btn
-            // 
-            this.Add_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.Location = new System.Drawing.Point(1163, 591);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(141, 63);
-            this.Add_btn.TabIndex = 30;
-            this.Add_btn.Text = "Thêm món";
-            this.Add_btn.UseVisualStyleBackColor = true;
             // 
             // ListOrder_dgv
             // 
@@ -308,6 +286,46 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.Size = new System.Drawing.Size(575, 420);
             this.ListOrder_dgv.TabIndex = 28;
             // 
+            // Add_btn
+            // 
+            this.Add_btn.Animated = true;
+            this.Add_btn.BorderRadius = 10;
+            this.Add_btn.BorderThickness = 2;
+            this.Add_btn.CheckedState.Parent = this.Add_btn;
+            this.Add_btn.CustomImages.Parent = this.Add_btn;
+            this.Add_btn.FillColor = System.Drawing.Color.White;
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.ForeColor = System.Drawing.Color.Black;
+            this.Add_btn.HoverState.Parent = this.Add_btn;
+            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
+            this.Add_btn.Location = new System.Drawing.Point(1146, 599);
+            this.Add_btn.Name = "Add_btn";
+            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
+            this.Add_btn.Size = new System.Drawing.Size(145, 50);
+            this.Add_btn.TabIndex = 41;
+            this.Add_btn.Text = "Thêm món";
+            this.Add_btn.Click += new System.EventHandler(this.Add_btn_Click);
+            // 
+            // Delete_btn
+            // 
+            this.Delete_btn.Animated = true;
+            this.Delete_btn.BorderRadius = 10;
+            this.Delete_btn.BorderThickness = 2;
+            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
+            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
+            this.Delete_btn.FillColor = System.Drawing.Color.White;
+            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
+            this.Delete_btn.HoverState.Parent = this.Delete_btn;
+            this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
+            this.Delete_btn.Location = new System.Drawing.Point(1308, 599);
+            this.Delete_btn.Name = "Delete_btn";
+            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
+            this.Delete_btn.Size = new System.Drawing.Size(145, 50);
+            this.Delete_btn.TabIndex = 43;
+            this.Delete_btn.Text = "Xóa món";
+            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
+            // 
             // Menu_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,9 +333,9 @@ namespace GUI_QuanLyCafe
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1458, 661);
             this.Controls.Add(this.Delete_btn);
+            this.Controls.Add(this.Add_btn);
             this.Controls.Add(this.Menu_tc);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.Add_btn);
             this.Controls.Add(this.ListOrder_dgv);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Menu_frm";
@@ -340,8 +358,6 @@ namespace GUI_QuanLyCafe
         }
 
         #endregion
-
-        private System.Windows.Forms.Button Delete_btn;
         private System.Windows.Forms.TabControl Menu_tc;
         private System.Windows.Forms.TabPage CF;
         private System.Windows.Forms.FlowLayoutPanel Cafe_flp;
@@ -355,9 +371,10 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.FlowLayoutPanel SoftDrink_flp;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Name_lbl;
-        private System.Windows.Forms.Button Add_btn;
         private System.Windows.Forms.DataGridView ListOrder_dgv;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Button Add_btn;
+        private Guna.UI2.WinForms.Guna2Button Delete_btn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

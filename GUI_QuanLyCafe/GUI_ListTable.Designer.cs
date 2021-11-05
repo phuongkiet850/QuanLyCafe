@@ -35,10 +35,6 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Table_flp = new System.Windows.Forms.FlowLayoutPanel();
@@ -48,9 +44,10 @@ namespace GUI_QuanLyCafe
             this.panel2 = new System.Windows.Forms.Panel();
             this.NameTable2_lbl = new System.Windows.Forms.Label();
             this.ListOrder2_dgv = new System.Windows.Forms.DataGridView();
-            this.Merge_btn = new System.Windows.Forms.Button();
-            this.Switch_btn = new System.Windows.Forms.Button();
-            this.Detach_btn = new System.Windows.Forms.Button();
+            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Detach_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Merge_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Switch_btn = new Guna.UI2.WinForms.Guna2Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder1_dgv)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,7 +92,6 @@ namespace GUI_QuanLyCafe
             this.ListOrder1_dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOrder1_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ListOrder1_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ListOrder1_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListOrder1_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder1_dgv.BackgroundColor = System.Drawing.Color.White;
@@ -111,38 +107,22 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListOrder1_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ListOrder1_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListOrder1_dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.ListOrder1_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListOrder1_dgv.Location = new System.Drawing.Point(671, 68);
             this.ListOrder1_dgv.MultiSelect = false;
             this.ListOrder1_dgv.Name = "ListOrder1_dgv";
             this.ListOrder1_dgv.ReadOnly = true;
             this.ListOrder1_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListOrder1_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ListOrder1_dgv.RowHeadersVisible = false;
             this.ListOrder1_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListOrder1_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOrder1_dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.ListOrder1_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListOrder1_dgv.ShowCellErrors = false;
             this.ListOrder1_dgv.ShowCellToolTips = false;
             this.ListOrder1_dgv.ShowEditingIcon = false;
             this.ListOrder1_dgv.ShowRowErrors = false;
-            this.ListOrder1_dgv.Size = new System.Drawing.Size(465, 275);
+            this.ListOrder1_dgv.Size = new System.Drawing.Size(550, 275);
             this.ListOrder1_dgv.TabIndex = 30;
             this.ListOrder1_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListOrder1_dgv_CellClick);
             // 
@@ -153,7 +133,7 @@ namespace GUI_QuanLyCafe
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(671, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(465, 54);
+            this.panel1.Size = new System.Drawing.Size(550, 54);
             this.panel1.TabIndex = 31;
             // 
             // NameTable1_lbl
@@ -172,7 +152,7 @@ namespace GUI_QuanLyCafe
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(671, 406);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(465, 54);
+            this.panel2.Size = new System.Drawing.Size(550, 54);
             this.panel2.TabIndex = 33;
             // 
             // NameTable2_lbl
@@ -188,112 +168,134 @@ namespace GUI_QuanLyCafe
             // 
             this.ListOrder2_dgv.AllowUserToResizeColumns = false;
             this.ListOrder2_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListOrder2_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.ListOrder2_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOrder2_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ListOrder2_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListOrder2_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder2_dgv.BackgroundColor = System.Drawing.Color.White;
             this.ListOrder2_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             this.ListOrder2_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.ListOrder2_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListOrder2_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListOrder2_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.ListOrder2_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListOrder2_dgv.DefaultCellStyle = dataGridViewCellStyle8;
             this.ListOrder2_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListOrder2_dgv.Location = new System.Drawing.Point(671, 459);
             this.ListOrder2_dgv.MultiSelect = false;
             this.ListOrder2_dgv.Name = "ListOrder2_dgv";
             this.ListOrder2_dgv.ReadOnly = true;
             this.ListOrder2_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListOrder2_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ListOrder2_dgv.RowHeadersVisible = false;
             this.ListOrder2_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListOrder2_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOrder2_dgv.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ListOrder2_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListOrder2_dgv.ShowCellErrors = false;
             this.ListOrder2_dgv.ShowCellToolTips = false;
             this.ListOrder2_dgv.ShowEditingIcon = false;
             this.ListOrder2_dgv.ShowRowErrors = false;
-            this.ListOrder2_dgv.Size = new System.Drawing.Size(465, 275);
+            this.ListOrder2_dgv.Size = new System.Drawing.Size(550, 275);
             this.ListOrder2_dgv.TabIndex = 32;
+            // 
+            // Delete_btn
+            // 
+            this.Delete_btn.Animated = true;
+            this.Delete_btn.BorderRadius = 10;
+            this.Delete_btn.BorderThickness = 2;
+            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
+            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
+            this.Delete_btn.FillColor = System.Drawing.Color.White;
+            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
+            this.Delete_btn.HoverState.Parent = this.Delete_btn;
+            this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.delete;
+            this.Delete_btn.Location = new System.Drawing.Point(810, 354);
+            this.Delete_btn.Name = "Delete_btn";
+            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
+            this.Delete_btn.Size = new System.Drawing.Size(133, 40);
+            this.Delete_btn.TabIndex = 37;
+            this.Delete_btn.Text = "Xóa món";
+            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
+            // 
+            // Detach_btn
+            // 
+            this.Detach_btn.Animated = true;
+            this.Detach_btn.BorderRadius = 10;
+            this.Detach_btn.BorderThickness = 2;
+            this.Detach_btn.CheckedState.Parent = this.Detach_btn;
+            this.Detach_btn.CustomImages.Parent = this.Detach_btn;
+            this.Detach_btn.Enabled = false;
+            this.Detach_btn.FillColor = System.Drawing.Color.White;
+            this.Detach_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Detach_btn.ForeColor = System.Drawing.Color.Black;
+            this.Detach_btn.HoverState.Parent = this.Detach_btn;
+            this.Detach_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.remove;
+            this.Detach_btn.Location = new System.Drawing.Point(671, 354);
+            this.Detach_btn.Name = "Detach_btn";
+            this.Detach_btn.ShadowDecoration.Parent = this.Detach_btn;
+            this.Detach_btn.Size = new System.Drawing.Size(133, 40);
+            this.Detach_btn.TabIndex = 38;
+            this.Detach_btn.Text = "Tách bàn";
+            this.Detach_btn.Click += new System.EventHandler(this.Detach_btn_Click);
             // 
             // Merge_btn
             // 
+            this.Merge_btn.Animated = true;
+            this.Merge_btn.BorderRadius = 10;
+            this.Merge_btn.BorderThickness = 2;
+            this.Merge_btn.CheckedState.Parent = this.Merge_btn;
+            this.Merge_btn.CustomImages.Parent = this.Merge_btn;
             this.Merge_btn.Enabled = false;
+            this.Merge_btn.FillColor = System.Drawing.Color.White;
             this.Merge_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Merge_btn.ForeColor = System.Drawing.Color.Black;
+            this.Merge_btn.HoverState.Parent = this.Merge_btn;
             this.Merge_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.merged;
-            this.Merge_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Merge_btn.Location = new System.Drawing.Point(843, 354);
+            this.Merge_btn.Location = new System.Drawing.Point(949, 354);
             this.Merge_btn.Name = "Merge_btn";
-            this.Merge_btn.Size = new System.Drawing.Size(120, 40);
-            this.Merge_btn.TabIndex = 36;
+            this.Merge_btn.ShadowDecoration.Parent = this.Merge_btn;
+            this.Merge_btn.Size = new System.Drawing.Size(133, 40);
+            this.Merge_btn.TabIndex = 39;
             this.Merge_btn.Text = "Gộp bàn";
-            this.Merge_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Merge_btn.UseVisualStyleBackColor = true;
             this.Merge_btn.Click += new System.EventHandler(this.Merge_btn_Click);
             // 
             // Switch_btn
             // 
+            this.Switch_btn.Animated = true;
+            this.Switch_btn.BorderRadius = 10;
+            this.Switch_btn.BorderThickness = 2;
+            this.Switch_btn.CheckedState.Parent = this.Switch_btn;
+            this.Switch_btn.CustomImages.Parent = this.Switch_btn;
             this.Switch_btn.Enabled = false;
+            this.Switch_btn.FillColor = System.Drawing.Color.White;
             this.Switch_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Switch_btn.ForeColor = System.Drawing.Color.Black;
+            this.Switch_btn.HoverState.Parent = this.Switch_btn;
             this.Switch_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.exchange;
-            this.Switch_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Switch_btn.Location = new System.Drawing.Point(1003, 354);
+            this.Switch_btn.Location = new System.Drawing.Point(1088, 354);
             this.Switch_btn.Name = "Switch_btn";
+            this.Switch_btn.ShadowDecoration.Parent = this.Switch_btn;
             this.Switch_btn.Size = new System.Drawing.Size(133, 40);
-            this.Switch_btn.TabIndex = 35;
+            this.Switch_btn.TabIndex = 40;
             this.Switch_btn.Text = "Chuyển bàn";
-            this.Switch_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Switch_btn.UseVisualStyleBackColor = true;
             this.Switch_btn.Click += new System.EventHandler(this.Switch_btn_Click);
-            // 
-            // Detach_btn
-            // 
-            this.Detach_btn.Enabled = false;
-            this.Detach_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Detach_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.remove;
-            this.Detach_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Detach_btn.Location = new System.Drawing.Point(671, 354);
-            this.Detach_btn.Name = "Detach_btn";
-            this.Detach_btn.Size = new System.Drawing.Size(120, 40);
-            this.Detach_btn.TabIndex = 34;
-            this.Detach_btn.Text = "Tách bàn";
-            this.Detach_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Detach_btn.UseVisualStyleBackColor = true;
-            this.Detach_btn.Click += new System.EventHandler(this.Detach_btn_Click);
             // 
             // ListTable_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1148, 751);
-            this.Controls.Add(this.Merge_btn);
+            this.ClientSize = new System.Drawing.Size(1237, 751);
             this.Controls.Add(this.Switch_btn);
+            this.Controls.Add(this.Merge_btn);
             this.Controls.Add(this.Detach_btn);
+            this.Controls.Add(this.Delete_btn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.ListOrder2_dgv);
             this.Controls.Add(this.panel1);
@@ -328,8 +330,9 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label NameTable2_lbl;
         private System.Windows.Forms.DataGridView ListOrder2_dgv;
-        private System.Windows.Forms.Button Detach_btn;
-        private System.Windows.Forms.Button Switch_btn;
-        private System.Windows.Forms.Button Merge_btn;
+        private Guna.UI2.WinForms.Guna2Button Delete_btn;
+        private Guna.UI2.WinForms.Guna2Button Detach_btn;
+        private Guna.UI2.WinForms.Guna2Button Merge_btn;
+        private Guna.UI2.WinForms.Guna2Button Switch_btn;
     }
 }

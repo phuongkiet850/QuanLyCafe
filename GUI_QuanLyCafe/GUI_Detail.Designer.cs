@@ -33,9 +33,9 @@ namespace GUI_QuanLyCafe
             this.Amount_nud = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.Note_txt = new System.Windows.Forms.TextBox();
-            this.Addd_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Name_txt = new System.Windows.Forms.TextBox();
+            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_nud)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,17 +76,6 @@ namespace GUI_QuanLyCafe
             this.Note_txt.Size = new System.Drawing.Size(259, 110);
             this.Note_txt.TabIndex = 3;
             // 
-            // Addd_btn
-            // 
-            this.Addd_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Addd_btn.Location = new System.Drawing.Point(276, 239);
-            this.Addd_btn.Name = "Addd_btn";
-            this.Addd_btn.Size = new System.Drawing.Size(90, 38);
-            this.Addd_btn.TabIndex = 4;
-            this.Addd_btn.Text = "Thêm";
-            this.Addd_btn.UseVisualStyleBackColor = true;
-            this.Addd_btn.Click += new System.EventHandler(this.Addd_btn_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -106,15 +95,35 @@ namespace GUI_QuanLyCafe
             this.Name_txt.Size = new System.Drawing.Size(259, 29);
             this.Name_txt.TabIndex = 6;
             // 
+            // Add_btn
+            // 
+            this.Add_btn.Animated = true;
+            this.Add_btn.BorderRadius = 10;
+            this.Add_btn.BorderThickness = 2;
+            this.Add_btn.CheckedState.Parent = this.Add_btn;
+            this.Add_btn.CustomImages.Parent = this.Add_btn;
+            this.Add_btn.FillColor = System.Drawing.Color.White;
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.ForeColor = System.Drawing.Color.Black;
+            this.Add_btn.HoverState.Parent = this.Add_btn;
+            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
+            this.Add_btn.Location = new System.Drawing.Point(265, 234);
+            this.Add_btn.Name = "Add_btn";
+            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
+            this.Add_btn.Size = new System.Drawing.Size(101, 40);
+            this.Add_btn.TabIndex = 155;
+            this.Add_btn.Text = "Thêm";
+            this.Add_btn.Click += new System.EventHandler(this.Addd_btn_Click);
+            // 
             // Detail_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(393, 295);
+            this.ClientSize = new System.Drawing.Size(393, 285);
+            this.Controls.Add(this.Add_btn);
             this.Controls.Add(this.Name_txt);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Addd_btn);
             this.Controls.Add(this.Note_txt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Amount_nud);
@@ -139,8 +148,8 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.NumericUpDown Amount_nud;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Note_txt;
-        private System.Windows.Forms.Button Addd_btn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Name_txt;
+        private Guna.UI2.WinForms.Guna2Button Add_btn;
     }
 }

@@ -29,9 +29,9 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Edit_ckb = new System.Windows.Forms.CheckBox();
             this.FindDM_cbb = new System.Windows.Forms.ComboBox();
             this.TrangThai_txt = new System.Windows.Forms.TextBox();
@@ -47,9 +47,9 @@ namespace GUI_QuanLyCafe
             this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NgayNhapHang_date = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Add_btn = new System.Windows.Forms.Button();
-            this.Delete_btn = new System.Windows.Forms.Button();
-            this.Edit_btn = new System.Windows.Forms.Button();
+            this.Edit_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
             this.DanhMuc_cbb = new System.Windows.Forms.ComboBox();
             this.VND_txt = new System.Windows.Forms.TextBox();
             this.GiaSP_txt = new System.Windows.Forms.TextBox();
@@ -64,16 +64,16 @@ namespace GUI_QuanLyCafe
             this.TenSP_lbl = new System.Windows.Forms.Label();
             this.MaSP_lbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.OpenFilePicture_btn = new System.Windows.Forms.Button();
-            this.CreateID_btn = new System.Windows.Forms.Button();
             this.HinhSanPham_ptb = new System.Windows.Forms.PictureBox();
-            this.ResetFind_btn = new System.Windows.Forms.Button();
+            this.OpenFilePicture_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.ResetFind_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.CreateID_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DanhSachSanPham_dgv)).BeginInit();
             this.Log_Menu.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HinhSanPham_ptb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // Edit_ckb
@@ -180,34 +180,34 @@ namespace GUI_QuanLyCafe
             this.DanhSachSanPham_dgv.AllowUserToResizeColumns = false;
             this.DanhSachSanPham_dgv.AllowUserToResizeRows = false;
             this.DanhSachSanPham_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DanhSachSanPham_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DanhSachSanPham_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DanhSachSanPham_dgv.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DanhSachSanPham_dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DanhSachSanPham_dgv.DefaultCellStyle = dataGridViewCellStyle5;
             this.DanhSachSanPham_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.DanhSachSanPham_dgv.Location = new System.Drawing.Point(32, 463);
             this.DanhSachSanPham_dgv.Name = "DanhSachSanPham_dgv";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DanhSachSanPham_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DanhSachSanPham_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DanhSachSanPham_dgv.RowTemplate.Height = 3;
             this.DanhSachSanPham_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DanhSachSanPham_dgv.Size = new System.Drawing.Size(1096, 416);
@@ -258,10 +258,10 @@ namespace GUI_QuanLyCafe
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Edit_btn);
+            this.groupBox1.Controls.Add(this.Delete_btn);
             this.groupBox1.Controls.Add(this.Edit_ckb);
             this.groupBox1.Controls.Add(this.Add_btn);
-            this.groupBox1.Controls.Add(this.Delete_btn);
-            this.groupBox1.Controls.Add(this.Edit_btn);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(32, 330);
             this.groupBox1.Name = "groupBox1";
@@ -270,50 +270,65 @@ namespace GUI_QuanLyCafe
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chỉnh sửa";
             // 
-            // Add_btn
+            // Edit_btn
             // 
-            this.Add_btn.Enabled = false;
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
-            this.Add_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Add_btn.Location = new System.Drawing.Point(39, 33);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(88, 32);
-            this.Add_btn.TabIndex = 7;
-            this.Add_btn.TabStop = false;
-            this.Add_btn.Text = "Thêm";
-            this.Add_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Add_btn.UseVisualStyleBackColor = true;
+            this.Edit_btn.Animated = true;
+            this.Edit_btn.BorderRadius = 10;
+            this.Edit_btn.BorderThickness = 2;
+            this.Edit_btn.CheckedState.Parent = this.Edit_btn;
+            this.Edit_btn.CustomImages.Parent = this.Edit_btn;
+            this.Edit_btn.Enabled = false;
+            this.Edit_btn.FillColor = System.Drawing.Color.White;
+            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_btn.ForeColor = System.Drawing.Color.Black;
+            this.Edit_btn.HoverState.Parent = this.Edit_btn;
+            this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.edit_icon;
+            this.Edit_btn.Location = new System.Drawing.Point(289, 29);
+            this.Edit_btn.Name = "Edit_btn";
+            this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
+            this.Edit_btn.Size = new System.Drawing.Size(90, 40);
+            this.Edit_btn.TabIndex = 158;
+            this.Edit_btn.Text = "Sửa";
             // 
             // Delete_btn
             // 
+            this.Delete_btn.Animated = true;
+            this.Delete_btn.BorderRadius = 10;
+            this.Delete_btn.BorderThickness = 2;
+            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
+            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
             this.Delete_btn.Enabled = false;
+            this.Delete_btn.FillColor = System.Drawing.Color.White;
             this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
+            this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
-            this.Delete_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Delete_btn.Location = new System.Drawing.Point(170, 33);
+            this.Delete_btn.Location = new System.Drawing.Point(159, 29);
             this.Delete_btn.Name = "Delete_btn";
-            this.Delete_btn.Size = new System.Drawing.Size(75, 32);
-            this.Delete_btn.TabIndex = 8;
-            this.Delete_btn.TabStop = false;
+            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
+            this.Delete_btn.Size = new System.Drawing.Size(90, 40);
+            this.Delete_btn.TabIndex = 157;
             this.Delete_btn.Text = "Xóa";
-            this.Delete_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Delete_btn.UseVisualStyleBackColor = true;
             // 
-            // Edit_btn
+            // Add_btn
             // 
-            this.Edit_btn.Enabled = false;
-            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.edit_icon;
-            this.Edit_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Edit_btn.Location = new System.Drawing.Point(289, 33);
-            this.Edit_btn.Name = "Edit_btn";
-            this.Edit_btn.Size = new System.Drawing.Size(75, 32);
-            this.Edit_btn.TabIndex = 9;
-            this.Edit_btn.TabStop = false;
-            this.Edit_btn.Text = "Sửa";
-            this.Edit_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Edit_btn.UseVisualStyleBackColor = true;
+            this.Add_btn.Animated = true;
+            this.Add_btn.BorderRadius = 10;
+            this.Add_btn.BorderThickness = 2;
+            this.Add_btn.CheckedState.Parent = this.Add_btn;
+            this.Add_btn.CustomImages.Parent = this.Add_btn;
+            this.Add_btn.Enabled = false;
+            this.Add_btn.FillColor = System.Drawing.Color.White;
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.ForeColor = System.Drawing.Color.Black;
+            this.Add_btn.HoverState.Parent = this.Add_btn;
+            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
+            this.Add_btn.Location = new System.Drawing.Point(27, 29);
+            this.Add_btn.Name = "Add_btn";
+            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
+            this.Add_btn.Size = new System.Drawing.Size(90, 40);
+            this.Add_btn.TabIndex = 156;
+            this.Add_btn.Text = "Thêm";
             // 
             // DanhMuc_cbb
             // 
@@ -376,7 +391,7 @@ namespace GUI_QuanLyCafe
             this.MaSP_txt.Location = new System.Drawing.Point(153, 143);
             this.MaSP_txt.Name = "MaSP_txt";
             this.MaSP_txt.ReadOnly = true;
-            this.MaSP_txt.Size = new System.Drawing.Size(230, 29);
+            this.MaSP_txt.Size = new System.Drawing.Size(241, 29);
             this.MaSP_txt.TabIndex = 112;
             // 
             // label14
@@ -459,45 +474,6 @@ namespace GUI_QuanLyCafe
             this.label12.TabIndex = 121;
             this.label12.Text = "DANH SÁCH NGUYÊN LIỆU";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 150;
-            this.pictureBox2.TabStop = false;
-            // 
-            // OpenFilePicture_btn
-            // 
-            this.OpenFilePicture_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OpenFilePicture_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.folder1;
-            this.OpenFilePicture_btn.Location = new System.Drawing.Point(813, 273);
-            this.OpenFilePicture_btn.Name = "OpenFilePicture_btn";
-            this.OpenFilePicture_btn.Size = new System.Drawing.Size(39, 32);
-            this.OpenFilePicture_btn.TabIndex = 143;
-            this.OpenFilePicture_btn.TabStop = false;
-            this.OpenFilePicture_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.OpenFilePicture_btn.UseVisualStyleBackColor = true;
-            this.OpenFilePicture_btn.Visible = false;
-            // 
-            // CreateID_btn
-            // 
-            this.CreateID_btn.BackColor = System.Drawing.Color.Transparent;
-            this.CreateID_btn.Enabled = false;
-            this.CreateID_btn.FlatAppearance.BorderSize = 0;
-            this.CreateID_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateID_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.id;
-            this.CreateID_btn.Location = new System.Drawing.Point(389, 142);
-            this.CreateID_btn.Name = "CreateID_btn";
-            this.CreateID_btn.Size = new System.Drawing.Size(38, 32);
-            this.CreateID_btn.TabIndex = 142;
-            this.CreateID_btn.TabStop = false;
-            this.CreateID_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CreateID_btn.UseVisualStyleBackColor = false;
-            // 
             // HinhSanPham_ptb
             // 
             this.HinhSanPham_ptb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -508,19 +484,73 @@ namespace GUI_QuanLyCafe
             this.HinhSanPham_ptb.TabIndex = 137;
             this.HinhSanPham_ptb.TabStop = false;
             // 
+            // OpenFilePicture_btn
+            // 
+            this.OpenFilePicture_btn.Animated = true;
+            this.OpenFilePicture_btn.BorderRadius = 5;
+            this.OpenFilePicture_btn.BorderThickness = 1;
+            this.OpenFilePicture_btn.CheckedState.Parent = this.OpenFilePicture_btn;
+            this.OpenFilePicture_btn.CustomImages.Parent = this.OpenFilePicture_btn;
+            this.OpenFilePicture_btn.Enabled = false;
+            this.OpenFilePicture_btn.FillColor = System.Drawing.Color.White;
+            this.OpenFilePicture_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenFilePicture_btn.ForeColor = System.Drawing.Color.Black;
+            this.OpenFilePicture_btn.HoverState.Parent = this.OpenFilePicture_btn;
+            this.OpenFilePicture_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.folder1;
+            this.OpenFilePicture_btn.Location = new System.Drawing.Point(814, 276);
+            this.OpenFilePicture_btn.Name = "OpenFilePicture_btn";
+            this.OpenFilePicture_btn.ShadowDecoration.Parent = this.OpenFilePicture_btn;
+            this.OpenFilePicture_btn.Size = new System.Drawing.Size(38, 29);
+            this.OpenFilePicture_btn.TabIndex = 159;
+            this.OpenFilePicture_btn.Visible = false;
+            // 
             // ResetFind_btn
             // 
-            this.ResetFind_btn.FlatAppearance.BorderSize = 0;
+            this.ResetFind_btn.Animated = true;
+            this.ResetFind_btn.BorderRadius = 5;
+            this.ResetFind_btn.BorderThickness = 1;
+            this.ResetFind_btn.CheckedState.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.CustomImages.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.Enabled = false;
+            this.ResetFind_btn.FillColor = System.Drawing.Color.White;
             this.ResetFind_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetFind_btn.ForeColor = System.Drawing.Color.Black;
+            this.ResetFind_btn.HoverState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Refreshicon;
-            this.ResetFind_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ResetFind_btn.Location = new System.Drawing.Point(623, 425);
+            this.ResetFind_btn.Location = new System.Drawing.Point(623, 426);
             this.ResetFind_btn.Name = "ResetFind_btn";
-            this.ResetFind_btn.Size = new System.Drawing.Size(32, 32);
-            this.ResetFind_btn.TabIndex = 134;
-            this.ResetFind_btn.TabStop = false;
-            this.ResetFind_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ResetFind_btn.UseVisualStyleBackColor = true;
+            this.ResetFind_btn.ShadowDecoration.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.Size = new System.Drawing.Size(32, 29);
+            this.ResetFind_btn.TabIndex = 160;
+            // 
+            // CreateID_btn
+            // 
+            this.CreateID_btn.Animated = true;
+            this.CreateID_btn.BorderThickness = 1;
+            this.CreateID_btn.CheckedState.Parent = this.CreateID_btn;
+            this.CreateID_btn.CustomImages.Parent = this.CreateID_btn;
+            this.CreateID_btn.Enabled = false;
+            this.CreateID_btn.FillColor = System.Drawing.Color.White;
+            this.CreateID_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateID_btn.ForeColor = System.Drawing.Color.Black;
+            this.CreateID_btn.HoverState.Parent = this.CreateID_btn;
+            this.CreateID_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.id;
+            this.CreateID_btn.Location = new System.Drawing.Point(391, 143);
+            this.CreateID_btn.Name = "CreateID_btn";
+            this.CreateID_btn.ShadowDecoration.Parent = this.CreateID_btn;
+            this.CreateID_btn.Size = new System.Drawing.Size(36, 29);
+            this.CreateID_btn.TabIndex = 161;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 162;
+            this.pictureBox2.TabStop = false;
             // 
             // Material_frm
             // 
@@ -529,19 +559,19 @@ namespace GUI_QuanLyCafe
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 885);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.CreateID_btn);
+            this.Controls.Add(this.ResetFind_btn);
+            this.Controls.Add(this.OpenFilePicture_btn);
             this.Controls.Add(this.FindDM_cbb);
             this.Controls.Add(this.TrangThai_txt);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.DonVi_cbb);
             this.Controls.Add(this.PathHinh_txt);
-            this.Controls.Add(this.OpenFilePicture_btn);
-            this.Controls.Add(this.CreateID_btn);
             this.Controls.Add(this.DonVi_lbl);
             this.Controls.Add(this.Hang_txt);
             this.Controls.Add(this.Hang_lbl);
             this.Controls.Add(this.HinhSanPham_ptb);
             this.Controls.Add(this.DanhSachSanPham_dgv);
-            this.Controls.Add(this.ResetFind_btn);
             this.Controls.Add(this.SoLuong_txt);
             this.Controls.Add(this.Log_Menu);
             this.Controls.Add(this.NgayNhapHang_date);
@@ -568,8 +598,8 @@ namespace GUI_QuanLyCafe
             this.Log_Menu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HinhSanPham_ptb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,27 +608,21 @@ namespace GUI_QuanLyCafe
         #endregion
 
         private System.Windows.Forms.CheckBox Edit_ckb;
-        private System.Windows.Forms.Button Add_btn;
         private System.Windows.Forms.ComboBox FindDM_cbb;
         private System.Windows.Forms.TextBox TrangThai_txt;
         private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox DonVi_cbb;
         private System.Windows.Forms.TextBox PathHinh_txt;
-        private System.Windows.Forms.Button OpenFilePicture_btn;
-        private System.Windows.Forms.Button CreateID_btn;
         private System.Windows.Forms.Label DonVi_lbl;
         private System.Windows.Forms.TextBox Hang_txt;
         private System.Windows.Forms.Label Hang_lbl;
         private System.Windows.Forms.PictureBox HinhSanPham_ptb;
         private System.Windows.Forms.DataGridView DanhSachSanPham_dgv;
-        private System.Windows.Forms.Button ResetFind_btn;
         private System.Windows.Forms.TextBox SoLuong_txt;
         private System.Windows.Forms.MenuStrip Log_Menu;
-        private System.Windows.Forms.Button Delete_btn;
         private System.Windows.Forms.DateTimePicker NgayNhapHang_date;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button Edit_btn;
         private System.Windows.Forms.ComboBox DanhMuc_cbb;
         private System.Windows.Forms.TextBox VND_txt;
         private System.Windows.Forms.TextBox GiaSP_txt;
@@ -613,6 +637,12 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label TenSP_lbl;
         private System.Windows.Forms.Label MaSP_lbl;
         private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2Button Edit_btn;
+        private Guna.UI2.WinForms.Guna2Button Delete_btn;
+        private Guna.UI2.WinForms.Guna2Button Add_btn;
+        private Guna.UI2.WinForms.Guna2Button OpenFilePicture_btn;
+        private Guna.UI2.WinForms.Guna2Button ResetFind_btn;
+        private Guna.UI2.WinForms.Guna2Button CreateID_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

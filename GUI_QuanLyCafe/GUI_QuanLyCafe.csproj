@@ -75,6 +75,12 @@
     <Compile Include="GUI_ForgotPassword.Designer.cs">
       <DependentUpon>GUI_ForgotPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Loading.Designer.cs">
+      <DependentUpon>GUI_Loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Log.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ForgotPassword.resx">
       <DependentUpon>GUI_ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Loading.resx">
+      <DependentUpon>GUI_Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Log.resx">
       <DependentUpon>GUI_Log.cs</DependentUpon>

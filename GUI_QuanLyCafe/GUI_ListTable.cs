@@ -170,20 +170,24 @@ namespace GUI_QuanLyCafe
 
                             BUS_Bill.Instance.Detach(bill);
                             MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadTable();
                             LoadBill();
                             bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
                             ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
                             ListOrder2_dgv.Columns[0].Visible = false;
+                            bill.IdDetailBill = 0;
 
                         }
                         else
                         {
                             BUS_Bill.Instance.Detach(bill);
                             MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadTable();
                             LoadBill();
                             bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
                             ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
                             ListOrder2_dgv.Columns[0].Visible = false;
+                            bill.IdDetailBill = 0;
 
                         }
                     }
@@ -197,6 +201,42 @@ namespace GUI_QuanLyCafe
             DataGridViewRow row = ListOrder1_dgv.Rows[e.RowIndex];
             bill.IdDetailBill = Convert.ToInt32(row.Cells[0].Value.ToString());
             NameFood = row.Cells[1].Value.ToString();
+        }
+
+        private void Delete_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (bill.IdDetailBill == 0)
+                {
+                    MessageBox.Show("Bạn chưa chọn món cần tách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Confirm_frm confirm = new Confirm_frm();
+                    confirm.ShowDialog();
+                    if (Confirm_frm.Result == 1)
+                    {
+                        var dlr = MessageBox.Show("Bạn có muốn xóa " + NameFood + " của " + Order_frm.NameTable.ToLower() + " không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dlr == DialogResult.Yes)
+                        {
+                            bill.IdTable = Order_frm.IdTable;
+                            BUS_Bill.Instance.Delete(bill);
+                            LoadTable();
+                            LoadBill();
+                            bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
+                            ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
+                            ListOrder2_dgv.Columns[0].Visible = false;
+                            bill.IdDetailBill = 0;
+                            MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Xóa " + NameFood + " thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

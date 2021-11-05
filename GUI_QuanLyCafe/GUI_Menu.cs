@@ -22,6 +22,8 @@ namespace GUI_QuanLyCafe
 
         DTO_Menu menu = new DTO_Menu();
         DTO_Bill bill = new DTO_Bill();
+        DTO_Staff staff = new DTO_Staff();
+
         public static string NameItem;
         private void Menu_frm_Load(object sender, EventArgs e)
         {
@@ -36,11 +38,13 @@ namespace GUI_QuanLyCafe
             ListOrder_dgv.Columns.Add("Amount", "Số lượng");
             ListOrder_dgv.Columns.Add("Price", "Giá");
             ListOrder_dgv.Columns.Add("Note", "Ghi chú");
+            ListOrder_dgv.Columns.Add("IdMenu", "Id Menu");
             ListOrder_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListOrder_dgv.Columns[0].Width = 180;
             ListOrder_dgv.Columns[3].Width = 200;
             ListOrder_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListOrder_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListOrder_dgv.Columns[4].Visible = false;
         }
 
         private void LoadMenu(string CategoryID)
@@ -149,6 +153,7 @@ namespace GUI_QuanLyCafe
                 row.Cells[1].Value = Detail_frm.Amount;
                 row.Cells[2].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString();
                 row.Cells[3].Value = Detail_frm.Note;
+                row.Cells[4].Value = bill.IdMenu;
                 ListOrder_dgv.Rows.Add(row);
             }
         }
@@ -162,6 +167,58 @@ namespace GUI_QuanLyCafe
         private void Menu_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Menu_tc.SelectedIndex = 0;
+        }
+
+        private void Delete_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.ListOrder_dgv.SelectedRows.Count > 0)
+                {
+                    ListOrder_dgv.Rows.RemoveAt(this.ListOrder_dgv.SelectedRows[0].Index);
+                }
+            }
+            catch (Exception) { }
+        }
+
+        private void Add_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (BUS_Bill.Instance.Table(bill).Rows[0][2].ToString() == "Trống")
+                {
+                    staff.Email = Login_frm.Email;
+                    bill.IdStaff = BUS_Staff.Instance.Check(staff).Rows[0][0].ToString();
+                    BUS_Bill.Instance.AddBill(bill);
+                    for (int i = 0; i < ListOrder_dgv.Rows.Count - 1; i++)
+                    {
+                        bill.IdTable = Order_frm.IdTable;
+                        bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
+                        bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
+                        bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
+                        BUS_Bill.Instance.AddDesertToBill(bill);
+                    }
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    for (int i = 0; i < ListOrder_dgv.Rows.Count - 1; i++)
+                    {
+                        bill.IdTable = Order_frm.IdTable;
+                        bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
+                        bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
+                        bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
+                        BUS_Bill.Instance.AddDesertToBill(bill);
+                    }
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                } 
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -43,16 +43,16 @@ namespace GUI_QuanLyCafe
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Login_grb = new System.Windows.Forms.GroupBox();
+            this.Login_btn = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.Shift_cbb = new System.Windows.Forms.ComboBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Show_ptb = new System.Windows.Forms.PictureBox();
             this.Hide_ptb = new System.Windows.Forms.PictureBox();
-            this.Login_btn = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Login_grb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Show_ptb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Hide_ptb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // InstanceName_cbb
@@ -112,15 +112,18 @@ namespace GUI_QuanLyCafe
             // 
             // LoadBar
             // 
-            this.LoadBar.BorderRadius = 5;
+            this.LoadBar.BorderRadius = 10;
+            this.LoadBar.FillColor = System.Drawing.Color.LightGray;
+            this.LoadBar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadBar.ForeColor = System.Drawing.Color.White;
             this.LoadBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.LoadBar.Location = new System.Drawing.Point(151, 489);
+            this.LoadBar.Location = new System.Drawing.Point(160, 483);
             this.LoadBar.Name = "LoadBar";
-            this.LoadBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.LoadBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.LoadBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LoadBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.LoadBar.ShadowDecoration.Parent = this.LoadBar;
             this.LoadBar.ShowPercentage = true;
-            this.LoadBar.Size = new System.Drawing.Size(309, 17);
+            this.LoadBar.Size = new System.Drawing.Size(309, 25);
             this.LoadBar.TabIndex = 9;
             this.LoadBar.TabStop = false;
             this.LoadBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -183,13 +186,14 @@ namespace GUI_QuanLyCafe
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 800;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Login_grb
             // 
             this.Login_grb.BackColor = System.Drawing.Color.Transparent;
             this.Login_grb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Login_grb.Controls.Add(this.Login_btn);
             this.Login_grb.Controls.Add(this.label4);
             this.Login_grb.Controls.Add(this.Shift_cbb);
             this.Login_grb.Controls.Add(this.InstanceName_cbb);
@@ -200,7 +204,6 @@ namespace GUI_QuanLyCafe
             this.Login_grb.Controls.Add(this.Show_ptb);
             this.Login_grb.Controls.Add(this.Hide_ptb);
             this.Login_grb.Controls.Add(this.ShowHide_ckb);
-            this.Login_grb.Controls.Add(this.Login_btn);
             this.Login_grb.Controls.Add(this.Password_txt);
             this.Login_grb.Controls.Add(this.Email_txt);
             this.Login_grb.Controls.Add(this.label1);
@@ -214,6 +217,27 @@ namespace GUI_QuanLyCafe
             this.Login_grb.TabIndex = 7;
             this.Login_grb.TabStop = false;
             this.Login_grb.Text = "Đăng nhập";
+            // 
+            // Login_btn
+            // 
+            this.Login_btn.BorderRadius = 10;
+            this.Login_btn.BorderThickness = 2;
+            this.Login_btn.CheckedState.Parent = this.Login_btn;
+            this.Login_btn.CustomImages.Parent = this.Login_btn;
+            this.Login_btn.FillColor = System.Drawing.Color.White;
+            this.Login_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_btn.ForeColor = System.Drawing.Color.Black;
+            this.Login_btn.HoverState.Parent = this.Login_btn;
+            this.Login_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Login_in_icon;
+            this.Login_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Login_btn.Location = new System.Drawing.Point(324, 259);
+            this.Login_btn.Name = "Login_btn";
+            this.Login_btn.ShadowDecoration.Parent = this.Login_btn;
+            this.Login_btn.Size = new System.Drawing.Size(135, 50);
+            this.Login_btn.TabIndex = 39;
+            this.Login_btn.Text = "Đăng nhập";
+            this.Login_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
             // 
             // label4
             // 
@@ -240,17 +264,6 @@ namespace GUI_QuanLyCafe
             this.Shift_cbb.SelectedIndexChanged += new System.EventHandler(this.Shift_cbb_SelectedIndexChanged);
             this.Shift_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Shift_cbb_KeyDown);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(214, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 122);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
-            this.pictureBox2.TabStop = false;
-            // 
             // Show_ptb
             // 
             this.Show_ptb.Image = global::GUI_QuanLyCafe.Properties.Resources.eye;
@@ -270,19 +283,16 @@ namespace GUI_QuanLyCafe
             this.Hide_ptb.TabIndex = 9;
             this.Hide_ptb.TabStop = false;
             // 
-            // Login_btn
+            // pictureBox2
             // 
-            this.Login_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Login_in_icon;
-            this.Login_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Login_btn.Location = new System.Drawing.Point(322, 260);
-            this.Login_btn.Name = "Login_btn";
-            this.Login_btn.Size = new System.Drawing.Size(137, 39);
-            this.Login_btn.TabIndex = 4;
-            this.Login_btn.Text = "Đăng nhập\r\n";
-            this.Login_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Login_btn.UseVisualStyleBackColor = true;
-            this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(222, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 152;
+            this.pictureBox2.TabStop = false;
             // 
             // Login_frm
             // 
@@ -300,9 +310,9 @@ namespace GUI_QuanLyCafe
             this.Load += new System.EventHandler(this.Login_frm_Load);
             this.Login_grb.ResumeLayout(false);
             this.Login_grb.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Show_ptb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Hide_ptb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,10 +332,10 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button Login_btn;
         private System.Windows.Forms.GroupBox Login_grb;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox Shift_cbb;
+        private Guna.UI2.WinForms.Guna2Button Login_btn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

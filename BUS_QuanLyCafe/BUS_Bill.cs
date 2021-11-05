@@ -64,6 +64,11 @@ namespace BUS_QuanLyCafe
             return DAL_Bill.Instance.Detach(bill);
         }
 
+        public bool Delete(DTO_Bill bill)
+        {
+            return DAL_Bill.Instance.Delete(bill);
+        }
+
         public bool Merge(int NewIdTable, int OldIdTable, int NewIdBill, int OldIdBill)
         {
             return DAL_Bill.Instance.Merge(NewIdTable, OldIdTable, NewIdBill, OldIdBill);
@@ -72,6 +77,11 @@ namespace BUS_QuanLyCafe
         public bool Switch(int NewIdTable, int OldIdTable)
         {
             return DAL_Bill.Instance.Switch(NewIdTable, OldIdTable);
+        }
+
+        public bool AddDesertToBill(DTO_Bill bill)
+        {
+            return DAL_Bill.Instance.AddDesertToBill(bill);
         }
     }
 }

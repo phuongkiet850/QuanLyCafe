@@ -29,3 +29,4 @@ E:\Csharp\DuAn1\QuanLyCafe\GUI_QuanLyCafe\obj\Debug\GUI_QuanLyCafe.Confirm_frm.r
 E:\Csharp\DuAn1\QuanLyCafe\GUI_QuanLyCafe\obj\Debug\GUI_QuanLyCafe.Material_frm.resources
 E:\Csharp\DuAn1\QuanLyCafe\GUI_QuanLyCafe\obj\Debug\GUI_QuanLyCafe.Voucher_frm.resources
 E:\Csharp\DuAn1\QuanLyCafe\GUI_QuanLyCafe\obj\Debug\GUI_QuanLyCafe.ListTable_frm.resources
+E:\Csharp\DuAn1\QuanLyCafe\GUI_QuanLyCafe\obj\Debug\GUI_QuanLyCafe.Loading_frm.resources

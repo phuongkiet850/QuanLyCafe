@@ -39,13 +39,13 @@ namespace GUI_QuanLyCafe
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DoiMK_grb = new System.Windows.Forms.GroupBox();
+            this.Change_btn = new Guna.UI2.WinForms.Guna2Button();
             this.ShowANP_ptb = new System.Windows.Forms.PictureBox();
             this.ShowNP_ptb = new System.Windows.Forms.PictureBox();
             this.HideANP_ptb = new System.Windows.Forms.PictureBox();
             this.ShowOP_ptb = new System.Windows.Forms.PictureBox();
             this.HideNP_ptb = new System.Windows.Forms.PictureBox();
             this.HideOP_ptb = new System.Windows.Forms.PictureBox();
-            this.Change_btn = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.DoiMK_grb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowANP_ptb)).BeginInit();
@@ -164,6 +164,7 @@ namespace GUI_QuanLyCafe
             // 
             this.DoiMK_grb.BackColor = System.Drawing.Color.Transparent;
             this.DoiMK_grb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DoiMK_grb.Controls.Add(this.Change_btn);
             this.DoiMK_grb.Controls.Add(this.AgainNewPassword_txt);
             this.DoiMK_grb.Controls.Add(this.label3);
             this.DoiMK_grb.Controls.Add(this.ShowANP_ptb);
@@ -175,7 +176,6 @@ namespace GUI_QuanLyCafe
             this.DoiMK_grb.Controls.Add(this.ShowHideOP_ckb);
             this.DoiMK_grb.Controls.Add(this.ShowHideNP_ckb);
             this.DoiMK_grb.Controls.Add(this.ShowHideANP_ckb);
-            this.DoiMK_grb.Controls.Add(this.Change_btn);
             this.DoiMK_grb.Controls.Add(this.NewPassword_txt);
             this.DoiMK_grb.Controls.Add(this.OldPassword_txt);
             this.DoiMK_grb.Controls.Add(this.label1);
@@ -189,6 +189,26 @@ namespace GUI_QuanLyCafe
             this.DoiMK_grb.TabIndex = 8;
             this.DoiMK_grb.TabStop = false;
             this.DoiMK_grb.Text = "Đổi mật khẩu";
+            // 
+            // Change_btn
+            // 
+            this.Change_btn.Animated = true;
+            this.Change_btn.BorderRadius = 10;
+            this.Change_btn.BorderThickness = 2;
+            this.Change_btn.CheckedState.Parent = this.Change_btn;
+            this.Change_btn.CustomImages.Parent = this.Change_btn;
+            this.Change_btn.FillColor = System.Drawing.Color.White;
+            this.Change_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Change_btn.ForeColor = System.Drawing.Color.Black;
+            this.Change_btn.HoverState.Parent = this.Change_btn;
+            this.Change_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
+            this.Change_btn.Location = new System.Drawing.Point(332, 204);
+            this.Change_btn.Name = "Change_btn";
+            this.Change_btn.ShadowDecoration.Parent = this.Change_btn;
+            this.Change_btn.Size = new System.Drawing.Size(155, 40);
+            this.Change_btn.TabIndex = 154;
+            this.Change_btn.Text = "Đổi mật khẩu";
+            this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
             // 
             // ShowANP_ptb
             // 
@@ -247,29 +267,15 @@ namespace GUI_QuanLyCafe
             this.HideOP_ptb.TabIndex = 9;
             this.HideOP_ptb.TabStop = false;
             // 
-            // Change_btn
-            // 
-            this.Change_btn.Enabled = false;
-            this.Change_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
-            this.Change_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Change_btn.Location = new System.Drawing.Point(332, 204);
-            this.Change_btn.Name = "Change_btn";
-            this.Change_btn.Size = new System.Drawing.Size(155, 39);
-            this.Change_btn.TabIndex = 4;
-            this.Change_btn.Text = "Đổi mật khẩu";
-            this.Change_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Change_btn.UseVisualStyleBackColor = true;
-            this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(225, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(234, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
+            this.pictureBox2.TabIndex = 155;
             this.pictureBox2.TabStop = false;
             // 
             // ChangePassword_frm
@@ -310,12 +316,12 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.CheckBox ShowHideOP_ckb;
         private System.Windows.Forms.CheckBox ShowHideNP_ckb;
         private System.Windows.Forms.CheckBox ShowHideANP_ckb;
-        private System.Windows.Forms.Button Change_btn;
         private System.Windows.Forms.TextBox NewPassword_txt;
         private System.Windows.Forms.TextBox OldPassword_txt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox DoiMK_grb;
+        private Guna.UI2.WinForms.Guna2Button Change_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

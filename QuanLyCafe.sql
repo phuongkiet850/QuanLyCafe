@@ -71,7 +71,7 @@ create table DetailBill
 create table Log
 (
 	ID int identity(1,1) primary key,
-	IdStaff nvarchar(5) references Staff(IdStaff),
+	IdStaff nvarchar(5),
 	Action nvarchar(30),
 	Object nvarchar(20),
 	IdObject nvarchar(20),
@@ -106,6 +106,24 @@ create table Payment
 	Method nvarchar(50),
 );
 
+create table Statistic
+(
+	IdStatistic int primary key  DEFAULT DBO.AUTO_IDStatistic(),
+	IdBill int,
+	Total float,
+	Shift nvarchar(10),
+	NameStaff nvarchar(50),
+	DateEnd datetime
+);
+
+create table DetailStatistic
+(
+	IdDetailStatistic int primary key  DEFAULT DBO.AUTO_IDDetailStatistic(),
+	IdStatistic int references  Statistic (IdStatistic),
+	NameMenu nvarchar(100),
+	Amount int,
+	DateStart datetime
+);
 
 	drop FUNCTION AUTO_IDNV
 
@@ -142,6 +160,33 @@ BEGIN
 	RETURN @ID
 END
 
+drop FUNCTION AUTO_IDStatistic
+CREATE FUNCTION AUTO_IDStatistic()
+RETURNS int
+AS
+BEGIN
+	DECLARE @ID int
+	IF (SELECT COUNT(*) FROM Statistic) = 0
+		SET @ID = 0
+	ELSE
+		SELECT @ID = IdStatistic FROM Statistic
+		SET @ID = @ID + 1
+	RETURN @ID
+END
+
+drop FUNCTION AUTO_IDDetailStatistic
+CREATE FUNCTION AUTO_IDDetailStatistic()
+RETURNS int
+AS
+BEGIN
+	DECLARE @ID int
+	IF (SELECT COUNT(*) FROM DetailStatistic) = 0
+		SET @ID = 0
+	ELSE
+		SELECT @ID = IdDetailStatistic FROM DetailStatistic
+		SET @ID = @ID + 1
+	RETURN @ID
+END
 
 drop FUNCTION AUTO_IDMenu
 
@@ -297,7 +342,7 @@ create proc sp_BillTable_DGV
 	begin try
 		begin tran
 			
-			select IdDetailBill, Name as 'Tên món', DetailBill.Amount as 'Số lượng' from DetailBill
+			select IdDetailBill, Name as 'Tên món', DetailBill.Amount as 'Số lượng', Note as 'Ghi chú' from DetailBill
 			join Bill on DetailBill.IdBill = Bill.IdBill
 			join Menu on DetailBill.IdMenu = Menu.IdMenu
 			where IdTable = @IdTable
@@ -311,7 +356,7 @@ create proc sp_BillTable_DGV
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_DetailBill_DGV @IdTable = 5
+	exec sp_BillTable_DGV @IdTable = 1
 ---------------------------------------------------------------------------
 create proc sp_TagItem
 		@IdMenu int
@@ -449,9 +494,9 @@ drop PROC sp_AcceptLogin
 
 	------------------------------------------------------------------------------------
 
-	drop PROC sp_MergeTable
+	drop PROC sp_Merge
 
-	create proc sp_MergeTable
+	create proc sp_Merge
 			@NewIdTable int,
 			@OldIdTable int,	
 			@NewIdBill int,
@@ -488,9 +533,9 @@ drop PROC sp_AcceptLogin
 
 	------------------------------------------------------------------------------------
 
-	drop PROC sp_ChangeTable
+	drop PROC sp_Switch
 
-	create proc sp_ChangeTable
+	create proc sp_Switch
 			@NewIdTable int,
 			@OldIdTable int	
 	as
@@ -569,33 +614,6 @@ drop PROC sp_AcceptLogin
 			insert into Bill(IdTable, CheckIn, IdVoucher, IdPayment, IdStaff) values
 			(@IdTable, @CheckIn, @IdVoucher, @IdPayment, @IdStaff)
 			
-			print N'Thao tác thành công'
-		commit tran
-	end try
-
-	begin catch
-		rollback tran
-		print N'Thao tác không thành công'
-	end catch
-
-	exec sp_UpdatePassword
------------------------------------------------------------------------------------
-
-	drop PROC sp_Detach
-
-	create proc sp_Detach
-			@IdTable int,
-			@IdDetailBill int	
-	as
-	begin try
-		begin tran
-			DECLARE @ID int
-			set @ID = (select IdBill from Bill where IdTable = @IdTable)
-
-			Update DetailBill
-			set IdBill = @ID
-			where IdDetailBill = @IdDetailBill
-			
 			Update TableCf
 			set Status = N'Có người'
 			where IdTable = @IdTable
@@ -609,6 +627,73 @@ drop PROC sp_AcceptLogin
 		print N'Thao tác không thành công'
 	end catch
 
+	exec sp_UpdatePassword
+-----------------------------------------------------------------------------------
+
+	drop PROC sp_Delete
+
+	create proc sp_Delete
+			@IdTable int,
+			@IdDetailBill int	
+	as
+	begin try
+		begin tran
+			DECLARE @ID int
+			set @ID = (select IdBill from Bill where IdTable = @IdTable)
+
+			delete from DetailBill
+			where IdDetailBill = @IdDetailBill
+			
+			if (select count(*) from DetailBill where IdBill = @ID) = 0 
+				begin
+					delete from Bill
+					where IdTable = @IdTable
+
+					Update TableCf
+					set Status = N'Trống'
+					where IdTable = @IdTable
+				end
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
 	exec sp_ChangeItemBill @IdTable = 16, @IdDetailBill = 3
 
 	------------------------------------------------------------------------------------
+
+	------------------------------------------------------------------------------------
+
+		drop PROC sp_AddDesertToBill
+
+	create proc sp_AddDesertToBill
+			@IdTable int,
+			@IdMenu int,
+			@Amount int,
+			@Note nvarchar(100)
+	as
+	begin try
+		begin tran
+
+			DECLARE @ID int
+			set @ID = (select IdBill from Bill where IdTable = @IdTable)
+
+			insert into DetailBill(IdBill, IdMenu, Amount, Note) values
+			(@ID, @IdMenu, @Amount, @Note)
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_UpdatePassword
+-----------------------------------------------------------------------------------

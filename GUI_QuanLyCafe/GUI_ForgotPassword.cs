@@ -40,7 +40,6 @@ namespace GUI_QuanLyCafe
                     IdVrf_txt.Show();
                     Change_btn.Show();
                     Email_txt.ReadOnly = true;
-                    Verification_btn.TextAlign = ContentAlignment.MiddleCenter;
                     Verification_btn.Text = "....";
                     Verification_btn.Enabled = false;
                     string IdVrf = BUS_Staff.Instance.Verification();
@@ -48,7 +47,6 @@ namespace GUI_QuanLyCafe
                     {
                         SendMailVrf(Email_txt.Text, IdVrf);
                         TempIdVrf_txt.Text = IdVrf;
-                        Verification_btn.TextAlign = ContentAlignment.MiddleRight;
                         Verification_btn.Text = "Kiểm tra";
                         MessageBox.Show("Đã gửi mã xác nhận về email của bạn, vui lòng kiểm tra lại hòm thư email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -116,7 +114,6 @@ namespace GUI_QuanLyCafe
             try
             {
                 VerificationPassword_grb.Enabled = false;
-                Change_btn.TextAlign = ContentAlignment.MiddleCenter;
                 Change_btn.Text = "....";
                 Change_btn.Enabled = false;
                 Thread thread = new Thread(() =>
@@ -127,7 +124,6 @@ namespace GUI_QuanLyCafe
                     staff.Password = Encryption;
                     BUS_Staff.Instance.UpdatePassword(staff);
                     SendMailPassword(Email_txt.Text, NewPassword);
-                    Change_btn.TextAlign = ContentAlignment.MiddleRight;
                     Change_btn.Text = "Khôi phục";
                     MessageBox.Show("Đã gửi mật khẩu mới về email của bạn, vui lòng kiểm tra lại email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

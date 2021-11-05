@@ -26,9 +26,10 @@ namespace GUI_QuanLyCafe
         Menu_frm menu = new Menu_frm();
         private void Order_frm_Load(object sender, EventArgs e)
         {
+            Loading_frm.Status = 2;
             this.ActiveControl = label1;
             LoadTable();
-            Shift_lbl.Text = Login_frm.Shift;
+            //Shift_lbl.Text = Login_frm.Shift;
         }
         
         void LoadTable()
@@ -86,7 +87,7 @@ namespace GUI_QuanLyCafe
             Button btn = (Button)sender;
             bill.IdTable = Convert.ToInt32(btn.Tag.ToString());
             NameTable_lbl.Text = "Tên : " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
-            IdTable = Convert.ToInt32(BUS_Bill.Instance.Table(bill).Rows[0][0].ToString());
+            IdTable = bill.IdTable;
             Total_lbl.Text = "Số tiền phải trả :";
             TotalOrder_lbl.Text = "Tổng hóa đơn :";
             VAT_lbl.Text = "Thuế VAT (10%) : ";
@@ -100,6 +101,8 @@ namespace GUI_QuanLyCafe
                 Payment_btn.Enabled = false;
                 NameTable = BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
                 menu.ShowDialog();
+                LoadTable();
+                ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
             }
             else
             {
@@ -116,6 +119,8 @@ namespace GUI_QuanLyCafe
             NameTable = BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
             IdTable = Convert.ToInt32(BUS_Bill.Instance.Table(bill).Rows[0][0].ToString());
             menu.ShowDialog();
+            LoadTable();
+            ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
         }
 
         private void Order_frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -153,6 +158,7 @@ namespace GUI_QuanLyCafe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Time_lbl.Text = Login_frm.Shift + DateTime.Now.ToString("  ddd dd/MM/yyyy HH:mm:ss");
             if (DateTime.Parse(DateTime.Now.TimeOfDay.ToString()) > DateTime.Parse(Login_frm.TimeMax))
             {
                 timer1.Stop();
@@ -185,6 +191,7 @@ namespace GUI_QuanLyCafe
                         bill.IdTable = IdTable;
                         BUS_Bill.Instance.DeleteBill(bill);
                         LoadTable();
+                        ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
                         MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

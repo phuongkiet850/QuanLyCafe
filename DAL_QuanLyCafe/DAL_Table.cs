@@ -35,32 +35,5 @@ namespace DAL_QuanLyCafe
             }
             
         }
-
-        public bool MergeTable(int NewIdTable, int OldIdTable, int NewIdBill, int OldIdBill)
-        {
-            using (Connection = new SqlConnection(_Connection))
-            {
-                string TruyVan = @"exec sp_MergeTable @NewIdTable = " + NewIdTable + ", @OldIdTable = " + OldIdTable + ", @NewIdBill = " + NewIdBill + ", @OldIdBill = " + OldIdBill + "";
-                SDA = new SqlDataAdapter(TruyVan, _Connection);
-                data = new DataTable();
-                SDA.Fill(data);
-                return true;
-            }
-
-        }
-
-        public bool Switch(int NewIdTable, int OldIdTable)
-        {
-            using (Connection = new SqlConnection(_Connection))
-            {
-                string TruyVan = @"exec sp_Switch @NewIdTable = " + NewIdTable + ", @OldIdTable = " + OldIdTable + "";
-                SDA = new SqlDataAdapter(TruyVan, _Connection);
-                data = new DataTable();
-                SDA.Fill(data);
-                return true;
-            }
-        }
-
-       
     }
 }

@@ -33,8 +33,8 @@ namespace GUI_QuanLyCafe
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.NameStafff_lbl = new System.Windows.Forms.Label();
             this.CheckIn_lbl = new System.Windows.Forms.Label();
             this.NameTable_lbl = new System.Windows.Forms.Label();
@@ -77,8 +77,8 @@ namespace GUI_QuanLyCafe
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.NameStafff_lbl);
             this.panel1.Controls.Add(this.CheckIn_lbl);
             this.panel1.Controls.Add(this.NameTable_lbl);
@@ -88,30 +88,30 @@ namespace GUI_QuanLyCafe
             this.panel1.Size = new System.Drawing.Size(553, 153);
             this.panel1.TabIndex = 167;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(375, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 153;
+            this.pictureBox2.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 82);
+            this.label4.Location = new System.Drawing.Point(1, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 21);
             this.label4.TabIndex = 152;
             this.label4.Text = "Giờ ra :";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(361, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
-            this.pictureBox2.TabStop = false;
-            // 
             // NameStafff_lbl
             // 
             this.NameStafff_lbl.AutoSize = true;
-            this.NameStafff_lbl.Location = new System.Drawing.Point(12, 118);
+            this.NameStafff_lbl.Location = new System.Drawing.Point(1, 118);
             this.NameStafff_lbl.Name = "NameStafff_lbl";
             this.NameStafff_lbl.Size = new System.Drawing.Size(89, 21);
             this.NameStafff_lbl.TabIndex = 2;
@@ -120,7 +120,7 @@ namespace GUI_QuanLyCafe
             // CheckIn_lbl
             // 
             this.CheckIn_lbl.AutoSize = true;
-            this.CheckIn_lbl.Location = new System.Drawing.Point(12, 49);
+            this.CheckIn_lbl.Location = new System.Drawing.Point(1, 49);
             this.CheckIn_lbl.Name = "CheckIn_lbl";
             this.CheckIn_lbl.Size = new System.Drawing.Size(79, 21);
             this.CheckIn_lbl.TabIndex = 1;
@@ -129,7 +129,7 @@ namespace GUI_QuanLyCafe
             // NameTable_lbl
             // 
             this.NameTable_lbl.AutoSize = true;
-            this.NameTable_lbl.Location = new System.Drawing.Point(12, 13);
+            this.NameTable_lbl.Location = new System.Drawing.Point(1, 13);
             this.NameTable_lbl.Name = "NameTable_lbl";
             this.NameTable_lbl.Size = new System.Drawing.Size(48, 21);
             this.NameTable_lbl.TabIndex = 0;
@@ -145,7 +145,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(195, 20);
+            this.label2.Location = new System.Drawing.Point(168, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 31);
             this.label2.TabIndex = 165;
@@ -200,7 +200,7 @@ namespace GUI_QuanLyCafe
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(158, 81);
+            this.label5.Location = new System.Drawing.Point(147, 81);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 21);
             this.label5.TabIndex = 19;
@@ -210,7 +210,7 @@ namespace GUI_QuanLyCafe
             // 
             this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(99, 76);
+            this.comboBox2.Location = new System.Drawing.Point(88, 76);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(5);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(58, 31);
@@ -222,7 +222,7 @@ namespace GUI_QuanLyCafe
             this.Voucher_lbl.AutoSize = true;
             this.Voucher_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Voucher_lbl.ForeColor = System.Drawing.Color.Black;
-            this.Voucher_lbl.Location = new System.Drawing.Point(12, 79);
+            this.Voucher_lbl.Location = new System.Drawing.Point(1, 79);
             this.Voucher_lbl.Name = "Voucher_lbl";
             this.Voucher_lbl.Size = new System.Drawing.Size(86, 23);
             this.Voucher_lbl.TabIndex = 17;
@@ -233,7 +233,7 @@ namespace GUI_QuanLyCafe
             this.TotalOrder_lbl.AutoSize = true;
             this.TotalOrder_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalOrder_lbl.ForeColor = System.Drawing.Color.Black;
-            this.TotalOrder_lbl.Location = new System.Drawing.Point(12, 9);
+            this.TotalOrder_lbl.Location = new System.Drawing.Point(1, 9);
             this.TotalOrder_lbl.Name = "TotalOrder_lbl";
             this.TotalOrder_lbl.Size = new System.Drawing.Size(141, 23);
             this.TotalOrder_lbl.TabIndex = 16;
@@ -244,7 +244,7 @@ namespace GUI_QuanLyCafe
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(12, 44);
+            this.label3.Location = new System.Drawing.Point(1, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 23);
             this.label3.TabIndex = 15;
@@ -255,7 +255,7 @@ namespace GUI_QuanLyCafe
             this.Total_lbl.AutoSize = true;
             this.Total_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Total_lbl.ForeColor = System.Drawing.Color.Red;
-            this.Total_lbl.Location = new System.Drawing.Point(12, 155);
+            this.Total_lbl.Location = new System.Drawing.Point(1, 155);
             this.Total_lbl.Name = "Total_lbl";
             this.Total_lbl.Size = new System.Drawing.Size(146, 23);
             this.Total_lbl.TabIndex = 14;
@@ -265,7 +265,7 @@ namespace GUI_QuanLyCafe
             // 
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(226, 112);
+            this.comboBox1.Location = new System.Drawing.Point(215, 112);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(190, 31);
@@ -275,7 +275,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 115);
+            this.label1.Location = new System.Drawing.Point(1, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(206, 23);
             this.label1.TabIndex = 1;
@@ -311,7 +311,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label NameStafff_lbl;
         private System.Windows.Forms.Label CheckIn_lbl;
         private System.Windows.Forms.Label NameTable_lbl;
@@ -329,5 +328,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

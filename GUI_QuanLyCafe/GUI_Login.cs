@@ -33,6 +33,7 @@ namespace GUI_QuanLyCafe
             this.ActiveControl = label1;
             Connect();
             ReadSetting();
+            Thread.Sleep(1000);
         }
 
         private void ReadSetting()
@@ -78,6 +79,7 @@ namespace GUI_QuanLyCafe
         {
             SqlDataSourceEnumerator instance = SqlDataSourceEnumerator.Instance;
             DataTable tb = instance.GetDataSources();
+            Loading_frm.Status = 1;
             ServerName_cbb.DataSource = tb;
             InstanceName_cbb.DataSource = tb;
             ServerName_cbb.DisplayMember = "ServerName";
@@ -158,6 +160,14 @@ namespace GUI_QuanLyCafe
                                 staff.Password = BUS_Staff.Instance.Encryption(Password_txt.Text);
                                 if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Hoạt động")
                                 {
+                                    if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() == "Quản lý")
+                                    {
+                                        Confirm_frm.Result = 1;
+                                    }
+                                    else
+                                    {
+                                        Confirm_frm.Result = 0;
+                                    }
                                     Login_btn.Enabled = false;
                                     SaveSettings();
                                     LoadBar.Visible = true;
@@ -199,7 +209,7 @@ namespace GUI_QuanLyCafe
                     LoadBar.Visible = false;
                     this.Hide();
                     Order_frm order = new Order_frm();
-                    order.Show();
+                    order.ShowDialog();
                 }
                 Login_btn.Text += ".";
                 if (Login_btn.Text.Length >= 6)
@@ -219,9 +229,18 @@ namespace GUI_QuanLyCafe
             {
                 e.Cancel = true;
             }
-            else
+            else if (LoadBar.Visible != true && Loading_frm.Status == 1)
             {
-                e.Cancel = false;
+                var dlr = MessageBox.Show("Bạn chắc muốn thoát", "Đóng chương trình", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                if (dlr == DialogResult.Yes)
+                {
+                    System.Environment.Exit(1);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

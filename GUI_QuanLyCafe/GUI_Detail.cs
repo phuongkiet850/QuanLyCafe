@@ -23,6 +23,7 @@ namespace GUI_QuanLyCafe
         public static string Note;
         private void Addd_btn_Click(object sender, EventArgs e)
         {
+            this.ActiveControl = label1;
             Status = 1;
             Amount = Convert.ToInt32(Amount_nud.Value.ToString());
             Note = Note_txt.Text;

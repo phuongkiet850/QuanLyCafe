@@ -30,14 +30,14 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.VerificationPassword_grb = new System.Windows.Forms.GroupBox();
+            this.Change_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Verification_btn = new Guna.UI2.WinForms.Guna2Button();
             this.CorrectIdVrf_ptb = new System.Windows.Forms.PictureBox();
             this.TempIdVrf_txt = new System.Windows.Forms.TextBox();
             this.IdVrf_lbl = new System.Windows.Forms.Label();
             this.IdVrf_txt = new System.Windows.Forms.TextBox();
-            this.Change_btn = new System.Windows.Forms.Button();
             this.Wrong_ptb = new System.Windows.Forms.PictureBox();
             this.Correct_ptb = new System.Windows.Forms.PictureBox();
-            this.Verification_btn = new System.Windows.Forms.Button();
             this.Email_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -52,25 +52,67 @@ namespace GUI_QuanLyCafe
             // 
             this.VerificationPassword_grb.BackColor = System.Drawing.Color.Transparent;
             this.VerificationPassword_grb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.VerificationPassword_grb.Controls.Add(this.Change_btn);
+            this.VerificationPassword_grb.Controls.Add(this.Verification_btn);
             this.VerificationPassword_grb.Controls.Add(this.CorrectIdVrf_ptb);
             this.VerificationPassword_grb.Controls.Add(this.TempIdVrf_txt);
             this.VerificationPassword_grb.Controls.Add(this.IdVrf_lbl);
             this.VerificationPassword_grb.Controls.Add(this.IdVrf_txt);
-            this.VerificationPassword_grb.Controls.Add(this.Change_btn);
             this.VerificationPassword_grb.Controls.Add(this.Wrong_ptb);
             this.VerificationPassword_grb.Controls.Add(this.Correct_ptb);
-            this.VerificationPassword_grb.Controls.Add(this.Verification_btn);
             this.VerificationPassword_grb.Controls.Add(this.Email_txt);
             this.VerificationPassword_grb.Controls.Add(this.label1);
             this.VerificationPassword_grb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerificationPassword_grb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.VerificationPassword_grb.Location = new System.Drawing.Point(38, 131);
+            this.VerificationPassword_grb.Location = new System.Drawing.Point(12, 131);
             this.VerificationPassword_grb.Name = "VerificationPassword_grb";
             this.VerificationPassword_grb.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.VerificationPassword_grb.Size = new System.Drawing.Size(521, 223);
+            this.VerificationPassword_grb.Size = new System.Drawing.Size(521, 208);
             this.VerificationPassword_grb.TabIndex = 8;
             this.VerificationPassword_grb.TabStop = false;
             this.VerificationPassword_grb.Text = "Kiểm tra Email";
+            // 
+            // Change_btn
+            // 
+            this.Change_btn.Animated = true;
+            this.Change_btn.BorderRadius = 10;
+            this.Change_btn.BorderThickness = 2;
+            this.Change_btn.CheckedState.Parent = this.Change_btn;
+            this.Change_btn.CustomImages.Parent = this.Change_btn;
+            this.Change_btn.Enabled = false;
+            this.Change_btn.FillColor = System.Drawing.Color.White;
+            this.Change_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Change_btn.ForeColor = System.Drawing.Color.Black;
+            this.Change_btn.HoverState.Parent = this.Change_btn;
+            this.Change_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
+            this.Change_btn.Location = new System.Drawing.Point(65, 149);
+            this.Change_btn.Name = "Change_btn";
+            this.Change_btn.ShadowDecoration.Parent = this.Change_btn;
+            this.Change_btn.Size = new System.Drawing.Size(130, 40);
+            this.Change_btn.TabIndex = 155;
+            this.Change_btn.Text = "Khôi phục";
+            this.Change_btn.Visible = false;
+            this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
+            // 
+            // Verification_btn
+            // 
+            this.Verification_btn.Animated = true;
+            this.Verification_btn.BorderRadius = 10;
+            this.Verification_btn.BorderThickness = 2;
+            this.Verification_btn.CheckedState.Parent = this.Verification_btn;
+            this.Verification_btn.CustomImages.Parent = this.Verification_btn;
+            this.Verification_btn.FillColor = System.Drawing.Color.White;
+            this.Verification_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Verification_btn.ForeColor = System.Drawing.Color.Black;
+            this.Verification_btn.HoverState.Parent = this.Verification_btn;
+            this.Verification_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.check_mark;
+            this.Verification_btn.Location = new System.Drawing.Point(326, 149);
+            this.Verification_btn.Name = "Verification_btn";
+            this.Verification_btn.ShadowDecoration.Parent = this.Verification_btn;
+            this.Verification_btn.Size = new System.Drawing.Size(130, 40);
+            this.Verification_btn.TabIndex = 154;
+            this.Verification_btn.Text = "Kiểm tra";
+            this.Verification_btn.Click += new System.EventHandler(this.Verification_btn_Click);
             // 
             // CorrectIdVrf_ptb
             // 
@@ -115,21 +157,6 @@ namespace GUI_QuanLyCafe
             this.IdVrf_txt.Visible = false;
             this.IdVrf_txt.TextChanged += new System.EventHandler(this.IdVrf_txt_TextChanged);
             // 
-            // Change_btn
-            // 
-            this.Change_btn.Enabled = false;
-            this.Change_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
-            this.Change_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Change_btn.Location = new System.Drawing.Point(65, 149);
-            this.Change_btn.Name = "Change_btn";
-            this.Change_btn.Size = new System.Drawing.Size(134, 39);
-            this.Change_btn.TabIndex = 4;
-            this.Change_btn.Text = "Khôi phục";
-            this.Change_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Change_btn.UseVisualStyleBackColor = true;
-            this.Change_btn.Visible = false;
-            this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
-            // 
             // Wrong_ptb
             // 
             this.Wrong_ptb.Image = global::GUI_QuanLyCafe.Properties.Resources.cancel;
@@ -148,19 +175,6 @@ namespace GUI_QuanLyCafe
             this.Correct_ptb.TabIndex = 9;
             this.Correct_ptb.TabStop = false;
             this.Correct_ptb.Visible = false;
-            // 
-            // Verification_btn
-            // 
-            this.Verification_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.check_mark;
-            this.Verification_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Verification_btn.Location = new System.Drawing.Point(342, 149);
-            this.Verification_btn.Name = "Verification_btn";
-            this.Verification_btn.Size = new System.Drawing.Size(114, 39);
-            this.Verification_btn.TabIndex = 2;
-            this.Verification_btn.Text = "Kiểm tra";
-            this.Verification_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Verification_btn.UseVisualStyleBackColor = true;
-            this.Verification_btn.Click += new System.EventHandler(this.Verification_btn_Click);
             // 
             // Email_txt
             // 
@@ -184,11 +198,11 @@ namespace GUI_QuanLyCafe
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(221, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(195, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
+            this.pictureBox2.TabIndex = 156;
             this.pictureBox2.TabStop = false;
             // 
             // ForgotPassword_frm
@@ -196,12 +210,12 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(597, 382);
+            this.ClientSize = new System.Drawing.Size(545, 353);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.VerificationPassword_grb);
             this.Name = "ForgotPassword_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GUI_ForgotPassword";
+            this.Text = "Quên mật khẩu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ForgotPassword_frm_FormClosing);
             this.VerificationPassword_grb.ResumeLayout(false);
             this.VerificationPassword_grb.PerformLayout();
@@ -220,12 +234,12 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.TextBox TempIdVrf_txt;
         private System.Windows.Forms.Label IdVrf_lbl;
         private System.Windows.Forms.TextBox IdVrf_txt;
-        private System.Windows.Forms.Button Change_btn;
         private System.Windows.Forms.PictureBox Wrong_ptb;
         private System.Windows.Forms.PictureBox Correct_ptb;
-        private System.Windows.Forms.Button Verification_btn;
         private System.Windows.Forms.TextBox Email_txt;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Button Change_btn;
+        private Guna.UI2.WinForms.Guna2Button Verification_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

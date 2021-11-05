@@ -35,9 +35,9 @@ namespace GUI_QuanLyCafe
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Edit_ckb = new System.Windows.Forms.CheckBox();
-            this.Add_btn = new System.Windows.Forms.Button();
-            this.Delete_btn = new System.Windows.Forms.Button();
-            this.Edit_btn = new System.Windows.Forms.Button();
+            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Edit_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
             this.DanhSachKM_dgv = new System.Windows.Forms.DataGridView();
             this.MaKM_lbl = new System.Windows.Forms.Label();
             this.MaKM_txt = new System.Windows.Forms.TextBox();
@@ -46,12 +46,12 @@ namespace GUI_QuanLyCafe
             this.TenKM_txt = new System.Windows.Forms.TextBox();
             this.PhanTramKM_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CreateID_btn = new System.Windows.Forms.Button();
+            this.CreateID_btn = new Guna.UI2.WinForms.Guna2Button();
             this.TenKM_lbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Log_Menu = new System.Windows.Forms.MenuStrip();
             this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ResetFind_btn = new System.Windows.Forms.Button();
+            this.ResetFind_btn = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DanhSachKM_dgv)).BeginInit();
@@ -82,9 +82,9 @@ namespace GUI_QuanLyCafe
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Edit_ckb);
-            this.groupBox2.Controls.Add(this.Add_btn);
             this.groupBox2.Controls.Add(this.Delete_btn);
             this.groupBox2.Controls.Add(this.Edit_btn);
+            this.groupBox2.Controls.Add(this.Add_btn);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 333);
             this.groupBox2.Name = "groupBox2";
@@ -102,50 +102,65 @@ namespace GUI_QuanLyCafe
             this.Edit_ckb.TabIndex = 14;
             this.Edit_ckb.UseVisualStyleBackColor = true;
             // 
-            // Add_btn
-            // 
-            this.Add_btn.Enabled = false;
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
-            this.Add_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Add_btn.Location = new System.Drawing.Point(47, 38);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(88, 32);
-            this.Add_btn.TabIndex = 7;
-            this.Add_btn.TabStop = false;
-            this.Add_btn.Text = "Thêm";
-            this.Add_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Add_btn.UseVisualStyleBackColor = true;
-            // 
             // Delete_btn
             // 
+            this.Delete_btn.Animated = true;
+            this.Delete_btn.BorderRadius = 10;
+            this.Delete_btn.BorderThickness = 2;
+            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
+            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
             this.Delete_btn.Enabled = false;
+            this.Delete_btn.FillColor = System.Drawing.Color.White;
             this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
+            this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
-            this.Delete_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Delete_btn.Location = new System.Drawing.Point(183, 38);
+            this.Delete_btn.Location = new System.Drawing.Point(171, 35);
             this.Delete_btn.Name = "Delete_btn";
-            this.Delete_btn.Size = new System.Drawing.Size(75, 32);
-            this.Delete_btn.TabIndex = 8;
-            this.Delete_btn.TabStop = false;
+            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
+            this.Delete_btn.Size = new System.Drawing.Size(90, 40);
+            this.Delete_btn.TabIndex = 169;
             this.Delete_btn.Text = "Xóa";
-            this.Delete_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Delete_btn.UseVisualStyleBackColor = true;
             // 
             // Edit_btn
             // 
+            this.Edit_btn.Animated = true;
+            this.Edit_btn.BorderRadius = 10;
+            this.Edit_btn.BorderThickness = 2;
+            this.Edit_btn.CheckedState.Parent = this.Edit_btn;
+            this.Edit_btn.CustomImages.Parent = this.Edit_btn;
             this.Edit_btn.Enabled = false;
+            this.Edit_btn.FillColor = System.Drawing.Color.White;
             this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_btn.ForeColor = System.Drawing.Color.Black;
+            this.Edit_btn.HoverState.Parent = this.Edit_btn;
             this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.edit_icon;
-            this.Edit_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Edit_btn.Location = new System.Drawing.Point(309, 38);
+            this.Edit_btn.Location = new System.Drawing.Point(298, 35);
             this.Edit_btn.Name = "Edit_btn";
-            this.Edit_btn.Size = new System.Drawing.Size(75, 32);
-            this.Edit_btn.TabIndex = 9;
-            this.Edit_btn.TabStop = false;
+            this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
+            this.Edit_btn.Size = new System.Drawing.Size(90, 40);
+            this.Edit_btn.TabIndex = 170;
             this.Edit_btn.Text = "Sửa";
-            this.Edit_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Edit_btn.UseVisualStyleBackColor = true;
+            // 
+            // Add_btn
+            // 
+            this.Add_btn.Animated = true;
+            this.Add_btn.BorderRadius = 10;
+            this.Add_btn.BorderThickness = 2;
+            this.Add_btn.CheckedState.Parent = this.Add_btn;
+            this.Add_btn.CustomImages.Parent = this.Add_btn;
+            this.Add_btn.Enabled = false;
+            this.Add_btn.FillColor = System.Drawing.Color.White;
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.ForeColor = System.Drawing.Color.Black;
+            this.Add_btn.HoverState.Parent = this.Add_btn;
+            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
+            this.Add_btn.Location = new System.Drawing.Point(36, 35);
+            this.Add_btn.Name = "Add_btn";
+            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
+            this.Add_btn.Size = new System.Drawing.Size(90, 40);
+            this.Add_btn.TabIndex = 168;
+            this.Add_btn.Text = "Thêm";
             // 
             // DanhSachKM_dgv
             // 
@@ -185,7 +200,7 @@ namespace GUI_QuanLyCafe
             this.MaKM_txt.Location = new System.Drawing.Point(206, 36);
             this.MaKM_txt.Name = "MaKM_txt";
             this.MaKM_txt.ReadOnly = true;
-            this.MaKM_txt.Size = new System.Drawing.Size(151, 29);
+            this.MaKM_txt.Size = new System.Drawing.Size(160, 29);
             this.MaKM_txt.TabIndex = 1;
             // 
             // PhanTramKM_lbl
@@ -248,18 +263,21 @@ namespace GUI_QuanLyCafe
             // 
             // CreateID_btn
             // 
-            this.CreateID_btn.BackColor = System.Drawing.Color.Transparent;
+            this.CreateID_btn.Animated = true;
+            this.CreateID_btn.BorderThickness = 1;
+            this.CreateID_btn.CheckedState.Parent = this.CreateID_btn;
+            this.CreateID_btn.CustomImages.Parent = this.CreateID_btn;
             this.CreateID_btn.Enabled = false;
-            this.CreateID_btn.FlatAppearance.BorderSize = 0;
+            this.CreateID_btn.FillColor = System.Drawing.Color.White;
             this.CreateID_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateID_btn.ForeColor = System.Drawing.Color.Black;
+            this.CreateID_btn.HoverState.Parent = this.CreateID_btn;
             this.CreateID_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.id;
-            this.CreateID_btn.Location = new System.Drawing.Point(363, 36);
+            this.CreateID_btn.Location = new System.Drawing.Point(365, 36);
             this.CreateID_btn.Name = "CreateID_btn";
-            this.CreateID_btn.Size = new System.Drawing.Size(38, 32);
-            this.CreateID_btn.TabIndex = 75;
-            this.CreateID_btn.TabStop = false;
-            this.CreateID_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CreateID_btn.UseVisualStyleBackColor = false;
+            this.CreateID_btn.ShadowDecoration.Parent = this.CreateID_btn;
+            this.CreateID_btn.Size = new System.Drawing.Size(36, 29);
+            this.CreateID_btn.TabIndex = 173;
             // 
             // TenKM_lbl
             // 
@@ -302,27 +320,32 @@ namespace GUI_QuanLyCafe
             // 
             // ResetFind_btn
             // 
-            this.ResetFind_btn.FlatAppearance.BorderSize = 0;
+            this.ResetFind_btn.Animated = true;
+            this.ResetFind_btn.BorderRadius = 5;
+            this.ResetFind_btn.BorderThickness = 1;
+            this.ResetFind_btn.CheckedState.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.CustomImages.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.Enabled = false;
+            this.ResetFind_btn.FillColor = System.Drawing.Color.White;
             this.ResetFind_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetFind_btn.ForeColor = System.Drawing.Color.Black;
+            this.ResetFind_btn.HoverState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Refreshicon;
-            this.ResetFind_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ResetFind_btn.Location = new System.Drawing.Point(898, 133);
             this.ResetFind_btn.Name = "ResetFind_btn";
-            this.ResetFind_btn.Size = new System.Drawing.Size(32, 32);
-            this.ResetFind_btn.TabIndex = 121;
-            this.ResetFind_btn.TabStop = false;
-            this.ResetFind_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ResetFind_btn.UseVisualStyleBackColor = true;
+            this.ResetFind_btn.ShadowDecoration.Parent = this.ResetFind_btn;
+            this.ResetFind_btn.Size = new System.Drawing.Size(32, 29);
+            this.ResetFind_btn.TabIndex = 172;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 6);
+            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 115);
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
+            this.pictureBox2.TabIndex = 173;
             this.pictureBox2.TabStop = false;
             // 
             // Voucher_frm
@@ -333,9 +356,9 @@ namespace GUI_QuanLyCafe
             this.ClientSize = new System.Drawing.Size(942, 433);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Log_Menu);
-            this.Controls.Add(this.ResetFind_btn);
             this.Controls.Add(this.TimKiem_txt);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.ResetFind_btn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.DanhSachKM_dgv);
             this.Controls.Add(this.groupBox1);
@@ -359,25 +382,25 @@ namespace GUI_QuanLyCafe
         #endregion
         private System.Windows.Forms.MenuStrip Log_Menu;
         private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
-        private System.Windows.Forms.Button ResetFind_btn;
         private System.Windows.Forms.TextBox TimKiem_txt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox Edit_ckb;
-        private System.Windows.Forms.Button Add_btn;
-        private System.Windows.Forms.Button Delete_btn;
-        private System.Windows.Forms.Button Edit_btn;
         private System.Windows.Forms.DataGridView DanhSachKM_dgv;
         private System.Windows.Forms.Label MaKM_lbl;
         private System.Windows.Forms.TextBox MaKM_txt;
         private System.Windows.Forms.Label PhanTramKM_lbl;
-        private System.Windows.Forms.Button CreateID_btn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox TenKM_txt;
         private System.Windows.Forms.TextBox PhanTramKM_txt;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label TenKM_lbl;
         private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2Button Delete_btn;
+        private Guna.UI2.WinForms.Guna2Button Edit_btn;
+        private Guna.UI2.WinForms.Guna2Button Add_btn;
+        private Guna.UI2.WinForms.Guna2Button CreateID_btn;
+        private Guna.UI2.WinForms.Guna2Button ResetFind_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
