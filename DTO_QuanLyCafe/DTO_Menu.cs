@@ -13,6 +13,7 @@ namespace DTO_QuanLyCafe
         private float price;
         private string categoryID;
         private string picture;
+        private int idMenu;
 
         public string Name { get => name; set => name = value; }
 
@@ -24,5 +25,8 @@ namespace DTO_QuanLyCafe
 
         public string Picture { get => picture; set => picture = value; }
 
+        public int IdMenu { get => idMenu; set => idMenu = value; }
+
+        public DTO_Menu() { }
     }
 }

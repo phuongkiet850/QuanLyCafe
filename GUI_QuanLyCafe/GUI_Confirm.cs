@@ -62,13 +62,5 @@ namespace GUI_QuanLyCafe
                 MessageBox.Show("Không kết nối được với Server, xin vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void Confirm_frm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (Result != 1)
-            {
-                Result = 0;
-            }
-        }
     }
 }

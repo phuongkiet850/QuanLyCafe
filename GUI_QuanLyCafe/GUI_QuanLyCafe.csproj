@@ -193,6 +193,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -334,6 +337,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Image\Icon\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Image\Icon\question-mark-outline-in-a-circle-hand-drawn-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Image\Icon\questionmark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

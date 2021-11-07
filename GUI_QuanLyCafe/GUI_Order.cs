@@ -29,7 +29,6 @@ namespace GUI_QuanLyCafe
             Loading_frm.Status = 2;
             this.ActiveControl = label1;
             LoadTable();
-            //Shift_lbl.Text = Login_frm.Shift;
         }
         
         void LoadTable()
@@ -60,32 +59,39 @@ namespace GUI_QuanLyCafe
             try
             {
                 bill.IdTable = Id;
-                CheckIn_lbl.Text = "Giờ vào : " + BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString();
-                Bill_lv.Items.Clear();
-                float total = 0;
-                for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
+                if (BUS_Bill.Instance.DetailBill(bill).Rows.Count > 0)
                 {
-                    ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
-                    item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
-                    item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString());
-                    item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
-                    Bill_lv.Items.Add(item);
-                    total = total + (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
+                    Bill_lv.Items.Clear();
+                    NameTable_lbl.Text = "Tên : " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
+                    CheckIn_lbl.Text = "Giờ vào : " + DateTime.Parse(BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString()).ToString("ddd dd/MM/yyyy HH:mm:ss");
+                    float total = 0;
+                    for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
+                    {
+                        ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
+                        item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
+                        item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString());
+                        item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
+                        Bill_lv.Items.Add(item);
+                        total = total + (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
+                    }
+                    float TotalVAT = total + (total * 10 / 100);
+                    Total_lbl.Text = "Số tiền phải trả : " + String.Format("{0:0,0}", TotalVAT) + " VNĐ";
+                    VAT_lbl.Text = "Thuế VAT (10%) : " + String.Format("{0:0,0}", TotalVAT) + " VNĐ";
+                    TotalOrder_lbl.Text = "Tổng hóa đơn: " + String.Format("{0:0,0}", total) + " VNĐ";
+                    NameStafff_lbl.Text = "Thu ngân : " + BUS_Bill.Instance.DetailBill(bill).Rows[0][7].ToString();
                 }
-                float TotalVAT = total + (total * 10 / 100);
-                Total_lbl.Text = "Số tiền phải trả : " + String.Format("{0:0,0}", TotalVAT) + " VNĐ";
-                VAT_lbl.Text = "Thuế VAT (10%) : " + String.Format("{0:0,0}", TotalVAT) + " VNĐ";
-                TotalOrder_lbl.Text = "Tổng hóa đơn: " + String.Format("{0:0,0}", total) + " VNĐ";
-                NameStafff_lbl.Text = "Thu ngân : " + BUS_Bill.Instance.DetailBill(bill).Rows[0][7].ToString();
+                else
+                {
+                    ResetBill();
+                }
+                
             }
             catch (Exception) { }
         }
 
-        private void btn_Click(object sender, EventArgs e)
+        private void ResetBill()
         {
             Bill_lv.Items.Clear();
-            Button btn = (Button)sender;
-            bill.IdTable = Convert.ToInt32(btn.Tag.ToString());
             NameTable_lbl.Text = "Tên : " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
             IdTable = bill.IdTable;
             Total_lbl.Text = "Số tiền phải trả :";
@@ -93,14 +99,27 @@ namespace GUI_QuanLyCafe
             VAT_lbl.Text = "Thuế VAT (10%) : ";
             NameStafff_lbl.Text = "Thu ngân : ";
             CheckIn_lbl.Text = "Giờ vào : ";
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            Bill_lv.Items.Clear();
+            Button btn = (Button)sender;
+            bill.IdTable = Convert.ToInt32(btn.Tag.ToString());
+            IdTable = bill.IdTable; 
             if (BUS_Bill.Instance.Table(bill).Rows[0][2].ToString() == "Trống")
             {
-                Add_btn.Enabled = true;
+                ResetBill();
+                Add_btn.Enabled = false;
                 Edit_btn.Enabled = false;
                 Delete_btn.Enabled = false;
                 Payment_btn.Enabled = false;
                 NameTable = BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
                 menu.ShowDialog();
+                if (BUS_Bill.Instance.Table(bill).Rows[0][2].ToString() != "Trống")
+                {
+                    Add_btn.Enabled = true;
+                }
                 LoadTable();
                 ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
             }
@@ -172,16 +191,18 @@ namespace GUI_QuanLyCafe
 
         private void Payment_btn_Click(object sender, EventArgs e)
         {
+            NameTable = NameTable_lbl.Text;
             Payment_frm payment = new Payment_frm();
             payment.ShowDialog();
+
+            LoadTable();
+            ResetBill();
         }
 
         private void Delete_btn_Click(object sender, EventArgs e)
         {
             try
             {
-                Confirm_frm confirm = new Confirm_frm();
-                confirm.ShowDialog();
                 if (Confirm_frm.Result == 1)
                 {
                     var dlr = MessageBox.Show("Bạn có muốn xóa hóa đơn của bàn này không (" + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString() + ") ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -191,10 +212,29 @@ namespace GUI_QuanLyCafe
                         bill.IdTable = IdTable;
                         BUS_Bill.Instance.DeleteBill(bill);
                         LoadTable();
-                        ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
+                        ResetBill();
                         MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                else
+                {
+                    Confirm_frm confirm = new Confirm_frm();
+                    confirm.ShowDialog();
+                    if (Confirm_frm.Result == 1)
+                    {
+                        var dlr = MessageBox.Show("Bạn có muốn xóa hóa đơn của bàn này không (" + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString() + ") ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dlr == DialogResult.Yes)
+                        {
+                            bill.IdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
+                            bill.IdTable = IdTable;
+                            BUS_Bill.Instance.DeleteBill(bill);
+                            LoadTable();
+                            ResetBill();
+                            MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                Confirm_frm.Result = 0;
             }
             catch (Exception)
             {

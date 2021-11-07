@@ -35,7 +35,11 @@ namespace GUI_QuanLyCafe
 
             OldIdTable = Order_frm.IdTable;
             bill.IdTable = OldIdTable;
-            OldIdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
+            if (BUS_Bill.Instance.DetailBill(bill).Rows.Count > 0)
+            {
+                OldIdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
+            }
+           
         }
 
         void LoadTable()
@@ -198,9 +202,13 @@ namespace GUI_QuanLyCafe
 
         private void ListOrder1_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = ListOrder1_dgv.Rows[e.RowIndex];
-            bill.IdDetailBill = Convert.ToInt32(row.Cells[0].Value.ToString());
-            NameFood = row.Cells[1].Value.ToString();
+            try
+            {
+                DataGridViewRow row = ListOrder1_dgv.Rows[e.RowIndex];
+                bill.IdDetailBill = Convert.ToInt32(row.Cells[0].Value.ToString());
+                NameFood = row.Cells[1].Value.ToString();
+            }
+            catch (Exception) { }
         }
 
         private void Delete_btn_Click(object sender, EventArgs e)
@@ -212,9 +220,7 @@ namespace GUI_QuanLyCafe
                     MessageBox.Show("Bạn chưa chọn món cần tách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                {
-                    Confirm_frm confirm = new Confirm_frm();
-                    confirm.ShowDialog();
+                {  
                     if (Confirm_frm.Result == 1)
                     {
                         var dlr = MessageBox.Show("Bạn có muốn xóa " + NameFood + " của " + Order_frm.NameTable.ToLower() + " không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -224,13 +230,33 @@ namespace GUI_QuanLyCafe
                             BUS_Bill.Instance.Delete(bill);
                             LoadTable();
                             LoadBill();
-                            bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
-                            ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
-                            ListOrder2_dgv.Columns[0].Visible = false;
+                            bill.IdTable = Convert.ToInt32(NameTable1_lbl.Text.Substring(10));
+                            ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
+                            ListOrder1_dgv.Columns[0].Visible = false;
                             bill.IdDetailBill = 0;
                             MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
+                    else
+                    {
+                        Confirm_frm confirm = new Confirm_frm();
+                        confirm.ShowDialog();
+                        if (Confirm_frm.Result == 1)
+                        {
+                            var dlr = MessageBox.Show("Bạn có muốn xóa " + NameFood + " của " + Order_frm.NameTable.ToLower() + " không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dlr == DialogResult.Yes)
+                            {
+                                bill.IdTable = Order_frm.IdTable;
+                                BUS_Bill.Instance.Delete(bill);
+                                bill.IdTable = Convert.ToInt32(NameTable1_lbl.Text.Substring(10));
+                                ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
+                                ListOrder1_dgv.Columns[0].Visible = false;
+                                bill.IdDetailBill = 0;
+                                MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    Confirm_frm.Result = 0;
                 }
             }
             catch (Exception)

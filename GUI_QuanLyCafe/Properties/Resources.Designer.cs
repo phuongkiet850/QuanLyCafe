@@ -393,6 +393,16 @@ namespace GUI_QuanLyCafe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap questionmark {
+            get {
+                object obj = ResourceManager.GetObject("questionmark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Refreshicon {
             get {
                 object obj = ResourceManager.GetObject("Refreshicon", resourceCulture);
@@ -416,6 +426,16 @@ namespace GUI_QuanLyCafe.Properties {
         internal static System.Drawing.Bitmap siro_torani_cam_torani_orange_syrup_750ml {
             get {
                 object obj = ResourceManager.GetObject("siro-torani-cam-torani-orange-syrup-750ml", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unknown {
+            get {
+                object obj = ResourceManager.GetObject("unknown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

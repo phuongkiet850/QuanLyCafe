@@ -213,6 +213,8 @@ namespace GUI_QuanLyCafe
             this.ClientSize = new System.Drawing.Size(545, 353);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.VerificationPassword_grb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ForgotPassword_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quên mật khẩu";

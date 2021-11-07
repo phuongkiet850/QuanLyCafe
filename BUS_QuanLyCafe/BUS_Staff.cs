@@ -110,5 +110,50 @@ namespace BUS_QuanLyCafe
         {
             return DAL_Staff.Instance.UpdatePassword(staff);
         }
+
+        public DataTable ListProfileStaff()
+        {
+            return DAL_Staff.Instance.ListProfileStaff();
+        }
+
+        public DataTable ListProfileStaff_DGV()
+        {
+            return DAL_Staff.Instance.ListProfileStaff_DGV();
+        }
+
+        public DataTable SelectIdStaff()
+        {
+            return DAL_Staff.Instance.SelectIdStaff();
+        }
+
+        public bool InsertProfileStaff(DTO_Staff staff)
+        {
+            return DAL_Staff.Instance.InsertProfileStaff(staff);
+        }
+
+        public bool UpdateProfileStaff(DTO_Staff staff)
+        {
+            return DAL_Staff.Instance.UpdateProfileStaff(staff);
+        }
+
+        public bool DeleteProfileStaff(DTO_Staff staff)
+        {
+            return DAL_Staff.Instance.DeleteProfileStaff(staff);
+        }
+
+        public DataTable SelectIdStaff_DGV(DTO_Staff staff)
+        {
+            return DAL_Staff.Instance.SelectIdStaff_DGV(staff);
+        }
+
+        public DataTable FindProfileStaff_All(string find)
+        {
+            return DAL_Staff.Instance.FindProfileStaff_All(find);
+        }
+
+        public DataTable FindProfileStaff_FindBy(string find, string findBy)
+        {
+            return DAL_Staff.Instance.FindProfileStaff_FindBy(find, findBy);
+        }
     }
 }

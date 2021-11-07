@@ -16,6 +16,7 @@ namespace GUI_QuanLyCafe
         public Detail_frm()
         {
             InitializeComponent();
+            this.ActiveControl = label1;
         }
 
         public static int Status;
@@ -23,11 +24,18 @@ namespace GUI_QuanLyCafe
         public static string Note;
         private void Addd_btn_Click(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
-            Status = 1;
-            Amount = Convert.ToInt32(Amount_nud.Value.ToString());
-            Note = Note_txt.Text;
-            this.Close();
+            if (Amount_nud.Value != 0)
+            {
+                Status = 1;
+                Amount = Convert.ToInt32(Amount_nud.Value.ToString());
+                Note = Note_txt.Text;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa chọn số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void Detail_frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -35,6 +43,7 @@ namespace GUI_QuanLyCafe
             Note_txt.Text = "";
             Amount_nud.Value = 0;
             e.Cancel = false;
+
         }
 
         private void Detail_frm_Load(object sender, EventArgs e)

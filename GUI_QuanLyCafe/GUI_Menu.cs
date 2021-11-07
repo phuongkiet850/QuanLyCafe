@@ -25,13 +25,18 @@ namespace GUI_QuanLyCafe
         DTO_Staff staff = new DTO_Staff();
 
         public static string NameItem;
+        public string CategoryID = "";
         private void Menu_frm_Load(object sender, EventArgs e)
         {
             Name_lbl.Text = "Tên : " + Order_frm.NameTable;
             bill.IdTable = Order_frm.IdTable;
             LoadMenu("CF");
-            //LoadBill();
+            ListOrder();
 
+        }
+
+        void ListOrder()
+        {
             ListOrder_dgv.Rows.Clear();
             ListOrder_dgv.Columns.Clear();
             ListOrder_dgv.Columns.Add("Name", "Tên món");
@@ -55,7 +60,9 @@ namespace GUI_QuanLyCafe
                 Freeze_flp.Controls.Clear();
                 Tea_flp.Controls.Clear();
                 Food_flp.Controls.Clear();
+                Cake_flp.Controls.Clear();
                 SoftDrink_flp.Controls.Clear();
+                Other_flp.Controls.Clear();
                 menu.CategoryID = CategoryID;
                 for (int i = 0; i < BUS_Menu.Instance.ListMenu(menu).Rows.Count; i++)
                 {
@@ -87,47 +94,65 @@ namespace GUI_QuanLyCafe
                     {
                         Tea_flp.Controls.Add(btn);
                     }
+                    else if (CategoryID == "CK")
+                    {
+                        Cake_flp.Controls.Add(btn);
+                    }
                     else if (CategoryID == "FD")
                     {
                         Food_flp.Controls.Add(btn);
                     }
                     else if (CategoryID == "SD")
                     {
-                        btn.ImageSize = new Size(70, 70);
                         SoftDrink_flp.Controls.Add(btn);
+                    }
+                    else
+                    {
+                        Other_flp.Controls.Add(btn);
                     }
                 }
 
-                Guna2Button MenuManager_btn = new Guna2Button();
-                MenuManager_btn.Width = 270;
-                MenuManager_btn.Height = 80;
-                MenuManager_btn.Image = Image.FromFile(Application.StartupPath + @"\Image\Icon\plus.PNG");
-                MenuManager_btn.ImageSize = new Size(60, 60);
-                MenuManager_btn.ImageAlign = HorizontalAlignment.Center;
-                MenuManager_btn.BorderColor = Color.Black;
-                MenuManager_btn.FillColor = Color.White;
-                MenuManager_btn.ForeColor = Color.Black;
-                MenuManager_btn.BorderThickness = 1;
-                MenuManager_btn.Click += MenuManager_btn_Click;
-                if (CategoryID == "CF")
+                if (Confirm_frm.Result == 1)
                 {
-                    Cafe_flp.Controls.Add(MenuManager_btn);
-                }
-                else if (CategoryID == "FZ")
-                {
-                    Freeze_flp.Controls.Add(MenuManager_btn);
-                }
-                else if (CategoryID == "TE")
-                {
-                    Tea_flp.Controls.Add(MenuManager_btn);
-                }
-                else if (CategoryID == "FD")
-                {
-                    Food_flp.Controls.Add(MenuManager_btn);
-                }
-                else if (CategoryID == "SD")
-                {
-                    SoftDrink_flp.Controls.Add(MenuManager_btn);
+                    Guna2Button MenuManager_btn = new Guna2Button();
+                    MenuManager_btn.Width = 270;
+                    MenuManager_btn.Height = 80;
+                    MenuManager_btn.Image = Image.FromFile(Application.StartupPath + @"\Image\Icon\plus.PNG");
+                    MenuManager_btn.ImageSize = new Size(60, 60);
+                    MenuManager_btn.ImageAlign = HorizontalAlignment.Center;
+                    MenuManager_btn.BorderColor = Color.Black;
+                    MenuManager_btn.FillColor = Color.White;
+                    MenuManager_btn.ForeColor = Color.Black;
+                    MenuManager_btn.BorderThickness = 1;
+                    MenuManager_btn.Click += MenuManager_btn_Click;
+                    if (CategoryID == "CF")
+                    {
+                        Cafe_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else if (CategoryID == "FZ")
+                    {
+                        Freeze_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else if (CategoryID == "TE")
+                    {
+                        Tea_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else if (CategoryID == "FD")
+                    {
+                        Food_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else if (CategoryID == "CK")
+                    {
+                        Cake_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else if (CategoryID == "SD")
+                    {
+                        SoftDrink_flp.Controls.Add(MenuManager_btn);
+                    }
+                    else
+                    {
+                        Other_flp.Controls.Add(MenuManager_btn);
+                    }
                 }
             }
             catch (Exception) { }
@@ -137,6 +162,15 @@ namespace GUI_QuanLyCafe
         {
             MenuManager_frm menuManager = new MenuManager_frm();
             menuManager.ShowDialog();
+            if (CategoryID == "")
+            {
+                LoadMenu("CF");
+            }
+            else
+            {
+                LoadMenu(CategoryID);
+            }
+            ListOrder();
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -155,13 +189,15 @@ namespace GUI_QuanLyCafe
                 row.Cells[3].Value = Detail_frm.Note;
                 row.Cells[4].Value = bill.IdMenu;
                 ListOrder_dgv.Rows.Add(row);
+                Detail_frm.Status = 0;
             }
         }
 
         private void Menu_tc_Selected(object sender, TabControlEventArgs e)
         {
-            string CategoryID = Menu_tc.SelectedTab.Name.ToString();
+            CategoryID = Menu_tc.SelectedTab.Name.ToString();
             LoadMenu(CategoryID);
+
         }
 
         private void Menu_frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -201,6 +237,10 @@ namespace GUI_QuanLyCafe
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
+                else if (ListOrder_dgv.Rows.Count == 1)
+                {
+                    MessageBox.Show("Bạn chưa chọn món", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     for (int i = 0; i < ListOrder_dgv.Rows.Count - 1; i++)
@@ -213,7 +253,7 @@ namespace GUI_QuanLyCafe
                     }
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                } 
+                }
             }
             catch (Exception)
             {

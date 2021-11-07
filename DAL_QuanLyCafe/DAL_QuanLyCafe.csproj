@@ -47,6 +47,7 @@
     <Compile Include="DAL_Menu.cs" />
     <Compile Include="DAL_Staff.cs" />
     <Compile Include="DAL_Table.cs" />
+    <Compile Include="DAL_Voucher.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

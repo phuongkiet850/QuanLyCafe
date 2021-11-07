@@ -36,5 +36,89 @@ namespace DAL_QuanLyCafe
                 return data;
             }
         }
+
+        public DataTable ListCategory()
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_ListCategory";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable ListMenu_DGV()
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_ListMenu_DGV";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable AddMenu(DTO_Menu menu)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_AddMenu @Name = N'" + menu.Name + "', @Price = " + menu.Price + ", @CategoryID = '" + menu.CategoryID + "', @Picture = '" + menu.Picture + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable UpdateMenu(DTO_Menu menu)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_UpdateMenu @Name = N'" + menu.Name + "', @Price = " + menu.Price + ", @CategoryID = '" + menu.CategoryID + "', @Picture = '" + menu.Picture + "', @IdMenu = " + menu.IdMenu + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable DeleteMenu(DTO_Menu menu)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_DeleteMenu @IdMenu = " + menu.IdMenu + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable FindMenu_All(string find)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_FindMenu_All @Find = N'" + find + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable FindMenu_Category(string find, DTO_Menu menu)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_FindMenu_Category @Find = N'" + find + "', @IdCategory = '" + menu.CategoryID + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
     }
 }

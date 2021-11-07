@@ -30,12 +30,12 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Amount_nud = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.Note_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Name_txt = new System.Windows.Forms.TextBox();
             this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Amount_nud = new Guna.UI2.WinForms.Guna2NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_nud)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,14 +48,6 @@ namespace GUI_QuanLyCafe
             this.label1.Size = new System.Drawing.Size(78, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số lượng";
-            // 
-            // Amount_nud
-            // 
-            this.Amount_nud.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Amount_nud.Location = new System.Drawing.Point(107, 63);
-            this.Amount_nud.Name = "Amount_nud";
-            this.Amount_nud.Size = new System.Drawing.Size(50, 29);
-            this.Amount_nud.TabIndex = 1;
             // 
             // label2
             // 
@@ -115,24 +107,50 @@ namespace GUI_QuanLyCafe
             this.Add_btn.Text = "Thêm";
             this.Add_btn.Click += new System.EventHandler(this.Addd_btn_Click);
             // 
+            // Amount_nud
+            // 
+            this.Amount_nud.BackColor = System.Drawing.Color.Transparent;
+            this.Amount_nud.BorderColor = System.Drawing.Color.Black;
+            this.Amount_nud.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Amount_nud.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Amount_nud.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Amount_nud.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Amount_nud.DisabledState.Parent = this.Amount_nud;
+            this.Amount_nud.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(187)))), ((int)(((byte)(150)))));
+            this.Amount_nud.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
+            this.Amount_nud.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Amount_nud.FocusedState.Parent = this.Amount_nud;
+            this.Amount_nud.FocusedState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Amount_nud.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Amount_nud.ForeColor = System.Drawing.Color.Black;
+            this.Amount_nud.Location = new System.Drawing.Point(107, 65);
+            this.Amount_nud.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Amount_nud.Name = "Amount_nud";
+            this.Amount_nud.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Amount_nud.ShadowDecoration.Parent = this.Amount_nud;
+            this.Amount_nud.Size = new System.Drawing.Size(259, 29);
+            this.Amount_nud.TabIndex = 156;
+            this.Amount_nud.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(187)))), ((int)(((byte)(150)))));
+            this.Amount_nud.UpDownButtonForeColor = System.Drawing.Color.Black;
+            // 
             // Detail_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(393, 285);
+            this.Controls.Add(this.Amount_nud);
             this.Controls.Add(this.Add_btn);
             this.Controls.Add(this.Name_txt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Note_txt);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Amount_nud);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Detail_frm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detail_frm_FormClosing);
             this.Load += new System.EventHandler(this.Detail_frm_Load);
@@ -145,11 +163,11 @@ namespace GUI_QuanLyCafe
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown Amount_nud;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Note_txt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Name_txt;
         private Guna.UI2.WinForms.Guna2Button Add_btn;
+        private Guna.UI2.WinForms.Guna2NumericUpDown Amount_nud;
     }
 }

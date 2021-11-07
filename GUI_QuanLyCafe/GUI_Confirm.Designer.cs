@@ -140,7 +140,6 @@ namespace GUI_QuanLyCafe
             this.Name = "Confirm_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Xác nhận";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Confirm_frm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -132,7 +132,7 @@ namespace GUI_QuanLyCafe
             this.Staff_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.id_card;
             this.Staff_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Staff_MenuItem.Name = "Staff_MenuItem";
-            this.Staff_MenuItem.Size = new System.Drawing.Size(196, 38);
+            this.Staff_MenuItem.Size = new System.Drawing.Size(183, 38);
             this.Staff_MenuItem.Text = "Nhân viên";
             this.Staff_MenuItem.Click += new System.EventHandler(this.Staff_MenuItem_Click);
             // 
@@ -141,7 +141,7 @@ namespace GUI_QuanLyCafe
             this.Material_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.product;
             this.Material_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Material_MenuItem.Name = "Material_MenuItem";
-            this.Material_MenuItem.Size = new System.Drawing.Size(196, 38);
+            this.Material_MenuItem.Size = new System.Drawing.Size(183, 38);
             this.Material_MenuItem.Text = "Nguyên liệu";
             this.Material_MenuItem.Click += new System.EventHandler(this.Material_MenuItem_Click);
             // 
@@ -150,7 +150,7 @@ namespace GUI_QuanLyCafe
             this.Voucher_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.coupon;
             this.Voucher_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Voucher_MenuItem.Name = "Voucher_MenuItem";
-            this.Voucher_MenuItem.Size = new System.Drawing.Size(196, 38);
+            this.Voucher_MenuItem.Size = new System.Drawing.Size(183, 38);
             this.Voucher_MenuItem.Text = "Voucher";
             this.Voucher_MenuItem.Click += new System.EventHandler(this.Voucher_MenuItem_Click);
             // 
@@ -187,6 +187,7 @@ namespace GUI_QuanLyCafe
             // 
             // Payment_btn
             // 
+            this.Payment_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Payment_btn.Animated = true;
             this.Payment_btn.BorderRadius = 10;
             this.Payment_btn.BorderThickness = 2;
@@ -208,6 +209,7 @@ namespace GUI_QuanLyCafe
             // 
             // Delete_btn
             // 
+            this.Delete_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Delete_btn.Animated = true;
             this.Delete_btn.BorderRadius = 10;
             this.Delete_btn.BorderThickness = 2;
@@ -229,6 +231,7 @@ namespace GUI_QuanLyCafe
             // 
             // Edit_btn
             // 
+            this.Edit_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Edit_btn.Animated = true;
             this.Edit_btn.BorderRadius = 10;
             this.Edit_btn.BorderThickness = 2;
@@ -250,6 +253,7 @@ namespace GUI_QuanLyCafe
             // 
             // Add_btn
             // 
+            this.Add_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Add_btn.Animated = true;
             this.Add_btn.BorderRadius = 10;
             this.Add_btn.BorderThickness = 2;
@@ -271,7 +275,7 @@ namespace GUI_QuanLyCafe
             // 
             // panel2
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.TotalOrder_lbl);
             this.panel2.Controls.Add(this.VAT_lbl);
@@ -317,6 +321,7 @@ namespace GUI_QuanLyCafe
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.NameStafff_lbl);
@@ -378,7 +383,8 @@ namespace GUI_QuanLyCafe
             // 
             // Bill_lv
             // 
-            this.Bill_lv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.Bill_lv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Bill_lv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Bill_lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -386,8 +392,10 @@ namespace GUI_QuanLyCafe
             this.columnHeader3,
             this.columnHeader4});
             this.Bill_lv.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bill_lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Bill_lv.HideSelection = false;
             this.Bill_lv.Location = new System.Drawing.Point(15, 180);
+            this.Bill_lv.MultiSelect = false;
             this.Bill_lv.Name = "Bill_lv";
             this.Bill_lv.Size = new System.Drawing.Size(603, 353);
             this.Bill_lv.TabIndex = 16;
@@ -482,7 +490,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(970, 810);
+            this.MinimumSize = new System.Drawing.Size(1030, 810);
             this.Name = "Order_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";

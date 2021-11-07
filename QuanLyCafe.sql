@@ -113,7 +113,10 @@ create table Statistic
 	Total float,
 	Shift nvarchar(10),
 	NameStaff nvarchar(50),
-	DateEnd datetime
+	CheckIn datetime,
+	CheckOut datetime,
+	PercentVoucher float,
+	Method nvarchar(50)
 );
 
 create table DetailStatistic
@@ -121,8 +124,7 @@ create table DetailStatistic
 	IdDetailStatistic int primary key  DEFAULT DBO.AUTO_IDDetailStatistic(),
 	IdStatistic int references  Statistic (IdStatistic),
 	NameMenu nvarchar(100),
-	Amount int,
-	DateStart datetime
+	Amount int
 );
 
 	drop FUNCTION AUTO_IDNV
@@ -311,7 +313,7 @@ drop PROC sp_DetailBill
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_DetailBill @IdTable = 5
+	exec sp_DetailBill @IdTable = 3
 ---------------------------------------------------------------------------
 create proc sp_DetailBill_DGV
 		@IdTable int
@@ -667,8 +669,6 @@ drop PROC sp_AcceptLogin
 
 	------------------------------------------------------------------------------------
 
-	------------------------------------------------------------------------------------
-
 		drop PROC sp_AddDesertToBill
 
 	create proc sp_AddDesertToBill
@@ -697,3 +697,719 @@ drop PROC sp_AcceptLogin
 
 	exec sp_UpdatePassword
 -----------------------------------------------------------------------------------
+create proc sp_ListCategory
+	as
+	begin try
+		begin tran
+			
+			select * from Category
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_TagItem @IdMenu = 1
+---------------------------------------------------------------------------
+drop proc sp_ListMenu_DGV
+create proc sp_ListMenu_DGV
+	as
+	begin try
+		begin tran
+			
+			select Name as 'Tên món', Price as 'Giá', NameCategory as 'Danh mục', IdMenu, Picture  from Menu
+			join Category on Menu.CategoryID = Category.IDCategory
+			order by  NameCategory
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_TagItem @IdMenu = 1
+---------------------------------------------------------------------------
+
+	drop PROC sp_AddMenu
+
+	create proc sp_AddMenu
+			@Name nvarchar(100),
+			@Price float,
+			@CategoryID nvarchar(10),
+			@Picture nvarchar(150)
+	as
+	begin try
+		begin tran
+
+			insert into Menu(Name, Price, CategoryID, Picture) values
+			(@Name, @Price, @CategoryID, @Picture)
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_UpdatePassword
+-----------------------------------------------------------------------------------
+	drop PROC sp_UpdateMenu
+
+	create proc sp_UpdateMenu
+			@Name nvarchar(100),
+			@Price float,
+			@CategoryID nvarchar(10),
+			@Picture nvarchar(150),
+			@IdMenu int
+	as
+	begin try
+		begin tran
+			
+			update Menu
+			set Name = @Name, Price = @Price, CategoryID = @CategoryID, Picture = @Picture
+			where IdMenu = @IdMenu
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_UpdatePassword
+-----------------------------------------------------------------------------------
+
+	drop PROC sp_DeleteMenu
+
+	create proc sp_DeleteMenu
+			@IdMenu int
+	as
+	begin try
+		begin tran
+			
+			Delete from Menu
+			where IdMenu = @IdMenu
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_UpdatePassword
+-----------------------------------------------------------------------------------
+drop PROC sp_FindMenu_Category
+	
+	create proc sp_FindMenu_Category
+				@Find nvarchar(255),
+				@IdCategory nvarchar(10)
+	as
+	begin try
+		begin tran
+			
+			select Name as 'Tên món', Price as 'Giá', NameCategory as 'Danh mục', IdMenu, Picture  from Menu
+			join Category on Menu.CategoryID = Category.IDCategory
+			where IDCategory = @IdCategory and Name like '%' + @Find + '%'
+			order by  NameCategory
+             
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_Category @Find = N'Sữa', @IdCategory = 'CF'
+
+	-----------------------------------------------------------------------------------
+drop PROC sp_FindMenu_Name
+	
+	create proc sp_FindMenu_All
+				@Find nvarchar(255)
+	as
+	begin try
+		begin tran
+			
+			select Name as 'Tên món', Price as 'Giá', NameCategory as 'Danh mục', IdMenu, Picture  from Menu
+			join Category on Menu.CategoryID = Category.IDCategory
+			where Name like '%' + @Find + '%'
+			order by  NameCategory
+             
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+-----------------------------------------------------------------------------------
+drop PROC sp_ListPayMent
+	
+	create proc sp_ListPayMent
+	as
+	begin try
+		begin tran
+			
+			select * from Payment
+             order by IdPayment
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+-----------------------------------------------------------------------------------
+drop PROC sp_ListVoucher
+	
+	create proc sp_ListVoucher
+	as
+	begin try
+		begin tran
+			
+			select * from Voucher
+             order by PercentVoucher
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+
+-----------------------------------------------------------------------------------
+drop PROC sp_AddStatistic
+	
+	create proc sp_AddStatistic
+		@IdBill int,
+		@Total float,
+		@Shift nvarchar(10),
+		@NameStaff nvarchar(50),
+		@CheckIn datetime,
+		@CheckOut datetime,
+		@PercentVoucher float,
+		@Method nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			insert into Statistic(IdBill, Total, Shift, NameStaff, CheckIn, CheckOut, PercentVoucher, Method) values
+			(@IdBill, @Total, @Shift, @NameStaff, @CheckIn, @CheckOut, @PercentVoucher, @Method)
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+-----------------------------------------------------------------------------------
+drop PROC sp_AddDetailStatistic
+	
+	create proc sp_AddDetailStatistic
+		@IdBill int,
+		@NameMenu nvarchar(100),
+		@Amount int
+	as
+	begin try
+		begin tran
+			
+			DECLARE @ID int
+			set @ID = (select IdStatistic from Statistic where IdBill = @IdBill)
+
+			insert into DetailStatistic(IdStatistic, NameMenu, Amount) values
+			(@ID, @NameMenu, @Amount)
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+exec sp_AddStatistic @IdBill = 3, @Total = 190300, @Shift = N'Ca tối', @NameStaff = N'Trác Phương Kiệt', @CheckIn = '11/05/2021 9:40:11 PM', @CheckOut = '06/11/2021 4:23:54 AM', @PercentVoucher = 0, @Method = N'Tại chỗ'
+
+
+-----------------------------------------------------------------------------------
+drop PROC sp_ListProfileStaff
+	
+	create proc sp_ListProfileStaff
+
+	as
+	begin try
+		begin tran
+			
+			select * from Staff
+			order by IdStaff
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindMenu_All @Find = N'Sữa'
+
+---------------------------------------------
+
+			drop PROC sp_SelectIdStaff
+	create proc sp_SelectIdStaff
+	as
+	begin try
+		begin tran
+		declare  @ID nvarchar(5)
+		set @ID = dbo.AUTO_IDStaff()
+		select @ID
+		
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_SelectIdStaff
+
+	---------------------------------------------
+
+---------------------------------------------
+	drop PROC sp_InsertProfileStaff
+	create proc sp_InsertProfileStaff
+				@NameStaff nvarchar(50),
+				@Address nvarchar(100),
+				@PhoneNumber nvarchar(11),
+				@Email nvarchar(50),
+				@Gender nvarchar(4),
+				@BirthDay date,
+				@Role nvarchar(20),
+				@Password nvarchar(50),
+				@Picture nvarchar(150),
+				@Status nvarchar(50)
+
+	
+	as
+	begin try
+		begin tran
+			insert into Staff(NameStaff, Address, PhoneNumber, Email, Gender, BirthDay, Role, Password, Picture, Status) values
+			(@NameStaff, @Address, @PhoneNumber, @Email, @Gender, @BirthDay, @Role, @Password, @Picture, @Status)
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_InsertProfileNV  @TenNV = N'Trác Phương Kiệt', @DiaChi = N'f', @DienThoai = '0789786646', @Email = 'phuongkiet850@gmail.com', @GioiTinh = N'Nam', @NgaySinh = '2019/01/01', @VaiTro = N'Quản trị viên', @MatKhau = N'Nhân dviên',@Hinh = 'f', @TinhTrang = 'Hoạt động'
+	
+
+------------------------------------------------------------------------------------
+	drop PROC sp_UpdateProfileStaff
+
+	create proc sp_UpdateProfileStaff
+				@IdStaff nvarchar(10),
+				@NameStaff nvarchar(50),
+				@Address nvarchar(100),
+				@PhoneNumber nvarchar(11),
+				@Gender nvarchar(4),
+				@BirthDay date,
+				@Role nvarchar(20),
+				@Picture nvarchar(150),
+				@Status nvarchar(50)
+	as
+	begin try
+		begin tran
+
+			update  Staff
+			set NameStaff = @NameStaff, Address = @Address, PhoneNumber = @PhoneNumber, Gender = @Gender, BirthDay = @BirthDay, Role = @Role, Picture = @Picture, Status = @Status
+			where IdStaff = @IdStaff
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_UpdateProfileNV @MaNV = 'NV41', @TenNV = N'asd', @DiaChi = N'asd', @DienThoai = 'asd', @Email = 'asd', @GioiTinh = N'Nam', @NgaySinh = '9/29/2021 12:00:00 AM', @VaiTro = N'Nhân viên', @Hinh = '', @ID = 41
+
+	--------------------------------------------
+
+drop PROC sp_DeleteProfileStaff
+	create proc sp_DeleteProfileStaff
+				@IdStaff nvarchar(5)
+	as
+	begin try
+		begin tran
+
+			delete from Staff where  IdStaff = @IdStaff
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+			update Staff
+			set Status = N'Không hoạt động'
+			where  IdStaff = @IdStaff
+	end catch
+
+	exec sp_DeleteProfileNV @MaNV = 'NV002'
+
+
+	---------------------------------------------
+
+
+	drop PROC sp_SelectIdStaff_DGV
+	create proc sp_SelectIdStaff_DGV
+				@IdStaff nvarchar(10)
+	as
+	begin try
+		begin tran
+
+			select * from Staff where  IdStaff = @IdStaff
+			
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_SelectID @MaNV = 'None40'
+
+
+-------------------------------------------------------------------	
+
+	drop PROC sp_ListProfileStaff_DGV
+	
+	create proc sp_ListProfileStaff_DGV
+	as
+	begin try
+		begin tran
+				select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				order by IdStaff
+        
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindProfileStaff_ID @Find = N'02'
+
+
+-------------------------------------------------------------------	
+
+---------------------------------------------
+
+	drop PROC sp_FindProfileStaff_All
+	
+	create proc sp_FindProfileStaff_All
+				@Find nvarchar(255)
+	as
+	begin try
+		begin tran
+			
+			select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+             where  NameStaff like N'%' + @Find + '%' or IdStaff like '%' + @Find + '%'or Email like '%' + @Find + '%' or Gender like N'%' + @Find + '%' or 
+					Role like N'%' + @Find + '%' or PhoneNumber like '%' + @Find + '%' or Address like N'%' + @Find + '%' or 
+					CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
+					CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
+					CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%'
+
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindProfileStaff_All @Find = N'phuo'
+
+
+-------------------------------------------------------------------	
+
+	drop PROC sp_FindProfileStaff_FindBy
+	
+	create proc sp_FindProfileStaff_FindBy
+				@FindBy nvarchar(255),
+				@Find nvarchar(255)
+	as
+	begin try
+		begin tran
+			if @FindBy = 'IdStaff'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where IdStaff like '%' + @Find + '%'
+			else if @FindBy = 'NameStaff'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where NameStaff like '%' + @Find + '%'
+			else if @FindBy = 'Address'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where Address like '%' + @Find + '%'
+			else if @FindBy = 'PhoneNumber'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where PhoneNumber like '%' + @Find + '%'
+			else if  @FindBy = 'BirthDay'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where		CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
+							CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
+							CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%'
+			else if @FindBy = 'Email'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where Email like '%' + @Find + '%'
+			else if @FindBy = 'Role'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where Role like '%' + @Find + '%'
+			else if @FindBy = 'Gender'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				 where Gender like '%' + @Find + '%'
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindProfileStaff_FindBy @Find = N'ad'
+
+exec sp_FindProfileStaff_FindBy @FindBy = 'Gender',  @Find = N'No'
+
+
+exec sp_FindProfileStaff_FindBy @Find = N'a', @FindBy = N'NameStaff'
+
+
+---------------------------------------------
+
+			drop PROC sp_ListVoucher
+	create proc sp_ListVoucher
+
+	as
+	begin try
+		begin tran
+
+			select * from Voucher
+			order by PercentVoucher
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_ListProducts_ALL
+
+
+-----------------------------------------------------------------------------------------------------------------
+	
+	drop proc sp_ListVoucher_DGV
+	create proc sp_ListVoucher_DGV
+
+	as
+	begin try
+		begin tran
+			
+			select IdVoucher as 'Mã khuyến mãi', NameVoucher as 'Tên khuyến mãi', PercentVoucher
+			from Voucher
+			order by PercentVoucher
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+---------------------------------------------
+	drop PROC sp_SelectIdVoucher
+	create proc sp_SelectIdVoucher
+				@IdVoucher nvarchar(10)
+	as
+	begin try
+		begin tran
+
+			select * from Voucher where  IdVoucher = @IdVoucher
+			order by PercentVoucher
+			
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_SelectID @MaNV = 'None40'
+
+---------------------------------------------
+	
+				drop PROC sp_InsertVoucher
+	create proc sp_InsertVoucher
+					@IdVoucher nvarchar(10),
+					@NameVoucher nvarchar(50),
+					@Percent float				
+	as
+	begin try
+		begin tran
+
+			insert into Voucher values 
+			(@IdVoucher, @NameVoucher, @Percent)
+			
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_InsertKM
+
+
+	-----------------------------------------------------------------------------------------------------------------
+	
+	drop proc sp_UpdateVoucher
+	create proc sp_UpdateVoucher
+				@IdVoucher nvarchar(10),
+				@NameVoucher nvarchar(50),
+				@Percent float
+	as
+	begin try
+		begin tran
+			
+			update Voucher
+			set  NameVoucher = @NameVoucher, PercentVoucher = @Percent
+			where IdVoucher = @IdVoucher
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	-----------------------------------------------------------------------------------------------------------------
+	
+	drop proc sp_DeleteVoucher
+	create proc sp_DeleteVoucher
+				@IdVoucher nvarchar(10)
+	as
+	begin try
+		begin tran
+			
+			delete from Voucher
+			where IdVoucher = @IdVoucher
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_FindVoucher
+	
+	create proc sp_FindVoucher
+				@Find nvarchar(255)
+	as
+	begin try
+		begin tran
+			
+			select IdVoucher as 'Mã khuyến mãi', NameVoucher as 'Tên khuyến mãi', PercentVoucher
+			from Voucher
+			where IdVoucher like '%' + @Find + '%' or NameVoucher like N'%' + @Find + '%' or PercentVoucher like '%' + @Find + '%'
+			order by PercentVoucher
+
+			print N'Thao tác thành công'
+
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindVoucher @Find = N'd' 

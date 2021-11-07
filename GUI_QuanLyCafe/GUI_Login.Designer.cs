@@ -114,7 +114,7 @@ namespace GUI_QuanLyCafe
             // 
             this.LoadBar.BorderRadius = 10;
             this.LoadBar.FillColor = System.Drawing.Color.LightGray;
-            this.LoadBar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadBar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadBar.ForeColor = System.Drawing.Color.White;
             this.LoadBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
             this.LoadBar.Location = new System.Drawing.Point(160, 483);
@@ -303,6 +303,8 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LoadBar);
             this.Controls.Add(this.Login_grb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Login_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

@@ -20,8 +20,6 @@ namespace DTO_QuanLyCafe
         private string picture;
         private string status;
 
-        public DTO_Staff() { }
-
         public string IDStaff { get => iDStaff; set => iDStaff = value; }
 
         public string NameStaff { get => nameStaff; set => nameStaff = value; }
@@ -43,5 +41,7 @@ namespace DTO_QuanLyCafe
         public string Picture { get => picture; set => picture = value; }
 
         public string Status { get => status; set => status = value; }
+
+        public DTO_Staff() { }
     }
 }

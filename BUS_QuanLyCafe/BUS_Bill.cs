@@ -83,5 +83,25 @@ namespace BUS_QuanLyCafe
         {
             return DAL_Bill.Instance.AddDesertToBill(bill);
         }
+
+        public DataTable ListVoucher()
+        {
+            return DAL_Bill.Instance.ListVoucher();
+        }
+
+        public DataTable ListPayMent()
+        {
+            return DAL_Bill.Instance.ListPayMent();
+        }
+
+        public bool AddStatistic(DTO_Bill bill)
+        {
+            return DAL_Bill.Instance.AddStatistic(bill);
+        }
+
+        public bool AddDetailStatistic(DTO_Bill bill)
+        {
+            return DAL_Bill.Instance.AddDetailStatistic(bill);
+        }
     }
 }

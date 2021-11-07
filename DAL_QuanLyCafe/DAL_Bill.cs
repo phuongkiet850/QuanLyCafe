@@ -177,5 +177,53 @@ namespace DAL_QuanLyCafe
                 return true;
             }
         }
+
+        public DataTable ListVoucher()
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_ListVoucher";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable ListPayMent()
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_ListPayMent";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public bool AddStatistic(DTO_Bill bill)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_AddStatistic @IdBill = " + bill.IdBill + ", @Total = " + bill.ToTal + ", @Shift = N'" + bill.Shift + "', @NameStaff = N'" + bill.NameStaff + "', @CheckIn = '" + bill.CheckIn + "', @CheckOut = '" + bill.CheckOut + "', @PercentVoucher = " + bill.PercentVoucher + ", @Method = N'" + bill.Method + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
+
+        public bool AddDetailStatistic(DTO_Bill bill)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_AddDetailStatistic @IdBill = " + bill.IdBill + ", @NameMenu = N'" + bill.NameMenu + "', @Amount = " + bill.Amount + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
     }
 }

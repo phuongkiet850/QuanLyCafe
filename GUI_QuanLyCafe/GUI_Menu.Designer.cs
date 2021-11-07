@@ -29,11 +29,11 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Menu_tc = new System.Windows.Forms.TabControl();
             this.CF = new System.Windows.Forms.TabPage();
             this.Cafe_flp = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,8 +43,12 @@ namespace GUI_QuanLyCafe
             this.Tea_flp = new System.Windows.Forms.FlowLayoutPanel();
             this.FD = new System.Windows.Forms.TabPage();
             this.Food_flp = new System.Windows.Forms.FlowLayoutPanel();
+            this.CK = new System.Windows.Forms.TabPage();
+            this.Cake_flp = new System.Windows.Forms.FlowLayoutPanel();
             this.SD = new System.Windows.Forms.TabPage();
             this.SoftDrink_flp = new System.Windows.Forms.FlowLayoutPanel();
+            this.OR = new System.Windows.Forms.TabPage();
+            this.Other_flp = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +61,9 @@ namespace GUI_QuanLyCafe
             this.FZ.SuspendLayout();
             this.TE.SuspendLayout();
             this.FD.SuspendLayout();
+            this.CK.SuspendLayout();
             this.SD.SuspendLayout();
+            this.OR.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder_dgv)).BeginInit();
@@ -72,7 +78,9 @@ namespace GUI_QuanLyCafe
             this.Menu_tc.Controls.Add(this.FZ);
             this.Menu_tc.Controls.Add(this.TE);
             this.Menu_tc.Controls.Add(this.FD);
+            this.Menu_tc.Controls.Add(this.CK);
             this.Menu_tc.Controls.Add(this.SD);
+            this.Menu_tc.Controls.Add(this.OR);
             this.Menu_tc.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Menu_tc.Location = new System.Drawing.Point(5, 3);
             this.Menu_tc.Name = "Menu_tc";
@@ -163,6 +171,28 @@ namespace GUI_QuanLyCafe
             this.Food_flp.Size = new System.Drawing.Size(853, 604);
             this.Food_flp.TabIndex = 2;
             // 
+            // CK
+            // 
+            this.CK.Controls.Add(this.Cake_flp);
+            this.CK.Location = new System.Drawing.Point(4, 32);
+            this.CK.Name = "CK";
+            this.CK.Padding = new System.Windows.Forms.Padding(3);
+            this.CK.Size = new System.Drawing.Size(859, 610);
+            this.CK.TabIndex = 5;
+            this.CK.Text = "Bánh ngọt";
+            this.CK.UseVisualStyleBackColor = true;
+            // 
+            // Cake_flp
+            // 
+            this.Cake_flp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cake_flp.AutoScroll = true;
+            this.Cake_flp.Location = new System.Drawing.Point(0, 5);
+            this.Cake_flp.Name = "Cake_flp";
+            this.Cake_flp.Size = new System.Drawing.Size(858, 600);
+            this.Cake_flp.TabIndex = 6;
+            // 
             // SD
             // 
             this.SD.Controls.Add(this.SoftDrink_flp);
@@ -170,7 +200,7 @@ namespace GUI_QuanLyCafe
             this.SD.Name = "SD";
             this.SD.Padding = new System.Windows.Forms.Padding(3);
             this.SD.Size = new System.Drawing.Size(859, 610);
-            this.SD.TabIndex = 4;
+            this.SD.TabIndex = 6;
             this.SD.Text = "Nước giải khát";
             this.SD.UseVisualStyleBackColor = true;
             // 
@@ -180,10 +210,32 @@ namespace GUI_QuanLyCafe
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SoftDrink_flp.AutoScroll = true;
-            this.SoftDrink_flp.Location = new System.Drawing.Point(3, 3);
+            this.SoftDrink_flp.Location = new System.Drawing.Point(0, 5);
             this.SoftDrink_flp.Name = "SoftDrink_flp";
             this.SoftDrink_flp.Size = new System.Drawing.Size(858, 600);
-            this.SoftDrink_flp.TabIndex = 5;
+            this.SoftDrink_flp.TabIndex = 7;
+            // 
+            // OR
+            // 
+            this.OR.Controls.Add(this.Other_flp);
+            this.OR.Location = new System.Drawing.Point(4, 32);
+            this.OR.Name = "OR";
+            this.OR.Padding = new System.Windows.Forms.Padding(3);
+            this.OR.Size = new System.Drawing.Size(859, 610);
+            this.OR.TabIndex = 7;
+            this.OR.Text = "Khác";
+            this.OR.UseVisualStyleBackColor = true;
+            // 
+            // Other_flp
+            // 
+            this.Other_flp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Other_flp.AutoScroll = true;
+            this.Other_flp.Location = new System.Drawing.Point(0, 5);
+            this.Other_flp.Name = "Other_flp";
+            this.Other_flp.Size = new System.Drawing.Size(858, 600);
+            this.Other_flp.TabIndex = 7;
             // 
             // panel1
             // 
@@ -233,8 +285,8 @@ namespace GUI_QuanLyCafe
             // 
             this.ListOrder_dgv.AllowUserToResizeColumns = false;
             this.ListOrder_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListOrder_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOrder_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ListOrder_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListOrder_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -243,41 +295,41 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             this.ListOrder_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.ListOrder_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListOrder_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListOrder_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ListOrder_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListOrder_dgv.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListOrder_dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.ListOrder_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListOrder_dgv.Location = new System.Drawing.Point(878, 165);
             this.ListOrder_dgv.MultiSelect = false;
             this.ListOrder_dgv.Name = "ListOrder_dgv";
             this.ListOrder_dgv.ReadOnly = true;
             this.ListOrder_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListOrder_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListOrder_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ListOrder_dgv.RowHeadersVisible = false;
             this.ListOrder_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListOrder_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListOrder_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ListOrder_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListOrder_dgv.ShowCellErrors = false;
             this.ListOrder_dgv.ShowCellToolTips = false;
@@ -288,6 +340,7 @@ namespace GUI_QuanLyCafe
             // 
             // Add_btn
             // 
+            this.Add_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Add_btn.Animated = true;
             this.Add_btn.BorderRadius = 10;
             this.Add_btn.BorderThickness = 2;
@@ -308,6 +361,7 @@ namespace GUI_QuanLyCafe
             // 
             // Delete_btn
             // 
+            this.Delete_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Delete_btn.Animated = true;
             this.Delete_btn.BorderRadius = 10;
             this.Delete_btn.BorderThickness = 2;
@@ -334,9 +388,9 @@ namespace GUI_QuanLyCafe
             this.ClientSize = new System.Drawing.Size(1458, 661);
             this.Controls.Add(this.Delete_btn);
             this.Controls.Add(this.Add_btn);
-            this.Controls.Add(this.Menu_tc);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ListOrder_dgv);
+            this.Controls.Add(this.Menu_tc);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Menu_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -348,7 +402,9 @@ namespace GUI_QuanLyCafe
             this.FZ.ResumeLayout(false);
             this.TE.ResumeLayout(false);
             this.FD.ResumeLayout(false);
+            this.CK.ResumeLayout(false);
             this.SD.ResumeLayout(false);
+            this.OR.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -367,8 +423,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.FlowLayoutPanel Tea_flp;
         private System.Windows.Forms.TabPage FD;
         private System.Windows.Forms.FlowLayoutPanel Food_flp;
-        private System.Windows.Forms.TabPage SD;
-        private System.Windows.Forms.FlowLayoutPanel SoftDrink_flp;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Name_lbl;
         private System.Windows.Forms.DataGridView ListOrder_dgv;
@@ -376,5 +430,11 @@ namespace GUI_QuanLyCafe
         private Guna.UI2.WinForms.Guna2Button Add_btn;
         private Guna.UI2.WinForms.Guna2Button Delete_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TabPage CK;
+        private System.Windows.Forms.FlowLayoutPanel Cake_flp;
+        private System.Windows.Forms.TabPage SD;
+        private System.Windows.Forms.TabPage OR;
+        private System.Windows.Forms.FlowLayoutPanel Other_flp;
+        private System.Windows.Forms.FlowLayoutPanel SoftDrink_flp;
     }
 }

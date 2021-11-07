@@ -29,45 +29,46 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.TimKiem_txt = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.Find_txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Edit_ckb = new System.Windows.Forms.CheckBox();
             this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Edit_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.DanhSachKM_dgv = new System.Windows.Forms.DataGridView();
-            this.MaKM_lbl = new System.Windows.Forms.Label();
-            this.MaKM_txt = new System.Windows.Forms.TextBox();
-            this.PhanTramKM_lbl = new System.Windows.Forms.Label();
+            this.ListVoucher_dgv = new System.Windows.Forms.DataGridView();
+            this.IdVoucher_lbl = new System.Windows.Forms.Label();
+            this.IdVoucher_txt = new System.Windows.Forms.TextBox();
+            this.Percent_lbl = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.TenKM_txt = new System.Windows.Forms.TextBox();
-            this.PhanTramKM_txt = new System.Windows.Forms.TextBox();
+            this.NameVoucher_txt = new System.Windows.Forms.TextBox();
+            this.Percent_txt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CreateID_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.TenKM_lbl = new System.Windows.Forms.Label();
+            this.NameVoucher_lbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Log_Menu = new System.Windows.Forms.MenuStrip();
             this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetFind_btn = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DanhSachKM_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListVoucher_dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.Log_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // TimKiem_txt
+            // Find_txt
             // 
-            this.TimKiem_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimKiem_txt.Location = new System.Drawing.Point(537, 133);
-            this.TimKiem_txt.Name = "TimKiem_txt";
-            this.TimKiem_txt.Size = new System.Drawing.Size(355, 29);
-            this.TimKiem_txt.TabIndex = 120;
-            this.TimKiem_txt.TabStop = false;
+            this.Find_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Find_txt.Location = new System.Drawing.Point(537, 133);
+            this.Find_txt.Name = "Find_txt";
+            this.Find_txt.Size = new System.Drawing.Size(355, 29);
+            this.Find_txt.TabIndex = 120;
+            this.Find_txt.TabStop = false;
+            this.Find_txt.TextChanged += new System.EventHandler(this.Find_txt_TextChanged);
             // 
             // label9
             // 
@@ -101,6 +102,7 @@ namespace GUI_QuanLyCafe
             this.Edit_ckb.Size = new System.Drawing.Size(15, 14);
             this.Edit_ckb.TabIndex = 14;
             this.Edit_ckb.UseVisualStyleBackColor = true;
+            this.Edit_ckb.CheckedChanged += new System.EventHandler(this.Edit_ckb_CheckedChanged);
             // 
             // Delete_btn
             // 
@@ -121,6 +123,7 @@ namespace GUI_QuanLyCafe
             this.Delete_btn.Size = new System.Drawing.Size(90, 40);
             this.Delete_btn.TabIndex = 169;
             this.Delete_btn.Text = "Xóa";
+            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
             // 
             // Edit_btn
             // 
@@ -141,6 +144,7 @@ namespace GUI_QuanLyCafe
             this.Edit_btn.Size = new System.Drawing.Size(90, 40);
             this.Edit_btn.TabIndex = 170;
             this.Edit_btn.Text = "Sửa";
+            this.Edit_btn.Click += new System.EventHandler(this.Edit_btn_Click);
             // 
             // Add_btn
             // 
@@ -161,57 +165,60 @@ namespace GUI_QuanLyCafe
             this.Add_btn.Size = new System.Drawing.Size(90, 40);
             this.Add_btn.TabIndex = 168;
             this.Add_btn.Text = "Thêm";
+            this.Add_btn.Click += new System.EventHandler(this.Add_btn_Click);
             // 
-            // DanhSachKM_dgv
+            // ListVoucher_dgv
             // 
-            this.DanhSachKM_dgv.AllowUserToAddRows = false;
-            this.DanhSachKM_dgv.AllowUserToDeleteRows = false;
-            this.DanhSachKM_dgv.AllowUserToResizeColumns = false;
-            this.DanhSachKM_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DanhSachKM_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DanhSachKM_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.DanhSachKM_dgv.ColumnHeadersHeight = 40;
-            this.DanhSachKM_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.DanhSachKM_dgv.Location = new System.Drawing.Point(453, 172);
-            this.DanhSachKM_dgv.Name = "DanhSachKM_dgv";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DanhSachKM_dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.DanhSachKM_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DanhSachKM_dgv.Size = new System.Drawing.Size(477, 254);
-            this.DanhSachKM_dgv.TabIndex = 117;
-            this.DanhSachKM_dgv.TabStop = false;
+            this.ListVoucher_dgv.AllowUserToAddRows = false;
+            this.ListVoucher_dgv.AllowUserToDeleteRows = false;
+            this.ListVoucher_dgv.AllowUserToResizeColumns = false;
+            this.ListVoucher_dgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.ListVoucher_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.ListVoucher_dgv.ColumnHeadersHeight = 40;
+            this.ListVoucher_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ListVoucher_dgv.Location = new System.Drawing.Point(453, 172);
+            this.ListVoucher_dgv.Name = "ListVoucher_dgv";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ListVoucher_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListVoucher_dgv.Size = new System.Drawing.Size(477, 254);
+            this.ListVoucher_dgv.TabIndex = 117;
+            this.ListVoucher_dgv.TabStop = false;
+            this.ListVoucher_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DanhSachKM_dgv_CellClick);
             // 
-            // MaKM_lbl
+            // IdVoucher_lbl
             // 
-            this.MaKM_lbl.AutoSize = true;
-            this.MaKM_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaKM_lbl.Location = new System.Drawing.Point(26, 39);
-            this.MaKM_lbl.Name = "MaKM_lbl";
-            this.MaKM_lbl.Size = new System.Drawing.Size(123, 21);
-            this.MaKM_lbl.TabIndex = 71;
-            this.MaKM_lbl.Text = "Mã khuyến mãi";
+            this.IdVoucher_lbl.AutoSize = true;
+            this.IdVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdVoucher_lbl.Location = new System.Drawing.Point(26, 39);
+            this.IdVoucher_lbl.Name = "IdVoucher_lbl";
+            this.IdVoucher_lbl.Size = new System.Drawing.Size(123, 21);
+            this.IdVoucher_lbl.TabIndex = 71;
+            this.IdVoucher_lbl.Text = "Mã khuyến mãi";
             // 
-            // MaKM_txt
+            // IdVoucher_txt
             // 
-            this.MaKM_txt.CausesValidation = false;
-            this.MaKM_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.MaKM_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaKM_txt.Location = new System.Drawing.Point(206, 36);
-            this.MaKM_txt.Name = "MaKM_txt";
-            this.MaKM_txt.ReadOnly = true;
-            this.MaKM_txt.Size = new System.Drawing.Size(160, 29);
-            this.MaKM_txt.TabIndex = 1;
+            this.IdVoucher_txt.CausesValidation = false;
+            this.IdVoucher_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.IdVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdVoucher_txt.Location = new System.Drawing.Point(206, 36);
+            this.IdVoucher_txt.Name = "IdVoucher_txt";
+            this.IdVoucher_txt.ReadOnly = true;
+            this.IdVoucher_txt.Size = new System.Drawing.Size(160, 29);
+            this.IdVoucher_txt.TabIndex = 1;
+            this.IdVoucher_txt.TextChanged += new System.EventHandler(this.IdVoucher_txt_TextChanged);
             // 
-            // PhanTramKM_lbl
+            // Percent_lbl
             // 
-            this.PhanTramKM_lbl.AutoSize = true;
-            this.PhanTramKM_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhanTramKM_lbl.Location = new System.Drawing.Point(26, 134);
-            this.PhanTramKM_lbl.Name = "PhanTramKM_lbl";
-            this.PhanTramKM_lbl.Size = new System.Drawing.Size(174, 21);
-            this.PhanTramKM_lbl.TabIndex = 69;
-            this.PhanTramKM_lbl.Text = "Phần trăm khuyến mãi";
+            this.Percent_lbl.AutoSize = true;
+            this.Percent_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Percent_lbl.Location = new System.Drawing.Point(26, 134);
+            this.Percent_lbl.Name = "Percent_lbl";
+            this.Percent_lbl.Size = new System.Drawing.Size(174, 21);
+            this.Percent_lbl.TabIndex = 69;
+            this.Percent_lbl.Text = "Phần trăm khuyến mãi";
             // 
             // textBox1
             // 
@@ -225,34 +232,36 @@ namespace GUI_QuanLyCafe
             this.textBox1.Text = "%";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TenKM_txt
+            // NameVoucher_txt
             // 
-            this.TenKM_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenKM_txt.Location = new System.Drawing.Point(206, 83);
-            this.TenKM_txt.Name = "TenKM_txt";
-            this.TenKM_txt.ReadOnly = true;
-            this.TenKM_txt.Size = new System.Drawing.Size(195, 29);
-            this.TenKM_txt.TabIndex = 2;
+            this.NameVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameVoucher_txt.Location = new System.Drawing.Point(206, 83);
+            this.NameVoucher_txt.Name = "NameVoucher_txt";
+            this.NameVoucher_txt.ReadOnly = true;
+            this.NameVoucher_txt.Size = new System.Drawing.Size(195, 29);
+            this.NameVoucher_txt.TabIndex = 2;
+            this.NameVoucher_txt.TextChanged += new System.EventHandler(this.NameVoucher_txt_TextChanged);
             // 
-            // PhanTramKM_txt
+            // Percent_txt
             // 
-            this.PhanTramKM_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhanTramKM_txt.Location = new System.Drawing.Point(206, 131);
-            this.PhanTramKM_txt.Name = "PhanTramKM_txt";
-            this.PhanTramKM_txt.ReadOnly = true;
-            this.PhanTramKM_txt.Size = new System.Drawing.Size(159, 29);
-            this.PhanTramKM_txt.TabIndex = 3;
+            this.Percent_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Percent_txt.Location = new System.Drawing.Point(206, 131);
+            this.Percent_txt.Name = "Percent_txt";
+            this.Percent_txt.ReadOnly = true;
+            this.Percent_txt.Size = new System.Drawing.Size(159, 29);
+            this.Percent_txt.TabIndex = 3;
+            this.Percent_txt.TextChanged += new System.EventHandler(this.Percent_txt_TextChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.CreateID_btn);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.TenKM_txt);
-            this.groupBox1.Controls.Add(this.PhanTramKM_txt);
-            this.groupBox1.Controls.Add(this.MaKM_txt);
-            this.groupBox1.Controls.Add(this.PhanTramKM_lbl);
-            this.groupBox1.Controls.Add(this.TenKM_lbl);
-            this.groupBox1.Controls.Add(this.MaKM_lbl);
+            this.groupBox1.Controls.Add(this.NameVoucher_txt);
+            this.groupBox1.Controls.Add(this.Percent_txt);
+            this.groupBox1.Controls.Add(this.IdVoucher_txt);
+            this.groupBox1.Controls.Add(this.Percent_lbl);
+            this.groupBox1.Controls.Add(this.NameVoucher_lbl);
+            this.groupBox1.Controls.Add(this.IdVoucher_lbl);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 133);
             this.groupBox1.Name = "groupBox1";
@@ -278,16 +287,17 @@ namespace GUI_QuanLyCafe
             this.CreateID_btn.ShadowDecoration.Parent = this.CreateID_btn;
             this.CreateID_btn.Size = new System.Drawing.Size(36, 29);
             this.CreateID_btn.TabIndex = 173;
+            this.CreateID_btn.Click += new System.EventHandler(this.CreateID_btn_Click);
             // 
-            // TenKM_lbl
+            // NameVoucher_lbl
             // 
-            this.TenKM_lbl.AutoSize = true;
-            this.TenKM_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenKM_lbl.Location = new System.Drawing.Point(25, 86);
-            this.TenKM_lbl.Name = "TenKM_lbl";
-            this.TenKM_lbl.Size = new System.Drawing.Size(128, 21);
-            this.TenKM_lbl.TabIndex = 68;
-            this.TenKM_lbl.Text = "Tên khuyến mãi";
+            this.NameVoucher_lbl.AutoSize = true;
+            this.NameVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameVoucher_lbl.Location = new System.Drawing.Point(25, 86);
+            this.NameVoucher_lbl.Name = "NameVoucher_lbl";
+            this.NameVoucher_lbl.Size = new System.Drawing.Size(128, 21);
+            this.NameVoucher_lbl.TabIndex = 68;
+            this.NameVoucher_lbl.Text = "Tên khuyến mãi";
             // 
             // label12
             // 
@@ -336,6 +346,7 @@ namespace GUI_QuanLyCafe
             this.ResetFind_btn.ShadowDecoration.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Size = new System.Drawing.Size(32, 29);
             this.ResetFind_btn.TabIndex = 172;
+            this.ResetFind_btn.Click += new System.EventHandler(this.ResetFind_btn_Click);
             // 
             // pictureBox2
             // 
@@ -356,19 +367,21 @@ namespace GUI_QuanLyCafe
             this.ClientSize = new System.Drawing.Size(942, 433);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Log_Menu);
-            this.Controls.Add(this.TimKiem_txt);
+            this.Controls.Add(this.Find_txt);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ResetFind_btn);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.DanhSachKM_dgv);
+            this.Controls.Add(this.ListVoucher_dgv);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
             this.Name = "Voucher_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GUI_Voucher";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Voucher_frm_FormClosing);
+            this.Load += new System.EventHandler(this.Voucher_frm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DanhSachKM_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListVoucher_dgv)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Log_Menu.ResumeLayout(false);
@@ -382,19 +395,19 @@ namespace GUI_QuanLyCafe
         #endregion
         private System.Windows.Forms.MenuStrip Log_Menu;
         private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
-        private System.Windows.Forms.TextBox TimKiem_txt;
+        private System.Windows.Forms.TextBox Find_txt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox Edit_ckb;
-        private System.Windows.Forms.DataGridView DanhSachKM_dgv;
-        private System.Windows.Forms.Label MaKM_lbl;
-        private System.Windows.Forms.TextBox MaKM_txt;
-        private System.Windows.Forms.Label PhanTramKM_lbl;
+        private System.Windows.Forms.DataGridView ListVoucher_dgv;
+        private System.Windows.Forms.Label IdVoucher_lbl;
+        private System.Windows.Forms.TextBox IdVoucher_txt;
+        private System.Windows.Forms.Label Percent_lbl;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox TenKM_txt;
-        private System.Windows.Forms.TextBox PhanTramKM_txt;
+        private System.Windows.Forms.TextBox NameVoucher_txt;
+        private System.Windows.Forms.TextBox Percent_txt;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label TenKM_lbl;
+        private System.Windows.Forms.Label NameVoucher_lbl;
         private System.Windows.Forms.Label label12;
         private Guna.UI2.WinForms.Guna2Button Delete_btn;
         private Guna.UI2.WinForms.Guna2Button Edit_btn;

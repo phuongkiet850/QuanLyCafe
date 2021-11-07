@@ -79,6 +79,7 @@ namespace GUI_QuanLyCafe
             this.Text = "Loading";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Loading_frm_FormClosing);
             this.Load += new System.EventHandler(this.Loading_frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
