@@ -117,11 +117,24 @@ namespace DAL_QuanLyCafe
                 return data;
             }
         }
-        public bool Detach(DTO_Bill bill)
+
+        public bool MergeBill(DTO_Bill bill, int amountNew)
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_Detach @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + "";
+                string TruyVan = @"exec sp_MergeBill @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
+
+        public bool Detach(DTO_Bill bill, int amountNew)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_Detach @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + ", @Note = N'" + bill.Note + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);

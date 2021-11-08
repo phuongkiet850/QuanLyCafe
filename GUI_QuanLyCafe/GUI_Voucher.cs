@@ -346,6 +346,7 @@ namespace GUI_QuanLyCafe
         {
             Find_txt.Text = "";
             ListVoucher();
+            FomatDategridView();
         }
 
         private void Find_txt_TextChanged(object sender, EventArgs e)

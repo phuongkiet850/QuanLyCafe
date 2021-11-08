@@ -36,6 +36,7 @@ namespace GUI_QuanLyCafe
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+            this.Focus();
         }
 
         private void Loading_frm_FormClosing(object sender, FormClosingEventArgs e)

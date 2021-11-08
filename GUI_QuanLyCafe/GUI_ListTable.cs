@@ -25,11 +25,15 @@ namespace GUI_QuanLyCafe
         public int NewIdTable;
         public int NewIdBill;
         public string NameFood;
+        public static int Amount;
+        public static int Status;
+        public int IdMenu;
+        public string Note;
 
         private void DetachTable_frm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = label1;
-
+            Status = 1;
             LoadTable();
             LoadBill();
 
@@ -73,6 +77,7 @@ namespace GUI_QuanLyCafe
             NameTable2_lbl.Text = "Tên : " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
             ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
             ListOrder2_dgv.Columns[0].Visible = false;
+            ListOrder2_dgv.Columns[4].Visible = false;
             Switch_btn.Enabled = true;
             Merge_btn.Enabled = true;
             Detach_btn.Enabled = true;
@@ -84,6 +89,7 @@ namespace GUI_QuanLyCafe
             bill.IdTable = Order_frm.IdTable;
             ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
             ListOrder1_dgv.Columns[0].Visible = false;
+            ListOrder1_dgv.Columns[4].Visible = false;
         }
 
         private void Switch_btn_Click(object sender, EventArgs e)
@@ -130,6 +136,41 @@ namespace GUI_QuanLyCafe
                     {
                         NewIdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
                         BUS_Bill.Instance.Merge(NewIdTable, OldIdTable, NewIdBill, OldIdBill);
+
+                        if (ListOrder2_dgv.Rows.Count < ListOrder1_dgv.Rows.Count)
+                        {
+                            for (int i = 0; i < ListOrder2_dgv.Rows.Count - 1; i++)
+                            {
+                                for (int j = 0; j < ListOrder1_dgv.Rows.Count - 1; j++)
+                                {
+                                    IdMenu = Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[4].Value.ToString());
+                                    Note = ListOrder1_dgv.Rows[j].Cells[3].Value.ToString().Trim();
+                                    if (IdMenu == Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[4].Value.ToString()) && Note == ListOrder2_dgv.Rows[i].Cells[3].Value.ToString().Trim())
+                                    {
+                                        bill.IdDetailBill = Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[0].Value.ToString());
+                                        bill.Amount = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[2].Value.ToString());
+                                        BUS_Bill.Instance.MergeBill(bill, Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[2].Value.ToString()));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < ListOrder1_dgv.Rows.Count - 1; i++)
+                            {
+                                for (int j = 0; j < ListOrder2_dgv.Rows.Count - 1; j++)
+                                {
+                                    IdMenu = Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[4].Value.ToString());
+                                    Note = ListOrder2_dgv.Rows[j].Cells[3].Value.ToString().Trim();
+                                    if (IdMenu == Convert.ToInt32(ListOrder1_dgv.Rows[i].Cells[4].Value.ToString()) && Note == ListOrder1_dgv.Rows[i].Cells[3].Value.ToString().Trim())
+                                    {
+                                        bill.IdDetailBill = Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[0].Value.ToString());
+                                        bill.Amount = Convert.ToInt32(ListOrder1_dgv.Rows[i].Cells[2].Value.ToString());
+                                        BUS_Bill.Instance.MergeBill(bill, Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[2].Value.ToString()));
+                                    }
+                                }
+                            }
+                        }
                         MessageBox.Show("Gộp bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
@@ -153,7 +194,7 @@ namespace GUI_QuanLyCafe
                 {
                     MessageBox.Show("Bạn chưa chọn món cần tách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (ListOrder1_dgv.Rows.Count == 2)
+                else if (ListOrder1_dgv.Rows.Count == 2 && Amount < 2)
                 {
                     MessageBox.Show("Số món không đủ để tách bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -171,33 +212,81 @@ namespace GUI_QuanLyCafe
                             staff.Email = Login_frm.Email;
                             bill.IdStaff = BUS_Staff.Instance.Check(staff).Rows[0][0].ToString();
                             BUS_Bill.Instance.AddBill(bill);
-
-                            BUS_Bill.Instance.Detach(bill);
-                            MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadTable();
-                            LoadBill();
-                            bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
-                            ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
-                            ListOrder2_dgv.Columns[0].Visible = false;
-                            bill.IdDetailBill = 0;
-
+                            Detach();
+                            if (ListOrder2_dgv.Rows.Count == 1)
+                            {
+                                bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
+                                bill.IdDetailBill = 0;
+                                BUS_Bill.Instance.Delete(bill);
+                            }
                         }
                         else
                         {
-                            BUS_Bill.Instance.Detach(bill);
-                            MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadTable();
-                            LoadBill();
-                            bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
-                            ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
-                            ListOrder2_dgv.Columns[0].Visible = false;
-                            bill.IdDetailBill = 0;
-
+                            Detach();
                         }
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception) 
+            {
+                MessageBox.Show("Tách bàn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Detach()
+        {
+            bill.Amount = Amount;
+            bill.IdMenu = IdMenu;
+            if (Amount > 1)
+            {
+                Menu_frm.NameItem = NameFood;
+                Detail_frm detail = new Detail_frm();
+                detail.ShowDialog();
+                if (Detail_frm.Status == 1)
+                {
+                    if (ListOrder1_dgv.Rows.Count == 2 && Amount == Detail_frm.Amount)
+                    {
+                        Detail_frm.Status = 0;
+                        MessageBox.Show("Tách bàn thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        bill.Note = Detail_frm.Note;
+                        Note = Detail_frm.Note;
+                        BUS_Bill.Instance.AddDesertToBill(bill);
+                        BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
+                        MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+               
+            }
+            else
+            {
+                Detail_frm.Status = 1;
+                BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
+                MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            if (Detail_frm.Status == 1)
+            {
+                for (int i = 0; i < ListOrder2_dgv.Rows.Count - 1; i++)
+                {
+                    if (IdMenu == Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[4].Value.ToString()) && Note == ListOrder2_dgv.Rows[i].Cells[3].Value.ToString().Trim())
+                    {
+                        bill.IdDetailBill = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[0].Value.ToString());
+                        bill.Amount = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[2].Value.ToString());
+                        BUS_Bill.Instance.MergeBill(bill, Detail_frm.Amount);
+                    }
+                }
+                LoadTable();
+                LoadBill();
+                bill.IdTable = Convert.ToInt32(NameTable2_lbl.Text.Substring(10));
+                ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
+                ListOrder2_dgv.Columns[0].Visible = false;
+                ListOrder2_dgv.Columns[4].Visible = false;
+                bill.IdDetailBill = 0;
+                Detail_frm.Status = 0;
+            }
         }
 
         private void ListOrder1_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -207,6 +296,9 @@ namespace GUI_QuanLyCafe
                 DataGridViewRow row = ListOrder1_dgv.Rows[e.RowIndex];
                 bill.IdDetailBill = Convert.ToInt32(row.Cells[0].Value.ToString());
                 NameFood = row.Cells[1].Value.ToString();
+                Amount = Convert.ToInt32(row.Cells[2].Value.ToString());
+                Note = row.Cells[3].Value.ToString();
+                IdMenu = Convert.ToInt32(row.Cells[4].Value.ToString());
             }
             catch (Exception) { }
         }
@@ -233,6 +325,7 @@ namespace GUI_QuanLyCafe
                             bill.IdTable = Convert.ToInt32(NameTable1_lbl.Text.Substring(10));
                             ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
                             ListOrder1_dgv.Columns[0].Visible = false;
+                            ListOrder1_dgv.Columns[4].Visible = false;
                             bill.IdDetailBill = 0;
                             MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -251,18 +344,24 @@ namespace GUI_QuanLyCafe
                                 bill.IdTable = Convert.ToInt32(NameTable1_lbl.Text.Substring(10));
                                 ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
                                 ListOrder1_dgv.Columns[0].Visible = false;
+                                ListOrder1_dgv.Columns[4].Visible = false;
                                 bill.IdDetailBill = 0;
                                 MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
-                    }
-                    Confirm_frm.Result = 0;
+                        Confirm_frm.Result = 0;
+                    } 
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Xóa " + NameFood + " thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ListTable_frm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Status = 0;
         }
     }
 }

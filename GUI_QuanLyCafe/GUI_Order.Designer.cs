@@ -34,11 +34,11 @@ namespace GUI_QuanLyCafe
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOut_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangePassword_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nguyênLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Manage_tsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.Staff_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Material_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Voucher_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Statistic_tsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.hướngDẫnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Payment_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -79,8 +79,8 @@ namespace GUI_QuanLyCafe
             this.menuStrip1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hệThốngToolStripMenuItem,
-            this.nguyênLiệuToolStripMenuItem,
-            this.thốngKêToolStripMenuItem,
+            this.Manage_tsmi,
+            this.Statistic_tsmi,
             this.hướngDẫnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -116,23 +116,23 @@ namespace GUI_QuanLyCafe
             this.ChangePassword_MenuItem.Text = "Đổi mật khẩu";
             this.ChangePassword_MenuItem.Click += new System.EventHandler(this.ChangePassword_MenuItem_Click);
             // 
-            // nguyênLiệuToolStripMenuItem
+            // Manage_tsmi
             // 
-            this.nguyênLiệuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Manage_tsmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Staff_MenuItem,
             this.Material_MenuItem,
             this.Voucher_MenuItem});
-            this.nguyênLiệuToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.nguyênLiệuToolStripMenuItem.Name = "nguyênLiệuToolStripMenuItem";
-            this.nguyênLiệuToolStripMenuItem.Size = new System.Drawing.Size(80, 25);
-            this.nguyênLiệuToolStripMenuItem.Text = "Quản lý";
+            this.Manage_tsmi.ForeColor = System.Drawing.Color.Black;
+            this.Manage_tsmi.Name = "Manage_tsmi";
+            this.Manage_tsmi.Size = new System.Drawing.Size(80, 25);
+            this.Manage_tsmi.Text = "Quản lý";
             // 
             // Staff_MenuItem
             // 
             this.Staff_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.id_card;
             this.Staff_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Staff_MenuItem.Name = "Staff_MenuItem";
-            this.Staff_MenuItem.Size = new System.Drawing.Size(183, 38);
+            this.Staff_MenuItem.Size = new System.Drawing.Size(196, 38);
             this.Staff_MenuItem.Text = "Nhân viên";
             this.Staff_MenuItem.Click += new System.EventHandler(this.Staff_MenuItem_Click);
             // 
@@ -141,7 +141,7 @@ namespace GUI_QuanLyCafe
             this.Material_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.product;
             this.Material_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Material_MenuItem.Name = "Material_MenuItem";
-            this.Material_MenuItem.Size = new System.Drawing.Size(183, 38);
+            this.Material_MenuItem.Size = new System.Drawing.Size(196, 38);
             this.Material_MenuItem.Text = "Nguyên liệu";
             this.Material_MenuItem.Click += new System.EventHandler(this.Material_MenuItem_Click);
             // 
@@ -150,16 +150,16 @@ namespace GUI_QuanLyCafe
             this.Voucher_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.coupon;
             this.Voucher_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Voucher_MenuItem.Name = "Voucher_MenuItem";
-            this.Voucher_MenuItem.Size = new System.Drawing.Size(183, 38);
+            this.Voucher_MenuItem.Size = new System.Drawing.Size(196, 38);
             this.Voucher_MenuItem.Text = "Voucher";
             this.Voucher_MenuItem.Click += new System.EventHandler(this.Voucher_MenuItem_Click);
             // 
-            // thốngKêToolStripMenuItem
+            // Statistic_tsmi
             // 
-            this.thốngKêToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(93, 25);
-            this.thốngKêToolStripMenuItem.Text = "Thống kê";
+            this.Statistic_tsmi.ForeColor = System.Drawing.Color.Black;
+            this.Statistic_tsmi.Name = "Statistic_tsmi";
+            this.Statistic_tsmi.Size = new System.Drawing.Size(93, 25);
+            this.Statistic_tsmi.Text = "Thống kê";
             // 
             // hướngDẫnToolStripMenuItem
             // 
@@ -515,7 +515,7 @@ namespace GUI_QuanLyCafe
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hệThốngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nguyênLiệuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Manage_tsmi;
         private System.Windows.Forms.ToolStripMenuItem LogOut_MenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
@@ -538,7 +538,7 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.ToolStripMenuItem ChangePassword_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Staff_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Material_MenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Statistic_tsmi;
         private System.Windows.Forms.ToolStripMenuItem hướngDẫnToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;

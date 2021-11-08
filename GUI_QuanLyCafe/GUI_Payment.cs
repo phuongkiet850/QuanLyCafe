@@ -19,13 +19,14 @@ namespace GUI_QuanLyCafe
             InitializeComponent();
         }
         public float TotalVAT;
+        public float total;
         DTO_Bill bill = new DTO_Bill();
         private void Payment_frm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = label1;
-            ShowBill();
-            ShowPayment();
             ShowVoucher();
+            ShowPayment();
+            ShowBill(); 
         }
 
         void ShowBill()
@@ -35,7 +36,7 @@ namespace GUI_QuanLyCafe
                 GetText();
                 CheckIn_lbl.Text = "Giờ vào : " + DateTime.Parse(BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString()).ToString("ddd dd/MM/yyyy HH:mm:ss");
                 Bill_lv.Items.Clear();
-                float total = 0;
+                total = 0;
                 for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
                 {
                     ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
@@ -48,8 +49,8 @@ namespace GUI_QuanLyCafe
 
                 TotalOrder_lbl.Text = "Tổng hóa đơn: " + String.Format("{0:0,0}", total) + " VNĐ";
 
-                float TotalSale = total - (total * (float)Convert.ToDouble(Voucher_cbb.Text) / 100);
-                Sale_lbl.Text = "%: " + String.Format("{0:0,0}", TotalSale) + " VNĐ";
+                float TotalSale = total - (total * bill.PercentVoucher / 100);
+                Voucher_lbl.Text = "(" + bill.PercentVoucher + "%): " + String.Format("{0:0,0}", TotalSale) + " VNĐ";
 
                 TotalVAT = TotalSale + (TotalSale * 10 / 100);
                 VAT_lbl.Text = "Thuế VAT (10%) : " + String.Format("{0:0,0}", TotalVAT) + " VNĐ";
@@ -69,7 +70,7 @@ namespace GUI_QuanLyCafe
             {
                 Payment_cbb.DataSource = BUS_Bill.Instance.ListPayMent();
                 Payment_cbb.DisplayMember = "Method";
-                Payment_cbb.ValueMember = "idPayment";
+                Payment_cbb.ValueMember = "IdPayment";
             }
             catch (Exception) { }
         }
@@ -79,16 +80,21 @@ namespace GUI_QuanLyCafe
             try
             {
                 Voucher_cbb.DataSource = BUS_Bill.Instance.ListVoucher();
-                Voucher_cbb.DisplayMember = "PercentVoucher";
-                Voucher_cbb.ValueMember = "IdVoucher";
+                Voucher_cbb.DisplayMember = "NameVoucher";
+                Voucher_cbb.ValueMember = "PercentVoucher";
             }
             catch (Exception) { }
         }
 
         private void Voucher_cbb_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
-            ShowBill();
+            try
+            {
+                bill.PercentVoucher = (float)Convert.ToDouble(Voucher_cbb.SelectedValue.ToString());
+                ShowBill();
+                this.ActiveControl = label1;
+            }
+            catch (Exception) { }
         }
 
         private void Payment_cbb_SelectedValueChanged(object sender, EventArgs e)
@@ -115,7 +121,6 @@ namespace GUI_QuanLyCafe
                 bill.Shift = Login_frm.Shift.Trim();
                 bill.NameStaff = BUS_Bill.Instance.DetailBill(bill).Rows[0][7].ToString().Trim();
                 bill.CheckOut = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-                bill.PercentVoucher = (float)Convert.ToDouble(Voucher_cbb.Text);
                 bill.CheckIn = DateTime.Parse(DateTime.Parse(BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString()).ToString("dd/MM/yyyy HH:mm:ss"));
                 bill.Method = Payment_cbb.Text.Trim();
             }

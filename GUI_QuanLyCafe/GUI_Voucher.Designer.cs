@@ -29,8 +29,8 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Find_txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -173,15 +173,15 @@ namespace GUI_QuanLyCafe
             this.ListVoucher_dgv.AllowUserToDeleteRows = false;
             this.ListVoucher_dgv.AllowUserToResizeColumns = false;
             this.ListVoucher_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ListVoucher_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListVoucher_dgv.ColumnHeadersHeight = 40;
             this.ListVoucher_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListVoucher_dgv.Location = new System.Drawing.Point(453, 172);
             this.ListVoucher_dgv.Name = "ListVoucher_dgv";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.ListVoucher_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListVoucher_dgv.Size = new System.Drawing.Size(477, 254);
             this.ListVoucher_dgv.TabIndex = 117;
@@ -335,7 +335,6 @@ namespace GUI_QuanLyCafe
             this.ResetFind_btn.BorderThickness = 1;
             this.ResetFind_btn.CheckedState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.CustomImages.Parent = this.ResetFind_btn;
-            this.ResetFind_btn.Enabled = false;
             this.ResetFind_btn.FillColor = System.Drawing.Color.White;
             this.ResetFind_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetFind_btn.ForeColor = System.Drawing.Color.Black;

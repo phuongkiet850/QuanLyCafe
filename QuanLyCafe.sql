@@ -67,7 +67,6 @@ create table DetailBill
 	Amount int,
 	Note nvarchar(100)
 );
-
 create table Log
 (
 	ID int identity(1,1) primary key,
@@ -344,7 +343,7 @@ create proc sp_BillTable_DGV
 	begin try
 		begin tran
 			
-			select IdDetailBill, Name as 'Tên món', DetailBill.Amount as 'Số lượng', Note as 'Ghi chú' from DetailBill
+			select IdDetailBill, Name as 'Tên món', DetailBill.Amount as 'Số lượng', Note as 'Ghi chú', Menu.IdMenu from DetailBill
 			join Bill on DetailBill.IdBill = Bill.IdBill
 			join Menu on DetailBill.IdMenu = Menu.IdMenu
 			where IdTable = @IdTable
@@ -665,7 +664,7 @@ drop PROC sp_AcceptLogin
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_ChangeItemBill @IdTable = 16, @IdDetailBill = 3
+	exec sp_Delete @IdTable = 12, @IdDetailBill = 0
 
 	------------------------------------------------------------------------------------
 
@@ -1312,8 +1311,8 @@ exec sp_FindProfileStaff_FindBy @Find = N'a', @FindBy = N'NameStaff'
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_SelectID @MaNV = 'None40'
-
+	@MaNV = 'None40'
+	exec sp_SelectIdVoucher @IdVoucher 'ASD'
 ---------------------------------------------
 	
 				drop PROC sp_InsertVoucher
@@ -1413,3 +1412,96 @@ drop PROC sp_FindVoucher
 	end catch
 
 	exec sp_FindVoucher @Find = N'd' 
+
+		-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Detach
+	create proc sp_Detach
+				@IdTable int,
+				@IdDetailBill int,
+				@Amount int,
+				@AmountNew int,
+				@Note nvarchar(100)
+	as
+	begin try
+		begin tran
+			DECLARE @IdBill int
+			set @IdBill = (select IdBill from Bill where IdTable = @IdTable)
+
+			DECLARE @IdDetailBillNew int
+			set @IdDetailBillNew = (select TOP(1) IdDetailBill from DetailBill where IdBill = @IdBill order by IdDetailBill desc)
+
+			if (@Amount > 1)
+				begin
+					Update DetailBill
+					set IdBill = @IdBill, Amount = @AmountNew, Note = @Note
+					where IdDetailBill = @IdDetailBillNew
+
+					Update DetailBill
+					set Amount = @Amount - @AmountNew
+					where IdDetailBill = @IdDetailBill
+				end
+			else
+				begin
+					Update DetailBill
+					set IdBill = @IdBill
+					where IdDetailBill = @IdDetailBill
+				end
+
+			if (select Amount from DetailBill where IdDetailBill = @IdDetailBill) = 0
+				begin
+					Delete from DetailBill 
+					where IdDetailBill = @IdDetailBill
+				end
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindVoucher @Find = N'd' 
+
+	exec sp_Detach @IdTable = 11, @IdDetailBill = 13, @Amount = 4, @AmountNew = 1
+
+		-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_MergeBill
+	create proc sp_MergeBill
+				@IdTable int,
+				@IdDetailBill int,
+				@Amount int,
+				@AmountNew int
+	as
+	begin try
+		begin tran
+			DECLARE @IdBill int
+			set @IdBill = (select IdBill from Bill where IdTable = @IdTable)
+
+			DECLARE @IdDetailBillNew int
+			set @IdDetailBillNew = (select TOP(1) IdDetailBill from DetailBill where IdBill = @IdBill order by IdDetailBill desc)
+
+			Update DetailBill
+			set Amount = @Amount + @AmountNew
+			where IdDetailBill = @IdDetailBill
+
+			Delete from DetailBill 
+			where IdDetailBill = @IdDetailBillNew
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindVoucher @Find = N'd' 
+
+	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
+
+
+	

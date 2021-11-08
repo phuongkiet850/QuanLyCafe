@@ -125,6 +125,11 @@ namespace GUI_QuanLyCafe
             this.Amount_nud.ForeColor = System.Drawing.Color.Black;
             this.Amount_nud.Location = new System.Drawing.Point(107, 65);
             this.Amount_nud.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Amount_nud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.Amount_nud.Name = "Amount_nud";
             this.Amount_nud.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Amount_nud.ShadowDecoration.Parent = this.Amount_nud;
@@ -132,6 +137,11 @@ namespace GUI_QuanLyCafe
             this.Amount_nud.TabIndex = 156;
             this.Amount_nud.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(187)))), ((int)(((byte)(150)))));
             this.Amount_nud.UpDownButtonForeColor = System.Drawing.Color.Black;
+            this.Amount_nud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Detail_frm
             // 

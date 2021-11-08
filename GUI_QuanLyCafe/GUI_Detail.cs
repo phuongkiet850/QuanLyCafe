@@ -24,16 +24,16 @@ namespace GUI_QuanLyCafe
         public static string Note;
         private void Addd_btn_Click(object sender, EventArgs e)
         {
-            if (Amount_nud.Value != 0)
+            if (Amount_nud.Value > ListTable_frm.Amount && ListTable_frm.Status == 1)
+            {
+                MessageBox.Show("Tối đa (" + ListTable_frm.Amount + ")", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
                 Status = 1;
                 Amount = Convert.ToInt32(Amount_nud.Value.ToString());
                 Note = Note_txt.Text;
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Bạn chưa chọn số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -41,13 +41,17 @@ namespace GUI_QuanLyCafe
         private void Detail_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Note_txt.Text = "";
-            Amount_nud.Value = 0;
+            Amount_nud.Value = 1;
             e.Cancel = false;
 
         }
 
         private void Detail_frm_Load(object sender, EventArgs e)
         {
+            if (ListTable_frm.Status == 1)
+            {
+                Add_btn.Text = "Tách";
+            }
             Name_txt.Text = Menu_frm.NameItem;
         }
     }

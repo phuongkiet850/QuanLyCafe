@@ -59,9 +59,14 @@ namespace BUS_QuanLyCafe
             return DAL_Bill.Instance.BillTable_DGV(bill);
         }
 
-        public bool Detach(DTO_Bill bill)
+        public bool MergeBill(DTO_Bill bill, int amountNew)
         {
-            return DAL_Bill.Instance.Detach(bill);
+            return DAL_Bill.Instance.MergeBill(bill, amountNew);
+        }
+
+        public bool Detach(DTO_Bill bill, int amountNew)
+        {
+            return DAL_Bill.Instance.Detach(bill, amountNew);
         }
 
         public bool Delete(DTO_Bill bill)

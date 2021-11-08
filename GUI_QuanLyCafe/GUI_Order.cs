@@ -29,6 +29,12 @@ namespace GUI_QuanLyCafe
             Loading_frm.Status = 2;
             this.ActiveControl = label1;
             LoadTable();
+            if (Confirm_frm.Result != 1)
+            {
+                Manage_tsmi.Visible = false;
+                Statistic_tsmi.Visible = false;
+            }
+            this.Focus();
         }
         
         void LoadTable()
@@ -164,8 +170,6 @@ namespace GUI_QuanLyCafe
             {
                 Process.Start(Application.ExecutablePath);
                 Process.GetCurrentProcess().Kill();
-                this.BringToFront();
-                this.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -233,8 +237,8 @@ namespace GUI_QuanLyCafe
                             MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
+                    Confirm_frm.Result = 0;
                 }
-                Confirm_frm.Result = 0;
             }
             catch (Exception)
             {

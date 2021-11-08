@@ -335,6 +335,7 @@ namespace GUI_QuanLyCafe
             this.Name = "ListTable_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách bàn";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListTable_frm_FormClosing);
             this.Load += new System.EventHandler(this.DetachTable_frm_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

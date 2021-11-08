@@ -160,6 +160,7 @@ namespace GUI_QuanLyCafe
             Find_txt.Text = "";
             FindBy_cbb.Text = "Tất cả";
             ListProfileStaff();
+            FomatDategridView();
         }
 
         private void Staff_frm_FormClosing(object sender, FormClosingEventArgs e)

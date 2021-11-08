@@ -38,9 +38,8 @@ namespace GUI_QuanLyCafe
             this.NameStafff_lbl = new System.Windows.Forms.Label();
             this.CheckIn_lbl = new System.Windows.Forms.Label();
             this.NameTable_lbl = new System.Windows.Forms.Label();
-            this.Sale_lbl = new System.Windows.Forms.Label();
-            this.Voucher_cbb = new System.Windows.Forms.ComboBox();
             this.Voucher_lbl = new System.Windows.Forms.Label();
+            this.Voucher_cbb = new System.Windows.Forms.ComboBox();
             this.TotalOrder_lbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Payment_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -152,39 +151,27 @@ namespace GUI_QuanLyCafe
             this.NameTable_lbl.TabIndex = 0;
             this.NameTable_lbl.Text = "Tên :";
             // 
-            // Sale_lbl
+            // Voucher_lbl
             // 
-            this.Sale_lbl.AutoSize = true;
-            this.Sale_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sale_lbl.Location = new System.Drawing.Point(145, 50);
-            this.Sale_lbl.Name = "Sale_lbl";
-            this.Sale_lbl.Size = new System.Drawing.Size(39, 23);
-            this.Sale_lbl.TabIndex = 19;
-            this.Sale_lbl.Text = "% :";
+            this.Voucher_lbl.AutoSize = true;
+            this.Voucher_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Voucher_lbl.Location = new System.Drawing.Point(215, 47);
+            this.Voucher_lbl.Name = "Voucher_lbl";
+            this.Voucher_lbl.Size = new System.Drawing.Size(64, 23);
+            this.Voucher_lbl.TabIndex = 19;
+            this.Voucher_lbl.Text = "(0%) :";
             // 
             // Voucher_cbb
             // 
             this.Voucher_cbb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Voucher_cbb.FormattingEnabled = true;
-            this.Voucher_cbb.Location = new System.Drawing.Point(87, 44);
+            this.Voucher_cbb.Location = new System.Drawing.Point(5, 44);
             this.Voucher_cbb.Margin = new System.Windows.Forms.Padding(5);
             this.Voucher_cbb.Name = "Voucher_cbb";
-            this.Voucher_cbb.Size = new System.Drawing.Size(58, 31);
+            this.Voucher_cbb.Size = new System.Drawing.Size(202, 31);
             this.Voucher_cbb.TabIndex = 18;
-            this.Voucher_cbb.Text = "0";
             this.Voucher_cbb.SelectedValueChanged += new System.EventHandler(this.Voucher_cbb_SelectedValueChanged);
             this.Voucher_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Voucher_cbb_KeyDown);
-            // 
-            // Voucher_lbl
-            // 
-            this.Voucher_lbl.AutoSize = true;
-            this.Voucher_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Voucher_lbl.ForeColor = System.Drawing.Color.Black;
-            this.Voucher_lbl.Location = new System.Drawing.Point(1, 47);
-            this.Voucher_lbl.Name = "Voucher_lbl";
-            this.Voucher_lbl.Size = new System.Drawing.Size(86, 23);
-            this.Voucher_lbl.TabIndex = 17;
-            this.Voucher_lbl.Text = "Giảm giá";
             // 
             // TotalOrder_lbl
             // 
@@ -203,9 +190,8 @@ namespace GUI_QuanLyCafe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Payment_btn);
-            this.panel2.Controls.Add(this.Sale_lbl);
-            this.panel2.Controls.Add(this.Voucher_cbb);
             this.panel2.Controls.Add(this.Voucher_lbl);
+            this.panel2.Controls.Add(this.Voucher_cbb);
             this.panel2.Controls.Add(this.TotalOrder_lbl);
             this.panel2.Controls.Add(this.VAT_lbl);
             this.panel2.Controls.Add(this.Total_lbl);
@@ -322,7 +308,7 @@ namespace GUI_QuanLyCafe
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(592, 1000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(592, 0);
+            this.MinimumSize = new System.Drawing.Size(592, 39);
             this.Name = "Payment_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thanh toán";
@@ -348,7 +334,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label NameStafff_lbl;
         private System.Windows.Forms.Label CheckIn_lbl;
         private System.Windows.Forms.Label NameTable_lbl;
-        private System.Windows.Forms.Label Sale_lbl;
         private System.Windows.Forms.ComboBox Voucher_cbb;
         private System.Windows.Forms.Label Voucher_lbl;
         private System.Windows.Forms.Label TotalOrder_lbl;
