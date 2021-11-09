@@ -16,7 +16,7 @@ namespace GUI_QuanLyCafe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Loading_frm());
+            Application.Run(new Order_frm());
         }
     }
 }

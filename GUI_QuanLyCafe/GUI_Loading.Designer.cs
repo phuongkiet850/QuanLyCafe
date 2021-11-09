@@ -76,7 +76,7 @@ namespace GUI_QuanLyCafe
             this.MinimizeBox = false;
             this.Name = "Loading_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Loading";
+            this.Text = "gig";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Loading_frm_FormClosing);

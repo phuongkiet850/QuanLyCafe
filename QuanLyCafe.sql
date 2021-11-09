@@ -312,7 +312,7 @@ drop PROC sp_DetailBill
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_DetailBill @IdTable = 3
+	exec sp_DetailBill @IdTable = 6
 ---------------------------------------------------------------------------
 create proc sp_DetailBill_DGV
 		@IdTable int
@@ -1503,5 +1503,5 @@ drop PROC sp_MergeBill
 
 	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
 
-
+	exec sp_DetailBill @IdTable = 1
 	

@@ -57,7 +57,7 @@ namespace GUI_QuanLyCafe
         {
             ListStaff_dgv.DataSource = BUS_Staff.Instance.ListProfileStaff_DGV();
             ListStaff_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListStaff_dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 14, FontStyle.Regular);
+            ListStaff_dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 16, FontStyle.Regular);
             ListStaff_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

@@ -26,6 +26,7 @@ namespace GUI_QuanLyCafe
         Menu_frm menu = new Menu_frm();
         private void Order_frm_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             Loading_frm.Status = 2;
             this.ActiveControl = label1;
             LoadTable();
@@ -43,7 +44,7 @@ namespace GUI_QuanLyCafe
             for (int i = 0; i < BUS_Table.Instance.ListTable().Rows.Count; i++)
             {
                 Button btn = new Button();
-                btn.Width = 90;
+                btn.Width = 100;
                 btn.Height = 90;
                 btn.Text = BUS_Table.Instance.ListTable().Rows[i][1].ToString() + Environment.NewLine + BUS_Table.Instance.ListTable().Rows[i][2].ToString();
                 btn.Click += btn_Click;
@@ -146,6 +147,7 @@ namespace GUI_QuanLyCafe
             menu.ShowDialog();
             LoadTable();
             ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
+
         }
 
         private void Order_frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -271,6 +273,14 @@ namespace GUI_QuanLyCafe
             listTable.ShowDialog();
             LoadTable();
             ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
+        }
+
+        private void MergeBill()
+        {
+            for (int i = 0; i < Bill_lv.Items.Count; i++)
+            {
+                
+            }
         }
     }
 }
