@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS_QuanLyCafe;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,8 +30,10 @@ namespace GUI_QuanLyCafe
 
         private void Loading_frm_Load(object sender, EventArgs e)
         {
+            BUS_Table.Instance.ListTable();
             Thread thread = new Thread(() =>
             {
+                Thread.Sleep(3000);
                 Login_frm Login = new Login_frm();
                 Login.ShowDialog();
             });

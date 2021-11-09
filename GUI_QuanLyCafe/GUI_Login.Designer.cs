@@ -30,8 +30,6 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.InstanceName_cbb = new System.Windows.Forms.ComboBox();
-            this.ServerName_cbb = new System.Windows.Forms.ComboBox();
             this.ForgotPassword_lblk = new System.Windows.Forms.LinkLabel();
             this.Memo_ckb = new System.Windows.Forms.CheckBox();
             this.LoadBar = new Guna.UI2.WinForms.Guna2ProgressBar();
@@ -53,30 +51,6 @@ namespace GUI_QuanLyCafe
             ((System.ComponentModel.ISupportInitialize)(this.Hide_ptb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // InstanceName_cbb
-            // 
-            this.InstanceName_cbb.Enabled = false;
-            this.InstanceName_cbb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InstanceName_cbb.FormattingEnabled = true;
-            this.InstanceName_cbb.Location = new System.Drawing.Point(93, 12);
-            this.InstanceName_cbb.Name = "InstanceName_cbb";
-            this.InstanceName_cbb.Size = new System.Drawing.Size(65, 29);
-            this.InstanceName_cbb.TabIndex = 12;
-            this.InstanceName_cbb.Visible = false;
-            this.InstanceName_cbb.SelectedValueChanged += new System.EventHandler(this.InstanceName_cbb_SelectedValueChanged);
-            // 
-            // ServerName_cbb
-            // 
-            this.ServerName_cbb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ServerName_cbb.FormattingEnabled = true;
-            this.ServerName_cbb.Location = new System.Drawing.Point(12, 12);
-            this.ServerName_cbb.Name = "ServerName_cbb";
-            this.ServerName_cbb.Size = new System.Drawing.Size(65, 29);
-            this.ServerName_cbb.TabIndex = 11;
-            this.ServerName_cbb.Visible = false;
-            this.ServerName_cbb.SelectedIndexChanged += new System.EventHandler(this.ServerName_cbb_SelectedIndexChanged);
-            this.ServerName_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ServerName_cbb_KeyDown);
             // 
             // ForgotPassword_lblk
             // 
@@ -291,8 +265,6 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LoadBar);
             this.Controls.Add(this.Login_grb);
-            this.Controls.Add(this.InstanceName_cbb);
-            this.Controls.Add(this.ServerName_cbb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Login_frm";
@@ -310,8 +282,6 @@ namespace GUI_QuanLyCafe
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox InstanceName_cbb;
-        private System.Windows.Forms.ComboBox ServerName_cbb;
         private System.Windows.Forms.LinkLabel ForgotPassword_lblk;
         private System.Windows.Forms.CheckBox Memo_ckb;
         private System.Windows.Forms.PictureBox Show_ptb;
