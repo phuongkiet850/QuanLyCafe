@@ -1,13 +1,7 @@
 ﻿using BUS_QuanLyCafe;
+using KAutoHelper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -25,21 +19,24 @@ namespace GUI_QuanLyCafe
             if (Status == 1)
             {
                 this.Hide();
+                timer1.Stop();
+                IntPtr hWnd = IntPtr.Zero;
+                hWnd = AutoControl.FindWindowHandle(null, "Đăng nhập");
+                AutoControl.BringToFront(hWnd);
             }
         }
 
         private void Loading_frm_Load(object sender, EventArgs e)
         {
-            BUS_Table.Instance.ListTable();
             Thread thread = new Thread(() =>
             {
+                BUS_Table.Instance.ListTable();
                 Thread.Sleep(3000);
                 Login_frm Login = new Login_frm();
                 Login.ShowDialog();
             });
             thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            this.Focus();
+            thread.Start();           
         }
 
         private void Loading_frm_FormClosing(object sender, FormClosingEventArgs e)

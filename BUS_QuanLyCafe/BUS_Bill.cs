@@ -64,6 +64,11 @@ namespace BUS_QuanLyCafe
             return DAL_Bill.Instance.MergeBill(bill, amountNew);
         }
 
+        public bool MergeBillMenu(DTO_Bill bill, int amountNew)
+        {
+            return DAL_Bill.Instance.MergeBillMenu(bill, amountNew);
+        }
+
         public bool Detach(DTO_Bill bill, int amountNew)
         {
             return DAL_Bill.Instance.Detach(bill, amountNew);

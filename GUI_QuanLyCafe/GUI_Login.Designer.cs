@@ -41,8 +41,6 @@ namespace GUI_QuanLyCafe
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Login_grb = new System.Windows.Forms.GroupBox();
             this.Login_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Shift_cbb = new System.Windows.Forms.ComboBox();
             this.Show_ptb = new System.Windows.Forms.PictureBox();
             this.Hide_ptb = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -56,7 +54,7 @@ namespace GUI_QuanLyCafe
             // 
             this.ForgotPassword_lblk.AutoSize = true;
             this.ForgotPassword_lblk.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForgotPassword_lblk.Location = new System.Drawing.Point(53, 226);
+            this.ForgotPassword_lblk.Location = new System.Drawing.Point(53, 188);
             this.ForgotPassword_lblk.Name = "ForgotPassword_lblk";
             this.ForgotPassword_lblk.Size = new System.Drawing.Size(151, 23);
             this.ForgotPassword_lblk.TabIndex = 5;
@@ -68,7 +66,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Memo_ckb.AutoSize = true;
             this.Memo_ckb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Memo_ckb.Location = new System.Drawing.Point(57, 189);
+            this.Memo_ckb.Location = new System.Drawing.Point(57, 151);
             this.Memo_ckb.Name = "Memo_ckb";
             this.Memo_ckb.Size = new System.Drawing.Size(185, 27);
             this.Memo_ckb.TabIndex = 3;
@@ -82,7 +80,7 @@ namespace GUI_QuanLyCafe
             this.LoadBar.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadBar.ForeColor = System.Drawing.Color.White;
             this.LoadBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.LoadBar.Location = new System.Drawing.Point(156, 410);
+            this.LoadBar.Location = new System.Drawing.Point(143, 365);
             this.LoadBar.Name = "LoadBar";
             this.LoadBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.LoadBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -100,7 +98,7 @@ namespace GUI_QuanLyCafe
             this.ShowHide_ckb.BackColor = System.Drawing.Color.Transparent;
             this.ShowHide_ckb.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ShowHide_ckb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowHide_ckb.Location = new System.Drawing.Point(468, 137);
+            this.ShowHide_ckb.Location = new System.Drawing.Point(468, 99);
             this.ShowHide_ckb.Name = "ShowHide_ckb";
             this.ShowHide_ckb.Size = new System.Drawing.Size(54, 27);
             this.ShowHide_ckb.TabIndex = 8;
@@ -113,7 +111,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Password_txt.BackColor = System.Drawing.SystemColors.Window;
             this.Password_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password_txt.Location = new System.Drawing.Point(148, 135);
+            this.Password_txt.Location = new System.Drawing.Point(148, 97);
             this.Password_txt.Name = "Password_txt";
             this.Password_txt.Size = new System.Drawing.Size(311, 32);
             this.Password_txt.TabIndex = 2;
@@ -123,7 +121,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Email_txt.BackColor = System.Drawing.SystemColors.Window;
             this.Email_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_txt.Location = new System.Drawing.Point(148, 88);
+            this.Email_txt.Location = new System.Drawing.Point(148, 50);
             this.Email_txt.Name = "Email_txt";
             this.Email_txt.Size = new System.Drawing.Size(311, 32);
             this.Email_txt.TabIndex = 1;
@@ -132,7 +130,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 91);
+            this.label1.Location = new System.Drawing.Point(53, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 23);
             this.label1.TabIndex = 0;
@@ -142,7 +140,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 135);
+            this.label2.Location = new System.Drawing.Point(53, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 0;
@@ -151,7 +149,7 @@ namespace GUI_QuanLyCafe
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 800;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Login_grb
@@ -159,8 +157,6 @@ namespace GUI_QuanLyCafe
             this.Login_grb.BackColor = System.Drawing.Color.Transparent;
             this.Login_grb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Login_grb.Controls.Add(this.Login_btn);
-            this.Login_grb.Controls.Add(this.label4);
-            this.Login_grb.Controls.Add(this.Shift_cbb);
             this.Login_grb.Controls.Add(this.ForgotPassword_lblk);
             this.Login_grb.Controls.Add(this.Memo_ckb);
             this.Login_grb.Controls.Add(this.Show_ptb);
@@ -172,10 +168,10 @@ namespace GUI_QuanLyCafe
             this.Login_grb.Controls.Add(this.label2);
             this.Login_grb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_grb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Login_grb.Location = new System.Drawing.Point(27, 127);
+            this.Login_grb.Location = new System.Drawing.Point(12, 126);
             this.Login_grb.Name = "Login_grb";
             this.Login_grb.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Login_grb.Size = new System.Drawing.Size(555, 273);
+            this.Login_grb.Size = new System.Drawing.Size(555, 232);
             this.Login_grb.TabIndex = 7;
             this.Login_grb.TabStop = false;
             this.Login_grb.Text = "Đăng nhập";
@@ -192,7 +188,7 @@ namespace GUI_QuanLyCafe
             this.Login_btn.HoverState.Parent = this.Login_btn;
             this.Login_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Login_in_icon;
             this.Login_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Login_btn.Location = new System.Drawing.Point(312, 179);
+            this.Login_btn.Location = new System.Drawing.Point(312, 141);
             this.Login_btn.Name = "Login_btn";
             this.Login_btn.ShadowDecoration.Parent = this.Login_btn;
             this.Login_btn.Size = new System.Drawing.Size(147, 50);
@@ -201,35 +197,10 @@ namespace GUI_QuanLyCafe
             this.Login_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 23);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Chọn ca";
-            // 
-            // Shift_cbb
-            // 
-            this.Shift_cbb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Shift_cbb.FormattingEnabled = true;
-            this.Shift_cbb.Items.AddRange(new object[] {
-            "Ca sáng (6h30 ➜14h30)",
-            "Ca tối (14h30 ➜ 23h30)"});
-            this.Shift_cbb.Location = new System.Drawing.Point(148, 46);
-            this.Shift_cbb.Margin = new System.Windows.Forms.Padding(5);
-            this.Shift_cbb.Name = "Shift_cbb";
-            this.Shift_cbb.Size = new System.Drawing.Size(311, 31);
-            this.Shift_cbb.TabIndex = 13;
-            this.Shift_cbb.Text = "None";
-            this.Shift_cbb.SelectedIndexChanged += new System.EventHandler(this.Shift_cbb_SelectedIndexChanged);
-            this.Shift_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Shift_cbb_KeyDown);
-            // 
             // Show_ptb
             // 
             this.Show_ptb.Image = global::GUI_QuanLyCafe.Properties.Resources.eye;
-            this.Show_ptb.Location = new System.Drawing.Point(488, 133);
+            this.Show_ptb.Location = new System.Drawing.Point(488, 95);
             this.Show_ptb.Name = "Show_ptb";
             this.Show_ptb.Size = new System.Drawing.Size(40, 31);
             this.Show_ptb.TabIndex = 9;
@@ -239,7 +210,7 @@ namespace GUI_QuanLyCafe
             // Hide_ptb
             // 
             this.Hide_ptb.Image = global::GUI_QuanLyCafe.Properties.Resources.invisible;
-            this.Hide_ptb.Location = new System.Drawing.Point(488, 133);
+            this.Hide_ptb.Location = new System.Drawing.Point(488, 95);
             this.Hide_ptb.Name = "Hide_ptb";
             this.Hide_ptb.Size = new System.Drawing.Size(40, 31);
             this.Hide_ptb.TabIndex = 9;
@@ -249,7 +220,7 @@ namespace GUI_QuanLyCafe
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(222, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(210, 1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -261,7 +232,7 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(608, 447);
+            this.ClientSize = new System.Drawing.Size(577, 398);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LoadBar);
             this.Controls.Add(this.Login_grb);
@@ -294,8 +265,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox Login_grb;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox Shift_cbb;
         private Guna.UI2.WinForms.Guna2Button Login_btn;
         private System.Windows.Forms.PictureBox pictureBox2;
     }

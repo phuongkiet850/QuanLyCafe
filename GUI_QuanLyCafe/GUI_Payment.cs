@@ -1,13 +1,6 @@
 ﻿using BUS_QuanLyCafe;
 using DTO_QuanLyCafe;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -41,8 +34,8 @@ namespace GUI_QuanLyCafe
                 {
                     ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
                     item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
-                    item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString());
-                    item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
+                    item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString())));
+                    item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString())));
                     Bill_lv.Items.Add(item);
                     total = total + (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
                 }
@@ -131,21 +124,25 @@ namespace GUI_QuanLyCafe
         {
             try
             {
-                GetText();
-                BUS_Bill.Instance.AddStatistic(bill);
-
-                for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
+                var dlr = MessageBox.Show("Xác nhận thanh toán hóa đơn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dlr == DialogResult.Yes)
                 {
-                    bill.NameMenu = (BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString()).Trim();
-                    bill.Amount = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
-                    BUS_Bill.Instance.AddDetailStatistic(bill);
+                    GetText();
+                    BUS_Bill.Instance.AddStatistic(bill);
+
+                    for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
+                    {
+                        bill.NameMenu = (BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString()).Trim();
+                        bill.Amount = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
+                        BUS_Bill.Instance.AddDetailStatistic(bill);
+                    }
+
+                    BUS_Bill.Instance.DeleteBill(bill);
+
+                    MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Close();
                 }
-
-                BUS_Bill.Instance.DeleteBill(bill);
-
-                MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
             }
             catch (Exception)
             {

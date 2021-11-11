@@ -67,6 +67,7 @@ namespace GUI_QuanLyCafe
             this.Name = "Log_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log";
+            this.Load += new System.EventHandler(this.Log_frm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

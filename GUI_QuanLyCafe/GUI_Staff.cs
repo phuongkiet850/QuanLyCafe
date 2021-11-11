@@ -1,18 +1,12 @@
 ﻿using BUS_QuanLyCafe;
 using DTO_QuanLyCafe;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -57,7 +51,6 @@ namespace GUI_QuanLyCafe
         {
             ListStaff_dgv.DataSource = BUS_Staff.Instance.ListProfileStaff_DGV();
             ListStaff_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListStaff_dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 16, FontStyle.Regular);
             ListStaff_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

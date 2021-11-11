@@ -162,7 +162,6 @@ namespace GUI_QuanLyCafe
             this.Name = "Detail_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detail_frm_FormClosing);
             this.Load += new System.EventHandler(this.Detail_frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Amount_nud)).EndInit();
             this.ResumeLayout(false);

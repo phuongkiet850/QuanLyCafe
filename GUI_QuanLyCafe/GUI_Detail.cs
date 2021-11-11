@@ -1,12 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -38,21 +30,13 @@ namespace GUI_QuanLyCafe
            
         }
 
-        private void Detail_frm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Note_txt.Text = "";
-            Amount_nud.Value = 1;
-            e.Cancel = false;
-
-        }
-
         private void Detail_frm_Load(object sender, EventArgs e)
         {
             if (ListTable_frm.Status == 1)
             {
                 Add_btn.Text = "Tách";
             }
-            Name_txt.Text = Menu_frm.NameItem;
+            Name_txt.Text = Menu_frm.NameFood;
         }
     }
 }

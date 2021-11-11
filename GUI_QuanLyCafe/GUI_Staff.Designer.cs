@@ -29,8 +29,11 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ListStaff_dgv = new System.Windows.Forms.DataGridView();
             this.Log_Menu = new System.Windows.Forms.MenuStrip();
             this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,22 +84,46 @@ namespace GUI_QuanLyCafe
             this.ListStaff_dgv.AllowUserToOrderColumns = true;
             this.ListStaff_dgv.AllowUserToResizeColumns = false;
             this.ListStaff_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListStaff_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListStaff_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ListStaff_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListStaff_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.ListStaff_dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ListStaff_dgv.BackgroundColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListStaff_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ListStaff_dgv.ColumnHeadersHeight = 40;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListStaff_dgv.DefaultCellStyle = dataGridViewCellStyle8;
             this.ListStaff_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ListStaff_dgv.Location = new System.Drawing.Point(5, 567);
+            this.ListStaff_dgv.Location = new System.Drawing.Point(32, 567);
             this.ListStaff_dgv.Name = "ListStaff_dgv";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListStaff_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListStaff_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListStaff_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.ListStaff_dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListStaff_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ListStaff_dgv.Size = new System.Drawing.Size(1019, 354);
+            this.ListStaff_dgv.Size = new System.Drawing.Size(1036, 399);
             this.ListStaff_dgv.TabIndex = 129;
             this.ListStaff_dgv.TabStop = false;
             this.ListStaff_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListStaff_dgv_CellClick);
@@ -109,7 +136,7 @@ namespace GUI_QuanLyCafe
             this.Log_Menu.Location = new System.Drawing.Point(0, 0);
             this.Log_Menu.Name = "Log_Menu";
             this.Log_Menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Log_Menu.Size = new System.Drawing.Size(1028, 40);
+            this.Log_Menu.Size = new System.Drawing.Size(1095, 40);
             this.Log_Menu.TabIndex = 143;
             this.Log_Menu.Text = "menuStrip1";
             // 
@@ -125,7 +152,7 @@ namespace GUI_QuanLyCafe
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(375, 40);
+            this.label1.Location = new System.Drawing.Point(408, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(355, 32);
             this.label1.TabIndex = 144;
@@ -146,7 +173,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Picture_ptb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Picture_ptb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Picture_ptb.Location = new System.Drawing.Point(754, 155);
+            this.Picture_ptb.Location = new System.Drawing.Point(798, 156);
             this.Picture_ptb.Name = "Picture_ptb";
             this.Picture_ptb.Size = new System.Drawing.Size(270, 336);
             this.Picture_ptb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -157,7 +184,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 159);
+            this.label2.Location = new System.Drawing.Point(28, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 23);
             this.label2.TabIndex = 123;
@@ -167,7 +194,7 @@ namespace GUI_QuanLyCafe
             // 
             this.NameStaff_lbl.AutoSize = true;
             this.NameStaff_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameStaff_lbl.Location = new System.Drawing.Point(15, 222);
+            this.NameStaff_lbl.Location = new System.Drawing.Point(28, 222);
             this.NameStaff_lbl.Name = "NameStaff_lbl";
             this.NameStaff_lbl.Size = new System.Drawing.Size(66, 23);
             this.NameStaff_lbl.TabIndex = 116;
@@ -177,7 +204,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(15, 523);
+            this.label9.Location = new System.Drawing.Point(28, 523);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 23);
             this.label9.TabIndex = 117;
@@ -187,7 +214,7 @@ namespace GUI_QuanLyCafe
             // 
             this.PhoneNumber_lbl.AutoSize = true;
             this.PhoneNumber_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNumber_lbl.Location = new System.Drawing.Point(15, 361);
+            this.PhoneNumber_lbl.Location = new System.Drawing.Point(28, 361);
             this.PhoneNumber_lbl.Name = "PhoneNumber_lbl";
             this.PhoneNumber_lbl.Size = new System.Drawing.Size(120, 23);
             this.PhoneNumber_lbl.TabIndex = 118;
@@ -197,7 +224,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Role_lbl.AutoSize = true;
             this.Role_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Role_lbl.Location = new System.Drawing.Point(197, 293);
+            this.Role_lbl.Location = new System.Drawing.Point(210, 293);
             this.Role_lbl.Name = "Role_lbl";
             this.Role_lbl.Size = new System.Drawing.Size(67, 23);
             this.Role_lbl.TabIndex = 121;
@@ -207,7 +234,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Address_lbl.AutoSize = true;
             this.Address_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Address_lbl.Location = new System.Drawing.Point(408, 361);
+            this.Address_lbl.Location = new System.Drawing.Point(421, 361);
             this.Address_lbl.Name = "Address_lbl";
             this.Address_lbl.Size = new System.Drawing.Size(70, 23);
             this.Address_lbl.TabIndex = 120;
@@ -217,7 +244,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Gender_lbl.AutoSize = true;
             this.Gender_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gender_lbl.Location = new System.Drawing.Point(15, 293);
+            this.Gender_lbl.Location = new System.Drawing.Point(28, 293);
             this.Gender_lbl.Name = "Gender_lbl";
             this.Gender_lbl.Size = new System.Drawing.Size(85, 23);
             this.Gender_lbl.TabIndex = 119;
@@ -227,7 +254,7 @@ namespace GUI_QuanLyCafe
             // 
             this.IdStafff_txt.CausesValidation = false;
             this.IdStafff_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IdStafff_txt.Location = new System.Drawing.Point(109, 156);
+            this.IdStafff_txt.Location = new System.Drawing.Point(122, 156);
             this.IdStafff_txt.Name = "IdStafff_txt";
             this.IdStafff_txt.ReadOnly = true;
             this.IdStafff_txt.Size = new System.Drawing.Size(249, 32);
@@ -236,7 +263,7 @@ namespace GUI_QuanLyCafe
             // PhoneNumber_txt
             // 
             this.PhoneNumber_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNumber_txt.Location = new System.Drawing.Point(141, 358);
+            this.PhoneNumber_txt.Location = new System.Drawing.Point(154, 358);
             this.PhoneNumber_txt.Name = "PhoneNumber_txt";
             this.PhoneNumber_txt.ReadOnly = true;
             this.PhoneNumber_txt.Size = new System.Drawing.Size(252, 32);
@@ -247,7 +274,7 @@ namespace GUI_QuanLyCafe
             // 
             this.NameStaff_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NameStaff_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameStaff_txt.Location = new System.Drawing.Point(109, 219);
+            this.NameStaff_txt.Location = new System.Drawing.Point(122, 219);
             this.NameStaff_txt.Name = "NameStaff_txt";
             this.NameStaff_txt.ReadOnly = true;
             this.NameStaff_txt.Size = new System.Drawing.Size(284, 32);
@@ -257,7 +284,7 @@ namespace GUI_QuanLyCafe
             // Find_txt
             // 
             this.Find_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Find_txt.Location = new System.Drawing.Point(109, 520);
+            this.Find_txt.Location = new System.Drawing.Point(122, 520);
             this.Find_txt.Name = "Find_txt";
             this.Find_txt.Size = new System.Drawing.Size(284, 32);
             this.Find_txt.TabIndex = 134;
@@ -267,7 +294,7 @@ namespace GUI_QuanLyCafe
             // Email_txt
             // 
             this.Email_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_txt.Location = new System.Drawing.Point(474, 290);
+            this.Email_txt.Location = new System.Drawing.Point(487, 290);
             this.Email_txt.Name = "Email_txt";
             this.Email_txt.ReadOnly = true;
             this.Email_txt.Size = new System.Drawing.Size(274, 32);
@@ -277,7 +304,7 @@ namespace GUI_QuanLyCafe
             // Adress_txt
             // 
             this.Adress_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Adress_txt.Location = new System.Drawing.Point(412, 409);
+            this.Adress_txt.Location = new System.Drawing.Point(425, 407);
             this.Adress_txt.Multiline = true;
             this.Adress_txt.Name = "Adress_txt";
             this.Adress_txt.ReadOnly = true;
@@ -299,7 +326,7 @@ namespace GUI_QuanLyCafe
             "Nam",
             "Nữ",
             "Khác"});
-            this.Gender_cbb.Location = new System.Drawing.Point(109, 290);
+            this.Gender_cbb.Location = new System.Drawing.Point(122, 290);
             this.Gender_cbb.Name = "Gender_cbb";
             this.Gender_cbb.Size = new System.Drawing.Size(82, 31);
             this.Gender_cbb.TabIndex = 125;
@@ -315,7 +342,7 @@ namespace GUI_QuanLyCafe
             "Quản lý",
             "Thu ngân",
             "Phục vụ"});
-            this.Role_cbb.Location = new System.Drawing.Point(270, 290);
+            this.Role_cbb.Location = new System.Drawing.Point(283, 290);
             this.Role_cbb.Name = "Role_cbb";
             this.Role_cbb.Size = new System.Drawing.Size(123, 31);
             this.Role_cbb.TabIndex = 126;
@@ -371,7 +398,7 @@ namespace GUI_QuanLyCafe
             this.groupBox1.Controls.Add(this.Delete_btn);
             this.groupBox1.Controls.Add(this.Add_btn);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(19, 409);
+            this.groupBox1.Location = new System.Drawing.Point(32, 409);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(374, 82);
             this.groupBox1.TabIndex = 136;
@@ -414,7 +441,7 @@ namespace GUI_QuanLyCafe
             // 
             this.BirthDay_lbl.AutoSize = true;
             this.BirthDay_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BirthDay_lbl.Location = new System.Drawing.Point(408, 159);
+            this.BirthDay_lbl.Location = new System.Drawing.Point(421, 159);
             this.BirthDay_lbl.Name = "BirthDay_lbl";
             this.BirthDay_lbl.Size = new System.Drawing.Size(92, 23);
             this.BirthDay_lbl.TabIndex = 137;
@@ -426,7 +453,7 @@ namespace GUI_QuanLyCafe
             this.BirthDay_date.Enabled = false;
             this.BirthDay_date.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BirthDay_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.BirthDay_date.Location = new System.Drawing.Point(506, 156);
+            this.BirthDay_date.Location = new System.Drawing.Point(519, 156);
             this.BirthDay_date.Name = "BirthDay_date";
             this.BirthDay_date.Size = new System.Drawing.Size(242, 32);
             this.BirthDay_date.TabIndex = 130;
@@ -443,7 +470,7 @@ namespace GUI_QuanLyCafe
             this.ResetFind_btn.ForeColor = System.Drawing.Color.Black;
             this.ResetFind_btn.HoverState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Refreshicon;
-            this.ResetFind_btn.Location = new System.Drawing.Point(535, 520);
+            this.ResetFind_btn.Location = new System.Drawing.Point(548, 520);
             this.ResetFind_btn.Name = "ResetFind_btn";
             this.ResetFind_btn.ShadowDecoration.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Size = new System.Drawing.Size(32, 31);
@@ -462,7 +489,7 @@ namespace GUI_QuanLyCafe
             this.CreateID_btn.ForeColor = System.Drawing.Color.Black;
             this.CreateID_btn.HoverState.Parent = this.CreateID_btn;
             this.CreateID_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.id;
-            this.CreateID_btn.Location = new System.Drawing.Point(357, 156);
+            this.CreateID_btn.Location = new System.Drawing.Point(370, 156);
             this.CreateID_btn.Name = "CreateID_btn";
             this.CreateID_btn.ShadowDecoration.Parent = this.CreateID_btn;
             this.CreateID_btn.Size = new System.Drawing.Size(36, 32);
@@ -474,7 +501,7 @@ namespace GUI_QuanLyCafe
             this.Status_txt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Status_txt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.Status_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status_txt.Location = new System.Drawing.Point(506, 219);
+            this.Status_txt.Location = new System.Drawing.Point(519, 219);
             this.Status_txt.Name = "Status_txt";
             this.Status_txt.ReadOnly = true;
             this.Status_txt.Size = new System.Drawing.Size(242, 32);
@@ -485,7 +512,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Email_lbl.AutoSize = true;
             this.Email_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_lbl.Location = new System.Drawing.Point(408, 293);
+            this.Email_lbl.Location = new System.Drawing.Point(421, 293);
             this.Email_lbl.Name = "Email_lbl";
             this.Email_lbl.Size = new System.Drawing.Size(60, 23);
             this.Email_lbl.TabIndex = 146;
@@ -495,7 +522,7 @@ namespace GUI_QuanLyCafe
             // 
             this.PathPicture_txt.Enabled = false;
             this.PathPicture_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PathPicture_txt.Location = new System.Drawing.Point(754, 459);
+            this.PathPicture_txt.Location = new System.Drawing.Point(798, 459);
             this.PathPicture_txt.Name = "PathPicture_txt";
             this.PathPicture_txt.ReadOnly = true;
             this.PathPicture_txt.Size = new System.Drawing.Size(50, 32);
@@ -508,7 +535,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(405, 221);
+            this.label11.Location = new System.Drawing.Point(418, 221);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(95, 23);
             this.label11.TabIndex = 142;
@@ -533,7 +560,7 @@ namespace GUI_QuanLyCafe
             "Số điện thoại",
             "Địa chỉ",
             "Ngày sinh"});
-            this.FindBy_cbb.Location = new System.Drawing.Point(399, 520);
+            this.FindBy_cbb.Location = new System.Drawing.Point(412, 520);
             this.FindBy_cbb.Name = "FindBy_cbb";
             this.FindBy_cbb.Size = new System.Drawing.Size(130, 31);
             this.FindBy_cbb.TabIndex = 141;
@@ -553,7 +580,7 @@ namespace GUI_QuanLyCafe
             this.OpenFilePicture_btn.ForeColor = System.Drawing.Color.Black;
             this.OpenFilePicture_btn.HoverState.Parent = this.OpenFilePicture_btn;
             this.OpenFilePicture_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.folder1;
-            this.OpenFilePicture_btn.Location = new System.Drawing.Point(710, 361);
+            this.OpenFilePicture_btn.Location = new System.Drawing.Point(723, 361);
             this.OpenFilePicture_btn.Name = "OpenFilePicture_btn";
             this.OpenFilePicture_btn.ShadowDecoration.Parent = this.OpenFilePicture_btn;
             this.OpenFilePicture_btn.Size = new System.Drawing.Size(38, 29);
@@ -566,7 +593,7 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 922);
+            this.ClientSize = new System.Drawing.Size(1095, 996);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.CreateID_btn);
             this.Controls.Add(this.ResetFind_btn);

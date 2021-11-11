@@ -130,6 +130,18 @@ namespace DAL_QuanLyCafe
             }
         }
 
+        public bool MergeBillMenu(DTO_Bill bill, int amountNew)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_MergeBillMenu  @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + "";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return true;
+            }
+        }
+
         public bool Detach(DTO_Bill bill, int amountNew)
         {
             using (Connection = new SqlConnection(_Connection))

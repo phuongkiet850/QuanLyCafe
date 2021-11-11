@@ -56,7 +56,6 @@ namespace BUS_QuanLyCafe
             builder.Append(RandomNumber(0, 9));
             builder.Append(RandomString(1, false));
             return builder.ToString();
-
         }
 
         public string VerificationPassowrd()

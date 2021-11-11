@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO_Bill.cs" />
-    <Compile Include="DTO_Connection.cs" />
     <Compile Include="DTO_Menu.cs" />
     <Compile Include="DTO_Staff.cs" />
     <Compile Include="DTO_Voucher.cs" />

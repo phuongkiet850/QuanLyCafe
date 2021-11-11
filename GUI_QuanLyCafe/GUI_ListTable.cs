@@ -1,13 +1,7 @@
 ﻿using BUS_QuanLyCafe;
 using DTO_QuanLyCafe;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -245,7 +239,7 @@ namespace GUI_QuanLyCafe
             bill.IdMenu = IdMenu;
             if (Amount > 1)
             {
-                Menu_frm.NameItem = NameFood;
+                Menu_frm.NameFood = NameFood;
                 Detail_frm detail = new Detail_frm();
                 detail.ShowDialog();
                 if (Detail_frm.Status == 1)

@@ -2,13 +2,7 @@
 using DTO_QuanLyCafe;
 using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -24,12 +18,13 @@ namespace GUI_QuanLyCafe
         DTO_Bill bill = new DTO_Bill();
         DTO_Staff staff = new DTO_Staff();
 
-        public static string NameItem;
+        public static string NameFood;
         public string CategoryID = "";
-        public string NameFood;
         public int Amount;
         public int IdDetailBill;
         public string Note;
+        public int status;
+
         private void Menu_frm_Load(object sender, EventArgs e)
         {
             Name_lbl.Text = "Tên : " + Order_frm.NameTable;
@@ -182,18 +177,37 @@ namespace GUI_QuanLyCafe
             Detail_frm detail = new Detail_frm();
             Guna2Button btn = (Guna2Button)sender;
             bill.IdMenu = Convert.ToInt32(btn.Tag.ToString());
-            NameItem = BUS_Bill.Instance.TagItem(bill).Rows[0][1].ToString();
+            NameFood = BUS_Bill.Instance.TagItem(bill).Rows[0][1].ToString();
             detail.ShowDialog();
+            Note = Detail_frm.Note;
             if (Detail_frm.Status == 1)
             {
-                DataGridViewRow row = (DataGridViewRow)ListOrder_dgv.Rows[0].Clone();
-                row.Cells[0].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][1].ToString();
-                row.Cells[1].Value = Detail_frm.Amount;
-                row.Cells[2].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString();
-                row.Cells[3].Value = Detail_frm.Note;
-                row.Cells[4].Value = bill.IdMenu;
-                ListOrder_dgv.Rows.Add(row);
-                Detail_frm.Status = 0;
+                for(int i = 0; i < ListOrder_dgv.Rows.Count; i++)
+                {
+                    if (ListOrder_dgv.Rows[i].Cells[0].Value ==  null)
+                    {
+                        Detail_frm.Status = 1;
+                    }
+                    else if (NameFood == ListOrder_dgv.Rows[i].Cells[0].Value.ToString() && Note == ListOrder_dgv.Rows[i].Cells[3].Value.ToString())
+                    {
+                        ListOrder_dgv.Rows[i].Cells[1].Value = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString()) + Detail_frm.Amount;
+                        ListOrder_dgv.Update();
+                        Detail_frm.Status = 0;
+                        break;
+                    }
+                }
+
+                if (Detail_frm.Status == 1)
+                {
+                    DataGridViewRow row = (DataGridViewRow)ListOrder_dgv.Rows[0].Clone();
+                    row.Cells[0].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][1].ToString();
+                    row.Cells[1].Value = Detail_frm.Amount;
+                    row.Cells[2].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString();
+                    row.Cells[3].Value = Detail_frm.Note;
+                    row.Cells[4].Value = bill.IdMenu;
+                    ListOrder_dgv.Rows.Add(row);
+                    Detail_frm.Status = 0;
+                }
             }
         }
 
@@ -237,7 +251,6 @@ namespace GUI_QuanLyCafe
                         bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
                         bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
                         BUS_Bill.Instance.AddDesertToBill(bill);
-                        MergeBill();
                     }
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -250,12 +263,22 @@ namespace GUI_QuanLyCafe
                 {
                     for (int i = 0; i < ListOrder_dgv.Rows.Count - 1; i++)
                     {
+                        status = 0;
                         bill.IdTable = Order_frm.IdTable;
                         bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
                         bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
                         bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
-                        BUS_Bill.Instance.AddDesertToBill(bill);
+
+                        NameFood = ListOrder_dgv.Rows[i].Cells[0].Value.ToString();
+                        Amount = bill.Amount;
+                        Note = bill.Note;
+
                         MergeBill();
+                        if (status == 0)
+                        {
+                            BUS_Bill.Instance.AddDesertToBill(bill);
+                        }
+                        
                     }
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -269,23 +292,17 @@ namespace GUI_QuanLyCafe
 
         private void MergeBill()
         {
-            bill.IdTable = Order_frm.IdTable;
-            for (int i = 0; i < ListOrder_dgv.Rows.Count - 1; i++)
+            for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
             {
-                NameFood = ListOrder_dgv.Rows[i].Cells[0].Value.ToString();
-                Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
-                Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
-                for (int j = 0; j < BUS_Bill.Instance.DetailBill(bill).Rows.Count - 1; j++)
+                if (NameFood == BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() && Note == BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString())
                 {
-                    if (NameFood == BUS_Bill.Instance.DetailBill(bill).Rows[j][0].ToString() && Note == BUS_Bill.Instance.DetailBill(bill).Rows[j][6].ToString())
-                    {
-                        bill.IdDetailBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[j][10].ToString());
-                        bill.Amount = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[j][1].ToString());
-                        BUS_Bill.Instance.MergeBill(bill, Amount);
-                    }
+                    status = 1;
+                    bill.IdDetailBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[i][10].ToString());
+                    bill.Amount = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
+                    BUS_Bill.Instance.MergeBillMenu(bill, Amount);
                 }
             }
-            
+
         }
     }
 }

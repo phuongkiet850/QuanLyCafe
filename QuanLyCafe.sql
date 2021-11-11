@@ -444,6 +444,9 @@ drop PROC sp_AcceptLogin
 		print N'Thao tác không thành công'
 	end catch
 
+	exec sp_AcceptLogin @Email = 'admin', @Password = '33354741122871651676713774147412831195'
+
+	exec sp_AcceptLogin @Email = '' or 1 = 1, @Password = '33354741122871651676713774147412831195'
 ---------------------------------------------------------------------------
 
 	drop PROC sp_ForgotPassword
@@ -1490,6 +1493,35 @@ drop PROC sp_MergeBill
 			Delete from DetailBill 
 			where IdDetailBill = @IdDetailBillNew
 			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_FindVoucher @Find = N'd' 
+
+	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
+
+	exec sp_DetailBill @IdTable = 1
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_MergeBillMenu
+	create proc sp_MergeBillMenu
+				@IdDetailBill int,
+				@Amount int,
+				@AmountNew int
+	as
+	begin try
+		begin tran
+
+			Update DetailBill
+			set Amount = @Amount + @AmountNew
+			where IdDetailBill = @IdDetailBill
+
 			print N'Thao tác thành công'
 		commit tran
 	end try

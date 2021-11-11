@@ -84,7 +84,7 @@ namespace GUI_QuanLyCafe
             this.hướngDẫnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1284, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1323, 31);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -186,7 +186,7 @@ namespace GUI_QuanLyCafe
             this.panel3.Controls.Add(this.Bill_lv);
             this.panel3.Location = new System.Drawing.Point(646, 32);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(630, 732);
+            this.panel3.Size = new System.Drawing.Size(669, 732);
             this.panel3.TabIndex = 0;
             // 
             // Payment_btn
@@ -203,7 +203,7 @@ namespace GUI_QuanLyCafe
             this.Payment_btn.ForeColor = System.Drawing.Color.Black;
             this.Payment_btn.HoverState.Parent = this.Payment_btn;
             this.Payment_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.income;
-            this.Payment_btn.Location = new System.Drawing.Point(473, 661);
+            this.Payment_btn.Location = new System.Drawing.Point(512, 667);
             this.Payment_btn.Name = "Payment_btn";
             this.Payment_btn.ShadowDecoration.Parent = this.Payment_btn;
             this.Payment_btn.Size = new System.Drawing.Size(150, 50);
@@ -225,7 +225,7 @@ namespace GUI_QuanLyCafe
             this.Delete_btn.ForeColor = System.Drawing.Color.Black;
             this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
-            this.Delete_btn.Location = new System.Drawing.Point(168, 661);
+            this.Delete_btn.Location = new System.Drawing.Point(186, 667);
             this.Delete_btn.Name = "Delete_btn";
             this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
             this.Delete_btn.Size = new System.Drawing.Size(150, 50);
@@ -247,7 +247,7 @@ namespace GUI_QuanLyCafe
             this.Edit_btn.ForeColor = System.Drawing.Color.Black;
             this.Edit_btn.HoverState.Parent = this.Edit_btn;
             this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.exchange;
-            this.Edit_btn.Location = new System.Drawing.Point(321, 661);
+            this.Edit_btn.Location = new System.Drawing.Point(350, 667);
             this.Edit_btn.Name = "Edit_btn";
             this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
             this.Edit_btn.Size = new System.Drawing.Size(150, 50);
@@ -269,7 +269,7 @@ namespace GUI_QuanLyCafe
             this.Add_btn.ForeColor = System.Drawing.Color.Black;
             this.Add_btn.HoverState.Parent = this.Add_btn;
             this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
-            this.Add_btn.Location = new System.Drawing.Point(15, 661);
+            this.Add_btn.Location = new System.Drawing.Point(21, 667);
             this.Add_btn.Name = "Add_btn";
             this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
             this.Add_btn.Size = new System.Drawing.Size(150, 50);
@@ -285,9 +285,9 @@ namespace GUI_QuanLyCafe
             this.panel2.Controls.Add(this.VAT_lbl);
             this.panel2.Controls.Add(this.Total_lbl);
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(15, 532);
+            this.panel2.Location = new System.Drawing.Point(21, 532);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(608, 114);
+            this.panel2.Size = new System.Drawing.Size(641, 114);
             this.panel2.TabIndex = 22;
             // 
             // TotalOrder_lbl
@@ -332,16 +332,16 @@ namespace GUI_QuanLyCafe
             this.panel1.Controls.Add(this.CheckIn_lbl);
             this.panel1.Controls.Add(this.NameTable_lbl);
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(15, 51);
+            this.panel1.Location = new System.Drawing.Point(21, 51);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 130);
+            this.panel1.Size = new System.Drawing.Size(641, 130);
             this.panel1.TabIndex = 20;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(428, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(464, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -379,7 +379,7 @@ namespace GUI_QuanLyCafe
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(260, 10);
+            this.label2.Location = new System.Drawing.Point(297, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 32);
             this.label2.TabIndex = 19;
@@ -398,10 +398,10 @@ namespace GUI_QuanLyCafe
             this.Bill_lv.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bill_lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Bill_lv.HideSelection = false;
-            this.Bill_lv.Location = new System.Drawing.Point(15, 180);
+            this.Bill_lv.Location = new System.Drawing.Point(21, 180);
             this.Bill_lv.MultiSelect = false;
             this.Bill_lv.Name = "Bill_lv";
-            this.Bill_lv.Size = new System.Drawing.Size(608, 353);
+            this.Bill_lv.Size = new System.Drawing.Size(641, 353);
             this.Bill_lv.TabIndex = 16;
             this.Bill_lv.UseCompatibleStateImageBehavior = false;
             this.Bill_lv.View = System.Windows.Forms.View.Details;
@@ -409,7 +409,7 @@ namespace GUI_QuanLyCafe
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tên món";
-            this.columnHeader1.Width = 237;
+            this.columnHeader1.Width = 250;
             // 
             // columnHeader2
             // 
@@ -421,13 +421,13 @@ namespace GUI_QuanLyCafe
             // 
             this.columnHeader3.Text = "Đơn giá";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 124;
+            this.columnHeader3.Width = 140;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Thành tiền";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 139;
+            this.columnHeader4.Width = 150;
             // 
             // panel4
             // 
@@ -446,7 +446,7 @@ namespace GUI_QuanLyCafe
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(181, 10);
+            this.label1.Location = new System.Drawing.Point(209, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 32);
             this.label1.TabIndex = 18;
@@ -459,7 +459,7 @@ namespace GUI_QuanLyCafe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Table_flp.AutoScroll = true;
             this.Table_flp.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Table_flp.Location = new System.Drawing.Point(28, 51);
+            this.Table_flp.Location = new System.Drawing.Point(57, 51);
             this.Table_flp.Name = "Table_flp";
             this.Table_flp.Size = new System.Drawing.Size(583, 671);
             this.Table_flp.TabIndex = 17;
@@ -477,7 +477,7 @@ namespace GUI_QuanLyCafe
             this.Time_lbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(187)))), ((int)(((byte)(150)))));
             this.Time_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Time_lbl.ForeColor = System.Drawing.Color.Black;
-            this.Time_lbl.Location = new System.Drawing.Point(988, 6);
+            this.Time_lbl.Location = new System.Drawing.Point(1024, 6);
             this.Time_lbl.Name = "Time_lbl";
             this.Time_lbl.Size = new System.Drawing.Size(292, 23);
             this.Time_lbl.TabIndex = 16;
@@ -488,16 +488,17 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1284, 771);
+            this.ClientSize = new System.Drawing.Size(1323, 771);
             this.Controls.Add(this.Time_lbl);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1080, 810);
+            this.MinimumSize = new System.Drawing.Size(1100, 810);
             this.Name = "Order_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Order_frm_FormClosing);
             this.Load += new System.EventHandler(this.Order_frm_Load);
             this.menuStrip1.ResumeLayout(false);

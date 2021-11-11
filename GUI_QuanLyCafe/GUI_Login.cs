@@ -1,16 +1,7 @@
 ﻿using BUS_QuanLyCafe;
 using DTO_QuanLyCafe;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Sql;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -20,8 +11,8 @@ namespace GUI_QuanLyCafe
         public Login_frm()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
-        DTO_Connection conn = new DTO_Connection();
         DTO_Staff staff = new DTO_Staff();
         public static string TimeMin;
         public static string TimeMax;
@@ -29,13 +20,14 @@ namespace GUI_QuanLyCafe
         public static string Email;
 
         private void Login_frm_Load(object sender, EventArgs e)
-        { 
+        {
+            timer1.Stop();
             this.ActiveControl = label1;
             ReadSetting();
             Loading_frm.Status = 1;
             Thread.Sleep(1000);
-            this.Focus();
         }
+
 
         private void ReadSetting()
         {
@@ -72,8 +64,6 @@ namespace GUI_QuanLyCafe
             }
         }
 
-
-
         private void ShowHide_ckb_CheckedChanged(object sender, EventArgs e)
         {
             if (ShowHide_ckb.Checked == true)
@@ -105,100 +95,44 @@ namespace GUI_QuanLyCafe
                     this.ActiveControl = Password_txt;
                 }
                 else
-                {
-                    if (Shift_cbb.Text == "None")
+                { 
+                    staff.Email = Email_txt.Text;
+                    staff.Password = BUS_Staff.Instance.Encryption(Password_txt.Text);
+                    if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Hoạt động")
                     {
-                        MessageBox.Show("Đăng nhập không thành công, bạn chưa chọn ca làm việc ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (DateTime.Parse(DateTime.Now.TimeOfDay.ToString()) > DateTime.Parse(TimeMax))
+                        if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() != "Phục vụ")
                         {
-                            MessageBox.Show("Đăng nhập không thành công, ca làm việc của bạn chọn đã kết thúc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else if (DateTime.Parse(DateTime.Now.TimeOfDay.ToString()) < DateTime.Parse(TimeMin))
-                        {
-                            MessageBox.Show("Đăng nhập không thành công, ca làm việc của bạn chọn chưa bắt đầu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            staff.Email = Email_txt.Text;
-                            staff.Password = BUS_Staff.Instance.Encryption(Password_txt.Text);
-                            if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Hoạt động")
+                            if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() == "Quản lý")
                             {
-                                if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() != "Phục vụ")
-                                {
-                                    if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() == "Quản lý")
-                                    {
-                                        Confirm_frm.Result = 1;
-                                    }
-                                    else
-                                    {
-                                        Confirm_frm.Result = 0;
-                                    }
-                                    Login_btn.Enabled = false;
-                                    SaveSettings();
-                                    LoadBar.Visible = true;
-                                    timer1_Tick(sender, e);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Không hoạt động")
-                            {
-                                MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn đã bị vô hiệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Confirm_frm.Result = 1;
                             }
                             else
                             {
-                                MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Confirm_frm.Result = 0;
                             }
+                            Login_btn.Enabled = false;
+                            SaveSettings();
+                            LoadBar.Visible = true;
+                            timer1_Tick(sender, e);         
                         }
-
-
-                        //////////////////////////////////////////////////////////////
-
-
-                        //staff.Email = Email_txt.Text;
-                        //staff.Password = BUS_Staff.Instance.Encryption(Password_txt.Text);
-                        //if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Hoạt động")
-                        //{
-                        //    if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() != "Phục vụ")
-                        //    {
-                        //        if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() == "Quản lý")
-                        //        {
-                        //            Confirm_frm.Result = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            Confirm_frm.Result = 0;
-                        //        }
-                        //        Login_btn.Enabled = false;
-                        //        SaveSettings();
-                        //        LoadBar.Visible = true;
-                        //        timer1_Tick(sender, e);
-                        //    }
-                        //    else
-                        //    {
-                        //        MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    }
-                        //}
-                        //else if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Không hoạt động")
-                        //{
-                        //    MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn đã bị vô hiệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-
+                        else
+                        {
+                            MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Không hoạt động")
+                    {
+                        MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn đã bị vô hiệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Không kết nối được với Server, xin vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -213,22 +147,32 @@ namespace GUI_QuanLyCafe
                 Login_grb.Enabled = false;
                 if (LoadBar.Value == LoadBar.Maximum)
                 {
-                    timer1.Stop();
-                    Email = Email_txt.Text;
                     LoadBar.Visible = false;
                     this.Hide();
+                    timer1.Stop();
+                    Email = Email_txt.Text;
+                    if (DateTime.Parse(DateTime.Now.TimeOfDay.ToString()) > DateTime.Parse("06:30:00") && DateTime.Parse(DateTime.Now.TimeOfDay.ToString()) < DateTime.Parse("14:30:00"))
+                    {
+                        Shift = "Ca sáng";
+                        TimeMin = "06:30:00";
+                        TimeMax = "14:30:00";
+                    }
+                    else
+                    {
+                        Shift = "Ca tối";
+                        TimeMin = "14:30:00";
+                        TimeMax = "23:30:00";
+                    }
                     Order_frm order = new Order_frm();
                     order.ShowDialog();
                 }
+
                 Login_btn.Text += ".";
                 if (Login_btn.Text.Length >= 6)
                 {
                     Login_btn.Text = ".";
                 }
-            }
-            else
-            {
-                timer1.Stop();
+
             }
         }
 
@@ -259,31 +203,5 @@ namespace GUI_QuanLyCafe
             forgotPassword.ShowDialog();
         }
 
-        private void Shift_cbb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (Shift_cbb.SelectedIndex == 0)
-            {
-                TimeMin = "06:30:00";
-                TimeMax = "14:30:00";
-                Shift = "Ca sáng";
-            }
-            else if (Shift_cbb.SelectedIndex == 1)
-            {
-                TimeMin = "14:30:00";
-                TimeMax = "23:30:00";
-                Shift = "Ca tối";
-            }
-            this.ActiveControl = label1;
-        }
-
-        private void ServerName_cbb_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.SuppressKeyPress = true;
-        }
-
-        private void Shift_cbb_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.SuppressKeyPress = true;
-        }
     }
 }

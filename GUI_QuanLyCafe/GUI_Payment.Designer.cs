@@ -100,7 +100,7 @@ namespace GUI_QuanLyCafe
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(12, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(553, 153);
+            this.panel1.Size = new System.Drawing.Size(642, 153);
             this.panel1.TabIndex = 172;
             // 
             // pictureBox2
@@ -108,7 +108,7 @@ namespace GUI_QuanLyCafe
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(376, 15);
+            this.pictureBox2.Location = new System.Drawing.Point(465, 15);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(172, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -118,36 +118,40 @@ namespace GUI_QuanLyCafe
             // DateEnd_lbl
             // 
             this.DateEnd_lbl.AutoSize = true;
+            this.DateEnd_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateEnd_lbl.Location = new System.Drawing.Point(1, 80);
             this.DateEnd_lbl.Name = "DateEnd_lbl";
-            this.DateEnd_lbl.Size = new System.Drawing.Size(66, 21);
+            this.DateEnd_lbl.Size = new System.Drawing.Size(74, 23);
             this.DateEnd_lbl.TabIndex = 152;
             this.DateEnd_lbl.Text = "Giờ ra :";
             // 
             // NameStafff_lbl
             // 
             this.NameStafff_lbl.AutoSize = true;
+            this.NameStafff_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameStafff_lbl.Location = new System.Drawing.Point(1, 113);
             this.NameStafff_lbl.Name = "NameStafff_lbl";
-            this.NameStafff_lbl.Size = new System.Drawing.Size(89, 21);
+            this.NameStafff_lbl.Size = new System.Drawing.Size(98, 23);
             this.NameStafff_lbl.TabIndex = 2;
             this.NameStafff_lbl.Text = "Thu ngân :";
             // 
             // CheckIn_lbl
             // 
             this.CheckIn_lbl.AutoSize = true;
+            this.CheckIn_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckIn_lbl.Location = new System.Drawing.Point(1, 47);
             this.CheckIn_lbl.Name = "CheckIn_lbl";
-            this.CheckIn_lbl.Size = new System.Drawing.Size(79, 21);
+            this.CheckIn_lbl.Size = new System.Drawing.Size(88, 23);
             this.CheckIn_lbl.TabIndex = 1;
             this.CheckIn_lbl.Text = "Giờ vào :";
             // 
             // NameTable_lbl
             // 
             this.NameTable_lbl.AutoSize = true;
+            this.NameTable_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTable_lbl.Location = new System.Drawing.Point(1, 15);
             this.NameTable_lbl.Name = "NameTable_lbl";
-            this.NameTable_lbl.Size = new System.Drawing.Size(48, 21);
+            this.NameTable_lbl.Size = new System.Drawing.Size(52, 23);
             this.NameTable_lbl.TabIndex = 0;
             this.NameTable_lbl.Text = "Tên :";
             // 
@@ -200,7 +204,7 @@ namespace GUI_QuanLyCafe
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(12, 760);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(553, 192);
+            this.panel2.Size = new System.Drawing.Size(642, 192);
             this.panel2.TabIndex = 173;
             // 
             // Payment_btn
@@ -212,14 +216,14 @@ namespace GUI_QuanLyCafe
             this.Payment_btn.CheckedState.Parent = this.Payment_btn;
             this.Payment_btn.CustomImages.Parent = this.Payment_btn;
             this.Payment_btn.FillColor = System.Drawing.Color.White;
-            this.Payment_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Payment_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Payment_btn.ForeColor = System.Drawing.Color.Black;
             this.Payment_btn.HoverState.Parent = this.Payment_btn;
             this.Payment_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.income;
-            this.Payment_btn.Location = new System.Drawing.Point(418, 147);
+            this.Payment_btn.Location = new System.Drawing.Point(493, 147);
             this.Payment_btn.Name = "Payment_btn";
             this.Payment_btn.ShadowDecoration.Parent = this.Payment_btn;
-            this.Payment_btn.Size = new System.Drawing.Size(130, 40);
+            this.Payment_btn.Size = new System.Drawing.Size(144, 40);
             this.Payment_btn.TabIndex = 44;
             this.Payment_btn.Text = "Thanh toán";
             this.Payment_btn.Click += new System.EventHandler(this.Payment_btn_Click);
@@ -240,10 +244,10 @@ namespace GUI_QuanLyCafe
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(190, 9);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(227, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 31);
+            this.label2.Size = new System.Drawing.Size(207, 32);
             this.label2.TabIndex = 170;
             this.label2.Text = "THANH TOÁN";
             // 
@@ -258,13 +262,13 @@ namespace GUI_QuanLyCafe
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.Bill_lv.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bill_lv.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bill_lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Bill_lv.HideSelection = false;
             this.Bill_lv.Location = new System.Drawing.Point(12, 202);
             this.Bill_lv.MultiSelect = false;
             this.Bill_lv.Name = "Bill_lv";
-            this.Bill_lv.Size = new System.Drawing.Size(553, 559);
+            this.Bill_lv.Size = new System.Drawing.Size(642, 559);
             this.Bill_lv.TabIndex = 171;
             this.Bill_lv.UseCompatibleStateImageBehavior = false;
             this.Bill_lv.View = System.Windows.Forms.View.Details;
@@ -272,7 +276,7 @@ namespace GUI_QuanLyCafe
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tên món";
-            this.columnHeader1.Width = 190;
+            this.columnHeader1.Width = 250;
             // 
             // columnHeader2
             // 
@@ -284,20 +288,20 @@ namespace GUI_QuanLyCafe
             // 
             this.columnHeader3.Text = "Đơn giá";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 124;
+            this.columnHeader3.Width = 140;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Thành tiền";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 139;
+            this.columnHeader4.Width = 150;
             // 
             // Payment_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(576, 961);
+            this.ClientSize = new System.Drawing.Size(665, 961);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
@@ -306,7 +310,6 @@ namespace GUI_QuanLyCafe
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(592, 1000);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(592, 39);
             this.Name = "Payment_frm";

@@ -1,14 +1,8 @@
 ﻿using BUS_QuanLyCafe;
 using DTO_QuanLyCafe;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI_QuanLyCafe
@@ -26,8 +20,6 @@ namespace GUI_QuanLyCafe
         Menu_frm menu = new Menu_frm();
         private void Order_frm_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-            Loading_frm.Status = 2;
             this.ActiveControl = label1;
             LoadTable();
             if (Confirm_frm.Result != 1)
@@ -35,9 +27,12 @@ namespace GUI_QuanLyCafe
                 Manage_tsmi.Visible = false;
                 Statistic_tsmi.Visible = false;
             }
-            this.Focus();
+            Loading_frm.Status = 2;
+            this.WindowState = FormWindowState.Minimized;
+            this.Show();
+            this.WindowState = FormWindowState.Maximized;
         }
-        
+
         void LoadTable()
         {
             Table_flp.Controls.Clear();
@@ -76,8 +71,8 @@ namespace GUI_QuanLyCafe
                     {
                         ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
                         item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
-                        item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString());
-                        item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
+                        item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString())));
+                        item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString())));
                         Bill_lv.Items.Add(item);
                         total = total + (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString());
                     }
@@ -190,8 +185,6 @@ namespace GUI_QuanLyCafe
                 MessageBox.Show("Ca làm việc của bạn đã kết thúc (" + Login_frm.TimeMin + " ➜ " + Login_frm.TimeMax + ")", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.Start(Application.ExecutablePath);
                 Process.GetCurrentProcess().Kill();
-                this.BringToFront();
-                this.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -273,14 +266,6 @@ namespace GUI_QuanLyCafe
             listTable.ShowDialog();
             LoadTable();
             ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
-        }
-
-        private void MergeBill()
-        {
-            for (int i = 0; i < Bill_lv.Items.Count; i++)
-            {
-                
-            }
         }
     }
 }

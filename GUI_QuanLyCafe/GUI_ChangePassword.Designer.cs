@@ -60,7 +60,7 @@ namespace GUI_QuanLyCafe
             // AgainNewPassword_txt
             // 
             this.AgainNewPassword_txt.BackColor = System.Drawing.SystemColors.Window;
-            this.AgainNewPassword_txt.Location = new System.Drawing.Point(217, 156);
+            this.AgainNewPassword_txt.Location = new System.Drawing.Point(217, 153);
             this.AgainNewPassword_txt.Name = "AgainNewPassword_txt";
             this.AgainNewPassword_txt.Size = new System.Drawing.Size(270, 32);
             this.AgainNewPassword_txt.TabIndex = 3;
@@ -125,7 +125,7 @@ namespace GUI_QuanLyCafe
             // NewPassword_txt
             // 
             this.NewPassword_txt.BackColor = System.Drawing.SystemColors.Window;
-            this.NewPassword_txt.Location = new System.Drawing.Point(217, 97);
+            this.NewPassword_txt.Location = new System.Drawing.Point(217, 94);
             this.NewPassword_txt.Name = "NewPassword_txt";
             this.NewPassword_txt.Size = new System.Drawing.Size(270, 32);
             this.NewPassword_txt.TabIndex = 2;
@@ -148,7 +148,7 @@ namespace GUI_QuanLyCafe
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mật khẫu cũ";
+            this.label1.Text = "Mật khẩu cũ";
             // 
             // label2
             // 
