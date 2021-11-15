@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_Bill.cs" />
+    <Compile Include="DAL_Material.cs" />
     <Compile Include="DAL_Menu.cs" />
     <Compile Include="DAL_Staff.cs" />
     <Compile Include="DAL_Table.cs" />

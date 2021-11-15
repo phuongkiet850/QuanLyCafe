@@ -42,14 +42,14 @@ namespace GUI_QuanLyCafe
                 Role_cbb.Text = BUS_Staff.Instance.ListProfileStaff().Rows[0][7].ToString();
                 PathPicture_txt.Text = BUS_Staff.Instance.ListProfileStaff().Rows[0][9].ToString();
                 Picture_ptb.Image = Image.FromFile(Application.StartupPath + BUS_Staff.Instance.ListProfileStaff().Rows[0][9].ToString());
-                Status_txt.Text = BUS_Staff.Instance.ListProfileStaff().Rows[0][10].ToString();
+
             }
             catch (Exception) { }
         }
 
         private void FomatDategridView()
         {
-            ListStaff_dgv.DataSource = BUS_Staff.Instance.ListProfileStaff_DGV();
+            ListStaff_dgv.DataSource = BUS_Staff.Instance.ListProfileStaff_DGV();    
             ListStaff_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -126,7 +126,6 @@ namespace GUI_QuanLyCafe
             PhoneNumber_txt.Text = "";
             Email_txt.Text = "";
             Adress_txt.Text = "";
-            Status_txt.Text = "Không hoạt động";
             Role_cbb.SelectedIndex = -1;
             Gender_cbb.SelectedIndex = -1;
             BirthDay_date.Value = DateTime.Now;
@@ -179,7 +178,6 @@ namespace GUI_QuanLyCafe
             staff.Birthday = DateTime.ParseExact(BirthDay_date.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             staff.Role = Role_cbb.Text.Trim();
             staff.Picture = PathPicture_txt.Text.Trim();
-            staff.Status = Status_txt.Text.Trim();
         }
 
         private void Add_btn_Click(object sender, EventArgs e)
@@ -232,7 +230,6 @@ namespace GUI_QuanLyCafe
             {
                 ResetText();
                 Find_txt.Text = "";
-                Status_txt.Text = "Hoạt động";
                 IdStafff_txt.Text = BUS_Staff.Instance.SelectIdStaff().Rows[0][0].ToString();
 
                 FomatDategridView();
@@ -348,7 +345,7 @@ namespace GUI_QuanLyCafe
                 IsNumeric(NameStaff_txt.Text, NameStaff_txt, NameStaff_lbl);
                 IsPhoneNum(PhoneNumber_txt.Text, PhoneNumber_txt, PhoneNumber_lbl);
                 IsEmail(Email_txt.Text, Email_lbl);
-                if (Adress_txt.Text != "")
+                if (Adress_txt.Text != "" && Adress_txt.TextLength < 101)
                 {
                     Address_lbl.ForeColor = Color.Black;
                 }
@@ -388,7 +385,6 @@ namespace GUI_QuanLyCafe
                 }
                 else
                 {
-                    Edit_btn.Enabled = false;
                     Add_btn.Enabled = false;
                 }
             }
@@ -459,7 +455,7 @@ namespace GUI_QuanLyCafe
                     Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                   @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-                    if (regex.IsMatch(txt))
+                    if (regex.IsMatch(txt) && txt.Length < 31)
                     {
                         ctl.ForeColor = Color.Black;
                     }
@@ -490,6 +486,8 @@ namespace GUI_QuanLyCafe
                     {
                         GetText();
                         BUS_Staff.Instance.DeleteProfileStaff(staff);
+                        ResetText();
+                        this.ActiveControl = label1;
                         if (CreateID_btn.Enabled == false)
                         {
                             //save log
@@ -499,20 +497,10 @@ namespace GUI_QuanLyCafe
                         else
                         {
                             GetText();
-                            if (BUS_Staff.Instance.ForgotPassword(staff) == false)
-                            {
-                                //save log
-                               
-                                //
-                                MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                //save log
-                                
-                                //
-                                MessageBox.Show("Vô hiệu hóa tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            //save log
+
+                            //
+                            MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
                         Edit_ckb.Checked = false;
@@ -543,7 +531,6 @@ namespace GUI_QuanLyCafe
                 Role_cbb.Text = BUS_Staff.Instance.SelectIdStaff_DGV(staff).Rows[0][7].ToString();
                 PathPicture_txt.Text = BUS_Staff.Instance.SelectIdStaff_DGV(staff).Rows[0][9].ToString();
                 Picture_ptb.Image = Image.FromFile(Application.StartupPath + BUS_Staff.Instance.SelectIdStaff_DGV(staff).Rows[0][9].ToString());
-                Status_txt.Text = BUS_Staff.Instance.SelectIdStaff_DGV(staff).Rows[0][10].ToString();
             }
             catch (Exception) { }
         }
@@ -612,22 +599,54 @@ namespace GUI_QuanLyCafe
 
         private void NameStaff_txt_TextChanged(object sender, EventArgs e)
         {
-            VerificationText();
+            if (NameStaff_txt.TextLength > 50)
+            {
+                NameStaff_txt.Text = NameStaff_txt.Text.Substring(0, NameStaff_txt.Text.Length - 1);
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                VerificationText();
+            }
         }
 
         private void PhoneNumber_txt_TextChanged(object sender, EventArgs e)
         {
-            VerificationText();
+            if (PhoneNumber_txt.TextLength > 10)
+            {
+                PhoneNumber_txt.Text = PhoneNumber_txt.Text.Substring(0, PhoneNumber_txt.Text.Length - 1);
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                VerificationText();
+            }
         }
 
         private void Email_txt_TextChanged(object sender, EventArgs e)
         {
-            VerificationText();
+            if (Email_txt.TextLength > 30)
+            {
+                Email_txt.Text = Email_txt.Text.Substring(0, Email_txt.Text.Length - 1);
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                VerificationText();
+            }
         }
 
         private void Adress_txt_TextChanged(object sender, EventArgs e)
         {
-            VerificationText();
+            if (Adress_txt.TextLength > 100)
+            {
+                Adress_txt.Text = Adress_txt.Text.Substring(0, Adress_txt.Text.Length - 1);
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                VerificationText();
+            }
         }
 
         private void Gender_cbb_SelectedValueChanged(object sender, EventArgs e)
@@ -645,6 +664,31 @@ namespace GUI_QuanLyCafe
         private void PathPicture_txt_TextChanged(object sender, EventArgs e)
         {
             VerificationText();
+        }
+
+        private void BirthDay_date_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void Gender_cbb_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void Role_cbb_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void FindBy_cbb_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void IdStafff_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

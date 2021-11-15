@@ -81,7 +81,7 @@ namespace GUI_QuanLyCafe
             this.Menu_tc.Controls.Add(this.CK);
             this.Menu_tc.Controls.Add(this.SD);
             this.Menu_tc.Controls.Add(this.OR);
-            this.Menu_tc.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Menu_tc.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Menu_tc.Location = new System.Drawing.Point(5, 3);
             this.Menu_tc.Name = "Menu_tc";
             this.Menu_tc.SelectedIndex = 0;
@@ -94,10 +94,10 @@ namespace GUI_QuanLyCafe
             this.CF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.CF.Controls.Add(this.Cafe_flp);
             this.CF.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CF.Location = new System.Drawing.Point(4, 32);
+            this.CF.Location = new System.Drawing.Point(4, 36);
             this.CF.Name = "CF";
             this.CF.Padding = new System.Windows.Forms.Padding(3);
-            this.CF.Size = new System.Drawing.Size(859, 610);
+            this.CF.Size = new System.Drawing.Size(859, 606);
             this.CF.TabIndex = 0;
             this.CF.Text = "Cafe";
             this.CF.UseVisualStyleBackColor = true;
@@ -106,18 +106,19 @@ namespace GUI_QuanLyCafe
             // 
             this.Cafe_flp.AutoScroll = true;
             this.Cafe_flp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Cafe_flp.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cafe_flp.Location = new System.Drawing.Point(3, 3);
             this.Cafe_flp.Name = "Cafe_flp";
-            this.Cafe_flp.Size = new System.Drawing.Size(853, 604);
+            this.Cafe_flp.Size = new System.Drawing.Size(853, 600);
             this.Cafe_flp.TabIndex = 1;
             // 
             // FZ
             // 
             this.FZ.Controls.Add(this.Freeze_flp);
-            this.FZ.Location = new System.Drawing.Point(4, 32);
+            this.FZ.Location = new System.Drawing.Point(4, 36);
             this.FZ.Name = "FZ";
             this.FZ.Padding = new System.Windows.Forms.Padding(3);
-            this.FZ.Size = new System.Drawing.Size(859, 610);
+            this.FZ.Size = new System.Drawing.Size(859, 606);
             this.FZ.TabIndex = 1;
             this.FZ.Text = "Đá xay";
             this.FZ.UseVisualStyleBackColor = true;
@@ -128,7 +129,7 @@ namespace GUI_QuanLyCafe
             this.Freeze_flp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Freeze_flp.Location = new System.Drawing.Point(3, 3);
             this.Freeze_flp.Name = "Freeze_flp";
-            this.Freeze_flp.Size = new System.Drawing.Size(853, 604);
+            this.Freeze_flp.Size = new System.Drawing.Size(853, 600);
             this.Freeze_flp.TabIndex = 2;
             // 
             // TE
@@ -264,19 +265,20 @@ namespace GUI_QuanLyCafe
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 24);
+            this.label1.Size = new System.Drawing.Size(197, 26);
             this.label1.TabIndex = 152;
             this.label1.Text = "HighLands Coffee";
             // 
             // Name_lbl
             // 
             this.Name_lbl.AutoSize = true;
-            this.Name_lbl.Location = new System.Drawing.Point(18, 74);
+            this.Name_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name_lbl.Location = new System.Drawing.Point(19, 74);
             this.Name_lbl.Name = "Name_lbl";
-            this.Name_lbl.Size = new System.Drawing.Size(48, 21);
+            this.Name_lbl.Size = new System.Drawing.Size(52, 23);
             this.Name_lbl.TabIndex = 0;
             this.Name_lbl.Text = "Tên :";
             // 
@@ -284,7 +286,7 @@ namespace GUI_QuanLyCafe
             // 
             this.ListOrder_dgv.AllowUserToResizeColumns = false;
             this.ListOrder_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOrder_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.ListOrder_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -296,7 +298,7 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -305,7 +307,7 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -319,7 +321,7 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -327,7 +329,7 @@ namespace GUI_QuanLyCafe
             this.ListOrder_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.ListOrder_dgv.RowHeadersVisible = false;
             this.ListOrder_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOrder_dgv.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.ListOrder_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListOrder_dgv.ShowCellErrors = false;
@@ -346,7 +348,7 @@ namespace GUI_QuanLyCafe
             this.Add_btn.CheckedState.Parent = this.Add_btn;
             this.Add_btn.CustomImages.Parent = this.Add_btn;
             this.Add_btn.FillColor = System.Drawing.Color.White;
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add_btn.ForeColor = System.Drawing.Color.Black;
             this.Add_btn.HoverState.Parent = this.Add_btn;
             this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
@@ -367,7 +369,7 @@ namespace GUI_QuanLyCafe
             this.Delete_btn.CheckedState.Parent = this.Delete_btn;
             this.Delete_btn.CustomImages.Parent = this.Delete_btn;
             this.Delete_btn.FillColor = System.Drawing.Color.White;
-            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Delete_btn.ForeColor = System.Drawing.Color.Black;
             this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;

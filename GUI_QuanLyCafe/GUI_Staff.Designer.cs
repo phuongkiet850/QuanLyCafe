@@ -38,7 +38,6 @@ namespace GUI_QuanLyCafe
             this.Log_Menu = new System.Windows.Forms.MenuStrip();
             this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Picture_ptb = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NameStaff_lbl = new System.Windows.Forms.Label();
@@ -64,24 +63,22 @@ namespace GUI_QuanLyCafe
             this.BirthDay_date = new System.Windows.Forms.DateTimePicker();
             this.ResetFind_btn = new Guna.UI2.WinForms.Guna2Button();
             this.CreateID_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.Status_txt = new System.Windows.Forms.TextBox();
             this.Email_lbl = new System.Windows.Forms.Label();
             this.PathPicture_txt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.FindBy_cbb = new System.Windows.Forms.ComboBox();
             this.OpenFilePicture_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListStaff_dgv)).BeginInit();
             this.Log_Menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ptb)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ListStaff_dgv
             // 
             this.ListStaff_dgv.AllowUserToAddRows = false;
             this.ListStaff_dgv.AllowUserToDeleteRows = false;
-            this.ListStaff_dgv.AllowUserToOrderColumns = true;
             this.ListStaff_dgv.AllowUserToResizeColumns = false;
             this.ListStaff_dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,6 +107,7 @@ namespace GUI_QuanLyCafe
             this.ListStaff_dgv.DefaultCellStyle = dataGridViewCellStyle8;
             this.ListStaff_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListStaff_dgv.Location = new System.Drawing.Point(32, 567);
+            this.ListStaff_dgv.MultiSelect = false;
             this.ListStaff_dgv.Name = "ListStaff_dgv";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
@@ -119,10 +117,15 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListStaff_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.ListStaff_dgv.RowHeadersVisible = false;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListStaff_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.ListStaff_dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListStaff_dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListStaff_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListStaff_dgv.ShowCellErrors = false;
+            this.ListStaff_dgv.ShowCellToolTips = false;
+            this.ListStaff_dgv.ShowEditingIcon = false;
+            this.ListStaff_dgv.ShowRowErrors = false;
             this.ListStaff_dgv.Size = new System.Drawing.Size(1036, 399);
             this.ListStaff_dgv.TabIndex = 129;
             this.ListStaff_dgv.TabStop = false;
@@ -157,17 +160,6 @@ namespace GUI_QuanLyCafe
             this.label1.Size = new System.Drawing.Size(355, 32);
             this.label1.TabIndex = 144;
             this.label1.Text = "DANH SÁCH NHÂN VIÊN";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 174;
-            this.pictureBox2.TabStop = false;
             // 
             // Picture_ptb
             // 
@@ -234,7 +226,7 @@ namespace GUI_QuanLyCafe
             // 
             this.Address_lbl.AutoSize = true;
             this.Address_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Address_lbl.Location = new System.Drawing.Point(421, 361);
+            this.Address_lbl.Location = new System.Drawing.Point(421, 293);
             this.Address_lbl.Name = "Address_lbl";
             this.Address_lbl.Size = new System.Drawing.Size(70, 23);
             this.Address_lbl.TabIndex = 120;
@@ -259,6 +251,7 @@ namespace GUI_QuanLyCafe
             this.IdStafff_txt.ReadOnly = true;
             this.IdStafff_txt.Size = new System.Drawing.Size(249, 32);
             this.IdStafff_txt.TabIndex = 122;
+            this.IdStafff_txt.TextChanged += new System.EventHandler(this.IdStafff_txt_TextChanged);
             // 
             // PhoneNumber_txt
             // 
@@ -294,7 +287,7 @@ namespace GUI_QuanLyCafe
             // Email_txt
             // 
             this.Email_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_txt.Location = new System.Drawing.Point(487, 290);
+            this.Email_txt.Location = new System.Drawing.Point(489, 218);
             this.Email_txt.Name = "Email_txt";
             this.Email_txt.ReadOnly = true;
             this.Email_txt.Size = new System.Drawing.Size(274, 32);
@@ -304,11 +297,11 @@ namespace GUI_QuanLyCafe
             // Adress_txt
             // 
             this.Adress_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Adress_txt.Location = new System.Drawing.Point(425, 407);
+            this.Adress_txt.Location = new System.Drawing.Point(425, 330);
             this.Adress_txt.Multiline = true;
             this.Adress_txt.Name = "Adress_txt";
             this.Adress_txt.ReadOnly = true;
-            this.Adress_txt.Size = new System.Drawing.Size(336, 82);
+            this.Adress_txt.Size = new System.Drawing.Size(336, 110);
             this.Adress_txt.TabIndex = 133;
             this.Adress_txt.TextChanged += new System.EventHandler(this.Adress_txt_TextChanged);
             // 
@@ -332,6 +325,7 @@ namespace GUI_QuanLyCafe
             this.Gender_cbb.TabIndex = 125;
             this.Gender_cbb.Text = "Nam";
             this.Gender_cbb.SelectedValueChanged += new System.EventHandler(this.Gender_cbb_SelectedValueChanged);
+            this.Gender_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gender_cbb_KeyDown);
             // 
             // Role_cbb
             // 
@@ -348,6 +342,7 @@ namespace GUI_QuanLyCafe
             this.Role_cbb.TabIndex = 126;
             this.Role_cbb.Text = "Phục vụ";
             this.Role_cbb.SelectedValueChanged += new System.EventHandler(this.Role_cbb_SelectedValueChanged);
+            this.Role_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Role_cbb_KeyDown);
             // 
             // Delete_btn
             // 
@@ -457,6 +452,7 @@ namespace GUI_QuanLyCafe
             this.BirthDay_date.Name = "BirthDay_date";
             this.BirthDay_date.Size = new System.Drawing.Size(242, 32);
             this.BirthDay_date.TabIndex = 130;
+            this.BirthDay_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BirthDay_date_KeyDown);
             // 
             // ResetFind_btn
             // 
@@ -496,23 +492,11 @@ namespace GUI_QuanLyCafe
             this.CreateID_btn.TabIndex = 173;
             this.CreateID_btn.Click += new System.EventHandler(this.CreateID_btn_Click);
             // 
-            // Status_txt
-            // 
-            this.Status_txt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Status_txt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.Status_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status_txt.Location = new System.Drawing.Point(519, 219);
-            this.Status_txt.Name = "Status_txt";
-            this.Status_txt.ReadOnly = true;
-            this.Status_txt.Size = new System.Drawing.Size(242, 32);
-            this.Status_txt.TabIndex = 131;
-            this.Status_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Email_lbl
             // 
             this.Email_lbl.AutoSize = true;
             this.Email_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_lbl.Location = new System.Drawing.Point(421, 293);
+            this.Email_lbl.Location = new System.Drawing.Point(421, 221);
             this.Email_lbl.Name = "Email_lbl";
             this.Email_lbl.Size = new System.Drawing.Size(60, 23);
             this.Email_lbl.TabIndex = 146;
@@ -530,16 +514,6 @@ namespace GUI_QuanLyCafe
             this.PathPicture_txt.TabStop = false;
             this.PathPicture_txt.Visible = false;
             this.PathPicture_txt.TextChanged += new System.EventHandler(this.PathPicture_txt_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(418, 221);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 23);
-            this.label11.TabIndex = 142;
-            this.label11.Text = "Tình trạng";
             // 
             // FindBy_cbb
             // 
@@ -567,6 +541,7 @@ namespace GUI_QuanLyCafe
             this.FindBy_cbb.TabStop = false;
             this.FindBy_cbb.Text = "Tất cả";
             this.FindBy_cbb.SelectedValueChanged += new System.EventHandler(this.FindBy_cbb_SelectedValueChanged);
+            this.FindBy_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FindBy_cbb_KeyDown);
             // 
             // OpenFilePicture_btn
             // 
@@ -580,13 +555,24 @@ namespace GUI_QuanLyCafe
             this.OpenFilePicture_btn.ForeColor = System.Drawing.Color.Black;
             this.OpenFilePicture_btn.HoverState.Parent = this.OpenFilePicture_btn;
             this.OpenFilePicture_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.folder1;
-            this.OpenFilePicture_btn.Location = new System.Drawing.Point(723, 361);
+            this.OpenFilePicture_btn.Location = new System.Drawing.Point(723, 463);
             this.OpenFilePicture_btn.Name = "OpenFilePicture_btn";
             this.OpenFilePicture_btn.ShadowDecoration.Parent = this.OpenFilePicture_btn;
             this.OpenFilePicture_btn.Size = new System.Drawing.Size(38, 29);
             this.OpenFilePicture_btn.TabIndex = 171;
             this.OpenFilePicture_btn.Visible = false;
             this.OpenFilePicture_btn.Click += new System.EventHandler(this.OpenFilePicture_btn_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 174;
+            this.pictureBox2.TabStop = false;
             // 
             // Staff_frm
             // 
@@ -601,9 +587,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.Email_lbl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Log_Menu);
-            this.Controls.Add(this.Status_txt);
             this.Controls.Add(this.FindBy_cbb);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.ListStaff_dgv);
             this.Controls.Add(this.PathPicture_txt);
             this.Controls.Add(this.Picture_ptb);
@@ -635,10 +619,10 @@ namespace GUI_QuanLyCafe
             ((System.ComponentModel.ISupportInitialize)(this.ListStaff_dgv)).EndInit();
             this.Log_Menu.ResumeLayout(false);
             this.Log_Menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ptb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -648,7 +632,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.DataGridView ListStaff_dgv;
         private System.Windows.Forms.MenuStrip Log_Menu;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
         private System.Windows.Forms.PictureBox Picture_ptb;
         private System.Windows.Forms.Label label2;
@@ -675,11 +658,10 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.DateTimePicker BirthDay_date;
         private Guna.UI2.WinForms.Guna2Button ResetFind_btn;
         private Guna.UI2.WinForms.Guna2Button CreateID_btn;
-        private System.Windows.Forms.TextBox Status_txt;
         private System.Windows.Forms.Label Email_lbl;
         private System.Windows.Forms.TextBox PathPicture_txt;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox FindBy_cbb;
         private Guna.UI2.WinForms.Guna2Button OpenFilePicture_btn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

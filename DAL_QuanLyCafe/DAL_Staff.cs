@@ -131,7 +131,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_InsertProfileStaff  @NameStaff = N'" + staff.NameStaff + "', @Address = N'" + staff.Address + "', @PhoneNumber = '" + staff.PhoneNumber + "', @Email = '" + staff.Email + "', @Gender = N'" + staff.Genedr + "', @BirthDay = '" + staff.Birthday + "', @Role = N'" + staff.Role + "', @Picture = '" + staff.Picture + "', @Status = N'" + staff.Status + "' , @Password = '" + staff.Password + "'";
+                string TruyVan = @"exec sp_InsertProfileStaff  @NameStaff = N'" + staff.NameStaff + "', @Address = N'" + staff.Address + "', @PhoneNumber = '" + staff.PhoneNumber + "', @Email = '" + staff.Email + "', @Gender = N'" + staff.Genedr + "', @BirthDay = '" + staff.Birthday + "', @Role = N'" + staff.Role + "', @Picture = '" + staff.Picture + "', @Password = '" + staff.Password + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
@@ -143,7 +143,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_UpdateProfileStaff  @NameStaff = N'" + staff.NameStaff + "', @Address = N'" + staff.Address + "', @PhoneNumber = '" + staff.PhoneNumber + "', @IdStaff = '" + staff.IDStaff + "', @Gender = N'" + staff.Genedr + "', @BirthDay = '" + staff.Birthday + "', @Role = N'" + staff.Role + "', @Picture = '" + staff.Picture + "', @Status = N'" + staff.Status + "'";
+                string TruyVan = @"exec sp_UpdateProfileStaff  @NameStaff = N'" + staff.NameStaff + "', @Address = N'" + staff.Address + "', @PhoneNumber = '" + staff.PhoneNumber + "', @IdStaff = '" + staff.IDStaff + "', @Gender = N'" + staff.Genedr + "', @BirthDay = '" + staff.Birthday + "', @Role = N'" + staff.Role + "', @Picture = '" + staff.Picture + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);

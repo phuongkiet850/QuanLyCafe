@@ -98,7 +98,7 @@ namespace GUI_QuanLyCafe
                 { 
                     staff.Email = Email_txt.Text;
                     staff.Password = BUS_Staff.Instance.Encryption(Password_txt.Text);
-                    if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Hoạt động")
+                    if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "False")
                     {
                         if (BUS_Staff.Instance.Check(staff).Rows[0][7].ToString() != "Phục vụ")
                         {
@@ -120,7 +120,7 @@ namespace GUI_QuanLyCafe
                             MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "Không hoạt động")
+                    else if (BUS_Staff.Instance.AcceptLogin(staff) == true && BUS_Staff.Instance.Check(staff).Rows[0][10].ToString() == "True")
                     {
                         MessageBox.Show("Đăng nhập không thành công, tài khoản của bạn đã bị vô hiệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -203,5 +203,20 @@ namespace GUI_QuanLyCafe
             forgotPassword.ShowDialog();
         }
 
+        private void Email_txt_TextChanged(object sender, EventArgs e)
+        {
+            if (Email_txt.TextLength > 30)
+            {
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Password_txt_TextChanged(object sender, EventArgs e)
+        {
+            if (Password_txt.TextLength > 30)
+            {
+                MessageBox.Show("Bạn nhập dài quá !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

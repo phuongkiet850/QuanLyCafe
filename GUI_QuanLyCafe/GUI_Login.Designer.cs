@@ -116,6 +116,7 @@ namespace GUI_QuanLyCafe
             this.Password_txt.Size = new System.Drawing.Size(311, 32);
             this.Password_txt.TabIndex = 2;
             this.Password_txt.UseSystemPasswordChar = true;
+            this.Password_txt.TextChanged += new System.EventHandler(this.Password_txt_TextChanged);
             // 
             // Email_txt
             // 
@@ -125,6 +126,7 @@ namespace GUI_QuanLyCafe
             this.Email_txt.Name = "Email_txt";
             this.Email_txt.Size = new System.Drawing.Size(311, 32);
             this.Email_txt.TabIndex = 1;
+            this.Email_txt.TextChanged += new System.EventHandler(this.Email_txt_TextChanged);
             // 
             // label1
             // 
@@ -149,7 +151,7 @@ namespace GUI_QuanLyCafe
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Login_grb

@@ -44,7 +44,6 @@ create table Material
 	Producer nvarchar(50),
 	ImportPrice float,
 	ImportDate date,
-	CategoryID varchar(10) references Category(IDCategory),
 	Picture varchar(150)
 );
 
@@ -470,7 +469,7 @@ drop PROC sp_AcceptLogin
 	end catch
 
 	exec sp_ForgotPassword @Email = 'kiettpps12245@fpt.edu.vn'
-
+	exec sp_ForgotPassword @Email = 'admin'
 ---------------------------------------------------------------------------
 	drop PROC sp_UpdatePassword
 
@@ -812,7 +811,7 @@ create proc sp_ListMenu_DGV
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_UpdatePassword
+	exec sp_DeleteMenu @IdMenu = 55
 -----------------------------------------------------------------------------------
 drop PROC sp_FindMenu_Category
 	
@@ -864,7 +863,8 @@ drop PROC sp_FindMenu_Name
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_FindMenu_All @Find = N'Sữa'
+	exec sp_FindMenu_All @Find = N'asdds'
+	exec sp_FindMenu_All @Find = N'Late'
 
 -----------------------------------------------------------------------------------
 drop PROC sp_ListPayMent
@@ -1031,15 +1031,14 @@ drop PROC sp_ListProfileStaff
 				@BirthDay date,
 				@Role nvarchar(20),
 				@Password nvarchar(50),
-				@Picture nvarchar(150),
-				@Status nvarchar(50)
+				@Picture nvarchar(150)
 
 	
 	as
 	begin try
 		begin tran
-			insert into Staff(NameStaff, Address, PhoneNumber, Email, Gender, BirthDay, Role, Password, Picture, Status) values
-			(@NameStaff, @Address, @PhoneNumber, @Email, @Gender, @BirthDay, @Role, @Password, @Picture, @Status)
+			insert into Staff(NameStaff, Address, PhoneNumber, Email, Gender, BirthDay, Role, Password, Picture, IsDelete) values
+			(@NameStaff, @Address, @PhoneNumber, @Email, @Gender, @BirthDay, @Role, @Password, @Picture, 0)
 
 			print N'Thao tác thành công'
 		commit tran
@@ -1065,14 +1064,13 @@ drop PROC sp_ListProfileStaff
 				@Gender nvarchar(4),
 				@BirthDay date,
 				@Role nvarchar(20),
-				@Picture nvarchar(150),
-				@Status nvarchar(50)
+				@Picture nvarchar(150)
 	as
 	begin try
 		begin tran
 
 			update  Staff
-			set NameStaff = @NameStaff, Address = @Address, PhoneNumber = @PhoneNumber, Gender = @Gender, BirthDay = @BirthDay, Role = @Role, Picture = @Picture, Status = @Status
+			set NameStaff = @NameStaff, Address = @Address, PhoneNumber = @PhoneNumber, Gender = @Gender, BirthDay = @BirthDay, Role = @Role, Picture = @Picture
 			where IdStaff = @IdStaff
 
 			print N'Thao tác thành công'
@@ -1095,17 +1093,16 @@ drop PROC sp_DeleteProfileStaff
 	begin try
 		begin tran
 
-			delete from Staff where  IdStaff = @IdStaff
+			update  Staff
+			set IsDelete = 1
+			where IdStaff = @IdStaff
 
 			print N'Thao tác thành công'
 		commit tran
 	end try
-
 	begin catch
 		rollback tran
-			update Staff
-			set Status = N'Không hoạt động'
-			where  IdStaff = @IdStaff
+		print N'Thao tác không thành công'
 	end catch
 
 	exec sp_DeleteProfileNV @MaNV = 'NV002'
@@ -1146,6 +1143,7 @@ drop PROC sp_DeleteProfileStaff
 	begin try
 		begin tran
 				select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				where IsDelete = 0
 				order by IdStaff
         
 			print N'Thao tác thành công'
@@ -1173,11 +1171,11 @@ drop PROC sp_DeleteProfileStaff
 		begin tran
 			
 			select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-             where  NameStaff like N'%' + @Find + '%' or IdStaff like '%' + @Find + '%'or Email like '%' + @Find + '%' or Gender like N'%' + @Find + '%' or 
+             where  IsDelete = 1 and (NameStaff like N'%' + @Find + '%' or IdStaff like '%' + @Find + '%'or Email like '%' + @Find + '%' or Gender like N'%' + @Find + '%' or 
 					Role like N'%' + @Find + '%' or PhoneNumber like '%' + @Find + '%' or Address like N'%' + @Find + '%' or 
 					CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
 					CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
-					CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%'
+					CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%')
 
 			
 			print N'Thao tác thành công'
@@ -1189,7 +1187,7 @@ drop PROC sp_DeleteProfileStaff
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_FindProfileStaff_All @Find = N'phuo'
+	exec sp_FindProfileStaff_All @Find = N''
 
 
 -------------------------------------------------------------------	
@@ -1204,30 +1202,30 @@ drop PROC sp_DeleteProfileStaff
 		begin tran
 			if @FindBy = 'IdStaff'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IdStaff like '%' + @Find + '%'
+				 where IsDelete = 1 and IdStaff like '%' + @Find + '%'
 			else if @FindBy = 'NameStaff'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where NameStaff like '%' + @Find + '%'
+				 where IsDelete = 1 and NameStaff like '%' + @Find + '%'
 			else if @FindBy = 'Address'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where Address like '%' + @Find + '%'
+				 where IsDelete = 1 and Address like '%' + @Find + '%'
 			else if @FindBy = 'PhoneNumber'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where PhoneNumber like '%' + @Find + '%'
+				 where IsDelete = 1 and PhoneNumber like '%' + @Find + '%'
 			else if  @FindBy = 'BirthDay'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where		CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
-							CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
-							CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%'
+				 where	IsDelete = 1 and (	CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
+											CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
+											CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%')
 			else if @FindBy = 'Email'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where Email like '%' + @Find + '%'
+				 where IsDelete = 1 and Email like '%' + @Find + '%'
 			else if @FindBy = 'Role'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where Role like '%' + @Find + '%'
+				 where IsDelete = 1 and Role like '%' + @Find + '%'
 			else if @FindBy = 'Gender'
 				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where Gender like '%' + @Find + '%'
+				 where IsDelete = 1 and Gender like '%' + @Find + '%'
 			print N'Thao tác thành công'
 		commit tran
 	end try
@@ -1237,9 +1235,9 @@ drop PROC sp_DeleteProfileStaff
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_FindProfileStaff_FindBy @Find = N'ad'
+	exec sp_FindProfileStaff_FindBy @Find = N''
 
-exec sp_FindProfileStaff_FindBy @FindBy = 'Gender',  @Find = N'No'
+exec sp_FindProfileStaff_FindBy @FindBy = 'Gender',  @Find = N''
 
 
 exec sp_FindProfileStaff_FindBy @Find = N'a', @FindBy = N'NameStaff'
@@ -1469,7 +1467,7 @@ drop PROC sp_Detach
 
 	exec sp_Detach @IdTable = 11, @IdDetailBill = 13, @Amount = 4, @AmountNew = 1
 
-		-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
 
 drop PROC sp_MergeBill
 	create proc sp_MergeBill
@@ -1536,4 +1534,166 @@ drop PROC sp_MergeBillMenu
 	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
 
 	exec sp_DetailBill @IdTable = 1
-	
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_ListMaterial
+	create proc sp_ListMaterial
+	as
+	begin try
+		begin tran
+
+			select * from Material
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_ListMaterial_DGV
+	create proc sp_ListMaterial_DGV
+	as
+	begin try
+		begin tran
+
+			select IdMaterial as 'Mã số', NameMaterial as 'Tên', Amount as 'Số lượng', Type as 'Đơn vị tính', Producer as 'Nhà sản xuất' from Material
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_ListMaterial_Id
+	create proc sp_ListMaterial_Id
+				@IdMaterial nvarchar(50)
+	as
+	begin try
+		begin tran
+
+			select * from Material
+			where IdMaterial = @IdMaterial
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch	
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_InsertMaterial
+	create proc sp_InsertMaterial
+				@IdMaterial nvarchar(50),
+				@NameMaterial nvarchar(50),
+				@Amount int,
+				@Type nvarchar(10),
+				@Status nvarchar(20),
+				@Producer nvarchar(50),
+				@ImportPrice float,
+				@ImportDate Date,
+				@Picture nvarchar(150)
+	as
+	begin try
+		begin tran
+
+			insert into Material values
+			(@IdMaterial, @NameMaterial, @Amount, @Type, @Status, @Producer, @ImportPrice, @ImportDate, @Picture)
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+	exec sp_InsertMaterial @IdMaterial = 'ADS', @NameMaterial = N'asd', @Amount = 10, @Type = N'Chai/Lon', @Status = N'Còn hàng', @Producer = N'asd', @ImportPrice = '22222', @ImportDate = '11/15/2021 12:00:00 AM', @Picture = '\Image\Material\Syrup\siro-torani-cam-torani-orange-syrup-750ml.png'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_UpdateMaterial
+	create proc sp_UpdateMaterial
+				@IdMaterial nvarchar(50),
+				@NameMaterial nvarchar(50),
+				@Amount int,
+				@Type nvarchar(10),
+				@Status nvarchar(20),
+				@Producer nvarchar(50),
+				@ImportPrice float,
+				@ImportDate Date,
+				@Picture nvarchar(150)
+	as
+	begin try
+		begin tran
+			
+			Update Material
+			set NameMaterial = @NameMaterial, Amount = @Amount, Type = @Type, Status = @Status, Producer = @Producer, ImportPrice = @ImportPrice, ImportDate = @ImportDate, Picture = @Picture
+			where IdMaterial = @IdMaterial
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_FindMaterial
+	create proc sp_FindMaterial
+				@Find nvarchar(255)
+	as
+	begin try
+		begin tran
+			
+			select IdMaterial as 'Mã số', NameMaterial as 'Tên', Amount as 'Số lượng', Type as 'Đơn vị tính', Producer as 'Nhà sản xuất' from Material
+			where IdMaterial like '%' + @Find + '%' or NameMaterial like '%' + @Find + '%' 
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_DeleteMaterial
+	create proc sp_DeleteMaterial
+				@IdMaterial nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			Delete from Material
+			where IdMaterial = @IdMaterial
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+

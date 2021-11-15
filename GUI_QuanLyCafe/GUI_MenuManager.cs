@@ -123,7 +123,8 @@ namespace GUI_QuanLyCafe
         private void ResetText()
         {
             Name_txt.Text = "";
-            Price_txt.Text = ""; 
+            Price_txt.Text = "";
+            Find_txt.Text = "";
             Category_cbb.SelectedIndex = 0;
             Picture_ptb.Image = Image.FromFile(Application.StartupPath + @"\Image\Icon\questionmark.PNG");
             PathPicture_txt.Text = @"\Image\Icon\questionmark.PNG";
@@ -193,8 +194,15 @@ namespace GUI_QuanLyCafe
                     Add_btn.Enabled = false;
                     Edit_btn.Enabled = true;
 
-                    menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
-                    MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category(Find_txt.Text = "", menu);
+                    if (FindBy_cbb.Text == "Tất cả")
+                    {
+                        MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All("");
+                    }
+                    else
+                    {
+                        menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
+                        MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category("", menu);
+                    }
 
                     MessageBox.Show("Thêm món thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -224,8 +232,16 @@ namespace GUI_QuanLyCafe
                     BUS_Menu.Instance.UpdateMenu(menu);
                     Edit_ckb.Checked = false;
 
-                    menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
-                    MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category(Find_txt.Text = "", menu);
+                    if (FindBy_cbb.Text == "Tất cả")
+                    {
+                        MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All("");
+                    }
+                    else
+                    {
+                        menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
+                        MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category("", menu);
+                    }
+                   
                     MessageBox.Show("Sửa món thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -244,20 +260,36 @@ namespace GUI_QuanLyCafe
                 if (dlr == DialogResult.Yes)
                 {
                     BUS_Menu.Instance.DeleteMenu(menu);
-                    ResetText();
 
-                    Edit_ckb.Enabled = true;
-                    Edit_ckb.Checked = false;
+                    if (BUS_Menu.Instance.FindMenu_All(Name_txt.Text).Rows.Count == 0)
+                    {
+                        ResetText();
 
-                    menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
-                    MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category(Find_txt.Text = "", menu);
+                        Edit_ckb.Enabled = true;
+                        Edit_ckb.Checked = false;
 
-                    MessageBox.Show("Xóa món khỏi menu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (FindBy_cbb.Text == "Tất cả")
+                        {
+                            MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All("");
+                        }
+                        else
+                        {
+                            menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
+                            MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category("", menu);
+                        }
+
+                        MessageBox.Show("Xóa món khỏi menu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa món khỏi menu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                   
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Xóa món khỏi menu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Xóa món khỏi menu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

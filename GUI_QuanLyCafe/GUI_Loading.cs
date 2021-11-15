@@ -31,7 +31,7 @@ namespace GUI_QuanLyCafe
             Thread thread = new Thread(() =>
             {
                 BUS_Table.Instance.ListTable();
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
                 Login_frm Login = new Login_frm();
                 Login.ShowDialog();
             });

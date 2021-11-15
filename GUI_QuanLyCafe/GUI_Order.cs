@@ -28,6 +28,7 @@ namespace GUI_QuanLyCafe
                 Statistic_tsmi.Visible = false;
             }
             Loading_frm.Status = 2;
+
             this.WindowState = FormWindowState.Minimized;
             this.Show();
             this.WindowState = FormWindowState.Maximized;

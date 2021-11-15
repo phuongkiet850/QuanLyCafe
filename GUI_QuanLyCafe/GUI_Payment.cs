@@ -113,8 +113,11 @@ namespace GUI_QuanLyCafe
                 bill.ToTal = TotalVAT;
                 bill.Shift = Login_frm.Shift.Trim();
                 bill.NameStaff = BUS_Bill.Instance.DetailBill(bill).Rows[0][7].ToString().Trim();
-                bill.CheckOut = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-                bill.CheckIn = DateTime.Parse(DateTime.Parse(BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString()).ToString("dd/MM/yyyy HH:mm:ss"));
+                string CheckOut = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                bill.CheckOut = DateTime.ParseExact(CheckOut, "dd/MM/yyyy HH:mm:ss", null);
+
+                string CheckIn = DateTime.Parse(BUS_Bill.Instance.DetailBill(bill).Rows[0][4].ToString()).ToString("dd/MM/yyyy HH:mm:ss");
+                bill.CheckIn = DateTime.ParseExact(CheckIn, "dd/MM/yyyy HH:mm:ss", null);
                 bill.Method = Payment_cbb.Text.Trim();
             }
             catch (Exception) { }
