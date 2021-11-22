@@ -14,6 +14,7 @@ namespace GUI_QuanLyCafe
         }
 
         DTO_Voucher voucher = new DTO_Voucher();
+        DTO_Log log = new DTO_Log();
 
         private void Voucher_frm_Load(object sender, EventArgs e)
         {
@@ -66,6 +67,15 @@ namespace GUI_QuanLyCafe
                 NameVoucher_lbl.ForeColor = Color.Black;
                 Percent_lbl.ForeColor = Color.Black;
             }
+        }
+
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = Order_frm.Object;
+            log.IdObject = IdVoucher_txt.Text.Trim();
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
         }
 
         private void ResetText()
@@ -124,7 +134,8 @@ namespace GUI_QuanLyCafe
                 ResetFind_btn.Enabled = false;
                 ListVoucher_dgv.Enabled = false;
                 //save log
-
+                log.Action = "tạo vùng lưu";
+                SaveLog();
                 //
                 VerificationText();
                 this.ActiveControl = IdVoucher_txt;
@@ -144,7 +155,8 @@ namespace GUI_QuanLyCafe
                 {
                     InsertVoucher();
                     //save log
-                  
+                    log.Action = "thêm";
+                    SaveLog();
                     //
 
                     Edit_ckb.Enabled = true;
@@ -188,17 +200,21 @@ namespace GUI_QuanLyCafe
                     {
                         GetText();
                         BUS_Voucher.Instance.DeleteVoucher(voucher);
-
+                        this.ActiveControl = label12;
                         if (CreateID_btn.Enabled == false)
                         {
+                            ResetText();
+
                             //save log
-                          
+                            log.Action = "xóa vùng lưu";
+                            SaveLog();
                             //
                         }
                         else
                         {
                             //save log
-                           
+                            log.Action = "xóa";
+                            SaveLog();
                             //
                         }
 
@@ -230,7 +246,8 @@ namespace GUI_QuanLyCafe
                     Edit_ckb.Checked = false;
 
                     //save log
-                  
+                    log.Action = "sửa";
+                    SaveLog();
                     //
 
                     MessageBox.Show("Sửa khuyển mãi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -370,6 +387,12 @@ namespace GUI_QuanLyCafe
         private void Percent_txt_TextChanged(object sender, EventArgs e)
         {
             VerificationText();
+        }
+
+        private void Log_MenuItem_Click(object sender, EventArgs e)
+        {
+            Log_frm log = new Log_frm();
+            log.ShowDialog();
         }
     }
 }

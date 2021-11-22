@@ -37,6 +37,8 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ListOrder1_dgv = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Log_Menu = new System.Windows.Forms.MenuStrip();
+            this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Switch_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Merge_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Detach_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -51,6 +53,7 @@ namespace GUI_QuanLyCafe
             this.Table_flp = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder1_dgv)).BeginInit();
             this.panel3.SuspendLayout();
+            this.Log_Menu.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder2_dgv)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,9 +65,9 @@ namespace GUI_QuanLyCafe
             this.ListOrder1_dgv.AllowUserToResizeColumns = false;
             this.ListOrder1_dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ListOrder1_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ListOrder1_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ListOrder1_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListOrder1_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder1_dgv.BackgroundColor = System.Drawing.Color.White;
@@ -75,13 +78,13 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListOrder1_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ListOrder1_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListOrder1_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ListOrder1_dgv.Location = new System.Drawing.Point(3, 56);
+            this.ListOrder1_dgv.Location = new System.Drawing.Point(3, 85);
             this.ListOrder1_dgv.MultiSelect = false;
             this.ListOrder1_dgv.Name = "ListOrder1_dgv";
             this.ListOrder1_dgv.ReadOnly = true;
@@ -95,14 +98,13 @@ namespace GUI_QuanLyCafe
             this.ListOrder1_dgv.ShowCellToolTips = false;
             this.ListOrder1_dgv.ShowEditingIcon = false;
             this.ListOrder1_dgv.ShowRowErrors = false;
-            this.ListOrder1_dgv.Size = new System.Drawing.Size(604, 275);
+            this.ListOrder1_dgv.Size = new System.Drawing.Size(604, 310);
             this.ListOrder1_dgv.TabIndex = 41;
             this.ListOrder1_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListOrder1_dgv_CellClick);
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.Log_Menu);
             this.panel3.Controls.Add(this.Switch_btn);
             this.panel3.Controls.Add(this.Merge_btn);
             this.panel3.Controls.Add(this.Detach_btn);
@@ -113,12 +115,31 @@ namespace GUI_QuanLyCafe
             this.panel3.Controls.Add(this.ListOrder1_dgv);
             this.panel3.Location = new System.Drawing.Point(667, 9);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(610, 732);
+            this.panel3.Size = new System.Drawing.Size(610, 827);
             this.panel3.TabIndex = 19;
+            // 
+            // Log_Menu
+            // 
+            this.Log_Menu.BackColor = System.Drawing.Color.Transparent;
+            this.Log_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Log_MenuItem});
+            this.Log_Menu.Location = new System.Drawing.Point(0, 0);
+            this.Log_Menu.Name = "Log_Menu";
+            this.Log_Menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Log_Menu.Size = new System.Drawing.Size(610, 40);
+            this.Log_Menu.TabIndex = 146;
+            this.Log_Menu.Text = "menuStrip1";
+            // 
+            // Log_MenuItem
+            // 
+            this.Log_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.log_format;
+            this.Log_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Log_MenuItem.Name = "Log_MenuItem";
+            this.Log_MenuItem.Size = new System.Drawing.Size(44, 36);
+            this.Log_MenuItem.Click += new System.EventHandler(this.Log_MenuItem_Click);
             // 
             // Switch_btn
             // 
-            this.Switch_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Switch_btn.Animated = true;
             this.Switch_btn.BorderRadius = 10;
             this.Switch_btn.BorderThickness = 2;
@@ -130,7 +151,7 @@ namespace GUI_QuanLyCafe
             this.Switch_btn.ForeColor = System.Drawing.Color.Black;
             this.Switch_btn.HoverState.Parent = this.Switch_btn;
             this.Switch_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.exchange;
-            this.Switch_btn.Location = new System.Drawing.Point(462, 342);
+            this.Switch_btn.Location = new System.Drawing.Point(462, 405);
             this.Switch_btn.Name = "Switch_btn";
             this.Switch_btn.ShadowDecoration.Parent = this.Switch_btn;
             this.Switch_btn.Size = new System.Drawing.Size(145, 40);
@@ -140,7 +161,6 @@ namespace GUI_QuanLyCafe
             // 
             // Merge_btn
             // 
-            this.Merge_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Merge_btn.Animated = true;
             this.Merge_btn.BorderRadius = 10;
             this.Merge_btn.BorderThickness = 2;
@@ -152,7 +172,7 @@ namespace GUI_QuanLyCafe
             this.Merge_btn.ForeColor = System.Drawing.Color.Black;
             this.Merge_btn.HoverState.Parent = this.Merge_btn;
             this.Merge_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.merged;
-            this.Merge_btn.Location = new System.Drawing.Point(310, 342);
+            this.Merge_btn.Location = new System.Drawing.Point(310, 405);
             this.Merge_btn.Name = "Merge_btn";
             this.Merge_btn.ShadowDecoration.Parent = this.Merge_btn;
             this.Merge_btn.Size = new System.Drawing.Size(145, 40);
@@ -162,7 +182,6 @@ namespace GUI_QuanLyCafe
             // 
             // Detach_btn
             // 
-            this.Detach_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Detach_btn.Animated = true;
             this.Detach_btn.BorderRadius = 10;
             this.Detach_btn.BorderThickness = 2;
@@ -174,7 +193,7 @@ namespace GUI_QuanLyCafe
             this.Detach_btn.ForeColor = System.Drawing.Color.Black;
             this.Detach_btn.HoverState.Parent = this.Detach_btn;
             this.Detach_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.remove;
-            this.Detach_btn.Location = new System.Drawing.Point(3, 342);
+            this.Detach_btn.Location = new System.Drawing.Point(3, 405);
             this.Detach_btn.Name = "Detach_btn";
             this.Detach_btn.ShadowDecoration.Parent = this.Detach_btn;
             this.Detach_btn.Size = new System.Drawing.Size(145, 40);
@@ -184,7 +203,6 @@ namespace GUI_QuanLyCafe
             // 
             // Delete_btn
             // 
-            this.Delete_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Delete_btn.Animated = true;
             this.Delete_btn.BorderRadius = 10;
             this.Delete_btn.BorderThickness = 2;
@@ -195,7 +213,7 @@ namespace GUI_QuanLyCafe
             this.Delete_btn.ForeColor = System.Drawing.Color.Black;
             this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.delete;
-            this.Delete_btn.Location = new System.Drawing.Point(157, 342);
+            this.Delete_btn.Location = new System.Drawing.Point(157, 405);
             this.Delete_btn.Name = "Delete_btn";
             this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
             this.Delete_btn.Size = new System.Drawing.Size(145, 40);
@@ -205,11 +223,10 @@ namespace GUI_QuanLyCafe
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.NameTable2_lbl);
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(3, 394);
+            this.panel2.Location = new System.Drawing.Point(3, 457);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(604, 54);
             this.panel2.TabIndex = 44;
@@ -229,8 +246,9 @@ namespace GUI_QuanLyCafe
             this.ListOrder2_dgv.AllowUserToResizeColumns = false;
             this.ListOrder2_dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ListOrder2_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.ListOrder2_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ListOrder2_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListOrder2_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder2_dgv.BackgroundColor = System.Drawing.Color.White;
@@ -241,13 +259,13 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListOrder2_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.ListOrder2_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListOrder2_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ListOrder2_dgv.Location = new System.Drawing.Point(3, 447);
+            this.ListOrder2_dgv.Location = new System.Drawing.Point(3, 510);
             this.ListOrder2_dgv.MultiSelect = false;
             this.ListOrder2_dgv.Name = "ListOrder2_dgv";
             this.ListOrder2_dgv.ReadOnly = true;
@@ -261,25 +279,24 @@ namespace GUI_QuanLyCafe
             this.ListOrder2_dgv.ShowCellToolTips = false;
             this.ListOrder2_dgv.ShowEditingIcon = false;
             this.ListOrder2_dgv.ShowRowErrors = false;
-            this.ListOrder2_dgv.Size = new System.Drawing.Size(604, 275);
+            this.ListOrder2_dgv.Size = new System.Drawing.Size(604, 310);
             this.ListOrder2_dgv.TabIndex = 43;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.NameTable1_lbl);
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(3, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 54);
+            this.panel1.Size = new System.Drawing.Size(604, 45);
             this.panel1.TabIndex = 42;
             // 
             // NameTable1_lbl
             // 
             this.NameTable1_lbl.AutoSize = true;
             this.NameTable1_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTable1_lbl.Location = new System.Drawing.Point(12, 13);
+            this.NameTable1_lbl.Location = new System.Drawing.Point(12, 10);
             this.NameTable1_lbl.Name = "NameTable1_lbl";
             this.NameTable1_lbl.Size = new System.Drawing.Size(52, 23);
             this.NameTable1_lbl.TabIndex = 0;
@@ -292,9 +309,9 @@ namespace GUI_QuanLyCafe
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.Table_flp);
-            this.panel4.Location = new System.Drawing.Point(8, 9);
+            this.panel4.Location = new System.Drawing.Point(8, 12);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(653, 732);
+            this.panel4.Size = new System.Drawing.Size(653, 824);
             this.panel4.TabIndex = 20;
             // 
             // label1
@@ -317,7 +334,7 @@ namespace GUI_QuanLyCafe
             this.Table_flp.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Table_flp.Location = new System.Drawing.Point(28, 51);
             this.Table_flp.Name = "Table_flp";
-            this.Table_flp.Size = new System.Drawing.Size(596, 671);
+            this.Table_flp.Size = new System.Drawing.Size(596, 766);
             this.Table_flp.TabIndex = 17;
             // 
             // ListTable_frm
@@ -325,7 +342,7 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1284, 751);
+            this.ClientSize = new System.Drawing.Size(1284, 839);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -339,6 +356,9 @@ namespace GUI_QuanLyCafe
             this.Load += new System.EventHandler(this.DetachTable_frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder1_dgv)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.Log_Menu.ResumeLayout(false);
+            this.Log_Menu.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder2_dgv)).EndInit();
@@ -364,7 +384,9 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label NameTable1_lbl;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel Table_flp;
+        private System.Windows.Forms.MenuStrip Log_Menu;
+        private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

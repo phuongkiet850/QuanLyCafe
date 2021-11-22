@@ -17,7 +17,9 @@ namespace GUI_QuanLyCafe
         DTO_Menu menu = new DTO_Menu();
         DTO_Bill bill = new DTO_Bill();
         DTO_Staff staff = new DTO_Staff();
+        DTO_Log log = new DTO_Log();
 
+        public static int Count;
         public static string NameFood;
         public string CategoryID = "";
         public int Amount;
@@ -45,10 +47,20 @@ namespace GUI_QuanLyCafe
             ListOrder_dgv.Columns.Add("IdMenu", "Id Menu");
             ListOrder_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListOrder_dgv.Columns[0].Width = 180;
+            ListOrder_dgv.Columns[1].Width = 108;
             ListOrder_dgv.Columns[3].Width = 200;
             ListOrder_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListOrder_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListOrder_dgv.Columns[4].Visible = false;
+        }
+
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = "món";
+            log.IdObject = Order_frm.NameTable.Trim();
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
         }
 
         private void LoadMenu(string CategoryID)
@@ -159,6 +171,7 @@ namespace GUI_QuanLyCafe
 
         private void MenuManager_btn_Click(object sender, EventArgs e)
         {
+            Order_frm.Object = "menu";
             MenuManager_frm menuManager = new MenuManager_frm();
             menuManager.ShowDialog();
             if (CategoryID == "")
@@ -191,6 +204,7 @@ namespace GUI_QuanLyCafe
                     else if (NameFood == ListOrder_dgv.Rows[i].Cells[0].Value.ToString() && Note == ListOrder_dgv.Rows[i].Cells[3].Value.ToString())
                     {
                         ListOrder_dgv.Rows[i].Cells[1].Value = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString()) + Detail_frm.Amount;
+                        ListOrder_dgv.Rows[i].Cells[2].Value = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString()) * Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value);
                         ListOrder_dgv.Update();
                         Detail_frm.Status = 0;
                         break;
@@ -202,7 +216,7 @@ namespace GUI_QuanLyCafe
                     DataGridViewRow row = (DataGridViewRow)ListOrder_dgv.Rows[0].Clone();
                     row.Cells[0].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][1].ToString();
                     row.Cells[1].Value = Detail_frm.Amount;
-                    row.Cells[2].Value = BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString();
+                    row.Cells[2].Value = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString()) * Detail_frm.Amount;
                     row.Cells[3].Value = Detail_frm.Note;
                     row.Cells[4].Value = bill.IdMenu;
                     ListOrder_dgv.Rows.Add(row);
@@ -248,11 +262,20 @@ namespace GUI_QuanLyCafe
                     {
                         bill.IdTable = Order_frm.IdTable;
                         bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
+                        bill.Price =  (float)Convert.ToDouble(ListOrder_dgv.Rows[i].Cells[2].Value.ToString());
+                        bill.ToTal = bill.Price * bill.Amount;
                         bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
                         bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
                         BUS_Bill.Instance.AddDesertToBill(bill);
+                        Count += bill.Amount;
                     }
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //save log
+                    log.Action = "thêm " + Count;
+                    SaveLog();
+                    //
+
                     this.Close();
                 }
                 else if (ListOrder_dgv.Rows.Count == 1)
@@ -266,11 +289,14 @@ namespace GUI_QuanLyCafe
                         status = 0;
                         bill.IdTable = Order_frm.IdTable;
                         bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
+                        bill.Price = (float)Convert.ToDouble(ListOrder_dgv.Rows[i].Cells[2].Value.ToString());
+                        bill.ToTal = bill.Price * bill.Amount;
                         bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
                         bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
 
                         NameFood = ListOrder_dgv.Rows[i].Cells[0].Value.ToString();
                         Amount = bill.Amount;
+                        Count += Amount;
                         Note = bill.Note;
 
                         MergeBill();
@@ -281,6 +307,10 @@ namespace GUI_QuanLyCafe
                         
                     }
                     MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //save log
+                    log.Action = "thêm " + Count;
+                    SaveLog();
+                    //
                     this.Close();
                 }
             }

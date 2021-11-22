@@ -15,6 +15,7 @@ namespace GUI_QuanLyCafe
         }
 
         DTO_Material material = new DTO_Material();
+        DTO_Log log = new DTO_Log();
 
         private void Material_frm_Load(object sender, EventArgs e)
         {
@@ -115,6 +116,15 @@ namespace GUI_QuanLyCafe
             }
         }
 
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = Order_frm.Object;
+            log.IdObject = IdMaterial_txt.Text.Trim();
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
+        }
+
         private void ResetText()
         {
             IdMaterial_txt.Text = "";
@@ -125,6 +135,7 @@ namespace GUI_QuanLyCafe
             Producer_txt.Text = "";
             Date_date.Value = DateTime.Now;
             Picture_ptb.Image = Image.FromFile(Application.StartupPath + @"\Image\Icon\unknown.PNG");
+            PathPicture_txt.Text = @"\Image\Icon\unknown.PNG";
         }
 
         private void ResetFind_btn_Click(object sender, EventArgs e)
@@ -184,9 +195,12 @@ namespace GUI_QuanLyCafe
                 Find_txt.Text = "";
                 ResetText();
                 FomatDatagridView();
-                //save log
 
+                //save log
+                log.Action = "tạo vùng lưu";
+                SaveLog();
                 //
+
                 CreateID_btn.Enabled = false;
                 IdMaterial_txt.ReadOnly = false;
                 Edit_ckb.Enabled = false;
@@ -214,6 +228,12 @@ namespace GUI_QuanLyCafe
                 {
                     GetText();
                     BUS_Material.Instance.InsertMaterial(material);
+
+                    //save log
+                    log.Action = "thêm";
+                    SaveLog();
+                    //
+
                     Find_txt.ReadOnly = false;
                     ResetFind_btn.Enabled = true;
                     Edit_ckb.Enabled = true;
@@ -223,10 +243,6 @@ namespace GUI_QuanLyCafe
                     Add_btn.Enabled = false;
                     Edit_btn.Enabled = true;
                     FomatDatagridView();
-
-                    //save log
-
-                    //
 
                     MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -243,12 +259,14 @@ namespace GUI_QuanLyCafe
             {
                 GetText();
                 BUS_Material.Instance.UpdateMaterial(material);
-                Edit_ckb.Checked = false;
-                FomatDatagridView();
 
                 //save log
-
+                log.Action = "sửa";
+                SaveLog();
                 //
+
+                Edit_ckb.Checked = false;
+                FomatDatagridView();
 
                 MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -268,16 +286,19 @@ namespace GUI_QuanLyCafe
                     GetText();
                     BUS_Material.Instance.DeleteMaterial(material);
 
+                    this.ActiveControl = label12;
                     if (CreateID_btn.Enabled == false)
                     {
                         //save log
-                      
+                        log.Action = "xóa vùng lưu";
+                        SaveLog();
                         //
                     }
                     else
                     {
                         //save log
-    
+                        log.Action = "xóa";
+                        SaveLog();
                         //
                     }
 
@@ -340,7 +361,7 @@ namespace GUI_QuanLyCafe
 
             if (Edit_ckb.Checked == true)
             {
-                if (IdMaterial_lbl.ForeColor == Color.Black && NameMaterial__lbl.ForeColor == Color.Black && Amount_lbl.ForeColor == Color.Black && Type_lbl.ForeColor == Color.Black && Producer_lbl.ForeColor == Color.Black && Price_lbl.ForeColor == Color.Black && PathPicture_txt.Text != "")
+                if (IdMaterial_lbl.ForeColor == Color.Black && NameMaterial__lbl.ForeColor == Color.Black && Amount_lbl.ForeColor == Color.Black && Type_lbl.ForeColor == Color.Black && Producer_lbl.ForeColor == Color.Black && Price_lbl.ForeColor == Color.Black)
                 {
                     if (CreateID_btn.Enabled == false)
                     {
@@ -516,8 +537,15 @@ namespace GUI_QuanLyCafe
 
         private void Price_txt_Leave(object sender, EventArgs e)
         {
-            double value = double.Parse(Price_txt.Text);
+            float value = (float)double.Parse(Price_txt.Text);
             Price_txt.Text = String.Format("{0:0,0}", value);
+        }
+
+        private void Log_MenuItem_Click(object sender, EventArgs e)
+        {
+            log.Object1 = Order_frm.Object;
+            Log_frm logg = new Log_frm();
+            logg.ShowDialog();
         }
     }
 }

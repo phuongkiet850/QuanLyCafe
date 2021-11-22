@@ -14,14 +14,17 @@ namespace DTO_QuanLyCafe
         private int idDetailBill;
         private int idMenu;
         private int amount;
+        private float price;
+        private string nameTable;
         private DateTime checkIn;
         private string idVoucher;
         private string idPayment;
         private string idStaff;
         private string note;
+        private float percentVoucher;
+        private float percentVAT;
         private float toTal;
         private string shift;
-        private float percentVoucher;
         private string nameStaff;
         private DateTime checkOut;
         private string nameMenu;
@@ -38,6 +41,8 @@ namespace DTO_QuanLyCafe
 
         public int Amount { get => amount; set => amount = value; }
 
+        public float Price { get => price; set => price = value; }
+
         public DateTime CheckIn { get => checkIn; set => checkIn = value; }
 
         public string IdVoucher { get => idVoucher; set => idVoucher = value; }
@@ -48,11 +53,13 @@ namespace DTO_QuanLyCafe
 
         public string Note { get => note; set => note = value; }
 
+        public float PercentVoucher { get => percentVoucher; set => percentVoucher = value; }
+
+        public float PercentVAT { get => percentVAT; set => percentVAT = value; }
+
         public float ToTal { get => toTal; set => toTal = value; }
 
         public string Shift { get => shift; set => shift = value; }
-
-        public float PercentVoucher { get => percentVoucher; set => percentVoucher = value; }
 
         public string NameStaff { get => nameStaff; set => nameStaff = value; }
 
@@ -63,6 +70,8 @@ namespace DTO_QuanLyCafe
         public int IdStatistic { get => idStatistic; set => idStatistic = value; }
 
         public string Method { get => method; set => method = value; }
+
+        public string NameTable { get => nameTable; set => nameTable = value; }
 
         public DTO_Bill() { }
     }

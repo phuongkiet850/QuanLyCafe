@@ -34,17 +34,17 @@ namespace BUS_QuanLyCafe
             return DAL_Menu.Instance.ListMenu_DGV();
         }
 
-        public DataTable AddMenu(DTO_Menu menu)
+        public bool AddMenu(DTO_Menu menu)
         {
             return DAL_Menu.Instance.AddMenu(menu);
         }
 
-        public DataTable UpdateMenu(DTO_Menu menu)
+        public bool UpdateMenu(DTO_Menu menu)
         {
             return DAL_Menu.Instance.UpdateMenu(menu);
         }
 
-        public DataTable DeleteMenu(DTO_Menu menu)
+        public bool DeleteMenu(DTO_Menu menu)
         {
             return DAL_Menu.Instance.DeleteMenu(menu);
         }

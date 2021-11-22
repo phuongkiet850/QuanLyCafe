@@ -33,16 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Guna.UI2">
       <HintPath>D:\Download\Guna + File Crack\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="KAutoHelper">
       <HintPath>D:\Download\KAutoHelper.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +76,12 @@
     </Compile>
     <Compile Include="GUI_Confirm.Designer.cs">
       <DependentUpon>GUI_Confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_DetailStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_DetailStatistic.Designer.cs">
+      <DependentUpon>GUI_DetailStatistic.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_ListTable.cs">
       <SubType>Form</SubType>
@@ -120,6 +137,12 @@
     <Compile Include="GUI_Material.Designer.cs">
       <DependentUpon>GUI_Material.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Note.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Note.Designer.cs">
+      <DependentUpon>GUI_Note.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +154,12 @@
     </Compile>
     <Compile Include="GUI_Staff.Designer.cs">
       <DependentUpon>GUI_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Statistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Statistic.Designer.cs">
+      <DependentUpon>GUI_Statistic.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_Voucher.cs">
       <SubType>Form</SubType>
@@ -146,11 +175,26 @@
     <Compile Include="GUI_Payment.Designer.cs">
       <DependentUpon>GUI_Payment.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Report.Designer.cs">
+      <DependentUpon>GUI_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistic.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statistic.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="GUI_ChangePassword.resx">
       <DependentUpon>GUI_ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Confirm.resx">
       <DependentUpon>GUI_Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_DetailStatistic.resx">
+      <DependentUpon>GUI_DetailStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ListTable.resx">
       <DependentUpon>GUI_ListTable.cs</DependentUpon>
@@ -179,6 +223,9 @@
     <EmbeddedResource Include="GUI_Material.resx">
       <DependentUpon>GUI_Material.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Note.resx">
+      <DependentUpon>GUI_Note.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Order.resx">
       <DependentUpon>GUI_Order.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +235,9 @@
     <EmbeddedResource Include="GUI_Staff.resx">
       <DependentUpon>GUI_Staff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Statistic.resx">
+      <DependentUpon>GUI_Statistic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Voucher.resx">
       <DependentUpon>GUI_Voucher.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +245,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Report.resx">
+      <DependentUpon>GUI_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistic.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Statistic.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
@@ -349,6 +406,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Image\Icon\questionmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Image\Icon\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Image\Icon\pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Image\Icon\research.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

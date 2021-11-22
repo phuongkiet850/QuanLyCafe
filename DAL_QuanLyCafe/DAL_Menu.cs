@@ -61,7 +61,7 @@ namespace DAL_QuanLyCafe
             }
         }
 
-        public DataTable AddMenu(DTO_Menu menu)
+        public bool AddMenu(DTO_Menu menu)
         {
             using (Connection = new SqlConnection(_Connection))
             {
@@ -69,11 +69,11 @@ namespace DAL_QuanLyCafe
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
-                return data;
+                return true;
             }
         }
 
-        public DataTable UpdateMenu(DTO_Menu menu)
+        public bool UpdateMenu(DTO_Menu menu)
         {
             using (Connection = new SqlConnection(_Connection))
             {
@@ -81,11 +81,11 @@ namespace DAL_QuanLyCafe
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
-                return data;
+                return true;
             }
         }
 
-        public DataTable DeleteMenu(DTO_Menu menu)
+        public bool DeleteMenu(DTO_Menu menu)
         {
             using (Connection = new SqlConnection(_Connection))
             {
@@ -93,7 +93,7 @@ namespace DAL_QuanLyCafe
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
-                return data;
+                return true;
             }
         }
 

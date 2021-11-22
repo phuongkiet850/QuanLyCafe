@@ -16,10 +16,11 @@ namespace GUI_QuanLyCafe
 
 
         DTO_Menu menu = new DTO_Menu();
+        DTO_Log log = new DTO_Log();
 
         private void MenuManager_frm_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
+            this.ActiveControl = Name_lbl;
             ListCategory();
             ListMenu();
         }
@@ -108,8 +109,20 @@ namespace GUI_QuanLyCafe
                 //datagridview
                 MenuList_dgv.Enabled = true;
 
+                //
+                Name_lbl.ForeColor = Color.Black;
+                Price_lbl.ForeColor = Color.Black;
 
             }
+        }
+
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = Order_frm.Object;
+            log.IdObject = Name_txt.Text.Trim();
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
         }
 
         private void GetText()
@@ -185,6 +198,11 @@ namespace GUI_QuanLyCafe
                     GetText();
                     BUS_Menu.Instance.AddMenu(menu);
 
+                    //save log
+                    log.Action = "thêm";
+                    SaveLog();
+                    //
+
                     Find_txt.ReadOnly = false;
                     FindBy_cbb.Enabled = true;
                     ResetFind_btn.Enabled = true;
@@ -230,6 +248,12 @@ namespace GUI_QuanLyCafe
                 {
                     GetText();
                     BUS_Menu.Instance.UpdateMenu(menu);
+
+                    //save log
+                    log.Action = "sửa";
+                    SaveLog();
+                    //
+
                     Edit_ckb.Checked = false;
 
                     if (FindBy_cbb.Text == "Tất cả")
@@ -261,30 +285,49 @@ namespace GUI_QuanLyCafe
                 {
                     BUS_Menu.Instance.DeleteMenu(menu);
 
-                    if (BUS_Menu.Instance.FindMenu_All(Name_txt.Text).Rows.Count == 0)
+                    if (CreateID_btn.Enabled == false)
                     {
                         ResetText();
 
                         Edit_ckb.Enabled = true;
                         Edit_ckb.Checked = false;
 
-                        if (FindBy_cbb.Text == "Tất cả")
-                        {
-                            MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All("");
-                        }
-                        else
-                        {
-                            menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
-                            MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category("", menu);
-                        }
-
-                        MessageBox.Show("Xóa món khỏi menu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //save log
+                        log.Action = "xóa vùng lưu";
+                        SaveLog();
+                        //
                     }
                     else
                     {
-                        MessageBox.Show("Xóa món khỏi menu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                   
+                        if (BUS_Menu.Instance.FindMenu_All(Name_txt.Text).Rows.Count == 0)
+                        {
+                            //save log
+                            log.Action = "xóa";
+                            SaveLog();
+                            //
+
+                            ResetText();
+
+                            Edit_ckb.Enabled = true;
+                            Edit_ckb.Checked = false;
+
+                            if (FindBy_cbb.Text == "Tất cả")
+                            {
+                                MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All("");
+                            }
+                            else
+                            {
+                                menu.CategoryID = FindBy_cbb.SelectedValue.ToString();
+                                MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_Category("", menu);
+                            }
+
+                            MessageBox.Show("Xóa món khỏi menu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa món khỏi menu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } 
                 }
             }
             catch (Exception)
@@ -301,6 +344,11 @@ namespace GUI_QuanLyCafe
                 Find_txt.Text = "";
                 ResetText();
 
+                //save log
+                log.Action = "tạo vùng lưu";
+                SaveLog();
+                //
+
                 menu.IdMenu = 0;
                 CreateID_btn.Enabled = false;
                 Edit_ckb.Enabled = false;
@@ -311,8 +359,6 @@ namespace GUI_QuanLyCafe
                 FindBy_cbb.Enabled = false;
                 MenuList_dgv.Enabled = false;
 
-
-                Add_btn.Enabled = true;
                 this.ActiveControl = Name_txt;
             }
         }
@@ -329,13 +375,13 @@ namespace GUI_QuanLyCafe
 
         private void Category_cbb_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
+            this.ActiveControl = Name_lbl;
         }
 
         private void FindBy_cbb_SelectedValueChanged(object sender, EventArgs e)
         {
             Find_txt_TextChanged(sender, e);
-            this.ActiveControl = label1;
+            this.ActiveControl = Name_lbl;
         }
 
         private void Find_txt_TextChanged(object sender, EventArgs e)
@@ -361,6 +407,102 @@ namespace GUI_QuanLyCafe
         {
             Find_txt.Text = "";
             FindBy_cbb.SelectedIndex = 0;
+        }
+
+        private void Log_MenuItem_Click(object sender, EventArgs e)
+        {
+            log.Object1 = Order_frm.Object;
+            Log_frm logg = new Log_frm();
+            logg.ShowDialog();
+        }
+
+        private void Price_txt_TextChanged(object sender, EventArgs e)
+        {
+            VerificationText();
+        }
+
+        private void IsNumber(string txt, TextBox control, Control ctl)
+        {
+            if (Edit_ckb.Checked == true)
+            {
+                if (txt == "0" || txt == "")
+                {
+                    ctl.ForeColor = Color.Red;
+                }
+                else
+                {
+                    foreach (char c in txt)
+                    {
+                        if (c < '0' || c > '9')
+                        {
+                            if (c != ',')
+                            {
+                                control.Text = txt.Substring(0, txt.Length - 1);
+                                control.SelectionStart = txt.Length;
+                            }
+                        }
+                        else
+                        {
+                            ctl.ForeColor = Color.Black;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Name_txt_TextChanged(object sender, EventArgs e)
+        {
+            VerificationText();
+        }
+
+        private void VerificationText()
+        {
+            IsNumber(Price_txt.Text, Price_txt, Price_lbl);
+
+            if (Name_txt.Text == "")
+            {
+                Name_lbl.ForeColor = Color.Red;
+            }
+            else
+            {
+                Name_lbl.ForeColor = Color.Black;
+            }
+
+
+            if (Edit_ckb.Checked == true)
+            {
+                if (Name_lbl.ForeColor == Color.Black && Price_lbl.ForeColor == Color.Black)
+                {
+                    if (CreateID_btn.Enabled == false)
+                    {
+                        Add_btn.Enabled = true;
+                    }
+                    else
+                    {
+                        Edit_btn.Enabled = true;
+                    }
+
+                }
+                else
+                {
+                    Edit_btn.Enabled = false;
+                    Add_btn.Enabled = false;
+                }
+            }
+
+        }
+
+        private void MenuManager_frm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (CreateID_btn.Enabled == false && Edit_ckb.Checked == true)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Edit_ckb.Checked = false;
+                ResetFind_btn_Click(sender, e);
+            }
         }
     }
 }

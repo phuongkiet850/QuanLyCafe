@@ -121,8 +121,14 @@
   <data name="add-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\add-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="log-format" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\log-format.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="padlock1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\padlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coffee-tree-dac-biet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Material\Cafe\coffee-tree-dac-biet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,11 +142,11 @@
   <data name="padlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\padlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="id" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\id.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BacXiuDa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Cafe\BacXiuDa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="product" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\product.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -156,6 +162,9 @@
   </data>
   <data name="id-card" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\id-card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="id" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\id.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Aquafina" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\SoftDrink\Aquafina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,14 +184,14 @@
   <data name="DaoNgam" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Material\Khac\DaoNgam.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="questionmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\questionmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\exchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="siro-torani-cam-torani-orange-syrup-750ml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Material\Syrup\siro-torani-cam-torani-orange-syrup-750ml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="invisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\invisible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coupon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\coupon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,8 +211,8 @@
   <data name="eye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\eye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="siro-torani-cam-torani-orange-syrup-750ml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Material\Syrup\siro-torani-cam-torani-orange-syrup-750ml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\exchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Actions-edit-delete-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\Actions-edit-delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,14 +223,14 @@
   <data name="1200px-Highlands_Coffee_logo.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\1200px-Highlands_Coffee_logo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unknown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BacXiuDa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Cafe\BacXiuDa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Late" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Cafe\Late.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="invisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\invisible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="unknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unknown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Refreshicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\Refreshicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,7 +238,10 @@
   <data name="remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Image\Icon\remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="questionmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Image\Icon\questionmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\pdf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="research" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Image\Icon\research.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

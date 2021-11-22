@@ -11,13 +11,20 @@ namespace GUI_QuanLyCafe
     {
         public static string NameTable;
         public static int IdTable;
+        public static string Object;
+        public static string Object2;
+        public static string NameFood;
+        public static string Amount;
+        public static string Note;
         public Order_frm()
         {
             InitializeComponent();
         }
 
         DTO_Bill bill = new DTO_Bill();
+        DTO_Log log = new DTO_Log();
         Menu_frm menu = new Menu_frm();
+
         private void Order_frm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = label1;
@@ -70,7 +77,7 @@ namespace GUI_QuanLyCafe
                     float total = 0;
                     for (int i = 0; i < BUS_Bill.Instance.DetailBill(bill).Rows.Count; i++)
                     {
-                        ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
+                        ListViewItem item = new ListViewItem(BUS_Bill.Instance.DetailBill(bill).Rows[i][0].ToString() + " - " + BUS_Bill.Instance.DetailBill(bill).Rows[i][6].ToString());
                         item.SubItems.Add(BUS_Bill.Instance.DetailBill(bill).Rows[i][1].ToString());
                         item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][2].ToString())));
                         item.SubItems.Add(String.Format("{0:0,0}", (float)Convert.ToDouble(BUS_Bill.Instance.DetailBill(bill).Rows[i][3].ToString())));
@@ -87,7 +94,6 @@ namespace GUI_QuanLyCafe
                 {
                     ResetBill();
                 }
-                
             }
             catch (Exception) { }
         }
@@ -102,6 +108,15 @@ namespace GUI_QuanLyCafe
             VAT_lbl.Text = "Thuế VAT (10%) : ";
             NameStafff_lbl.Text = "Thu ngân : ";
             CheckIn_lbl.Text = "Giờ vào : ";
+        }
+
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = Order_frm.Object;
+            log.IdObject = NameTable_lbl.Text.Trim().Substring(6);
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -143,7 +158,6 @@ namespace GUI_QuanLyCafe
             menu.ShowDialog();
             LoadTable();
             ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
-
         }
 
         private void Order_frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -192,6 +206,7 @@ namespace GUI_QuanLyCafe
         private void Payment_btn_Click(object sender, EventArgs e)
         {
             NameTable = NameTable_lbl.Text;
+            Object = "hóa đơn";
             Payment_frm payment = new Payment_frm();
             payment.ShowDialog();
 
@@ -203,6 +218,7 @@ namespace GUI_QuanLyCafe
         {
             try
             {
+                Object = "hóa đơn";
                 if (Confirm_frm.Result == 1)
                 {
                     var dlr = MessageBox.Show("Bạn có muốn xóa hóa đơn của bàn này không (" + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString() + ") ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -211,8 +227,15 @@ namespace GUI_QuanLyCafe
                         bill.IdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
                         bill.IdTable = IdTable;
                         BUS_Bill.Instance.DeleteBill(bill);
+
+                        //save log
+                        log.Action = "xóa";
+                        SaveLog();
+                        //
+
                         LoadTable();
                         ResetBill();
+
                         MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -228,8 +251,15 @@ namespace GUI_QuanLyCafe
                             bill.IdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
                             bill.IdTable = IdTable;
                             BUS_Bill.Instance.DeleteBill(bill);
+
+                            //save log
+                            log.Action = "xóa";
+                            SaveLog();
+                            //
+
                             LoadTable();
                             ResetBill();
+                           
                             MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -244,18 +274,21 @@ namespace GUI_QuanLyCafe
 
         private void Staff_MenuItem_Click(object sender, EventArgs e)
         {
+            Object = "nhân viên";
             Staff_frm staff = new Staff_frm();
             staff.ShowDialog();
         }
 
         private void Material_MenuItem_Click(object sender, EventArgs e)
         {
+            Object = "nguyên liệu";
             Material_frm material = new Material_frm();
             material.ShowDialog();
         }
 
         private void Voucher_MenuItem_Click(object sender, EventArgs e)
         {
+            Object = "voucher";
             Voucher_frm voucher = new Voucher_frm();
             voucher.ShowDialog();
         }
@@ -267,6 +300,37 @@ namespace GUI_QuanLyCafe
             listTable.ShowDialog();
             LoadTable();
             ShowBill(Convert.ToInt32(NameTable_lbl.Text.Substring(10)));
+        }
+
+        private void Log_btn_Click(object sender, EventArgs e)
+        {
+            Object = "món";
+            Object2 = "hóa đơn";
+            Log_frm log = new Log_frm();
+            log.ShowDialog();
+        }
+
+        private void Statistic_tsmi_Click(object sender, EventArgs e)
+        {
+            Statistic_frm statistic = new Statistic_frm();
+            statistic.ShowDialog();
+        }
+
+        private void Bill_lv_DoubleClick(object sender, EventArgs e)
+        {
+            NameFood = Bill_lv.SelectedItems[0].SubItems[0].Text;
+            NameFood = NameFood.Substring(0,NameFood.IndexOf(" -"));
+            Amount = Bill_lv.SelectedItems[0].SubItems[1].Text;
+            Note = Bill_lv.SelectedItems[0].SubItems[0].Text;
+            Note = Note.Substring(Note.LastIndexOf("- ")).Replace("-", " ");
+            Note_frm note = new Note_frm();
+            note.ShowDialog();
+        }
+
+        private void Bill_lv_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = Bill_lv.Columns[e.ColumnIndex].Width;
         }
     }
 }

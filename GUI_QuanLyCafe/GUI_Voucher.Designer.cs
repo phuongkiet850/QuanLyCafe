@@ -29,8 +29,9 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Find_txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,10 +63,10 @@ namespace GUI_QuanLyCafe
             // 
             // Find_txt
             // 
-            this.Find_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Find_txt.Location = new System.Drawing.Point(537, 133);
+            this.Find_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Find_txt.Location = new System.Drawing.Point(559, 133);
             this.Find_txt.Name = "Find_txt";
-            this.Find_txt.Size = new System.Drawing.Size(355, 29);
+            this.Find_txt.Size = new System.Drawing.Size(366, 32);
             this.Find_txt.TabIndex = 120;
             this.Find_txt.TabStop = false;
             this.Find_txt.TextChanged += new System.EventHandler(this.Find_txt_TextChanged);
@@ -73,10 +74,10 @@ namespace GUI_QuanLyCafe
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(449, 136);
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(463, 136);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 21);
+            this.label9.Size = new System.Drawing.Size(90, 23);
             this.label9.TabIndex = 119;
             this.label9.Text = "Tìm kiếm";
             // 
@@ -86,10 +87,10 @@ namespace GUI_QuanLyCafe
             this.groupBox2.Controls.Add(this.Delete_btn);
             this.groupBox2.Controls.Add(this.Edit_btn);
             this.groupBox2.Controls.Add(this.Add_btn);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 333);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 93);
+            this.groupBox2.Size = new System.Drawing.Size(445, 99);
             this.groupBox2.TabIndex = 118;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chỉnh sửa";
@@ -97,7 +98,7 @@ namespace GUI_QuanLyCafe
             // Edit_ckb
             // 
             this.Edit_ckb.AutoSize = true;
-            this.Edit_ckb.Location = new System.Drawing.Point(92, 4);
+            this.Edit_ckb.Location = new System.Drawing.Point(98, 7);
             this.Edit_ckb.Name = "Edit_ckb";
             this.Edit_ckb.Size = new System.Drawing.Size(15, 14);
             this.Edit_ckb.TabIndex = 14;
@@ -113,11 +114,11 @@ namespace GUI_QuanLyCafe
             this.Delete_btn.CustomImages.Parent = this.Delete_btn;
             this.Delete_btn.Enabled = false;
             this.Delete_btn.FillColor = System.Drawing.Color.White;
-            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Delete_btn.ForeColor = System.Drawing.Color.Black;
             this.Delete_btn.HoverState.Parent = this.Delete_btn;
             this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
-            this.Delete_btn.Location = new System.Drawing.Point(171, 35);
+            this.Delete_btn.Location = new System.Drawing.Point(179, 38);
             this.Delete_btn.Name = "Delete_btn";
             this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
             this.Delete_btn.Size = new System.Drawing.Size(90, 40);
@@ -134,11 +135,11 @@ namespace GUI_QuanLyCafe
             this.Edit_btn.CustomImages.Parent = this.Edit_btn;
             this.Edit_btn.Enabled = false;
             this.Edit_btn.FillColor = System.Drawing.Color.White;
-            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Edit_btn.ForeColor = System.Drawing.Color.Black;
             this.Edit_btn.HoverState.Parent = this.Edit_btn;
             this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.edit_icon;
-            this.Edit_btn.Location = new System.Drawing.Point(298, 35);
+            this.Edit_btn.Location = new System.Drawing.Point(316, 38);
             this.Edit_btn.Name = "Edit_btn";
             this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
             this.Edit_btn.Size = new System.Drawing.Size(90, 40);
@@ -155,11 +156,11 @@ namespace GUI_QuanLyCafe
             this.Add_btn.CustomImages.Parent = this.Add_btn;
             this.Add_btn.Enabled = false;
             this.Add_btn.FillColor = System.Drawing.Color.White;
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add_btn.ForeColor = System.Drawing.Color.Black;
             this.Add_btn.HoverState.Parent = this.Add_btn;
             this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
-            this.Add_btn.Location = new System.Drawing.Point(36, 35);
+            this.Add_btn.Location = new System.Drawing.Point(44, 38);
             this.Add_btn.Name = "Add_btn";
             this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
             this.Add_btn.Size = new System.Drawing.Size(90, 40);
@@ -173,17 +174,26 @@ namespace GUI_QuanLyCafe
             this.ListVoucher_dgv.AllowUserToDeleteRows = false;
             this.ListVoucher_dgv.AllowUserToResizeColumns = false;
             this.ListVoucher_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ListVoucher_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.ListVoucher_dgv.BackgroundColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListVoucher_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.ListVoucher_dgv.ColumnHeadersHeight = 40;
             this.ListVoucher_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ListVoucher_dgv.Location = new System.Drawing.Point(453, 172);
+            this.ListVoucher_dgv.Location = new System.Drawing.Point(467, 172);
             this.ListVoucher_dgv.Name = "ListVoucher_dgv";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ListVoucher_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ListVoucher_dgv.Size = new System.Drawing.Size(477, 254);
+            this.ListVoucher_dgv.Size = new System.Drawing.Size(496, 254);
             this.ListVoucher_dgv.TabIndex = 117;
             this.ListVoucher_dgv.TabStop = false;
             this.ListVoucher_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DanhSachKM_dgv_CellClick);
@@ -191,10 +201,10 @@ namespace GUI_QuanLyCafe
             // IdVoucher_lbl
             // 
             this.IdVoucher_lbl.AutoSize = true;
-            this.IdVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IdVoucher_lbl.Location = new System.Drawing.Point(26, 39);
             this.IdVoucher_lbl.Name = "IdVoucher_lbl";
-            this.IdVoucher_lbl.Size = new System.Drawing.Size(123, 21);
+            this.IdVoucher_lbl.Size = new System.Drawing.Size(137, 23);
             this.IdVoucher_lbl.TabIndex = 71;
             this.IdVoucher_lbl.Text = "Mã khuyến mãi";
             // 
@@ -202,31 +212,31 @@ namespace GUI_QuanLyCafe
             // 
             this.IdVoucher_txt.CausesValidation = false;
             this.IdVoucher_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.IdVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IdVoucher_txt.Location = new System.Drawing.Point(206, 36);
+            this.IdVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdVoucher_txt.Location = new System.Drawing.Point(221, 36);
             this.IdVoucher_txt.Name = "IdVoucher_txt";
             this.IdVoucher_txt.ReadOnly = true;
-            this.IdVoucher_txt.Size = new System.Drawing.Size(160, 29);
+            this.IdVoucher_txt.Size = new System.Drawing.Size(173, 32);
             this.IdVoucher_txt.TabIndex = 1;
             this.IdVoucher_txt.TextChanged += new System.EventHandler(this.IdVoucher_txt_TextChanged);
             // 
             // Percent_lbl
             // 
             this.Percent_lbl.AutoSize = true;
-            this.Percent_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Percent_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Percent_lbl.Location = new System.Drawing.Point(26, 134);
             this.Percent_lbl.Name = "Percent_lbl";
-            this.Percent_lbl.Size = new System.Drawing.Size(174, 21);
+            this.Percent_lbl.Size = new System.Drawing.Size(194, 23);
             this.Percent_lbl.TabIndex = 69;
             this.Percent_lbl.Text = "Phần trăm khuyến mãi";
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(363, 131);
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(391, 131);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(38, 29);
+            this.textBox1.Size = new System.Drawing.Size(38, 32);
             this.textBox1.TabIndex = 74;
             this.textBox1.TabStop = false;
             this.textBox1.Text = "%";
@@ -234,21 +244,21 @@ namespace GUI_QuanLyCafe
             // 
             // NameVoucher_txt
             // 
-            this.NameVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameVoucher_txt.Location = new System.Drawing.Point(206, 83);
+            this.NameVoucher_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameVoucher_txt.Location = new System.Drawing.Point(221, 83);
             this.NameVoucher_txt.Name = "NameVoucher_txt";
             this.NameVoucher_txt.ReadOnly = true;
-            this.NameVoucher_txt.Size = new System.Drawing.Size(195, 29);
+            this.NameVoucher_txt.Size = new System.Drawing.Size(208, 32);
             this.NameVoucher_txt.TabIndex = 2;
             this.NameVoucher_txt.TextChanged += new System.EventHandler(this.NameVoucher_txt_TextChanged);
             // 
             // Percent_txt
             // 
-            this.Percent_txt.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Percent_txt.Location = new System.Drawing.Point(206, 131);
+            this.Percent_txt.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Percent_txt.Location = new System.Drawing.Point(221, 131);
             this.Percent_txt.Name = "Percent_txt";
             this.Percent_txt.ReadOnly = true;
-            this.Percent_txt.Size = new System.Drawing.Size(159, 29);
+            this.Percent_txt.Size = new System.Drawing.Size(171, 32);
             this.Percent_txt.TabIndex = 3;
             this.Percent_txt.TextChanged += new System.EventHandler(this.Percent_txt_TextChanged);
             // 
@@ -262,10 +272,10 @@ namespace GUI_QuanLyCafe
             this.groupBox1.Controls.Add(this.Percent_lbl);
             this.groupBox1.Controls.Add(this.NameVoucher_lbl);
             this.groupBox1.Controls.Add(this.IdVoucher_lbl);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 133);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(422, 181);
+            this.groupBox1.Size = new System.Drawing.Size(445, 181);
             this.groupBox1.TabIndex = 116;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin khuyến mãi";
@@ -278,24 +288,24 @@ namespace GUI_QuanLyCafe
             this.CreateID_btn.CustomImages.Parent = this.CreateID_btn;
             this.CreateID_btn.Enabled = false;
             this.CreateID_btn.FillColor = System.Drawing.Color.White;
-            this.CreateID_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateID_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateID_btn.ForeColor = System.Drawing.Color.Black;
             this.CreateID_btn.HoverState.Parent = this.CreateID_btn;
             this.CreateID_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.id;
-            this.CreateID_btn.Location = new System.Drawing.Point(365, 36);
+            this.CreateID_btn.Location = new System.Drawing.Point(393, 36);
             this.CreateID_btn.Name = "CreateID_btn";
             this.CreateID_btn.ShadowDecoration.Parent = this.CreateID_btn;
-            this.CreateID_btn.Size = new System.Drawing.Size(36, 29);
+            this.CreateID_btn.Size = new System.Drawing.Size(36, 32);
             this.CreateID_btn.TabIndex = 173;
             this.CreateID_btn.Click += new System.EventHandler(this.CreateID_btn_Click);
             // 
             // NameVoucher_lbl
             // 
             this.NameVoucher_lbl.AutoSize = true;
-            this.NameVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameVoucher_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameVoucher_lbl.Location = new System.Drawing.Point(25, 86);
             this.NameVoucher_lbl.Name = "NameVoucher_lbl";
-            this.NameVoucher_lbl.Size = new System.Drawing.Size(128, 21);
+            this.NameVoucher_lbl.Size = new System.Drawing.Size(141, 23);
             this.NameVoucher_lbl.TabIndex = 68;
             this.NameVoucher_lbl.Text = "Tên khuyến mãi";
             // 
@@ -317,7 +327,7 @@ namespace GUI_QuanLyCafe
             this.Log_Menu.Location = new System.Drawing.Point(0, 0);
             this.Log_Menu.Name = "Log_Menu";
             this.Log_Menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Log_Menu.Size = new System.Drawing.Size(942, 40);
+            this.Log_Menu.Size = new System.Drawing.Size(975, 40);
             this.Log_Menu.TabIndex = 122;
             this.Log_Menu.Text = "menuStrip1";
             // 
@@ -327,6 +337,7 @@ namespace GUI_QuanLyCafe
             this.Log_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.Log_MenuItem.Name = "Log_MenuItem";
             this.Log_MenuItem.Size = new System.Drawing.Size(44, 36);
+            this.Log_MenuItem.Click += new System.EventHandler(this.Log_MenuItem_Click);
             // 
             // ResetFind_btn
             // 
@@ -336,14 +347,14 @@ namespace GUI_QuanLyCafe
             this.ResetFind_btn.CheckedState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.CustomImages.Parent = this.ResetFind_btn;
             this.ResetFind_btn.FillColor = System.Drawing.Color.White;
-            this.ResetFind_btn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetFind_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetFind_btn.ForeColor = System.Drawing.Color.Black;
             this.ResetFind_btn.HoverState.Parent = this.ResetFind_btn;
             this.ResetFind_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Refreshicon;
-            this.ResetFind_btn.Location = new System.Drawing.Point(898, 133);
+            this.ResetFind_btn.Location = new System.Drawing.Point(931, 133);
             this.ResetFind_btn.Name = "ResetFind_btn";
             this.ResetFind_btn.ShadowDecoration.Parent = this.ResetFind_btn;
-            this.ResetFind_btn.Size = new System.Drawing.Size(32, 29);
+            this.ResetFind_btn.Size = new System.Drawing.Size(32, 32);
             this.ResetFind_btn.TabIndex = 172;
             this.ResetFind_btn.Click += new System.EventHandler(this.ResetFind_btn_Click);
             // 
@@ -363,7 +374,7 @@ namespace GUI_QuanLyCafe
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(942, 433);
+            this.ClientSize = new System.Drawing.Size(975, 444);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Log_Menu);
             this.Controls.Add(this.Find_txt);
@@ -373,9 +384,11 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.ListVoucher_dgv);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Voucher_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GUI_Voucher";
+            this.Text = "Voucher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Voucher_frm_FormClosing);
             this.Load += new System.EventHandler(this.Voucher_frm_Load);
             this.groupBox2.ResumeLayout(false);

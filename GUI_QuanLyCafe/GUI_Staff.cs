@@ -20,9 +20,10 @@ namespace GUI_QuanLyCafe
         }
 
         DTO_Staff staff = new DTO_Staff();
+        DTO_Log log = new DTO_Log();
 
         private void Staff_frm_Load(object sender, EventArgs e)
-        {
+        {       
             this.ActiveControl = label1;
             ListProfileStaff();
             FomatDategridView();
@@ -51,11 +52,14 @@ namespace GUI_QuanLyCafe
         {
             ListStaff_dgv.DataSource = BUS_Staff.Instance.ListProfileStaff_DGV();    
             ListStaff_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListStaff_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListStaff_dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListStaff_dgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             ListStaff_dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ListStaff_dgv.Columns[3].Width = 150;
-            ListStaff_dgv.Columns[4].Width = 150;
+            ListStaff_dgv.Columns[0].Width = 80;
+            ListStaff_dgv.Columns[3].Width = 130;
+            ListStaff_dgv.Columns[4].Width = 300;
+            ListStaff_dgv.Columns[5].Width = 130;
         }
 
         private void Edit_ckb_CheckedChanged(object sender, EventArgs e)
@@ -119,6 +123,16 @@ namespace GUI_QuanLyCafe
 
             }
         }
+
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.Object1 = Order_frm.Object;
+            log.IdObject = IdStafff_txt.Text.Trim();
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
+        }
+
         private void ResetText()
         {
             IdStafff_txt.Text = "";
@@ -202,6 +216,11 @@ namespace GUI_QuanLyCafe
                     {
                         InsertProfileNV();
 
+                        //save log
+                        log.Action = "thêm";
+                        SaveLog();
+                        //
+
                         MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Email_txt.ReadOnly = true;
@@ -229,8 +248,14 @@ namespace GUI_QuanLyCafe
             if (dlr == DialogResult.Yes)
             {
                 ResetText();
+
                 Find_txt.Text = "";
                 IdStafff_txt.Text = BUS_Staff.Instance.SelectIdStaff().Rows[0][0].ToString();
+
+                //save log
+                log.Action = "tạo vùng lưu";
+                SaveLog();
+                //
 
                 FomatDategridView();
                 Email_txt.ReadOnly = false;
@@ -325,9 +350,13 @@ namespace GUI_QuanLyCafe
                 {
                     GetText();
                     BUS_Staff.Instance.UpdateProfileStaff(staff);
+
+                    //save log
+                    log.Action = "sửa";
+                    SaveLog();
+                    //
+
                     FomatDategridView();
-
-
                     Edit_ckb.Checked = false;
                     MessageBox.Show("Sửa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -486,23 +515,24 @@ namespace GUI_QuanLyCafe
                     {
                         GetText();
                         BUS_Staff.Instance.DeleteProfileStaff(staff);
-                        ResetText();
+                        
                         this.ActiveControl = label1;
                         if (CreateID_btn.Enabled == false)
                         {
                             //save log
-                            
+                            log.Action = "xóa vùng lưu";
+                            SaveLog();
                             //
                         }
                         else
                         {
-                            GetText();
                             //save log
-
+                            log.Action = "xóa";
+                            SaveLog();
                             //
                             MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-
+                        ResetText();
                         Edit_ckb.Checked = false;
                         Edit_ckb.Enabled = true;
                         FomatDategridView();
@@ -686,9 +716,11 @@ namespace GUI_QuanLyCafe
             e.SuppressKeyPress = true;
         }
 
-        private void IdStafff_txt_TextChanged(object sender, EventArgs e)
+        private void Log_MenuItem_Click(object sender, EventArgs e)
         {
-
+            log.Object1 = Order_frm.Object;
+            Log_frm logg = new Log_frm();
+            logg.ShowDialog();
         }
     }
 }

@@ -32,8 +32,8 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Name_lbl = new System.Windows.Forms.Label();
+            this.Price_lbl = new System.Windows.Forms.Label();
             this.ds = new System.Windows.Forms.Label();
             this.Name_txt = new System.Windows.Forms.TextBox();
             this.Price_txt = new System.Windows.Forms.TextBox();
@@ -52,35 +52,38 @@ namespace GUI_QuanLyCafe
             this.PathPicture_txt = new System.Windows.Forms.TextBox();
             this.NameTemp_txt = new System.Windows.Forms.TextBox();
             this.CreateID_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ResetFind_btn = new Guna.UI2.WinForms.Guna2Button();
             this.OpenFilePicture_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Picture_ptb = new System.Windows.Forms.PictureBox();
+            this.Log_Menu = new System.Windows.Forms.MenuStrip();
+            this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MenuList_dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ptb)).BeginInit();
+            this.Log_Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // Name_lbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên món";
+            this.Name_lbl.AutoSize = true;
+            this.Name_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name_lbl.Location = new System.Drawing.Point(12, 140);
+            this.Name_lbl.Name = "Name_lbl";
+            this.Name_lbl.Size = new System.Drawing.Size(77, 21);
+            this.Name_lbl.TabIndex = 0;
+            this.Name_lbl.Text = "Tên món";
             // 
-            // label2
+            // Price_lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 191);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Giá";
+            this.Price_lbl.AutoSize = true;
+            this.Price_lbl.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Price_lbl.Location = new System.Drawing.Point(12, 191);
+            this.Price_lbl.Name = "Price_lbl";
+            this.Price_lbl.Size = new System.Drawing.Size(36, 21);
+            this.Price_lbl.TabIndex = 1;
+            this.Price_lbl.Text = "Giá";
             // 
             // ds
             // 
@@ -100,6 +103,7 @@ namespace GUI_QuanLyCafe
             this.Name_txt.ReadOnly = true;
             this.Name_txt.Size = new System.Drawing.Size(236, 29);
             this.Name_txt.TabIndex = 3;
+            this.Name_txt.TextChanged += new System.EventHandler(this.Name_txt_TextChanged);
             // 
             // Price_txt
             // 
@@ -109,6 +113,7 @@ namespace GUI_QuanLyCafe
             this.Price_txt.ReadOnly = true;
             this.Price_txt.Size = new System.Drawing.Size(224, 29);
             this.Price_txt.TabIndex = 4;
+            this.Price_txt.TextChanged += new System.EventHandler(this.Price_txt_TextChanged);
             this.Price_txt.Leave += new System.EventHandler(this.Price_txt_Leave);
             // 
             // Category_cbb
@@ -286,8 +291,8 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MenuList_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.MenuList_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -360,17 +365,6 @@ namespace GUI_QuanLyCafe
             this.CreateID_btn.TabIndex = 174;
             this.CreateID_btn.Click += new System.EventHandler(this.CreateID_btn_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 167;
-            this.pictureBox2.TabStop = false;
-            // 
             // ResetFind_btn
             // 
             this.ResetFind_btn.Animated = true;
@@ -422,18 +416,50 @@ namespace GUI_QuanLyCafe
             this.Picture_ptb.TabIndex = 7;
             this.Picture_ptb.TabStop = false;
             // 
+            // Log_Menu
+            // 
+            this.Log_Menu.BackColor = System.Drawing.Color.Transparent;
+            this.Log_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Log_MenuItem});
+            this.Log_Menu.Location = new System.Drawing.Point(0, 0);
+            this.Log_Menu.Name = "Log_Menu";
+            this.Log_Menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Log_Menu.Size = new System.Drawing.Size(647, 40);
+            this.Log_Menu.TabIndex = 175;
+            this.Log_Menu.Text = "menuStrip1";
+            // 
+            // Log_MenuItem
+            // 
+            this.Log_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.log_format;
+            this.Log_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Log_MenuItem.Name = "Log_MenuItem";
+            this.Log_MenuItem.Size = new System.Drawing.Size(44, 36);
+            this.Log_MenuItem.Click += new System.EventHandler(this.Log_MenuItem_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 176;
+            this.pictureBox2.TabStop = false;
+            // 
             // MenuManager_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(647, 636);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.Log_Menu);
             this.Controls.Add(this.CreateID_btn);
             this.Controls.Add(this.NameTemp_txt);
             this.Controls.Add(this.PathPicture_txt);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.MenuList_dgv);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.ResetFind_btn);
             this.Controls.Add(this.OpenFilePicture_btn);
             this.Controls.Add(this.label3);
@@ -446,20 +472,23 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.Price_txt);
             this.Controls.Add(this.Name_txt);
             this.Controls.Add(this.ds);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Price_lbl);
+            this.Controls.Add(this.Name_lbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuManager_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuManager_frm_FormClosing);
             this.Load += new System.EventHandler(this.MenuManager_frm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MenuList_dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture_ptb)).EndInit();
+            this.Log_Menu.ResumeLayout(false);
+            this.Log_Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,8 +496,8 @@ namespace GUI_QuanLyCafe
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Name_lbl;
+        private System.Windows.Forms.Label Price_lbl;
         private System.Windows.Forms.Label ds;
         private System.Windows.Forms.TextBox Name_txt;
         private System.Windows.Forms.TextBox Price_txt;
@@ -485,11 +514,13 @@ namespace GUI_QuanLyCafe
         private Guna.UI2.WinForms.Guna2Button Delete_btn;
         private Guna.UI2.WinForms.Guna2Button ResetFind_btn;
         private Guna.UI2.WinForms.Guna2Button OpenFilePicture_btn;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView MenuList_dgv;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox PathPicture_txt;
         private System.Windows.Forms.TextBox NameTemp_txt;
         private Guna.UI2.WinForms.Guna2Button CreateID_btn;
+        private System.Windows.Forms.MenuStrip Log_Menu;
+        private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

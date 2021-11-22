@@ -195,7 +195,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_AddDesertToBill @IdTable = " + bill.IdTable + ", @IdMenu = " + bill.IdMenu + ", @Amount = " + bill.Amount + ", @Note = N'" + bill.Note + "'";
+                string TruyVan = @"exec sp_AddDesertToBill @IdTable = " + bill.IdTable + ", @IdMenu = " + bill.IdMenu + ", @Amount = " + bill.Amount + ", @Price = " + bill.Price + ", @TotalPrice = " + bill.ToTal + ", @Note = N'" + bill.Note + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
@@ -231,7 +231,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_AddStatistic @IdBill = " + bill.IdBill + ", @Total = " + bill.ToTal + ", @Shift = N'" + bill.Shift + "', @NameStaff = N'" + bill.NameStaff + "', @CheckIn = '" + bill.CheckIn + "', @CheckOut = '" + bill.CheckOut + "', @PercentVoucher = " + bill.PercentVoucher + ", @Method = N'" + bill.Method + "'";
+                string TruyVan = @"exec sp_AddStatistic @IdBill = " + bill.IdBill + ", @PercentVoucher = " + bill.PercentVoucher + ", @PercentVAT = " + bill.PercentVAT + ", @Total = " + bill.ToTal + ", @Shift = N'" + bill.Shift + "', @NameStaff = N'" + bill.NameStaff + "', @CheckIn = '" + bill.CheckIn + "', @CheckOut = '" + bill.CheckOut + "', @Method = N'" + bill.Method + "', @NameTable = N'" + bill.NameTable + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
@@ -243,7 +243,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_AddDetailStatistic @IdBill = " + bill.IdBill + ", @NameMenu = N'" + bill.NameMenu + "', @Amount = " + bill.Amount + "";
+                string TruyVan = @"exec sp_AddDetailStatistic @IdBill = " + bill.IdBill + ", @NameMenu = N'" + bill.NameMenu + "', @Amount = " + bill.Amount + ", @Price = " + bill.Price + ", @TotalPrice = " + bill.ToTal + ", @Note = N'" + bill.Note + "'";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);

@@ -263,6 +263,7 @@ namespace GUI_QuanLyCafe
             this.columnHeader3,
             this.columnHeader4});
             this.Bill_lv.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bill_lv.FullRowSelect = true;
             this.Bill_lv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.Bill_lv.HideSelection = false;
             this.Bill_lv.Location = new System.Drawing.Point(12, 202);
@@ -272,6 +273,7 @@ namespace GUI_QuanLyCafe
             this.Bill_lv.TabIndex = 171;
             this.Bill_lv.UseCompatibleStateImageBehavior = false;
             this.Bill_lv.View = System.Windows.Forms.View.Details;
+            this.Bill_lv.DoubleClick += new System.EventHandler(this.Bill_lv_DoubleClick);
             // 
             // columnHeader1
             // 

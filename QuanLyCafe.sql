@@ -64,6 +64,8 @@ create table DetailBill
 	IdBill int references Bill(IdBill),
 	IdMenu int references Menu(IdMenu),
 	Amount int,
+	Price float,
+	TotalPrice float,
 	Note nvarchar(100)
 );
 create table Log
@@ -108,13 +110,15 @@ create table Statistic
 (
 	IdStatistic int primary key  DEFAULT DBO.AUTO_IDStatistic(),
 	IdBill int,
+	PercentVoucher float,
+	PercentVAT float,
 	Total float,
 	Shift nvarchar(10),
 	NameStaff nvarchar(50),
 	CheckIn datetime,
 	CheckOut datetime,
-	PercentVoucher float,
-	Method nvarchar(50)
+	Method nvarchar(50),
+	NameTable nvarchar(10)
 );
 
 create table DetailStatistic
@@ -122,7 +126,10 @@ create table DetailStatistic
 	IdDetailStatistic int primary key  DEFAULT DBO.AUTO_IDDetailStatistic(),
 	IdStatistic int references  Statistic (IdStatistic),
 	NameMenu nvarchar(100),
-	Amount int
+	Amount int,
+	Price float,
+	TotalPrice float,
+	Note nvarchar(100),
 );
 
 	drop FUNCTION AUTO_IDNV
@@ -295,7 +302,7 @@ drop PROC sp_DetailBill
 	begin try
 		begin tran
 			
-			select Name, DetailBill.Amount, Price, Price * DetailBill.Amount as Total, CheckIn, PercentVoucher, Note, NameStaff, DetailBill.IdBill, Bill.IdBill, IdDetailBill from DetailBill
+			select Name, DetailBill.Amount, DetailBill.Price, TotalPrice as Total, CheckIn, PercentVoucher, Note, NameStaff, DetailBill.IdBill, Bill.IdBill, IdDetailBill from DetailBill
 			join Bill on DetailBill.IdBill = Bill.IdBill
 			join Menu on DetailBill.IdMenu = Menu.IdMenu
 			left join Staff on Bill.IdStaff = Staff.IdStaff
@@ -311,7 +318,7 @@ drop PROC sp_DetailBill
 		print N'Thao tác không thành công'
 	end catch
 
-	exec sp_DetailBill @IdTable = 6
+	exec sp_DetailBill @IdTable = 13
 ---------------------------------------------------------------------------
 create proc sp_DetailBill_DGV
 		@IdTable int
@@ -676,6 +683,8 @@ drop PROC sp_AcceptLogin
 			@IdTable int,
 			@IdMenu int,
 			@Amount int,
+			@Price float,
+			@TotalPrice float,
 			@Note nvarchar(100)
 	as
 	begin try
@@ -684,8 +693,8 @@ drop PROC sp_AcceptLogin
 			DECLARE @ID int
 			set @ID = (select IdBill from Bill where IdTable = @IdTable)
 
-			insert into DetailBill(IdBill, IdMenu, Amount, Note) values
-			(@ID, @IdMenu, @Amount, @Note)
+			insert into DetailBill(IdBill, IdMenu, Amount, Price, TotalPrice, Note) values
+			(@ID, @IdMenu, @Amount, @Price, @TotalPrice, @Note)
 			
 			print N'Thao tác thành công'
 		commit tran
@@ -695,6 +704,8 @@ drop PROC sp_AcceptLogin
 		rollback tran
 		print N'Thao tác không thành công'
 	end catch
+
+	exec sp_AddDesertToBill @IdTable = 22, @IdMenu = 3, @Amount = 1, @Price = 44000, @TotalPrice = 44000, @Note = N''
 
 	exec sp_UpdatePassword
 -----------------------------------------------------------------------------------
@@ -916,19 +927,21 @@ drop PROC sp_AddStatistic
 	
 	create proc sp_AddStatistic
 		@IdBill int,
+		@PercentVoucher float,
+		@PercentVAT float,
 		@Total float,
 		@Shift nvarchar(10),
 		@NameStaff nvarchar(50),
 		@CheckIn datetime,
 		@CheckOut datetime,
-		@PercentVoucher float,
-		@Method nvarchar(50)
+		@Method nvarchar(50),
+		@NameTable nvarchar(10)
 	as
 	begin try
 		begin tran
 			
-			insert into Statistic(IdBill, Total, Shift, NameStaff, CheckIn, CheckOut, PercentVoucher, Method) values
-			(@IdBill, @Total, @Shift, @NameStaff, @CheckIn, @CheckOut, @PercentVoucher, @Method)
+			insert into Statistic(IdBill, PercentVoucher, PercentVAT, Total, Shift, NameStaff, CheckIn, CheckOut, Method, NameTable) values
+			(@IdBill, @PercentVoucher, @PercentVAT, @Total, @Shift, @NameStaff, @CheckIn, @CheckOut, @Method, @NameTable)
 			
 			print N'Thao tác thành công'
 		commit tran
@@ -940,23 +953,26 @@ drop PROC sp_AddStatistic
 	end catch
 
 	exec sp_FindMenu_All @Find = N'Sữa'
-
+	exec sp_AddStatistic @IdBill = 9, @PercentVoucher = 0, @PercentVAT = 10, @Total = 160600, @Shift = N'Ca tối', @NameStaff = N'admin', @CheckIn = '11/19/2021 1:27:58 AM', @CheckOut = '11/19/2021 3:41:20 PM', @Method = N'Tiền mặt'
 -----------------------------------------------------------------------------------
 drop PROC sp_AddDetailStatistic
 	
 	create proc sp_AddDetailStatistic
 		@IdBill int,
 		@NameMenu nvarchar(100),
-		@Amount int
+		@Amount int,
+		@Price float,
+		@TotalPrice float,
+		@Note nvarchar(100)
 	as
 	begin try
 		begin tran
 			
 			DECLARE @ID int
-			set @ID = (select IdStatistic from Statistic where IdBill = @IdBill)
+			set @ID = (select Top(1) IdStatistic from Statistic where IdBill = @IdBill order by IdStatistic desc)
 
-			insert into DetailStatistic(IdStatistic, NameMenu, Amount) values
-			(@ID, @NameMenu, @Amount)
+			insert into DetailStatistic(IdStatistic, NameMenu, Amount, Price, TotalPrice, Note) values
+			(@ID, @NameMenu, @Amount, @Price, @TotalPrice, @Note)
 			
 			print N'Thao tác thành công'
 		commit tran
@@ -982,6 +998,7 @@ drop PROC sp_ListProfileStaff
 		begin tran
 			
 			select * from Staff
+			where IsDelete = 0
 			order by IdStaff
 
 			print N'Thao tác thành công'
@@ -1142,7 +1159,7 @@ drop PROC sp_DeleteProfileStaff
 	as
 	begin try
 		begin tran
-				select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
+				select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
 				where IsDelete = 0
 				order by IdStaff
         
@@ -1170,8 +1187,8 @@ drop PROC sp_DeleteProfileStaff
 	begin try
 		begin tran
 			
-			select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-             where  IsDelete = 1 and (NameStaff like N'%' + @Find + '%' or IdStaff like '%' + @Find + '%'or Email like '%' + @Find + '%' or Gender like N'%' + @Find + '%' or 
+			select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+             where  IsDelete = 0 and (NameStaff like N'%' + @Find + '%' or IdStaff like '%' + @Find + '%'or Email like '%' + @Find + '%' or Gender like N'%' + @Find + '%' or 
 					Role like N'%' + @Find + '%' or PhoneNumber like '%' + @Find + '%' or Address like N'%' + @Find + '%' or 
 					CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
 					CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
@@ -1201,31 +1218,31 @@ drop PROC sp_DeleteProfileStaff
 	begin try
 		begin tran
 			if @FindBy = 'IdStaff'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and IdStaff like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and IdStaff like '%' + @Find + '%'
 			else if @FindBy = 'NameStaff'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and NameStaff like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and NameStaff like '%' + @Find + '%'
 			else if @FindBy = 'Address'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and Address like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and Address like '%' + @Find + '%'
 			else if @FindBy = 'PhoneNumber'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and PhoneNumber like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and PhoneNumber like '%' + @Find + '%'
 			else if  @FindBy = 'BirthDay'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where	IsDelete = 1 and (	CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where	IsDelete = 0 and (	CONVERT(nvarchar, BirthDay, 101)  like '%' + CONVERT(nvarchar, @Find, 101) + '%' or 
 											CONVERT(nvarchar, BirthDay, 103)  like '%' + CONVERT(nvarchar, @Find, 103) + '%' or 
 											CONVERT(nvarchar, BirthDay, 111)  like '%' + CONVERT(nvarchar, @Find, 111) + '%')
 			else if @FindBy = 'Email'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and Email like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and Email like '%' + @Find + '%'
 			else if @FindBy = 'Role'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and Role like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and Role like '%' + @Find + '%'
 			else if @FindBy = 'Gender'
-				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Role as 'Vai trò' from Staff
-				 where IsDelete = 1 and Gender like '%' + @Find + '%'
+				 select IdStaff as 'Mã số', NameStaff as 'Họ tên', Gender as 'Giới tính', PhoneNumber as 'Số điện thoại', Email, Role as 'Vai trò' from Staff
+				 where IsDelete = 0 and Gender like '%' + @Find + '%'
 			print N'Thao tác thành công'
 		commit tran
 	end try
@@ -1504,7 +1521,7 @@ drop PROC sp_MergeBill
 
 	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
 
-	exec sp_DetailBill @IdTable = 1
+	exec sp_DetailBill @IdTable = 13
 -----------------------------------------------------------------------------------------------------------------
 
 drop PROC sp_MergeBillMenu
@@ -1533,8 +1550,8 @@ drop PROC sp_MergeBillMenu
 
 	exec sp_MergeBill @IdTable = 24, @IdDetailBill = 30, @Amount = 2, @AmountNew = 1
 
-	exec sp_DetailBill @IdTable = 1
-
+	exec sp_DetailBill @IdTable = 25
+	exec sp_AddDetailStatistic @IdBill = 2, @NameMenu = N'Phin Sữa (Đá)', @Amount = 1, @Price = 29000, @TotalPrice = 29000, @Note = N''
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1697,3 +1714,376 @@ drop PROC sp_DeleteMaterial
 		print N'Thao tác không thành công'
 	end catch
 
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Log
+	create proc sp_Log
+			@Object nvarchar(20)
+	as
+	begin try
+		begin tran
+			
+			select * from Log
+			where Object = @Object
+			order by DateStart desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+	exec sp_Log @Object = N'nhân viên'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Log
+	create proc sp_Logs
+			@Object1 nvarchar(20),
+			@Object2 nvarchar(20)
+	as
+	begin try
+		begin tran
+			
+			select * from Log
+			where Object = @Object1 or Object = @Object2
+			order by DateStart desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+	exec sp_Log @Object = N'nhân viên'
+-----------------------------------------------------------------------------------------------------------------
+
+
+drop PROC sp_InsertLog
+	create proc sp_InsertLog
+			@IdStaff nvarchar(5),
+			@Action nvarchar(30),
+			@Object nvarchar(20),
+			@IdObject nvarchar(20),
+			@DateStart DateTime
+	as
+	begin try
+		begin tran
+			
+			insert into Log values
+			(@IdStaff, @Action, @Object, @IdObject, @DateStart)
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_Log @IdStaff = 'NV002', @Action = N'xóa', @Object = N'nhân viên', @IdObject = N'NV003', @DateStart = '11/16/2021 6:06:33 PM'
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Statistic_All
+	create proc sp_Statistic_All
+				@Value1 varchar(50),
+				@Value2 varchar(50)
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where CheckOut between @Value1 and @Value2
+			order by CheckOut desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+
+	exec sp_Log @Object = N'nhân viên'
+	exec sp_Statistic @Value1 = '2021/11/19 00:00:00', @Value2 = '2021/11/19 23:59:59'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Statistic_Shift
+	create proc sp_Statistic_Shift
+				@Value1 varchar(50),
+				@Value2 varchar(50),
+				@Shift nvarchar(10)
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where CheckOut between @Value1 and @Value2 and Shift = @Shift
+			order by CheckOut desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Statistic_Staff
+	create proc sp_Statistic_Staff
+				@Value1 varchar(50),
+				@Value2 varchar(50),
+				@NameStaff nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where CheckOut between @Value1 and @Value2 and NameStaff = @NameStaff
+			order by CheckOut desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Statistic_Shift_Staff
+	create proc sp_Statistic_Shift_Staff
+				@Value1 varchar(50),
+				@Value2 varchar(50),
+				@Shift nvarchar(10),
+				@NameStaff nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where CheckOut between @Value1 and @Value2 and Shift = @Shift and NameStaff = @NameStaff
+			order by CheckOut desc
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_DetailStatistic
+	create proc sp_DetailStatistic
+				@IdStatistic int
+
+	as
+	begin try
+		begin tran
+			
+			select * from DetailStatistic
+			where IdStatistic = @IdStatistic
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_Statistic
+	create proc sp_Statistic
+				@IdStatistic int
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where IdStatistic = @IdStatistic
+
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_DetailStatistic @IdStatistic = 4
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_StatisticChoose
+	create proc sp_StatisticChoose
+				@Value1 varchar(50),
+				@Value2 varchar(50)
+	as
+	begin try
+		begin tran
+			
+			select CONVERT(nvarchar, CheckOut, 101), Sum(Total) as 'Tổng' from Statistic
+			where CheckOut between @Value1 and @Value2
+			group by CONVERT(nvarchar, CheckOut, 101)
+			order by CONVERT(nvarchar, CheckOut, 101) desc
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_StatisticChoose @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59'
+	exec sp_StatisticChoose @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_StatisticChoose_MonthYear
+	create proc sp_StatisticChoose_MonthYear
+					@Month int,
+					@Year int
+	as
+	begin try
+		begin tran
+			
+			select Sum(Total) as 'Tổng' from Statistic
+			where Month(CheckOut) = @Month  and  Year(CheckOut) = @Year 
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_StatisticChoose_MonthYear @Month = 11, @Year = 2021
+	exec sp_StatisticChoose_MonthYear @Month = 11,@Year = 2008
+	exec sp_StatisticChoose @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_ListStatistic_MonthYear
+	create proc sp_ListStatistic_MonthYear
+				@Month int,
+				@Year int
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where Month(CheckOut) = @Month  and  Year(CheckOut) = @Year 
+			order by CheckOut desc
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+
+	exec sp_ListStatistic_Month @Month = 12
+	
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_ListStatistic_Year
+	create proc sp_ListStatistic_Year
+				@Year int
+	as
+	begin try
+		begin tran
+			
+			select * from Statistic
+			where Year(CheckOut) = @Year
+			order by CheckOut desc
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+
+	exec sp_ListStatistic_Year @Year = 2021
+	
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_StatisticChoose_YearStaff
+	create proc sp_StatisticChoose_YearStaff
+					@Month int,
+					@Year int,
+					@NameStaff nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			select Sum(Total) as 'Tổng' from Statistic
+			where Month(CheckOut) = @Month  and  Year(CheckOut) = @Year and NameStaff = @NameStaff
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_StatisticChoose_YearStaff @Month = 11, @Year = 2021, @NameStaff = N'admin'
+-----------------------------------------------------------------------------------------------------------------
+
+drop PROC sp_StatisticChoose_MonthStaff
+	create proc sp_StatisticChoose_MonthStaff
+				@Value1 varchar(50),
+				@Value2 varchar(50),
+				@NameStaff nvarchar(50)
+	as
+	begin try
+		begin tran
+			
+			select CONVERT(nvarchar, CheckOut, 101), Sum(Total) as 'Tổng' from Statistic
+			where CheckOut between @Value1 and @Value2 and NameStaff = @NameStaff
+			group by CONVERT(nvarchar, CheckOut, 101)
+			order by CONVERT(nvarchar, CheckOut, 101) desc
+			
+			print N'Thao tác thành công'
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+		print N'Thao tác không thành công'
+	end catch
+
+	exec sp_StatisticChoose_MonthStaff @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59', @NameStaff = N'admin'
+	exec sp_StatisticChoose @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59'
+-----------------------------------------------------------------------------------------------------------------

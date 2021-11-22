@@ -18,6 +18,7 @@ namespace GUI_QuanLyCafe
         public static string TimeMax;
         public static string Shift;
         public static string Email;
+        public static string IdStaff;
 
         private void Login_frm_Load(object sender, EventArgs e)
         {
@@ -112,6 +113,7 @@ namespace GUI_QuanLyCafe
                             }
                             Login_btn.Enabled = false;
                             SaveSettings();
+                            IdStaff = BUS_Staff.Instance.Check(staff).Rows[0][0].ToString();
                             LoadBar.Visible = true;
                             timer1_Tick(sender, e);         
                         }

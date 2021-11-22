@@ -13,6 +13,7 @@ namespace GUI_QuanLyCafe
             InitializeComponent();
         }
         DTO_Bill bill = new DTO_Bill();
+        DTO_Log log = new DTO_Log();
         DTO_Staff staff = new DTO_Staff();
         public int OldIdTable;
         public int OldIdBill;
@@ -63,6 +64,13 @@ namespace GUI_QuanLyCafe
             }
         }
 
+        private void SaveLog()
+        {
+            log.IdStaff = Login_frm.IdStaff;
+            log.DateStart = DateTime.Now;
+            BUS_Log.Instance.InsertLog(log);
+        }
+
         private void btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -105,8 +113,17 @@ namespace GUI_QuanLyCafe
                     var dlr = MessageBox.Show("Bạn có muốn chuyển từ " + Order_frm.NameTable.ToLower() + " sang " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString().ToLower() + " không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dlr == DialogResult.Yes)
                     {
-                        MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         BUS_Bill.Instance.Switch(NewIdTable, OldIdTable);
+
+                        //save log
+                        log.Object1 = "hóa đơn";
+                        log.IdObject = Order_frm.NameTable.Trim() + " sang " + NameTable2_lbl.Text.Substring(6);
+                        log.Action = "chuyển";
+                        SaveLog();
+                        //
+
+                        
+                        MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                 }
@@ -171,6 +188,14 @@ namespace GUI_QuanLyCafe
                                 }
                             }      
                         }
+
+                        //save log
+                        log.Object1 = "hóa đơn";
+                        log.IdObject = Order_frm.NameTable.Trim() + " và " + NameTable2_lbl.Text.Substring(6);
+                        log.Action = "gộp";
+                        SaveLog();
+                        //
+
                         MessageBox.Show("Gộp bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
@@ -255,6 +280,14 @@ namespace GUI_QuanLyCafe
                         Note = Detail_frm.Note;
                         BUS_Bill.Instance.AddDesertToBill(bill);
                         BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
+
+                        //save log
+                        log.Object1 = "món";
+                        log.IdObject = Order_frm.NameTable.Trim() + " sang " + NameTable2_lbl.Text.Substring(6);
+                        log.Action = "tách " + Detail_frm.Amount;
+                        SaveLog();
+                        //
+
                         MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -264,6 +297,14 @@ namespace GUI_QuanLyCafe
             {
                 Detail_frm.Status = 1;
                 BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
+
+                //save log
+                log.Object1 = "món";
+                log.IdObject = Order_frm.NameTable.Trim() + " sang " + NameTable2_lbl.Text.Substring(6);
+                log.Action = "tách 1";
+                SaveLog();
+                //
+
                 MessageBox.Show("Tách bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -309,7 +350,7 @@ namespace GUI_QuanLyCafe
             {
                 if (bill.IdDetailBill == 0)
                 {
-                    MessageBox.Show("Bạn chưa chọn món cần tách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Bạn chưa chọn món cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {  
@@ -327,6 +368,14 @@ namespace GUI_QuanLyCafe
                             ListOrder1_dgv.Columns[0].Visible = false;
                             ListOrder1_dgv.Columns[4].Visible = false;
                             bill.IdDetailBill = 0;
+
+                            //save log
+                            log.Object1 = "món";
+                            log.IdObject = Order_frm.NameTable.Trim();
+                            log.Action = "xóa " + Amount;
+                            SaveLog();
+                            //
+
                             MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -346,6 +395,14 @@ namespace GUI_QuanLyCafe
                                 ListOrder1_dgv.Columns[0].Visible = false;
                                 ListOrder1_dgv.Columns[4].Visible = false;
                                 bill.IdDetailBill = 0;
+
+                                //save log
+                                log.Object1 = "món";
+                                log.IdObject = Order_frm.NameTable.Trim();
+                                log.Action = "xóa " + Amount;
+                                SaveLog();
+                                //
+
                                 MessageBox.Show("Xóa " + NameFood + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -362,6 +419,12 @@ namespace GUI_QuanLyCafe
         private void ListTable_frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Status = 0;
+        }
+
+        private void Log_MenuItem_Click(object sender, EventArgs e)
+        {
+            Log_frm log = new Log_frm();
+            log.ShowDialog();
         }
     }
 }
