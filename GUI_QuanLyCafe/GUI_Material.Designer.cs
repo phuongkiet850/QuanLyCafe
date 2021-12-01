@@ -33,6 +33,7 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Material_frm));
             this.Edit_ckb = new System.Windows.Forms.CheckBox();
             this.Status_txt = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -109,6 +110,7 @@ namespace GUI_QuanLyCafe
             // 
             // Type_cbb
             // 
+            this.Type_cbb.BackColor = System.Drawing.Color.White;
             this.Type_cbb.Enabled = false;
             this.Type_cbb.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Type_cbb.FormattingEnabled = true;
@@ -121,7 +123,6 @@ namespace GUI_QuanLyCafe
             this.Type_cbb.Name = "Type_cbb";
             this.Type_cbb.Size = new System.Drawing.Size(119, 31);
             this.Type_cbb.TabIndex = 115;
-            this.Type_cbb.Text = "None";
             this.Type_cbb.SelectedValueChanged += new System.EventHandler(this.Type_cbb_SelectedValueChanged);
             this.Type_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Type_cbb_KeyDown);
             // 
@@ -175,10 +176,12 @@ namespace GUI_QuanLyCafe
             this.ListMaterial_dgv.AllowUserToResizeColumns = false;
             this.ListMaterial_dgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ListMaterial_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ListMaterial_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListMaterial_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.ListMaterial_dgv.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.ListMaterial_dgv.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,8 +195,8 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ListMaterial_dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.ListMaterial_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -584,6 +587,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.NameMaterial__lbl);
             this.Controls.Add(this.IdMaterial_lbl);
             this.Controls.Add(this.label12);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Material_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nguyên liệu";

@@ -30,6 +30,7 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login_frm));
             this.ForgotPassword_lblk = new System.Windows.Forms.LinkLabel();
             this.Memo_ckb = new System.Windows.Forms.CheckBox();
             this.LoadBar = new Guna.UI2.WinForms.Guna2ProgressBar();
@@ -239,6 +240,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.LoadBar);
             this.Controls.Add(this.Login_grb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Login_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

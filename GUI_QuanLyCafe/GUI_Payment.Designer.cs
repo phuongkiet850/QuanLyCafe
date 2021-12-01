@@ -29,6 +29,7 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment_frm));
             this.VAT_lbl = new System.Windows.Forms.Label();
             this.Total_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -310,6 +311,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.Bill_lv);
             this.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

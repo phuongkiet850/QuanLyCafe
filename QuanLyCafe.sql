@@ -2087,3 +2087,5 @@ drop PROC sp_StatisticChoose_MonthStaff
 	exec sp_StatisticChoose_MonthStaff @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59', @NameStaff = N'admin'
 	exec sp_StatisticChoose @Value1 = '2021/11/21 00:00:00', @Value2 = '2021/11/21 23:59:59'
 -----------------------------------------------------------------------------------------------------------------
+exec sp_ListStatistic_MonthYear @Month = 1, @Year = 2021
+exec sp_StatisticChoose_MonthYear @Month = 7, @Year = 2021

@@ -29,6 +29,7 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPassword_frm));
             this.VerificationPassword_grb = new System.Windows.Forms.GroupBox();
             this.Change_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Verification_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -214,6 +215,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.VerificationPassword_grb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ForgotPassword_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

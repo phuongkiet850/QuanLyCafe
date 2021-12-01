@@ -8,6 +8,8 @@ using Microsoft.Office.Interop.Excel;
 using Point = System.Drawing.Point;
 using DataTable = System.Data.DataTable;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Windows.Forms.DataVisualization.Charting;
+using CrystalDecisions.Shared;
 
 namespace GUI_QuanLyCafe
 {
@@ -25,11 +27,12 @@ namespace GUI_QuanLyCafe
 
         private void Statistic_frm_Load(object sender, EventArgs e)
         {
+            Table_rdo.Checked = true;
             Find_btn.Location = new Point(500, 200);
             DGV();
             DGV_Day();
 
-            System.Data.DataTable dt = new System.Data.DataTable();
+            DataTable dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[] { new DataColumn("IdStaff", typeof(string)), new DataColumn("NameStaff", typeof(string)) });
 
             for (int i = 0; i < BUS_Staff.Instance.ListProfileStaff().Rows.Count; i++)
@@ -59,8 +62,126 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Statistic_dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Statistic_dgv.Columns[4].Visible = false;
+        }
+
+        private void Chart()
+        {
+            try
+            {
+                int i = 0;
+                double tempH = 0;
+                double tempL = 0;
+                int Higher = 0;
+                int Lower = 0;
+
+                foreach (var series in chart1.Series)
+                {
+                    series.Points.Clear();
+                }
+                chart1.Titles.Clear();
+
+                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                {
+                    var Total = item.Cells[1].Value.ToString().Replace(" VNĐ", "");
+                    chart1.Series["Doanh thu"].Points.Add(Convert.ToDouble(Total));
+                    chart1.Series["Doanh thu"].Points[i].AxisLabel = item.Cells[0].Value.ToString();
+                    chart1.Series["Doanh thu"].Points[i].LegendText = item.Cells[0].Value.ToString();
+                    chart1.Series["Doanh thu"].Points[i].ToolTip = item.Cells[1].Value.ToString();
+                    if (Convert.ToDouble(Total) >= tempH)
+                    {
+                        tempH = Convert.ToDouble(Total);
+                        Higher = i;
+                    }
+
+                    foreach (DataGridViewRow lower in Statistic_dgv.Rows)
+                    {
+                        if (tempL == 0)
+                        {
+                            tempL = Convert.ToDouble(Total);
+                            Lower = i;
+                        }
+                        else if (Convert.ToDouble(Total) <= Convert.ToDouble(lower.Cells[1].Value.ToString().Replace(" VNĐ", "")) && Convert.ToDouble(Total) <= tempL)
+                        {
+                            tempL = Convert.ToDouble(Total);
+                            Lower = i;
+                        }
+                    }
+                    i++;
+                }
+                chart1.Series["Doanh thu"].Points[Higher].Color = Color.Chocolate;
+                chart1.Series["Doanh thu"].Points[Lower].Color = Color.IndianRed;
+                
+
+                chart1.Series.Add("Doanh thu cao nhất");
+                chart1.Series["Doanh thu cao nhất"].Color = Color.Chocolate;
+
+                chart1.Series.Add("Doanh thu thấp nhất");
+                chart1.Series["Doanh thu thấp nhất"].Color = Color.IndianRed;
+            }
+            catch (Exception) { }
+        }
+
+        private void ChartStaff()
+        {
+            try
+            {
+                int i = 0;
+                double tempH = 0;
+                double tempL = 0;
+                int Higher = 0;
+                int Lower = 0;
+                foreach (var series in chart1.Series)
+                {
+                    series.Points.Clear();
+                }
+                chart1.Titles.Clear();
+                Title title = chart1.Titles.Add(Staff_cbb.Text.ToUpper());
+                title.Font = new System.Drawing.Font("Times New Roman", 22, FontStyle.Bold);
+
+                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                {
+                    var Total = item.Cells[2].Value.ToString().Replace(" VNĐ", "");
+                    chart1.Series["Doanh thu"].Points.Add(Convert.ToDouble(Total));
+                    chart1.Series["Doanh thu"].Points[i].AxisLabel = item.Cells[0].Value.ToString();
+                    chart1.Series["Doanh thu"].Points[i].LegendText = item.Cells[0].Value.ToString();
+                    chart1.Series["Doanh thu"].Points[i].ToolTip = item.Cells[2].Value.ToString();
+                    if (Convert.ToDouble(Total) >= tempH)
+                    {
+                        tempH = Convert.ToDouble(Total);
+                        Higher = i;
+                    }
+
+                    foreach (DataGridViewRow lower in Statistic_dgv.Rows)
+                    {
+                        if (tempL == 0)
+                        {
+                            tempL = Convert.ToDouble(Total);
+                            Lower = i;
+                        }
+                        else if (Convert.ToDouble(Total) <= Convert.ToDouble(lower.Cells[2].Value.ToString().Replace(" VNĐ", "")) && Convert.ToDouble(Total) <= tempL)
+                        {
+                            tempL = Convert.ToDouble(Total);
+                            Lower = i;
+                        }
+                    }
+                    i++;
+                }
+
+                chart1.Series["Doanh thu"].Points[Higher].Color = Color.Chocolate;
+                chart1.Series["Doanh thu"].Points[Lower].Color = Color.IndianRed;
+
+
+                chart1.Series.Add("Doanh thu cao nhất");
+                chart1.Series["Doanh thu cao nhất"].Color = Color.Chocolate;
+
+                chart1.Series.Add("Doanh thu thấp nhất");
+                chart1.Series["Doanh thu thấp nhất"].Color = Color.IndianRed;
+
+
+            }
+            catch (Exception) { }
         }
 
         private void DGV_Day()
@@ -187,8 +308,8 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Rows.Clear();
             Statistic_dgv.Columns.Add("CheckOut", "Thời gian");
             Statistic_dgv.Columns.Add("Total", "Tổng tiền");
-            Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
             int month = Convert.ToInt32(Value1_cbb.Text);
             int year = Convert.ToInt32(Value2_cbb.Text);
@@ -224,9 +345,9 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns.Add("CheckOut", "Thời gian");
             Statistic_dgv.Columns.Add("NameStaff", "Tên nhân viên");
             Statistic_dgv.Columns.Add("Total", "Tổng tiền");
-            Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
             int month = Convert.ToInt32(Value1_cbb.Text);
             int year = Convert.ToInt32(Value2_cbb.Text);
@@ -268,7 +389,7 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns.Add("CheckOut", "Thời gian");
             Statistic_dgv.Columns.Add("Total", "Tổng tiền");
             Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
             if (BUS_Log.Instance.ListStatistic_Year(Convert.ToInt32(Value1_cbb.Text)).Rows.Count > 0)
             {
@@ -277,22 +398,27 @@ namespace GUI_QuanLyCafe
                     int month = j;
                     Year = Value1_cbb.Text;
                     int year = Convert.ToInt32(Value1_cbb.Text);
-                    for (int i = 0; i < BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows.Count; i++)
+                    if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[0][8].ToString()).ToString("MM/yyyy") != temp)
                     {
-                        if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[i][8].ToString()).ToString("MM/yyyy") != temp)
+                        if (BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString() != "")
                         {
-                            if (BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString() != "")
+                            temp = month + "/" + Year;
+                            DataGridViewRow row = (DataGridViewRow)Statistic_dgv.Rows[0].Clone();
+                            if (month <= 9)
                             {
-                                temp = month + "/" + Year;
-                                DataGridViewRow row = (DataGridViewRow)Statistic_dgv.Rows[0].Clone();
-                                row.Cells[0].Value = month + "/" + Year;
-                                float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString());
-                                Total += value;
-                                string price = String.Format("{0:0,0}", value);
-                                row.Cells[1].Value = price + " VNĐ";
-                                row.Cells[1].Style.ForeColor = Color.Red;
-                                Statistic_dgv.Rows.Add(row);
+                                row.Cells[0].Value = "0" + month + "/" + Year;
                             }
+                            else
+                            {
+                                row.Cells[0].Value = month + "/" + Year;
+                            }
+                          
+                            float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString());
+                            Total += value;
+                            string price = String.Format("{0:0,0}", value);
+                            row.Cells[1].Value = price + " VNĐ";
+                            row.Cells[1].Style.ForeColor = Color.Red;
+                            Statistic_dgv.Rows.Add(row);
                         }
                     }
                 }
@@ -313,7 +439,7 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns.Add("Total", "Tổng tiền");
             Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
             if (BUS_Log.Instance.ListStatistic_Year(Convert.ToInt32(Value1_cbb.Text)).Rows.Count > 0)
             {
@@ -323,23 +449,27 @@ namespace GUI_QuanLyCafe
                     Year = Value1_cbb.Text;
                     int year = Convert.ToInt32(Value1_cbb.Text);
                     string staff = Staff_cbb.Text;
-                    for (int i = 0; i < BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows.Count; i++)
+                    if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[0][8].ToString()).ToString("MM/yyyy") != temp)
                     {
-                        if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[i][8].ToString()).ToString("MM/yyyy") != temp)
+                        if (BUS_Log.Instance.StatisticChoose_YearStaff(month, year, staff).Rows[0][0].ToString() != "")
                         {
-                            if (BUS_Log.Instance.StatisticChoose_YearStaff(month, year, staff).Rows[0][0].ToString() != "")
+                            temp = month + "/" + Year;
+                            DataGridViewRow row = (DataGridViewRow)Statistic_dgv.Rows[0].Clone();
+                            if (month <= 9)
                             {
-                                temp = month + "/" + Year;
-                                DataGridViewRow row = (DataGridViewRow)Statistic_dgv.Rows[0].Clone();
-                                row.Cells[0].Value = month + "/" + Year;
-                                row.Cells[1].Value = staff;
-                                float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_YearStaff(month, year, staff).Rows[0][0].ToString());
-                                Total += value;
-                                string price = String.Format("{0:0,0}", value);
-                                row.Cells[2].Value = price + " VNĐ";
-                                row.Cells[2].Style.ForeColor = Color.Red;
-                                Statistic_dgv.Rows.Add(row);
+                                row.Cells[0].Value = "0" + month + "/" + Year;
                             }
+                            else
+                            {
+                                row.Cells[0].Value = month + "/" + Year;
+                            }
+                            row.Cells[1].Value = staff;
+                            float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_YearStaff(month, year, staff).Rows[0][0].ToString());
+                            Total += value;
+                            string price = String.Format("{0:0,0}", value);
+                            row.Cells[2].Value = price + " VNĐ";
+                            row.Cells[2].Style.ForeColor = Color.Red;
+                            Statistic_dgv.Rows.Add(row);
                         }
                     }
                 }
@@ -367,41 +497,65 @@ namespace GUI_QuanLyCafe
             {
                 DGV();
                 DGV_Day();
+                Chart_rdo.Visible = false;
+                Table_rdo.Visible = false;
+                Table_rdo.Checked = true;
             }
             else if (Shift_cbb.Text != "None" && Choose_cbb.Text == "None" && Staff_cbb.Text == "Tất cả")
             {
                 DGV();
                 DGV_Day_Shift();
+                Chart_rdo.Visible = false;
+                Table_rdo.Visible = false;
+                Table_rdo.Checked = true;
             }
             else if (Shift_cbb.Text == "None" && Choose_cbb.Text == "Ngày" && Staff_cbb.Text != "Tất cả")
             {
                 DGV();
                 DGV_Day_Staff();
+                Chart_rdo.Visible = false;
+                Table_rdo.Visible = false;
+                Table_rdo.Checked = true;
             }
             else if (Shift_cbb.Text != "None" && Choose_cbb.Text == "Ngày" && Staff_cbb.Text != "Tất cả")
             {
                 DGV();
                 DGV_Day_Shift_Staff();
+                Chart_rdo.Visible = false;
+                Table_rdo.Visible = false;
+                Table_rdo.Checked = true;
             }
             else if (Shift_cbb.Text == "None" && Choose_cbb.Text == "Tháng" && Staff_cbb.Text == "Tất cả")
             {
                 DGV();
                 DGV_Month();
+                Chart_rdo.Visible = true;
+                Table_rdo.Visible = true;
+                Chart();
             }
             else if (Shift_cbb.Text == "None" && Choose_cbb.Text == "Năm" && Staff_cbb.Text == "Tất cả")
             {
                 DGV();
                 DGV_Year();
+                Chart_rdo.Visible = true;
+                Table_rdo.Visible = true;
+                Chart();
             }
             else if (Shift_cbb.Text == "None" && Choose_cbb.Text == "Tháng" && Staff_cbb.Text != "Tất cả")
             {
                 DGV();
                 DGV_MonthStaff();
+                Chart_rdo.Visible = true;
+                Table_rdo.Visible = true;
+                ChartStaff();
             }
             else if (Shift_cbb.Text == "None" && Choose_cbb.Text == "Năm" && Staff_cbb.Text != "Tất cả")
             {
                 DGV();
                 DGV_YearStaff();
+                Chart_rdo.Visible = true;
+                Table_rdo.Visible = true;
+                ChartStaff();
             }
         }
 
@@ -448,6 +602,15 @@ namespace GUI_QuanLyCafe
                                     count1 = i + 5;
                                     count2 = j + 2;
                                     Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                    if (count2 == 3)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
+
+                                    if (count2 == 2)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
                                 }
                             }
                         }
@@ -500,7 +663,13 @@ namespace GUI_QuanLyCafe
                                     {
                                         Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
                                     }
+
                                     Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+                                    if (count2 == 3)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
                                 }
                             }
                         }
@@ -554,6 +723,11 @@ namespace GUI_QuanLyCafe
                                         Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
                                     }
                                     Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+                                    if (count2 == 4)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
                                 }
                             }
                         }
@@ -603,6 +777,14 @@ namespace GUI_QuanLyCafe
                                     count1 = i + 5;
                                     count2 = j + 2;    
                                     Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                    if (count2 == 4)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
+                                    if (count2 == 2)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
                                 }
                             }
                         }
@@ -652,6 +834,10 @@ namespace GUI_QuanLyCafe
                                     count1 = i + 5;
                                     count2 = j + 2;
                                     Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                    if (count2 == 5)
+                                    {
+                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    }
                                 }
                             }
                         }
@@ -773,7 +959,7 @@ namespace GUI_QuanLyCafe
                 Value1_date.Enabled = true;
                 Value2_date.Enabled = true;
                 Value1_cbb.Visible = false;
-                Value2_cbb.Visible = false;
+                Value2_cbb.Visible = false; 
             }
             this.ActiveControl = label1;
         }
@@ -859,10 +1045,21 @@ namespace GUI_QuanLyCafe
                 txtheader1.Text = "DOANH THU THÁNG " + Month;
                 TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
                 txtheader2.Text = "Thời gian ";
+                txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
                 txtheader3.Text = "Tổng";
+                txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
                 txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
+                field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                FieldObject field2 = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
+                field2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
@@ -884,12 +1081,19 @@ namespace GUI_QuanLyCafe
                 report.crystalReportViewer1.ReportSource = statistic;
                 TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text8"];
                 txtheader1.Text = "DOANH THU NĂM " + Year;
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
+                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"] ;
                 txtheader2.Text = "Thời gian";
+
                 TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
                 txtheader3.Text = "Tổng";
+                txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
                 txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
+                field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
@@ -914,12 +1118,18 @@ namespace GUI_QuanLyCafe
                 txtheader1.Text = "DOANH THU THÁNG " + Month + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
                 TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
                 txtheader2.Text = "Thời gian";
+                txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
                 txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                FieldObject field = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
+                field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
-            else if (Choose_cbb.Text == "Tháng" && Staff_cbb.Text != "Tất cả")
+            else if (Choose_cbb.Text == "Năm" && Staff_cbb.Text != "Tất cả")
             {
                 table.Rows.Clear();
                 table.Columns.Clear();
@@ -942,8 +1152,32 @@ namespace GUI_QuanLyCafe
                 txtheader2.Text = "Thời gian";
                 TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
                 txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                FieldObject field = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
+                field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
+            }
+        }
+
+        private void Table_rdo_CheckedChanged(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            Statistic_dgv.Visible = true;
+        }
+
+        private void Chart_rdo_CheckedChanged(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+            Statistic_dgv.Visible = false;
+            if (Staff_cbb.Text != "Tất cả")
+            {
+                ChartStaff();
+            }
+            else
+            {
+                Chart();
             }
         }
     }

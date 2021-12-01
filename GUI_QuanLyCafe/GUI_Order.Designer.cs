@@ -30,17 +30,28 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Order_frm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOut_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangePassword_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Manage_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Staff_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Material_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Voucher_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Statistic_tsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.hướngDẫnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Payment_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Edit_btn = new Guna.UI2.WinForms.Guna2Button();
+            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TotalOrder_lbl = new System.Windows.Forms.Label();
             this.VAT_lbl = new System.Windows.Forms.Label();
             this.Total_lbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.NameStafff_lbl = new System.Windows.Forms.Label();
             this.CheckIn_lbl = new System.Windows.Forms.Label();
             this.NameTable_lbl = new System.Windows.Forms.Label();
@@ -51,27 +62,17 @@ namespace GUI_QuanLyCafe
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Log_btn = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Table_flp = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Time_lbl = new System.Windows.Forms.Label();
-            this.Log_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.Payment_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.Edit_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.Add_btn = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.LogOut_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ChangePassword_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Staff_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Material_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Voucher_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -100,6 +101,24 @@ namespace GUI_QuanLyCafe
             this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(98, 27);
             this.hệThốngToolStripMenuItem.Text = "Hệ thống";
             // 
+            // LogOut_MenuItem
+            // 
+            this.LogOut_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.Apps_session_logout_icon1;
+            this.LogOut_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.LogOut_MenuItem.Name = "LogOut_MenuItem";
+            this.LogOut_MenuItem.Size = new System.Drawing.Size(209, 38);
+            this.LogOut_MenuItem.Text = "Đăng xuất";
+            this.LogOut_MenuItem.Click += new System.EventHandler(this.LogOut_MenuItem_Click);
+            // 
+            // ChangePassword_MenuItem
+            // 
+            this.ChangePassword_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
+            this.ChangePassword_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ChangePassword_MenuItem.Name = "ChangePassword_MenuItem";
+            this.ChangePassword_MenuItem.Size = new System.Drawing.Size(209, 38);
+            this.ChangePassword_MenuItem.Text = "Đổi mật khẩu";
+            this.ChangePassword_MenuItem.Click += new System.EventHandler(this.ChangePassword_MenuItem_Click);
+            // 
             // Manage_tsmi
             // 
             this.Manage_tsmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -111,6 +130,33 @@ namespace GUI_QuanLyCafe
             this.Manage_tsmi.Name = "Manage_tsmi";
             this.Manage_tsmi.Size = new System.Drawing.Size(87, 27);
             this.Manage_tsmi.Text = "Quản lý";
+            // 
+            // Staff_MenuItem
+            // 
+            this.Staff_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.id_card;
+            this.Staff_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Staff_MenuItem.Name = "Staff_MenuItem";
+            this.Staff_MenuItem.Size = new System.Drawing.Size(197, 38);
+            this.Staff_MenuItem.Text = "Nhân viên";
+            this.Staff_MenuItem.Click += new System.EventHandler(this.Staff_MenuItem_Click);
+            // 
+            // Material_MenuItem
+            // 
+            this.Material_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.product;
+            this.Material_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Material_MenuItem.Name = "Material_MenuItem";
+            this.Material_MenuItem.Size = new System.Drawing.Size(197, 38);
+            this.Material_MenuItem.Text = "Nguyên liệu";
+            this.Material_MenuItem.Click += new System.EventHandler(this.Material_MenuItem_Click);
+            // 
+            // Voucher_MenuItem
+            // 
+            this.Voucher_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.coupon;
+            this.Voucher_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.Voucher_MenuItem.Name = "Voucher_MenuItem";
+            this.Voucher_MenuItem.Size = new System.Drawing.Size(197, 38);
+            this.Voucher_MenuItem.Text = "Voucher";
+            this.Voucher_MenuItem.Click += new System.EventHandler(this.Voucher_MenuItem_Click);
             // 
             // Statistic_tsmi
             // 
@@ -145,6 +191,94 @@ namespace GUI_QuanLyCafe
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(669, 732);
             this.panel3.TabIndex = 0;
+            // 
+            // Payment_btn
+            // 
+            this.Payment_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Payment_btn.Animated = true;
+            this.Payment_btn.BorderRadius = 10;
+            this.Payment_btn.BorderThickness = 2;
+            this.Payment_btn.CheckedState.Parent = this.Payment_btn;
+            this.Payment_btn.CustomImages.Parent = this.Payment_btn;
+            this.Payment_btn.Enabled = false;
+            this.Payment_btn.FillColor = System.Drawing.Color.White;
+            this.Payment_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Payment_btn.ForeColor = System.Drawing.Color.Black;
+            this.Payment_btn.HoverState.Parent = this.Payment_btn;
+            this.Payment_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.income;
+            this.Payment_btn.Location = new System.Drawing.Point(512, 667);
+            this.Payment_btn.Name = "Payment_btn";
+            this.Payment_btn.ShadowDecoration.Parent = this.Payment_btn;
+            this.Payment_btn.Size = new System.Drawing.Size(150, 50);
+            this.Payment_btn.TabIndex = 43;
+            this.Payment_btn.Text = "Thanh toán";
+            this.Payment_btn.Click += new System.EventHandler(this.Payment_btn_Click);
+            // 
+            // Delete_btn
+            // 
+            this.Delete_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Delete_btn.Animated = true;
+            this.Delete_btn.BorderRadius = 10;
+            this.Delete_btn.BorderThickness = 2;
+            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
+            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
+            this.Delete_btn.Enabled = false;
+            this.Delete_btn.FillColor = System.Drawing.Color.White;
+            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
+            this.Delete_btn.HoverState.Parent = this.Delete_btn;
+            this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
+            this.Delete_btn.Location = new System.Drawing.Point(186, 667);
+            this.Delete_btn.Name = "Delete_btn";
+            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
+            this.Delete_btn.Size = new System.Drawing.Size(150, 50);
+            this.Delete_btn.TabIndex = 42;
+            this.Delete_btn.Text = "Xóa hóa đơn";
+            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
+            // 
+            // Edit_btn
+            // 
+            this.Edit_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Edit_btn.Animated = true;
+            this.Edit_btn.BorderRadius = 10;
+            this.Edit_btn.BorderThickness = 2;
+            this.Edit_btn.CheckedState.Parent = this.Edit_btn;
+            this.Edit_btn.CustomImages.Parent = this.Edit_btn;
+            this.Edit_btn.Enabled = false;
+            this.Edit_btn.FillColor = System.Drawing.Color.White;
+            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_btn.ForeColor = System.Drawing.Color.Black;
+            this.Edit_btn.HoverState.Parent = this.Edit_btn;
+            this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.exchange;
+            this.Edit_btn.Location = new System.Drawing.Point(350, 667);
+            this.Edit_btn.Name = "Edit_btn";
+            this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
+            this.Edit_btn.Size = new System.Drawing.Size(150, 50);
+            this.Edit_btn.TabIndex = 41;
+            this.Edit_btn.Text = "Chuyển bàn";
+            this.Edit_btn.Click += new System.EventHandler(this.Edit_btn_Click);
+            // 
+            // Add_btn
+            // 
+            this.Add_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Add_btn.Animated = true;
+            this.Add_btn.BorderRadius = 10;
+            this.Add_btn.BorderThickness = 2;
+            this.Add_btn.CheckedState.Parent = this.Add_btn;
+            this.Add_btn.CustomImages.Parent = this.Add_btn;
+            this.Add_btn.Enabled = false;
+            this.Add_btn.FillColor = System.Drawing.Color.White;
+            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_btn.ForeColor = System.Drawing.Color.Black;
+            this.Add_btn.HoverState.Parent = this.Add_btn;
+            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
+            this.Add_btn.Location = new System.Drawing.Point(21, 667);
+            this.Add_btn.Name = "Add_btn";
+            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
+            this.Add_btn.Size = new System.Drawing.Size(150, 50);
+            this.Add_btn.TabIndex = 40;
+            this.Add_btn.Text = "Thêm món";
+            this.Add_btn.Click += new System.EventHandler(this.Add_btn_Click);
             // 
             // panel2
             // 
@@ -205,6 +339,17 @@ namespace GUI_QuanLyCafe
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(641, 130);
             this.panel1.TabIndex = 20;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(464, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 151;
+            this.pictureBox2.TabStop = false;
             // 
             // NameStafff_lbl
             // 
@@ -303,6 +448,25 @@ namespace GUI_QuanLyCafe
             this.panel4.Size = new System.Drawing.Size(640, 732);
             this.panel4.TabIndex = 15;
             // 
+            // Log_btn
+            // 
+            this.Log_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Log_btn.Animated = true;
+            this.Log_btn.CheckedState.Parent = this.Log_btn;
+            this.Log_btn.CustomImages.Parent = this.Log_btn;
+            this.Log_btn.FillColor = System.Drawing.Color.Transparent;
+            this.Log_btn.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Log_btn.ForeColor = System.Drawing.Color.White;
+            this.Log_btn.HoverState.Parent = this.Log_btn;
+            this.Log_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.log_format;
+            this.Log_btn.ImageSize = new System.Drawing.Size(33, 33);
+            this.Log_btn.Location = new System.Drawing.Point(3, 679);
+            this.Log_btn.Name = "Log_btn";
+            this.Log_btn.ShadowDecoration.Parent = this.Log_btn;
+            this.Log_btn.Size = new System.Drawing.Size(53, 45);
+            this.Log_btn.TabIndex = 20;
+            this.Log_btn.Click += new System.EventHandler(this.Log_btn_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -345,169 +509,6 @@ namespace GUI_QuanLyCafe
             this.Time_lbl.TabIndex = 16;
             this.Time_lbl.Text = "Ca tối  SSS 00/00/0000 00:00:00";
             // 
-            // Log_btn
-            // 
-            this.Log_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Log_btn.Animated = true;
-            this.Log_btn.CheckedState.Parent = this.Log_btn;
-            this.Log_btn.CustomImages.Parent = this.Log_btn;
-            this.Log_btn.FillColor = System.Drawing.Color.Transparent;
-            this.Log_btn.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Log_btn.ForeColor = System.Drawing.Color.White;
-            this.Log_btn.HoverState.Parent = this.Log_btn;
-            this.Log_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.log_format;
-            this.Log_btn.ImageSize = new System.Drawing.Size(33, 33);
-            this.Log_btn.Location = new System.Drawing.Point(3, 679);
-            this.Log_btn.Name = "Log_btn";
-            this.Log_btn.ShadowDecoration.Parent = this.Log_btn;
-            this.Log_btn.Size = new System.Drawing.Size(53, 45);
-            this.Log_btn.TabIndex = 20;
-            this.Log_btn.Click += new System.EventHandler(this.Log_btn_Click);
-            // 
-            // Payment_btn
-            // 
-            this.Payment_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Payment_btn.Animated = true;
-            this.Payment_btn.BorderRadius = 10;
-            this.Payment_btn.BorderThickness = 2;
-            this.Payment_btn.CheckedState.Parent = this.Payment_btn;
-            this.Payment_btn.CustomImages.Parent = this.Payment_btn;
-            this.Payment_btn.Enabled = false;
-            this.Payment_btn.FillColor = System.Drawing.Color.White;
-            this.Payment_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Payment_btn.ForeColor = System.Drawing.Color.Black;
-            this.Payment_btn.HoverState.Parent = this.Payment_btn;
-            this.Payment_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.income;
-            this.Payment_btn.Location = new System.Drawing.Point(512, 667);
-            this.Payment_btn.Name = "Payment_btn";
-            this.Payment_btn.ShadowDecoration.Parent = this.Payment_btn;
-            this.Payment_btn.Size = new System.Drawing.Size(150, 50);
-            this.Payment_btn.TabIndex = 43;
-            this.Payment_btn.Text = "Thanh toán";
-            this.Payment_btn.Click += new System.EventHandler(this.Payment_btn_Click);
-            // 
-            // Delete_btn
-            // 
-            this.Delete_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Delete_btn.Animated = true;
-            this.Delete_btn.BorderRadius = 10;
-            this.Delete_btn.BorderThickness = 2;
-            this.Delete_btn.CheckedState.Parent = this.Delete_btn;
-            this.Delete_btn.CustomImages.Parent = this.Delete_btn;
-            this.Delete_btn.Enabled = false;
-            this.Delete_btn.FillColor = System.Drawing.Color.White;
-            this.Delete_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delete_btn.ForeColor = System.Drawing.Color.Black;
-            this.Delete_btn.HoverState.Parent = this.Delete_btn;
-            this.Delete_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.Actions_edit_delete_icon;
-            this.Delete_btn.Location = new System.Drawing.Point(186, 667);
-            this.Delete_btn.Name = "Delete_btn";
-            this.Delete_btn.ShadowDecoration.Parent = this.Delete_btn;
-            this.Delete_btn.Size = new System.Drawing.Size(150, 50);
-            this.Delete_btn.TabIndex = 42;
-            this.Delete_btn.Text = "Xóa hóa đơn";
-            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
-            // 
-            // Edit_btn
-            // 
-            this.Edit_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Edit_btn.Animated = true;
-            this.Edit_btn.BorderRadius = 10;
-            this.Edit_btn.BorderThickness = 2;
-            this.Edit_btn.CheckedState.Parent = this.Edit_btn;
-            this.Edit_btn.CustomImages.Parent = this.Edit_btn;
-            this.Edit_btn.Enabled = false;
-            this.Edit_btn.FillColor = System.Drawing.Color.White;
-            this.Edit_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_btn.ForeColor = System.Drawing.Color.Black;
-            this.Edit_btn.HoverState.Parent = this.Edit_btn;
-            this.Edit_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.exchange;
-            this.Edit_btn.Location = new System.Drawing.Point(350, 667);
-            this.Edit_btn.Name = "Edit_btn";
-            this.Edit_btn.ShadowDecoration.Parent = this.Edit_btn;
-            this.Edit_btn.Size = new System.Drawing.Size(150, 50);
-            this.Edit_btn.TabIndex = 41;
-            this.Edit_btn.Text = "Chuyển bàn";
-            this.Edit_btn.Click += new System.EventHandler(this.Edit_btn_Click);
-            // 
-            // Add_btn
-            // 
-            this.Add_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Add_btn.Animated = true;
-            this.Add_btn.BorderRadius = 10;
-            this.Add_btn.BorderThickness = 2;
-            this.Add_btn.CheckedState.Parent = this.Add_btn;
-            this.Add_btn.CustomImages.Parent = this.Add_btn;
-            this.Add_btn.Enabled = false;
-            this.Add_btn.FillColor = System.Drawing.Color.White;
-            this.Add_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_btn.ForeColor = System.Drawing.Color.Black;
-            this.Add_btn.HoverState.Parent = this.Add_btn;
-            this.Add_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.add_icon;
-            this.Add_btn.Location = new System.Drawing.Point(21, 667);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.ShadowDecoration.Parent = this.Add_btn;
-            this.Add_btn.Size = new System.Drawing.Size(150, 50);
-            this.Add_btn.TabIndex = 40;
-            this.Add_btn.Text = "Thêm món";
-            this.Add_btn.Click += new System.EventHandler(this.Add_btn_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::GUI_QuanLyCafe.Properties.Resources._1200px_Highlands_Coffee_logo_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(464, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(172, 119);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 151;
-            this.pictureBox2.TabStop = false;
-            // 
-            // LogOut_MenuItem
-            // 
-            this.LogOut_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.Apps_session_logout_icon1;
-            this.LogOut_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.LogOut_MenuItem.Name = "LogOut_MenuItem";
-            this.LogOut_MenuItem.Size = new System.Drawing.Size(209, 38);
-            this.LogOut_MenuItem.Text = "Đăng xuất";
-            this.LogOut_MenuItem.Click += new System.EventHandler(this.LogOut_MenuItem_Click);
-            // 
-            // ChangePassword_MenuItem
-            // 
-            this.ChangePassword_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.padlock;
-            this.ChangePassword_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ChangePassword_MenuItem.Name = "ChangePassword_MenuItem";
-            this.ChangePassword_MenuItem.Size = new System.Drawing.Size(209, 38);
-            this.ChangePassword_MenuItem.Text = "Đổi mật khẩu";
-            this.ChangePassword_MenuItem.Click += new System.EventHandler(this.ChangePassword_MenuItem_Click);
-            // 
-            // Staff_MenuItem
-            // 
-            this.Staff_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.id_card;
-            this.Staff_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Staff_MenuItem.Name = "Staff_MenuItem";
-            this.Staff_MenuItem.Size = new System.Drawing.Size(197, 38);
-            this.Staff_MenuItem.Text = "Nhân viên";
-            this.Staff_MenuItem.Click += new System.EventHandler(this.Staff_MenuItem_Click);
-            // 
-            // Material_MenuItem
-            // 
-            this.Material_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.product;
-            this.Material_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Material_MenuItem.Name = "Material_MenuItem";
-            this.Material_MenuItem.Size = new System.Drawing.Size(197, 38);
-            this.Material_MenuItem.Text = "Nguyên liệu";
-            this.Material_MenuItem.Click += new System.EventHandler(this.Material_MenuItem_Click);
-            // 
-            // Voucher_MenuItem
-            // 
-            this.Voucher_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.coupon;
-            this.Voucher_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Voucher_MenuItem.Name = "Voucher_MenuItem";
-            this.Voucher_MenuItem.Size = new System.Drawing.Size(197, 38);
-            this.Voucher_MenuItem.Text = "Voucher";
-            this.Voucher_MenuItem.Click += new System.EventHandler(this.Voucher_MenuItem_Click);
-            // 
             // Order_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,6 +519,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1100, 810);
             this.Name = "Order_frm";
@@ -534,9 +536,9 @@ namespace GUI_QuanLyCafe
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

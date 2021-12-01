@@ -394,13 +394,15 @@ namespace GUI_QuanLyCafe
                 {
                     foreach (char c in txt)
                     {
-                        if (c < '0' || c > '9')
+                        if (c == ',' && ctl.Text == "Số lượng")
                         {
-                            if (c != ',')
-                            {
-                                control.Text = txt.Substring(0, txt.Length - 1);
-                                control.SelectionStart = txt.Length;
-                            }
+                            control.Text = txt.Substring(0, txt.Length - 1);
+                            control.SelectionStart = txt.Length;
+                        }
+                        else if ((c < '0' || c > '9') && c != ',')
+                        {
+                            control.Text = txt.Substring(0, txt.Length - 1);
+                            control.SelectionStart = txt.Length;
                         }
                         else
                         {

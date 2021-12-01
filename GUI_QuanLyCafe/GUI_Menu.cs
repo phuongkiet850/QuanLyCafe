@@ -229,7 +229,6 @@ namespace GUI_QuanLyCafe
         {
             CategoryID = Menu_tc.SelectedTab.Name.ToString();
             LoadMenu(CategoryID);
-
         }
 
         private void Menu_frm_FormClosing(object sender, FormClosingEventArgs e)

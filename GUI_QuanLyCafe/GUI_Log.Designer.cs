@@ -29,6 +29,7 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Log_frm));
             this.label1 = new System.Windows.Forms.Label();
             this.Log_rtxt = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
@@ -65,6 +66,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.Log_rtxt);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Log_frm";

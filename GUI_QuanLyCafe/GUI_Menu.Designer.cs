@@ -34,6 +34,7 @@ namespace GUI_QuanLyCafe
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_frm));
             this.Menu_tc = new System.Windows.Forms.TabControl();
             this.CF = new System.Windows.Forms.TabPage();
             this.Cafe_flp = new System.Windows.Forms.FlowLayoutPanel();
@@ -392,6 +393,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ListOrder_dgv);
             this.Controls.Add(this.Menu_tc);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1230, 700);
             this.Name = "Menu_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

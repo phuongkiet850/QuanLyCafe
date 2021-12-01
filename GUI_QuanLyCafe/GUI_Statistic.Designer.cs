@@ -29,12 +29,15 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Statistic_dgv = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistic_frm));
             this.label1 = new System.Windows.Forms.Label();
             this.Value1_date = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,71 +57,16 @@ namespace GUI_QuanLyCafe
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Value1_cbb = new System.Windows.Forms.ComboBox();
             this.Value2_cbb = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Statistic_dgv = new System.Windows.Forms.DataGridView();
+            this.Table_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.Chart_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Statistic_dgv
-            // 
-            this.Statistic_dgv.AllowUserToDeleteRows = false;
-            this.Statistic_dgv.AllowUserToResizeColumns = false;
-            this.Statistic_dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.Statistic_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.Statistic_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Statistic_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Statistic_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.Statistic_dgv.BackgroundColor = System.Drawing.Color.White;
-            this.Statistic_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.Statistic_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.Statistic_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Statistic_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.Statistic_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Statistic_dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Statistic_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.Statistic_dgv.Location = new System.Drawing.Point(38, 263);
-            this.Statistic_dgv.MultiSelect = false;
-            this.Statistic_dgv.Name = "Statistic_dgv";
-            this.Statistic_dgv.ReadOnly = true;
-            this.Statistic_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Statistic_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.Statistic_dgv.RowHeadersVisible = false;
-            this.Statistic_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Statistic_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.Statistic_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Statistic_dgv.ShowCellErrors = false;
-            this.Statistic_dgv.ShowCellToolTips = false;
-            this.Statistic_dgv.ShowEditingIcon = false;
-            this.Statistic_dgv.ShowRowErrors = false;
-            this.Statistic_dgv.Size = new System.Drawing.Size(1136, 280);
-            this.Statistic_dgv.TabIndex = 29;
-            this.Statistic_dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Statistic_dgv_CellDoubleClick);
             // 
             // label1
             // 
@@ -237,6 +185,7 @@ namespace GUI_QuanLyCafe
             this.Total_txt.ReadOnly = true;
             this.Total_txt.Size = new System.Drawing.Size(199, 32);
             this.Total_txt.TabIndex = 40;
+            this.Total_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Value2_date
             // 
@@ -305,16 +254,19 @@ namespace GUI_QuanLyCafe
             this.Pdf_btn.CheckedState.Parent = this.Pdf_btn;
             this.Pdf_btn.CustomImages.Parent = this.Pdf_btn;
             this.Pdf_btn.FillColor = System.Drawing.Color.White;
-            this.Pdf_btn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Pdf_btn.ForeColor = System.Drawing.Color.White;
+            this.Pdf_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pdf_btn.ForeColor = System.Drawing.Color.Black;
             this.Pdf_btn.HoverState.Parent = this.Pdf_btn;
             this.Pdf_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.pdf;
+            this.Pdf_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Pdf_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Pdf_btn.Location = new System.Drawing.Point(1067, 555);
+            this.Pdf_btn.Location = new System.Drawing.Point(857, 555);
             this.Pdf_btn.Name = "Pdf_btn";
             this.Pdf_btn.ShadowDecoration.Parent = this.Pdf_btn;
-            this.Pdf_btn.Size = new System.Drawing.Size(44, 44);
+            this.Pdf_btn.Size = new System.Drawing.Size(145, 44);
             this.Pdf_btn.TabIndex = 157;
+            this.Pdf_btn.Text = "Xuất PDF";
+            this.Pdf_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Pdf_btn.Click += new System.EventHandler(this.Pdf_btn_Click);
             // 
             // Excel_btn
@@ -324,16 +276,19 @@ namespace GUI_QuanLyCafe
             this.Excel_btn.CheckedState.Parent = this.Excel_btn;
             this.Excel_btn.CustomImages.Parent = this.Excel_btn;
             this.Excel_btn.FillColor = System.Drawing.Color.White;
-            this.Excel_btn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Excel_btn.ForeColor = System.Drawing.Color.White;
+            this.Excel_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Excel_btn.ForeColor = System.Drawing.Color.Black;
             this.Excel_btn.HoverState.Parent = this.Excel_btn;
             this.Excel_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.excel;
+            this.Excel_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Excel_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Excel_btn.Location = new System.Drawing.Point(1130, 555);
+            this.Excel_btn.Location = new System.Drawing.Point(1022, 555);
             this.Excel_btn.Name = "Excel_btn";
             this.Excel_btn.ShadowDecoration.Parent = this.Excel_btn;
-            this.Excel_btn.Size = new System.Drawing.Size(44, 44);
+            this.Excel_btn.Size = new System.Drawing.Size(152, 44);
             this.Excel_btn.TabIndex = 156;
+            this.Excel_btn.Text = "Xuất Excel";
+            this.Excel_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Excel_btn.Click += new System.EventHandler(this.Excel_btn_Click);
             // 
             // pictureBox2
@@ -371,12 +326,183 @@ namespace GUI_QuanLyCafe
             this.Value2_cbb.SelectedValueChanged += new System.EventHandler(this.Value2_cbb_SelectedValueChanged);
             this.Value2_cbb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Value2_cbb_KeyDown);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.chart1);
+            this.panel1.Location = new System.Drawing.Point(12, 260);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1185, 286);
+            this.panel1.TabIndex = 161;
+            this.panel1.Visible = false;
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.BorderlineColor = System.Drawing.Color.Black;
+            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX2.TitleFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.Format = "{0:0,0} VNĐ";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY2.IsLabelAutoFit = false;
+            chartArea1.AxisY2.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(16, 3);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.CustomProperties = "LabelStyle=Bottom";
+            series1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.LabelFormat = "{0:0,0}";
+            series1.Legend = "Legend1";
+            series1.Name = "Doanh thu";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1146, 277);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // Statistic_dgv
+            // 
+            this.Statistic_dgv.AllowUserToDeleteRows = false;
+            this.Statistic_dgv.AllowUserToResizeColumns = false;
+            this.Statistic_dgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.Statistic_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Statistic_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Statistic_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Statistic_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.Statistic_dgv.BackgroundColor = System.Drawing.Color.White;
+            this.Statistic_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.Statistic_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.Statistic_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Statistic_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.Statistic_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Statistic_dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Statistic_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.Statistic_dgv.Location = new System.Drawing.Point(38, 263);
+            this.Statistic_dgv.MultiSelect = false;
+            this.Statistic_dgv.Name = "Statistic_dgv";
+            this.Statistic_dgv.ReadOnly = true;
+            this.Statistic_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Statistic_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.Statistic_dgv.RowHeadersVisible = false;
+            this.Statistic_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Statistic_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.Statistic_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Statistic_dgv.ShowCellErrors = false;
+            this.Statistic_dgv.ShowCellToolTips = false;
+            this.Statistic_dgv.ShowEditingIcon = false;
+            this.Statistic_dgv.ShowRowErrors = false;
+            this.Statistic_dgv.Size = new System.Drawing.Size(1136, 280);
+            this.Statistic_dgv.TabIndex = 29;
+            this.Statistic_dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Statistic_dgv_CellDoubleClick);
+            // 
+            // Table_rdo
+            // 
+            this.Table_rdo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Table_rdo.AutoSize = true;
+            this.Table_rdo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Table_rdo.CheckedState.BorderThickness = 0;
+            this.Table_rdo.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Table_rdo.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Table_rdo.CheckedState.InnerOffset = -4;
+            this.Table_rdo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Table_rdo.Location = new System.Drawing.Point(975, 145);
+            this.Table_rdo.Name = "Table_rdo";
+            this.Table_rdo.Size = new System.Drawing.Size(71, 27);
+            this.Table_rdo.TabIndex = 162;
+            this.Table_rdo.TabStop = true;
+            this.Table_rdo.Text = "Bảng";
+            this.Table_rdo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.Table_rdo.UncheckedState.BorderThickness = 2;
+            this.Table_rdo.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.Table_rdo.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.Table_rdo.UseVisualStyleBackColor = true;
+            this.Table_rdo.Visible = false;
+            this.Table_rdo.CheckedChanged += new System.EventHandler(this.Table_rdo_CheckedChanged);
+            // 
+            // Chart_rdo
+            // 
+            this.Chart_rdo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Chart_rdo.AutoSize = true;
+            this.Chart_rdo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Chart_rdo.CheckedState.BorderThickness = 0;
+            this.Chart_rdo.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Chart_rdo.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Chart_rdo.CheckedState.InnerOffset = -4;
+            this.Chart_rdo.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chart_rdo.Location = new System.Drawing.Point(1079, 145);
+            this.Chart_rdo.Name = "Chart_rdo";
+            this.Chart_rdo.Size = new System.Drawing.Size(95, 27);
+            this.Chart_rdo.TabIndex = 163;
+            this.Chart_rdo.TabStop = true;
+            this.Chart_rdo.Text = "Biểu đồ";
+            this.Chart_rdo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.Chart_rdo.UncheckedState.BorderThickness = 2;
+            this.Chart_rdo.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.Chart_rdo.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.Chart_rdo.UseVisualStyleBackColor = true;
+            this.Chart_rdo.Visible = false;
+            this.Chart_rdo.CheckedChanged += new System.EventHandler(this.Chart_rdo_CheckedChanged);
+            // 
             // Statistic_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1209, 611);
+            this.Controls.Add(this.Chart_rdo);
+            this.Controls.Add(this.Table_rdo);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Value2_cbb);
             this.Controls.Add(this.Value1_cbb);
             this.Controls.Add(this.Find_btn);
@@ -397,21 +523,23 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.Value1_date);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Statistic_dgv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1225, 650);
             this.Name = "Statistic_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Statistic_frm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView Statistic_dgv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker Value1_date;
         private System.Windows.Forms.Label label2;
@@ -431,5 +559,10 @@ namespace GUI_QuanLyCafe
         private Guna.UI2.WinForms.Guna2Button Find_btn;
         private System.Windows.Forms.ComboBox Value1_cbb;
         private System.Windows.Forms.ComboBox Value2_cbb;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridView Statistic_dgv;
+        private Guna.UI2.WinForms.Guna2RadioButton Table_rdo;
+        private Guna.UI2.WinForms.Guna2RadioButton Chart_rdo;
     }
 }
