@@ -596,21 +596,19 @@ namespace GUI_QuanLyCafe
                         {
                             for (int j = 0; j < e.Columns.Count; j++)
                             {
-                                if (e.Rows[i].Cells[j].Value != null)
+                                Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
+                                count1 = i + 5;
+                                count2 = j + 2;
+                                Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                if (count2 == 3)
                                 {
-                                    Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
-                                    count1 = i + 5;
-                                    count2 = j + 2;
-                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-                                    if (count2 == 3)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                    Worksheet.Cells[i + 5, count2] = e.Rows[i].Cells[j].Value.ToString().Replace(" VNĐ", "");
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                }
 
-                                    if (count2 == 2)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                if (count2 == 2)
+                                {
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
                                 }
                             }
                         }
@@ -624,8 +622,11 @@ namespace GUI_QuanLyCafe
                         Worksheet.Cells[count1 + 2, count2].Cells.Font.Color = Color.Red;
                         Execl.ActiveWorkbook.SaveCopyAs(Path);
                         Execl.ActiveWorkbook.Saved = true;
-                        Execl.Quit();
+                        
                         MessageBox.Show("Xuất dữ liệu ra Excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Execl.Visible = true;
+                        Execl.WindowState = XlWindowState.xlMinimized;
+                        Execl.WindowState = XlWindowState.xlMaximized;
                     }
                     else
                     {
@@ -654,22 +655,20 @@ namespace GUI_QuanLyCafe
                         {
                             for (int j = 0; j < e.Columns.Count; j++)
                             {
-                                if (e.Rows[i].Cells[j].Value != null)
+                                Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
+                                count1 = i + 5;
+                                count2 = j + 2;
+                                if (count2 == 2)
                                 {
-                                    Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
-                                    count1 = i + 5;
-                                    count2 = j + 2;
-                                    if (count2 == 2)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
-                                    }
+                                    Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
+                                }
 
-                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-                                    if (count2 == 3)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                if (count2 == 3)
+                                {
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    Worksheet.Cells[i + 5, count2] = e.Rows[i].Cells[j].Value.ToString().Replace(" VNĐ", "");
                                 }
                             }
                         }
@@ -684,8 +683,10 @@ namespace GUI_QuanLyCafe
                         Worksheet.Cells[count1 + 2, count2].Cells.Font.Color = Color.Red;
                         Execl.ActiveWorkbook.SaveCopyAs(Path);
                         Execl.ActiveWorkbook.Saved = true;
-                        Execl.Quit();
                         MessageBox.Show("Xuất dữ liệu ra Excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Execl.Visible = true;
+                        Execl.WindowState = XlWindowState.xlMinimized;
+                        Execl.WindowState = XlWindowState.xlMaximized;
                     }
                     else
                     {
@@ -713,21 +714,19 @@ namespace GUI_QuanLyCafe
                         {
                             for (int j = 0; j < e.Columns.Count; j++)
                             {
-                                if (e.Rows[i].Cells[j].Value != null)
+                                Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
+                                count1 = i + 5;
+                                count2 = j + 2;
+                                if (count2 == 2)
                                 {
-                                    Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
-                                    count1 = i + 5;
-                                    count2 = j + 2;
-                                    if (count2 == 2)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
-                                    }
-                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                    Worksheet.Cells[i + 5, count2].NumberFormat = "mm/yyy";
+                                }
+                                Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-                                    if (count2 == 4)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                if (count2 == 4)
+                                {
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    Worksheet.Cells[i + 5, count2] = e.Rows[i].Cells[j].Value.ToString().Replace(" VNĐ", "");
                                 }
                             }
                         }
@@ -742,8 +741,10 @@ namespace GUI_QuanLyCafe
                         Worksheet.Cells[count1 + 2, count2].Cells.Font.Color = Color.Red;
                         Execl.ActiveWorkbook.SaveCopyAs(Path);
                         Execl.ActiveWorkbook.Saved = true;
-                        Execl.Quit();
                         MessageBox.Show("Xuất dữ liệu ra Excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Execl.Visible = true;
+                        Execl.WindowState = XlWindowState.xlMinimized;
+                        Execl.WindowState = XlWindowState.xlMaximized;
                     }
                     else
                     {
@@ -771,20 +772,18 @@ namespace GUI_QuanLyCafe
                         {
                             for (int j = 0; j < e.Columns.Count; j++)
                             {
-                                if (e.Rows[i].Cells[j].Value != null)
+                                Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
+                                count1 = i + 5;
+                                count2 = j + 2;
+                                Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                if (count2 == 4)
                                 {
-                                    Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
-                                    count1 = i + 5;
-                                    count2 = j + 2;    
-                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-                                    if (count2 == 4)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
-                                    if (count2 == 2)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    Worksheet.Cells[i + 5, count2] = e.Rows[i].Cells[j].Value.ToString().Replace(" VNĐ", "");
+                                }
+                                if (count2 == 2)
+                                {
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
                                 }
                             }
                         }
@@ -799,8 +798,10 @@ namespace GUI_QuanLyCafe
                         Worksheet.Cells[count1 + 2, count2].Cells.Font.Color = Color.Red;
                         Execl.ActiveWorkbook.SaveCopyAs(Path);
                         Execl.ActiveWorkbook.Saved = true;
-                        Execl.Quit();
                         MessageBox.Show("Xuất dữ liệu ra Excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Execl.Visible = true;
+                        Execl.WindowState = XlWindowState.xlMinimized;
+                        Execl.WindowState = XlWindowState.xlMaximized;
                     }
                     else
                     {
@@ -828,16 +829,14 @@ namespace GUI_QuanLyCafe
                         {
                             for (int j = 0; j < e.Columns.Count - 1; j++)
                             {
-                                if (e.Rows[i].Cells[j].Value != null)
+                                Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
+                                count1 = i + 5;
+                                count2 = j + 2;
+                                Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+                                if (count2 == 5)
                                 {
-                                    Worksheet.Cells[i + 5, j + 2] = e.Rows[i].Cells[j].Value.ToString();
-                                    count1 = i + 5;
-                                    count2 = j + 2;
-                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-                                    if (count2 == 5)
-                                    {
-                                        Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
-                                    }
+                                    Worksheet.Cells[i + 5, count2].Cells.HorizontalAlignment = XlHAlign.xlHAlignRight;
+                                    Worksheet.Cells[i + 5, count2] = e.Rows[i].Cells[j].Value.ToString().Replace(" VNĐ", "");
                                 }
                             }
                         }
@@ -852,8 +851,10 @@ namespace GUI_QuanLyCafe
                         Worksheet.Cells[count1 + 2, count2].Cells.Font.Color = Color.Red;
                         Execl.ActiveWorkbook.SaveCopyAs(Path);
                         Execl.ActiveWorkbook.Saved = true;
-                        Execl.Quit();
                         MessageBox.Show("Xuất dữ liệu ra Excel thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Execl.Visible = true;
+                        Execl.WindowState = XlWindowState.xlMinimized;
+                        Execl.WindowState = XlWindowState.xlMaximized;
                     }
                     else
                     {
@@ -1006,9 +1007,10 @@ namespace GUI_QuanLyCafe
                 table.Columns.Add("Ca", typeof(string));
                 table.Columns.Add("Nhân viên", typeof(string));
                 table.Columns.Add("Tống", typeof(string));
+
                 foreach (DataGridViewRow item in Statistic_dgv.Rows)
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value, item.Cells[3].Value);
+                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value, item.Cells[3].Value.ToString().Replace(" VNĐ", ""));
                 }
                 set.Tables.Add(table);
                 set.WriteXmlSchema("Statictis.xml");
@@ -1022,6 +1024,19 @@ namespace GUI_QuanLyCafe
                 txtheader3.Text = "Thời gian";
                 TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
                 txtheader2.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
+                Box.LineStyle = LineStyle.NoLine;
+
+                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
+                Box2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                Line.LineStyle = LineStyle.NoLine;
+
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                Line2.LineStyle = LineStyle.NoLine;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
@@ -1033,7 +1048,7 @@ namespace GUI_QuanLyCafe
                 table.Columns.Add("Nhân viên", typeof(string));
                 foreach (DataGridViewRow item in Statistic_dgv.Rows)
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value);
+                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
                 }
                 set.Tables.Add(table);
                 set.WriteXmlSchema("Statictis.xml");
@@ -1060,6 +1075,21 @@ namespace GUI_QuanLyCafe
                 FieldObject field2 = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
                 field2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
 
+                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                Box.LineStyle = LineStyle.NoLine;
+
+                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
+                Box2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                Line.LineStyle = LineStyle.NoLine;
+
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                Line2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line7"];
+                Line3.LineStyle = LineStyle.NoLine;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
@@ -1071,7 +1101,7 @@ namespace GUI_QuanLyCafe
                 table.Columns.Add("Nhân viên", typeof(string));
                 foreach (DataGridViewRow item in Statistic_dgv.Rows)
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value);
+                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
                 }
                 set.Tables.Add(table);
                 set.WriteXmlSchema("Statictis.xml");
@@ -1094,6 +1124,21 @@ namespace GUI_QuanLyCafe
                 FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
                 field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
 
+                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                Box.LineStyle = LineStyle.NoLine;
+
+                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
+                Box2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                Line.LineStyle = LineStyle.NoLine;
+
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                Line2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line7"];
+                Line3.LineStyle = LineStyle.NoLine;
+
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
             }
@@ -1106,7 +1151,7 @@ namespace GUI_QuanLyCafe
                 table.Columns.Add("Tống", typeof(string));
                 foreach (DataGridViewRow item in Statistic_dgv.Rows)
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value);
+                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
                 }
                 set.Tables.Add(table);
                 set.WriteXmlSchema("Statictis.xml");
@@ -1116,6 +1161,7 @@ namespace GUI_QuanLyCafe
                 report.crystalReportViewer1.ReportSource = statistic;
                 TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
                 txtheader1.Text = "DOANH THU THÁNG " + Month + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
+
                 TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
                 txtheader2.Text = "Thời gian";
                 txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
@@ -1125,6 +1171,18 @@ namespace GUI_QuanLyCafe
 
                 FieldObject field = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
                 field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                Box.LineStyle = LineStyle.NoLine;
+
+                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
+                Box2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                Line.LineStyle = LineStyle.NoLine;
+
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                Line2.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
@@ -1138,7 +1196,7 @@ namespace GUI_QuanLyCafe
                 table.Columns.Add("Tống", typeof(string));
                 foreach (DataGridViewRow item in Statistic_dgv.Rows)
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value);
+                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
                 }
                 set.Tables.Add(table);
                 set.WriteXmlSchema("Statictis.xml");
@@ -1153,8 +1211,17 @@ namespace GUI_QuanLyCafe
                 TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
                 txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
 
-                FieldObject field = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
-                field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                Box.LineStyle = LineStyle.NoLine;
+
+                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
+                Box2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                Line.LineStyle = LineStyle.NoLine;
+
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                Line2.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
@@ -1179,6 +1246,52 @@ namespace GUI_QuanLyCafe
             {
                 Chart();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Pdf_btn.ForeColor == Color.Black)
+            {
+                Pdf_btn.ForeColor = Color.Red;
+                Pdf_btn.BorderColor = Color.Red;
+            }
+            else if (Pdf_btn.ForeColor == Color.Red)
+            {
+                Pdf_btn.ForeColor = Color.Blue;
+                Pdf_btn.BorderColor = Color.Blue;
+            }
+            else if (Pdf_btn.ForeColor == Color.Blue)
+            {
+                Pdf_btn.ForeColor = Color.Green;
+                Pdf_btn.BorderColor = Color.Green;
+            }
+            else
+            {
+                Pdf_btn.ForeColor = Color.Black;
+                Pdf_btn.BorderColor = Color.Black;
+            }
+
+            if (Excel_btn.ForeColor == Color.Black)
+            {
+                Excel_btn.ForeColor = Color.Red;
+                Excel_btn.BorderColor = Color.Red;
+            }
+            else if (Excel_btn.ForeColor == Color.Red)
+            {
+                Excel_btn.ForeColor = Color.Blue;
+                Excel_btn.BorderColor = Color.Blue;
+            }
+            else if (Excel_btn.ForeColor == Color.Blue)
+            {
+                Excel_btn.ForeColor = Color.Green;
+                Excel_btn.BorderColor = Color.Green;
+            }
+            else
+            {
+                Excel_btn.ForeColor = Color.Black;
+                Excel_btn.BorderColor = Color.Black;
+            }
+
         }
     }
 }

@@ -29,6 +29,7 @@ namespace GUI_QuanLyCafe
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -62,6 +63,7 @@ namespace GUI_QuanLyCafe
             this.Statistic_dgv = new System.Windows.Forms.DataGridView();
             this.Table_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.Chart_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -251,19 +253,21 @@ namespace GUI_QuanLyCafe
             // 
             this.Pdf_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Pdf_btn.Animated = true;
+            this.Pdf_btn.BorderRadius = 10;
+            this.Pdf_btn.BorderThickness = 2;
             this.Pdf_btn.CheckedState.Parent = this.Pdf_btn;
             this.Pdf_btn.CustomImages.Parent = this.Pdf_btn;
             this.Pdf_btn.FillColor = System.Drawing.Color.White;
-            this.Pdf_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pdf_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pdf_btn.ForeColor = System.Drawing.Color.Black;
             this.Pdf_btn.HoverState.Parent = this.Pdf_btn;
             this.Pdf_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.pdf;
             this.Pdf_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Pdf_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Pdf_btn.Location = new System.Drawing.Point(857, 555);
+            this.Pdf_btn.Location = new System.Drawing.Point(833, 555);
             this.Pdf_btn.Name = "Pdf_btn";
             this.Pdf_btn.ShadowDecoration.Parent = this.Pdf_btn;
-            this.Pdf_btn.Size = new System.Drawing.Size(145, 44);
+            this.Pdf_btn.Size = new System.Drawing.Size(152, 44);
             this.Pdf_btn.TabIndex = 157;
             this.Pdf_btn.Text = "Xuất PDF";
             this.Pdf_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -273,19 +277,21 @@ namespace GUI_QuanLyCafe
             // 
             this.Excel_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Excel_btn.Animated = true;
+            this.Excel_btn.BorderRadius = 10;
+            this.Excel_btn.BorderThickness = 2;
             this.Excel_btn.CheckedState.Parent = this.Excel_btn;
             this.Excel_btn.CustomImages.Parent = this.Excel_btn;
             this.Excel_btn.FillColor = System.Drawing.Color.White;
-            this.Excel_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Excel_btn.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Excel_btn.ForeColor = System.Drawing.Color.Black;
             this.Excel_btn.HoverState.Parent = this.Excel_btn;
             this.Excel_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.excel;
             this.Excel_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Excel_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Excel_btn.Location = new System.Drawing.Point(1022, 555);
+            this.Excel_btn.Location = new System.Drawing.Point(1013, 555);
             this.Excel_btn.Name = "Excel_btn";
             this.Excel_btn.ShadowDecoration.Parent = this.Excel_btn;
-            this.Excel_btn.Size = new System.Drawing.Size(152, 44);
+            this.Excel_btn.Size = new System.Drawing.Size(161, 44);
             this.Excel_btn.TabIndex = 156;
             this.Excel_btn.Text = "Xuất Excel";
             this.Excel_btn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -494,6 +500,12 @@ namespace GUI_QuanLyCafe
             this.Chart_rdo.Visible = false;
             this.Chart_rdo.CheckedChanged += new System.EventHandler(this.Chart_rdo_CheckedChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Statistic_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,5 +576,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.DataGridView Statistic_dgv;
         private Guna.UI2.WinForms.Guna2RadioButton Table_rdo;
         private Guna.UI2.WinForms.Guna2RadioButton Chart_rdo;
+        private System.Windows.Forms.Timer timer1;
     }
 }
