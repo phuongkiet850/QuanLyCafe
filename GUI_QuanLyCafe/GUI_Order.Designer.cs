@@ -40,7 +40,6 @@ namespace GUI_QuanLyCafe
             this.Material_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Voucher_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Statistic_tsmi = new System.Windows.Forms.ToolStripMenuItem();
-            this.hướngDẫnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Payment_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Delete_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -82,8 +81,7 @@ namespace GUI_QuanLyCafe
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hệThốngToolStripMenuItem,
             this.Manage_tsmi,
-            this.Statistic_tsmi,
-            this.hướngDẫnToolStripMenuItem});
+            this.Statistic_tsmi});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1323, 31);
@@ -166,14 +164,6 @@ namespace GUI_QuanLyCafe
             this.Statistic_tsmi.Size = new System.Drawing.Size(99, 27);
             this.Statistic_tsmi.Text = "Thống kê";
             this.Statistic_tsmi.Click += new System.EventHandler(this.Statistic_tsmi_Click);
-            // 
-            // hướngDẫnToolStripMenuItem
-            // 
-            this.hướngDẫnToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hướngDẫnToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.hướngDẫnToolStripMenuItem.Name = "hướngDẫnToolStripMenuItem";
-            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(113, 27);
-            this.hướngDẫnToolStripMenuItem.Text = "Hướng dẫn";
             // 
             // panel3
             // 
@@ -571,7 +561,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.ToolStripMenuItem Staff_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Material_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Statistic_tsmi;
-        private System.Windows.Forms.ToolStripMenuItem hướngDẫnToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem Voucher_MenuItem;

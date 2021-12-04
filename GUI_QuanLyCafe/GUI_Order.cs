@@ -33,6 +33,7 @@ namespace GUI_QuanLyCafe
             {
                 Manage_tsmi.Visible = false;
                 Statistic_tsmi.Visible = false;
+                Log_btn.Visible = false;
             }
             Loading_frm.Status = 2;
 

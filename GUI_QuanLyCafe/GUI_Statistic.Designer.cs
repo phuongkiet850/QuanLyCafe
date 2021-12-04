@@ -212,7 +212,7 @@ namespace GUI_QuanLyCafe
             "Năm"});
             this.Staff_cbb.Location = new System.Drawing.Point(592, 146);
             this.Staff_cbb.Name = "Staff_cbb";
-            this.Staff_cbb.Size = new System.Drawing.Size(234, 31);
+            this.Staff_cbb.Size = new System.Drawing.Size(283, 31);
             this.Staff_cbb.TabIndex = 155;
             this.Staff_cbb.Text = "Tất cả";
             this.Staff_cbb.SelectedValueChanged += new System.EventHandler(this.Staff_cbb_SelectedValueChanged);

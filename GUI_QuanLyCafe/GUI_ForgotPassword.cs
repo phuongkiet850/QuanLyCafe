@@ -18,7 +18,7 @@ namespace GUI_QuanLyCafe
         DTO_Staff staff = new DTO_Staff();
         private void Verification_btn_Click(object sender, EventArgs e)
         {
-            if (Email_txt.Text == "admin")
+            if (Email_txt.Text == "chinhchu@gmail.com")
             {
                 MessageBox.Show("Đây là tài khoản admin không được phép thay đổi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

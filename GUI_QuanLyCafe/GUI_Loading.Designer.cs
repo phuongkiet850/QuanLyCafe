@@ -30,6 +30,7 @@ namespace GUI_QuanLyCafe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Loading_frm));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2WinProgressIndicator1 = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -72,6 +73,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.guna2WinProgressIndicator1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Loading_frm";

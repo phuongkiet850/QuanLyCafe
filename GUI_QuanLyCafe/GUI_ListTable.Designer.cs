@@ -40,8 +40,6 @@ namespace GUI_QuanLyCafe
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListTable_frm));
             this.ListOrder1_dgv = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.Log_Menu = new System.Windows.Forms.MenuStrip();
-            this.Log_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Switch_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Merge_btn = new Guna.UI2.WinForms.Guna2Button();
             this.Detach_btn = new Guna.UI2.WinForms.Guna2Button();
@@ -56,7 +54,6 @@ namespace GUI_QuanLyCafe
             this.Table_flp = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder1_dgv)).BeginInit();
             this.panel3.SuspendLayout();
-            this.Log_Menu.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder2_dgv)).BeginInit();
             this.panel1.SuspendLayout();
@@ -115,7 +112,6 @@ namespace GUI_QuanLyCafe
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.Log_Menu);
             this.panel3.Controls.Add(this.Switch_btn);
             this.panel3.Controls.Add(this.Merge_btn);
             this.panel3.Controls.Add(this.Detach_btn);
@@ -128,26 +124,6 @@ namespace GUI_QuanLyCafe
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(610, 827);
             this.panel3.TabIndex = 19;
-            // 
-            // Log_Menu
-            // 
-            this.Log_Menu.BackColor = System.Drawing.Color.Transparent;
-            this.Log_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Log_MenuItem});
-            this.Log_Menu.Location = new System.Drawing.Point(0, 0);
-            this.Log_Menu.Name = "Log_Menu";
-            this.Log_Menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Log_Menu.Size = new System.Drawing.Size(610, 40);
-            this.Log_Menu.TabIndex = 146;
-            this.Log_Menu.Text = "menuStrip1";
-            // 
-            // Log_MenuItem
-            // 
-            this.Log_MenuItem.Image = global::GUI_QuanLyCafe.Properties.Resources.log_format;
-            this.Log_MenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.Log_MenuItem.Name = "Log_MenuItem";
-            this.Log_MenuItem.Size = new System.Drawing.Size(44, 36);
-            this.Log_MenuItem.Click += new System.EventHandler(this.Log_MenuItem_Click);
             // 
             // Switch_btn
             // 
@@ -376,9 +352,6 @@ namespace GUI_QuanLyCafe
             this.Load += new System.EventHandler(this.DetachTable_frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder1_dgv)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.Log_Menu.ResumeLayout(false);
-            this.Log_Menu.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListOrder2_dgv)).EndInit();
@@ -405,8 +378,6 @@ namespace GUI_QuanLyCafe
         private System.Windows.Forms.Label NameTable1_lbl;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.FlowLayoutPanel Table_flp;
-        private System.Windows.Forms.MenuStrip Log_Menu;
-        private System.Windows.Forms.ToolStripMenuItem Log_MenuItem;
         private System.Windows.Forms.Label label1;
     }
 }

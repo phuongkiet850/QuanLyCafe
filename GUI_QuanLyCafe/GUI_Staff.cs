@@ -214,24 +214,8 @@ namespace GUI_QuanLyCafe
                     }
                     else
                     {
+                        staff.Password = "";
                         InsertProfileNV();
-
-                        //save log
-                        log.Action = "thêm";
-                        SaveLog();
-                        //
-
-                        MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        Email_txt.ReadOnly = true;
-                        CreateID_btn.Enabled = true;
-                        Edit_ckb.Enabled = true;
-                        Find_txt.ReadOnly = false;
-                        ResetFind_btn.Enabled = true;
-                        FindBy_cbb.Enabled = true;
-                        Add_btn.Enabled = false;
-                        ListStaff_dgv.Enabled = true;
-                        Add_btn.Text = "Thêm";
                     }
                 }
             }
@@ -296,9 +280,26 @@ namespace GUI_QuanLyCafe
         {
             GetText();
             BUS_Staff.Instance.InsertProfileStaff(staff);
+
+            //save log
+            log.Action = "thêm";
+            SaveLog();
+            //
+
             Edit_btn.Enabled = true;
             ListStaff_dgv.Enabled = true;
             FomatDategridView();
+
+            Email_txt.ReadOnly = true;
+            CreateID_btn.Enabled = true;
+            Edit_ckb.Enabled = true;
+            Find_txt.ReadOnly = false;
+            ResetFind_btn.Enabled = true;
+            FindBy_cbb.Enabled = true;
+            Add_btn.Enabled = false;
+            ListStaff_dgv.Enabled = true;
+            Add_btn.Text = "Thêm";
+            MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SendMailPassword(string Email, string MatKhau)
@@ -317,18 +318,6 @@ namespace GUI_QuanLyCafe
                 MessageBox.Show("Đã gửi mật khẩu mới về email của bạn, vui lòng kiểm tra lại email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 InsertProfileNV();
-
-                MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Email_txt.ReadOnly = true;
-                CreateID_btn.Enabled = true;
-                Edit_ckb.Enabled = true;
-                Find_txt.ReadOnly = false;
-                ResetFind_btn.Enabled = true;
-                FindBy_cbb.Enabled = true;
-                Add_btn.Enabled = false;
-                ListStaff_dgv.Enabled = true;
-                Add_btn.Text = "Thêm";
             }
             catch (Exception)
             {
@@ -342,7 +331,7 @@ namespace GUI_QuanLyCafe
         {
             try
             {
-                if (Email_txt.Text == "admin" && CreateID_btn.Enabled == true)
+                if (Email_txt.Text == "chinhchu@gmail.com" && CreateID_btn.Enabled == true)
                 {
                     MessageBox.Show("Bạn không thế sửa tài khoản admin được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -500,7 +489,7 @@ namespace GUI_QuanLyCafe
         {
             try
             {
-                if (Email_txt.Text == "admin" && CreateID_btn.Enabled == true)
+                if (Email_txt.Text == "chinhchu@gmail.com" && CreateID_btn.Enabled == true)
                 {
                     MessageBox.Show("Bạn không thế xóa tài khoản admin được", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

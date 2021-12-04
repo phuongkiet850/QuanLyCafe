@@ -197,7 +197,7 @@ namespace GUI_QuanLyCafe
                 float value = (float)double.Parse(BUS_Log.Instance.Statistic_All(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[i][4].ToString());
                 Total += value;
                 string price = String.Format("{0:0,0}", value);
-                row.Cells[3].Value = price + " VNĐ";
+                row.Cells[3].Value = price;
                 row.Cells[3].Style.ForeColor = Color.Red;
                 row.Cells[4].Value = BUS_Log.Instance.Statistic_All(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[i][0].ToString();
                 Statistic_dgv.Rows.Add(row);
@@ -226,7 +226,7 @@ namespace GUI_QuanLyCafe
                 float value = (float)double.Parse(BUS_Log.Instance.Statistic_Shift(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Shift_cbb.Text).Rows[i][4].ToString());
                 Total += value;
                 string price = String.Format("{0:0,0}", value);
-                row.Cells[3].Value = price + " VNĐ";
+                row.Cells[3].Value = price;
                 row.Cells[3].Style.ForeColor = Color.Red;
                 row.Cells[4].Value = BUS_Log.Instance.Statistic_Shift(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Shift_cbb.Text).Rows[i][0].ToString();
                 Statistic_dgv.Rows.Add(row);
@@ -255,7 +255,7 @@ namespace GUI_QuanLyCafe
                 float value = (float)double.Parse(BUS_Log.Instance.Statistic_Staff(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Staff_cbb.Text).Rows[i][4].ToString());
                 Total += value;
                 string price = String.Format("{0:0,0}", value);
-                row.Cells[3].Value = price + " VNĐ";
+                row.Cells[3].Value = price;
                 row.Cells[3].Style.ForeColor = Color.Red;
                 row.Cells[4].Value = BUS_Log.Instance.Statistic_Staff(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Staff_cbb.Text).Rows[i][0].ToString();
                 Statistic_dgv.Rows.Add(row);
@@ -284,7 +284,7 @@ namespace GUI_QuanLyCafe
                 float value = (float)double.Parse(BUS_Log.Instance.Statistic_Shift_Staff(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Shift_cbb.Text, Staff_cbb.Text).Rows[i][4].ToString());
                 Total += value;
                 string price = String.Format("{0:0,0}", value);
-                row.Cells[3].Value = price + " VNĐ";
+                row.Cells[3].Value = price;
                 row.Cells[3].Style.ForeColor = Color.Red;
                 row.Cells[4].Value = BUS_Log.Instance.Statistic_Shift_Staff(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59"), Shift_cbb.Text, Staff_cbb.Text).Rows[i][0].ToString();
                 Statistic_dgv.Rows.Add(row);
@@ -326,7 +326,7 @@ namespace GUI_QuanLyCafe
                     float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose(Value1, Value2).Rows[0][1].ToString());
                     Total += value;
                     string price = String.Format("{0:0,0}", value);
-                    row.Cells[1].Value = price + " VNĐ";
+                    row.Cells[1].Value = price;
                     row.Cells[1].Style.ForeColor = Color.Red;
                     Statistic_dgv.Rows.Add(row);
                 }
@@ -369,7 +369,7 @@ namespace GUI_QuanLyCafe
                         float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_MonthStaff(Value1, Value2, staff).Rows[0][1].ToString());
                         Total += value;
                         string price = String.Format("{0:0,0}", value);
-                        row.Cells[2].Value = price + " VNĐ";
+                        row.Cells[2].Value = price;
                         row.Cells[2].Style.ForeColor = Color.Red;
                         Statistic_dgv.Rows.Add(row);
                     }
@@ -416,7 +416,7 @@ namespace GUI_QuanLyCafe
                             float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString());
                             Total += value;
                             string price = String.Format("{0:0,0}", value);
-                            row.Cells[1].Value = price + " VNĐ";
+                            row.Cells[1].Value = price;
                             row.Cells[1].Style.ForeColor = Color.Red;
                             Statistic_dgv.Rows.Add(row);
                         }
@@ -467,7 +467,7 @@ namespace GUI_QuanLyCafe
                             float value = (float)double.Parse(BUS_Log.Instance.StatisticChoose_YearStaff(month, year, staff).Rows[0][0].ToString());
                             Total += value;
                             string price = String.Format("{0:0,0}", value);
-                            row.Cells[2].Value = price + " VNĐ";
+                            row.Cells[2].Value = price;
                             row.Cells[2].Style.ForeColor = Color.Red;
                             Statistic_dgv.Rows.Add(row);
                         }
@@ -1025,12 +1025,6 @@ namespace GUI_QuanLyCafe
                 TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
                 txtheader2.Text = "Tổng doanh thu : " + Total_txt.Text;
 
-                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
-                Box.LineStyle = LineStyle.NoLine;
-
-                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
-                Box2.LineStyle = LineStyle.NoLine;
-
                 LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
                 Line.LineStyle = LineStyle.NoLine;
 
@@ -1071,24 +1065,30 @@ namespace GUI_QuanLyCafe
 
                 FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
                 field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+                field1.Color = Color.Red;
 
                 FieldObject field2 = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
                 field2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
 
                 BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
                 Box.LineStyle = LineStyle.NoLine;
+                Box.FillColor = Color.White;
 
                 BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
                 Box2.LineStyle = LineStyle.NoLine;
+                Box2.FillColor = Color.White;
 
                 LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
                 Line.LineStyle = LineStyle.NoLine;
 
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
                 Line2.LineStyle = LineStyle.NoLine;
 
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line7"];
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
                 Line3.LineStyle = LineStyle.NoLine;
+
+                LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                Line4.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
@@ -1123,21 +1123,27 @@ namespace GUI_QuanLyCafe
 
                 FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
                 field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+                field1.Color = Color.Red;
 
                 BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
                 Box.LineStyle = LineStyle.NoLine;
+                Box.FillColor = Color.White;
 
                 BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
                 Box2.LineStyle = LineStyle.NoLine;
+                Box2.FillColor = Color.White;
 
                 LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
                 Line.LineStyle = LineStyle.NoLine;
 
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
                 Line2.LineStyle = LineStyle.NoLine;
 
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line7"];
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
                 Line3.LineStyle = LineStyle.NoLine;
+                
+                LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                Line4.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
@@ -1174,15 +1180,16 @@ namespace GUI_QuanLyCafe
 
                 BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
                 Box.LineStyle = LineStyle.NoLine;
+                Box.FillColor = Color.White;
 
-                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
-                Box2.LineStyle = LineStyle.NoLine;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
                 Line.LineStyle = LineStyle.NoLine;
 
                 LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
                 Line2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                Line3.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();
@@ -1213,15 +1220,16 @@ namespace GUI_QuanLyCafe
 
                 BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
                 Box.LineStyle = LineStyle.NoLine;
+                Box.FillColor = Color.White;
 
-                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box4"];
-                Box2.LineStyle = LineStyle.NoLine;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
                 Line.LineStyle = LineStyle.NoLine;
 
                 LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
                 Line2.LineStyle = LineStyle.NoLine;
+
+                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                Line3.LineStyle = LineStyle.NoLine;
 
                 report.crystalReportViewer1.Refresh();
                 report.ShowDialog();

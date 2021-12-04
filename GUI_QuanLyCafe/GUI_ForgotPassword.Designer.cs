@@ -170,6 +170,7 @@ namespace GUI_QuanLyCafe
             // 
             // Correct_ptb
             // 
+            this.Correct_ptb.Image = global::GUI_QuanLyCafe.Properties.Resources.check;
             this.Correct_ptb.Location = new System.Drawing.Point(465, 42);
             this.Correct_ptb.Name = "Correct_ptb";
             this.Correct_ptb.Size = new System.Drawing.Size(27, 26);
