@@ -92,5 +92,19 @@ namespace BUS_QuanLyCafe
         {
             return DAL_Log.Instance.ListStatistic_Year(year);
         }
+
+        public DataTable TopDay(string value1, string value2)
+        {
+            return DAL_Log.Instance.TopDay(value1, value2);
+        }
+
+        public DataTable TopMonth(int month, int year)
+        {
+            return DAL_Log.Instance.TopMonth(month, year);
+        }
+        public DataTable TopYear(int year)
+        {
+            return DAL_Log.Instance.TopYear(year);
+        }
     }
 }

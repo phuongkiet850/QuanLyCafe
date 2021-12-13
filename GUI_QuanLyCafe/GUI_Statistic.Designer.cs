@@ -64,10 +64,14 @@ namespace GUI_QuanLyCafe
             this.Table_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.Chart_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TOP_lbl = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -506,12 +510,41 @@ namespace GUI_QuanLyCafe
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // TOP_lbl
+            // 
+            this.TOP_lbl.AutoSize = true;
+            this.TOP_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TOP_lbl.Location = new System.Drawing.Point(406, 5);
+            this.TOP_lbl.Name = "TOP_lbl";
+            this.TOP_lbl.Size = new System.Drawing.Size(25, 23);
+            this.TOP_lbl.TabIndex = 164;
+            this.TOP_lbl.Text = "...";
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.TOP_lbl);
+            this.panel2.Location = new System.Drawing.Point(183, 90);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(991, 34);
+            this.panel2.TabIndex = 165;
+            // 
             // Statistic_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1209, 611);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.Chart_rdo);
             this.Controls.Add(this.Table_rdo);
             this.Controls.Add(this.panel1);
@@ -546,6 +579,8 @@ namespace GUI_QuanLyCafe
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Statistic_dgv)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -577,5 +612,8 @@ namespace GUI_QuanLyCafe
         private Guna.UI2.WinForms.Guna2RadioButton Table_rdo;
         private Guna.UI2.WinForms.Guna2RadioButton Chart_rdo;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label TOP_lbl;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Panel panel2;
     }
 }

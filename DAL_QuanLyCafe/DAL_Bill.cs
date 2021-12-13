@@ -122,7 +122,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_MergeBill @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + "";
+                string TruyVan = @"exec sp_MergeBill @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + ", @TotalPrice = " + bill.ToTal + "";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);
@@ -146,7 +146,7 @@ namespace DAL_QuanLyCafe
         {
             using (Connection = new SqlConnection(_Connection))
             {
-                string TruyVan = @"exec sp_Detach @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + ", @Note = N'" + bill.Note + "'";
+                string TruyVan = @"exec sp_Detach @IdTable = " + bill.IdTable + ", @IdDetailBill = " + bill.IdDetailBill + ", @Amount = " + bill.Amount + ", @AmountNew = " + amountNew + ", @Note = N'" + bill.Note + "', @Price = " + bill.Price + ", @TotalPrice = " + bill.ToTal + "";
                 SDA = new SqlDataAdapter(TruyVan, _Connection);
                 data = new DataTable();
                 SDA.Fill(data);

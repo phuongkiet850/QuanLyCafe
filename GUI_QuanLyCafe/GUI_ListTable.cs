@@ -161,11 +161,14 @@ namespace GUI_QuanLyCafe
                                 for (int j = 0; j < ListOrder2_dgv.Rows.Count - 1; j++)
                                 {
                                     IdMenu = Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[4].Value.ToString());
+                                    bill.IdMenu = IdMenu;
                                     Note = ListOrder2_dgv.Rows[j].Cells[3].Value.ToString().Trim();
                                     if (IdMenu == Convert.ToInt32(ListOrder1_dgv.Rows[i].Cells[4].Value.ToString()) && Note == ListOrder1_dgv.Rows[i].Cells[3].Value.ToString().Trim())
                                     {
                                         bill.IdDetailBill = Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[0].Value.ToString());
                                         bill.Amount = Convert.ToInt32(ListOrder1_dgv.Rows[i].Cells[2].Value.ToString());
+                                        bill.Price = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString());
+                                        bill.ToTal = bill.Price * (Convert.ToInt32(ListOrder1_dgv.Rows[i].Cells[2].Value.ToString()) + Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[2].Value.ToString()));
                                         BUS_Bill.Instance.MergeBill(bill, Convert.ToInt32(ListOrder2_dgv.Rows[j].Cells[2].Value.ToString()));
                                     }
                                 }
@@ -178,11 +181,14 @@ namespace GUI_QuanLyCafe
                                 for (int j = 0; j < ListOrder1_dgv.Rows.Count - 1; j++)
                                 {
                                     IdMenu = Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[4].Value.ToString());
+                                    bill.IdMenu = IdMenu;
                                     Note = ListOrder1_dgv.Rows[j].Cells[3].Value.ToString().Trim();
                                     if (IdMenu == Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[4].Value.ToString()) && Note == ListOrder2_dgv.Rows[i].Cells[3].Value.ToString().Trim())
                                     {
                                         bill.IdDetailBill = Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[0].Value.ToString());
                                         bill.Amount = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[2].Value.ToString());
+                                        bill.Price = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString());
+                                        bill.ToTal = bill.Price * (Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[2].Value.ToString()) + Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[2].Value.ToString()));
                                         BUS_Bill.Instance.MergeBill(bill, Convert.ToInt32(ListOrder1_dgv.Rows[j].Cells[2].Value.ToString()));
                                     }
                                 }
@@ -278,6 +284,8 @@ namespace GUI_QuanLyCafe
                     {
                         bill.Note = Detail_frm.Note;
                         Note = Detail_frm.Note;
+                        bill.Price = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString());
+                        bill.ToTal = bill.Price * Detail_frm.Amount;
                         BUS_Bill.Instance.AddDesertToBill(bill);
                         BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
 
@@ -296,8 +304,9 @@ namespace GUI_QuanLyCafe
             else
             {
                 Detail_frm.Status = 1;
+                bill.Price = (float)Convert.ToDouble(BUS_Bill.Instance.TagItem(bill).Rows[0][2].ToString());
+                bill.ToTal = bill.Price * Detail_frm.Amount;
                 BUS_Bill.Instance.Detach(bill, Detail_frm.Amount);
-
                 //save log
                 log.Object1 = "món";
                 log.IdObject = Order_frm.NameTable.Trim() + " sang " + NameTable2_lbl.Text.Substring(6);
@@ -316,6 +325,7 @@ namespace GUI_QuanLyCafe
                     {
                         bill.IdDetailBill = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[0].Value.ToString());
                         bill.Amount = Convert.ToInt32(ListOrder2_dgv.Rows[i].Cells[2].Value.ToString());
+                        bill.ToTal = bill.Price * (bill.Amount + Detail_frm.Amount);
                         BUS_Bill.Instance.MergeBill(bill, Detail_frm.Amount);
                     }
                 }

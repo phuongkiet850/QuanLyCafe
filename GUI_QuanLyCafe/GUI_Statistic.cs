@@ -24,6 +24,9 @@ namespace GUI_QuanLyCafe
         public static int IdStatistic;
         public static string Month;
         public static string Year;
+        public static string Top1;
+        public static string Top2;
+        public static string Top3;
 
         private void Statistic_frm_Load(object sender, EventArgs e)
         {
@@ -211,6 +214,8 @@ namespace GUI_QuanLyCafe
             }
 
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopDay();
         }
 
         private void DGV_Day_Shift()
@@ -240,6 +245,8 @@ namespace GUI_QuanLyCafe
             }
 
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopDay();
         }
 
         private void DGV_Day_Staff()
@@ -269,6 +276,8 @@ namespace GUI_QuanLyCafe
             }
 
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopDay();
         }
 
         private void DGV_Day_Shift_Staff()
@@ -298,6 +307,8 @@ namespace GUI_QuanLyCafe
             }
 
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopDay();
         }
 
         private void DGV_Month()
@@ -331,9 +342,12 @@ namespace GUI_QuanLyCafe
                     Statistic_dgv.Rows.Add(row);
                 }
             }
+
             string PriceTotal = String.Format("{0:0,0}", Total);
             Total_txt.Text = PriceTotal + " VNĐ";
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopMonth(month, year);
         }
 
         private void DGV_MonthStaff()
@@ -352,6 +366,7 @@ namespace GUI_QuanLyCafe
             int month = Convert.ToInt32(Value1_cbb.Text);
             int year = Convert.ToInt32(Value2_cbb.Text);
             string staff = Staff_cbb.Text;
+
             for (int i = 0; i < BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows.Count; i++)
             {
                 if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[i][8].ToString()).ToString("dd/MM/yyyy") != temp)
@@ -378,6 +393,8 @@ namespace GUI_QuanLyCafe
             string PriceTotal = String.Format("{0:0,0}", Total);
             Total_txt.Text = PriceTotal + " VNĐ";
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopMonth(month, year);
         }
 
         private void DGV_Year()
@@ -391,13 +408,13 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
+            Year = Value1_cbb.Text;
+            int year = Convert.ToInt32(Value1_cbb.Text);
             if (BUS_Log.Instance.ListStatistic_Year(Convert.ToInt32(Value1_cbb.Text)).Rows.Count > 0)
             {
                 for (int j = 1; j <= 12; j++)
                 {
                     int month = j;
-                    Year = Value1_cbb.Text;
-                    int year = Convert.ToInt32(Value1_cbb.Text);
                     if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[0][8].ToString()).ToString("MM/yyyy") != temp)
                     {
                         if (BUS_Log.Instance.StatisticChoose_MonthYear(month, year).Rows[0][0].ToString() != "")
@@ -426,6 +443,8 @@ namespace GUI_QuanLyCafe
             string PriceTotal = String.Format("{0:0,0}", Total);
             Total_txt.Text = PriceTotal + " VNĐ";
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopYear(year);
         }
 
         private void DGV_YearStaff()
@@ -441,13 +460,13 @@ namespace GUI_QuanLyCafe
             Statistic_dgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Statistic_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             string temp = "";
+            Year = Value1_cbb.Text;
+            int year = Convert.ToInt32(Value1_cbb.Text);
             if (BUS_Log.Instance.ListStatistic_Year(Convert.ToInt32(Value1_cbb.Text)).Rows.Count > 0)
             {
                 for (int j = 1; j <= 12; j++)
                 {
                     int month = j;
-                    Year = Value1_cbb.Text;
-                    int year = Convert.ToInt32(Value1_cbb.Text);
                     string staff = Staff_cbb.Text;
                     if (DateTime.Parse(BUS_Log.Instance.ListStatistic_MonthYear(month, year).Rows[0][8].ToString()).ToString("MM/yyyy") != temp)
                     {
@@ -477,6 +496,8 @@ namespace GUI_QuanLyCafe
             string PriceTotal = String.Format("{0:0,0}", Total);
             Total_txt.Text = PriceTotal + " VNĐ";
             Statistic_dgv.AllowUserToAddRows = false;
+
+            TopYear(year);
         }
 
         private void Statistic_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -501,7 +522,7 @@ namespace GUI_QuanLyCafe
                 Table_rdo.Visible = false;
                 Table_rdo.Checked = true;
             }
-            else if (Shift_cbb.Text != "None" && Choose_cbb.Text == "None" && Staff_cbb.Text == "Tất cả")
+            else if (Shift_cbb.Text != "None" && Choose_cbb.Text == "Ngày" && Staff_cbb.Text == "Tất cả")
             {
                 DGV();
                 DGV_Day_Shift();
@@ -1256,6 +1277,7 @@ namespace GUI_QuanLyCafe
             }
         }
 
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (Pdf_btn.ForeColor == Color.Black)
@@ -1298,8 +1320,112 @@ namespace GUI_QuanLyCafe
             {
                 Excel_btn.ForeColor = Color.Black;
                 Excel_btn.BorderColor = Color.Black;
-            }
+            } 
+        }
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            int x = TOP_lbl.Location.X;
+            x--;
+            TOP_lbl.Location = new Point(x, TOP_lbl.Location.Y);
+            if (x == 0)
+            {
+                x = panel2.Size.Width;
+                TOP_lbl.Location = new Point(x, TOP_lbl.Location.Y);
+            }
+        }
+
+        private void TopDay()
+        {
+            if (Statistic_dgv.Rows.Count > 0)
+            {
+                //
+                panel2.Visible = true;
+                if (BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows.Count <= 1)
+                {
+                    Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1;
+                }
+                else if (BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows.Count <= 2)
+                {
+                    Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[1][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                }
+                else
+                {
+                    Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[1][1].ToString();
+                    Top3 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[2][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                }
+            }
+            else
+            {
+                panel2.Visible = false;
+            }
+        }
+
+        private void TopMonth(int month, int year)
+        {
+            if (Statistic_dgv.Rows.Count > 0)
+            {
+                //
+                panel2.Visible = true;
+                if (BUS_Log.Instance.TopMonth(month, year).Rows.Count <= 1)
+                {
+                    Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1;
+                }
+                else if (BUS_Log.Instance.TopMonth(month, year).Rows.Count <= 2)
+                {
+                    Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopMonth(month, year).Rows[1][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                }
+                else
+                {
+                    Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopMonth(month, year).Rows[1][1].ToString();
+                    Top3 = BUS_Log.Instance.TopMonth(month, year).Rows[2][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                }
+            }
+            else
+            {
+                panel2.Visible = false;
+            }
+        }
+
+        private void TopYear(int year)
+        {
+            if (Statistic_dgv.Rows.Count > 0)
+            {
+                //
+                panel2.Visible = true;
+                if (BUS_Log.Instance.TopYear(year).Rows.Count <= 1)
+                {
+                    Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1;
+                }
+                else if (BUS_Log.Instance.TopYear(year).Rows.Count <= 2)
+                {
+                    Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopYear(year).Rows[1][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                }
+                else
+                {
+                    Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
+                    Top2 = BUS_Log.Instance.TopYear(year).Rows[1][1].ToString();
+                    Top3 = BUS_Log.Instance.TopYear(year).Rows[2][1].ToString();
+                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                }
+            }
+            else
+            {
+                panel2.Visible = false;
+            }
         }
     }
 }

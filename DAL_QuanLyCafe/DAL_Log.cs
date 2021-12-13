@@ -202,5 +202,41 @@ namespace DAL_QuanLyCafe
                 return data;
             }
         }
+
+        public DataTable TopDay(string value1, string value2)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_TopDay @Value1 = '" + value1 + "', @Value2 = '" + value2 + "'";
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable TopMonth(int month, int year)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_TopMonth @Month = " + month + ", @Year = " + year;
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
+
+        public DataTable TopYear(int year)
+        {
+            using (Connection = new SqlConnection(_Connection))
+            {
+                string TruyVan = @"exec sp_TopYear @Year = " + year;
+                SDA = new SqlDataAdapter(TruyVan, _Connection);
+                data = new DataTable();
+                SDA.Fill(data);
+                return data;
+            }
+        }
     }
 }

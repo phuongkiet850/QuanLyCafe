@@ -261,7 +261,7 @@ namespace GUI_QuanLyCafe
                     {
                         bill.IdTable = Order_frm.IdTable;
                         bill.Amount = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[1].Value.ToString());
-                        bill.Price =  (float)Convert.ToDouble(ListOrder_dgv.Rows[i].Cells[2].Value.ToString());
+                        bill.Price =  (float)Convert.ToDouble(ListOrder_dgv.Rows[i].Cells[2].Value.ToString()) / bill.Amount;
                         bill.ToTal = bill.Price * bill.Amount;
                         bill.Note = ListOrder_dgv.Rows[i].Cells[3].Value.ToString();
                         bill.IdMenu = Convert.ToInt32(ListOrder_dgv.Rows[i].Cells[4].Value.ToString());
