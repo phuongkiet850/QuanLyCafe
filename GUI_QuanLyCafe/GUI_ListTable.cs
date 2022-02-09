@@ -37,8 +37,7 @@ namespace GUI_QuanLyCafe
             if (BUS_Bill.Instance.DetailBill(bill).Rows.Count > 0)
             {
                 OldIdBill = Convert.ToInt32(BUS_Bill.Instance.DetailBill(bill).Rows[0][8].ToString());
-            }
-           
+            } 
         }
 
         void LoadTable()
@@ -78,11 +77,11 @@ namespace GUI_QuanLyCafe
             bill.IdTable = NewIdTable;
             NameTable2_lbl.Text = "Tên : " + BUS_Bill.Instance.Table(bill).Rows[0][1].ToString();
             ListOrder2_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
-            ListOrder2_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListOrder2_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListOrder2_dgv.Columns[2].Width = 60;
             ListOrder2_dgv.Columns[0].Visible = false;
             ListOrder2_dgv.Columns[4].Visible = false;
+            ListOrder2_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListOrder2_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListOrder2_dgv.Columns[2].Width = 108;
             Switch_btn.Enabled = true;
             Merge_btn.Enabled = true;
             Detach_btn.Enabled = true;
@@ -93,11 +92,11 @@ namespace GUI_QuanLyCafe
             NameTable1_lbl.Text = "Tên : " + Order_frm.NameTable;
             bill.IdTable = Order_frm.IdTable;
             ListOrder1_dgv.DataSource = BUS_Bill.Instance.BillTable_DGV(bill);
-            ListOrder1_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListOrder1_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ListOrder1_dgv.Columns[2].Width = 60;
             ListOrder1_dgv.Columns[0].Visible = false;
             ListOrder1_dgv.Columns[4].Visible = false;
+            ListOrder1_dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListOrder1_dgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ListOrder1_dgv.Columns[2].Width = 108;  
         }
 
         private void Switch_btn_Click(object sender, EventArgs e)

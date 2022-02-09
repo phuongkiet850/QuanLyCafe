@@ -72,8 +72,6 @@ namespace GUI_QuanLyCafe
             this.ListOrder1_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder1_dgv.BackgroundColor = System.Drawing.Color.White;
             this.ListOrder1_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.ListOrder1_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.ListOrder1_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,7 +80,8 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListOrder1_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ListOrder1_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListOrder1_dgv.ColumnHeadersHeight = 40;
+            this.ListOrder1_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,7 +97,6 @@ namespace GUI_QuanLyCafe
             this.ListOrder1_dgv.ReadOnly = true;
             this.ListOrder1_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.ListOrder1_dgv.RowHeadersVisible = false;
-            this.ListOrder1_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOrder1_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ListOrder1_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -221,10 +219,10 @@ namespace GUI_QuanLyCafe
             // NameTable2_lbl
             // 
             this.NameTable2_lbl.AutoSize = true;
-            this.NameTable2_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameTable2_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTable2_lbl.Location = new System.Drawing.Point(12, 13);
             this.NameTable2_lbl.Name = "NameTable2_lbl";
-            this.NameTable2_lbl.Size = new System.Drawing.Size(52, 23);
+            this.NameTable2_lbl.Size = new System.Drawing.Size(56, 24);
             this.NameTable2_lbl.TabIndex = 0;
             this.NameTable2_lbl.Text = "Tên :";
             // 
@@ -240,8 +238,6 @@ namespace GUI_QuanLyCafe
             this.ListOrder2_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListOrder2_dgv.BackgroundColor = System.Drawing.Color.White;
             this.ListOrder2_dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.ListOrder2_dgv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.ListOrder2_dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,7 +246,8 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListOrder2_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.ListOrder2_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListOrder2_dgv.ColumnHeadersHeight = 40;
+            this.ListOrder2_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -266,7 +263,6 @@ namespace GUI_QuanLyCafe
             this.ListOrder2_dgv.ReadOnly = true;
             this.ListOrder2_dgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.ListOrder2_dgv.RowHeadersVisible = false;
-            this.ListOrder2_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListOrder2_dgv.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.ListOrder2_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -290,10 +286,10 @@ namespace GUI_QuanLyCafe
             // NameTable1_lbl
             // 
             this.NameTable1_lbl.AutoSize = true;
-            this.NameTable1_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameTable1_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTable1_lbl.Location = new System.Drawing.Point(12, 10);
             this.NameTable1_lbl.Name = "NameTable1_lbl";
-            this.NameTable1_lbl.Size = new System.Drawing.Size(52, 23);
+            this.NameTable1_lbl.Size = new System.Drawing.Size(56, 24);
             this.NameTable1_lbl.TabIndex = 0;
             this.NameTable1_lbl.Text = "Tên :";
             // 

@@ -388,7 +388,6 @@ namespace GUI_QuanLyCafe
         {
             try
             {
-                ResetText();
                 if (FindBy_cbb.SelectedValue == "ALL")
                 {
                     MenuList_dgv.DataSource = BUS_Menu.Instance.FindMenu_All(Find_txt.Text.Trim());

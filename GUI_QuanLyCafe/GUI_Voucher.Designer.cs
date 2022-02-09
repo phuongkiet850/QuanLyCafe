@@ -180,6 +180,7 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ListVoucher_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ListVoucher_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ListVoucher_dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ListVoucher_dgv.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -191,6 +192,7 @@ namespace GUI_QuanLyCafe
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ListVoucher_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ListVoucher_dgv.ColumnHeadersHeight = 40;
+            this.ListVoucher_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -202,9 +204,14 @@ namespace GUI_QuanLyCafe
             this.ListVoucher_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ListVoucher_dgv.Location = new System.Drawing.Point(467, 172);
             this.ListVoucher_dgv.Name = "ListVoucher_dgv";
+            this.ListVoucher_dgv.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ListVoucher_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ListVoucher_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListVoucher_dgv.ShowCellErrors = false;
+            this.ListVoucher_dgv.ShowCellToolTips = false;
+            this.ListVoucher_dgv.ShowEditingIcon = false;
+            this.ListVoucher_dgv.ShowRowErrors = false;
             this.ListVoucher_dgv.Size = new System.Drawing.Size(496, 254);
             this.ListVoucher_dgv.TabIndex = 117;
             this.ListVoucher_dgv.TabStop = false;

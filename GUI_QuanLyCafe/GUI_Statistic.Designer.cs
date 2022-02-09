@@ -64,9 +64,10 @@ namespace GUI_QuanLyCafe
             this.Table_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.Chart_rdo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.TOP_lbl = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.First_lbl = new System.Windows.Forms.Label();
+            this.Last_lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -268,7 +269,7 @@ namespace GUI_QuanLyCafe
             this.Pdf_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.pdf;
             this.Pdf_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Pdf_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Pdf_btn.Location = new System.Drawing.Point(833, 555);
+            this.Pdf_btn.Location = new System.Drawing.Point(833, 565);
             this.Pdf_btn.Name = "Pdf_btn";
             this.Pdf_btn.ShadowDecoration.Parent = this.Pdf_btn;
             this.Pdf_btn.Size = new System.Drawing.Size(152, 44);
@@ -292,7 +293,7 @@ namespace GUI_QuanLyCafe
             this.Excel_btn.Image = global::GUI_QuanLyCafe.Properties.Resources.excel;
             this.Excel_btn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Excel_btn.ImageSize = new System.Drawing.Size(30, 30);
-            this.Excel_btn.Location = new System.Drawing.Point(1013, 555);
+            this.Excel_btn.Location = new System.Drawing.Point(1013, 565);
             this.Excel_btn.Name = "Excel_btn";
             this.Excel_btn.ShadowDecoration.Parent = this.Excel_btn;
             this.Excel_btn.Size = new System.Drawing.Size(161, 44);
@@ -344,7 +345,7 @@ namespace GUI_QuanLyCafe
             this.panel1.Controls.Add(this.chart1);
             this.panel1.Location = new System.Drawing.Point(12, 260);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1185, 286);
+            this.panel1.Size = new System.Drawing.Size(1185, 296);
             this.panel1.TabIndex = 161;
             this.panel1.Visible = false;
             // 
@@ -390,7 +391,7 @@ namespace GUI_QuanLyCafe
             series1.Legend = "Legend1";
             series1.Name = "Doanh thu";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1146, 277);
+            this.chart1.Size = new System.Drawing.Size(1146, 287);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
@@ -452,7 +453,7 @@ namespace GUI_QuanLyCafe
             this.Statistic_dgv.ShowCellToolTips = false;
             this.Statistic_dgv.ShowEditingIcon = false;
             this.Statistic_dgv.ShowRowErrors = false;
-            this.Statistic_dgv.Size = new System.Drawing.Size(1136, 280);
+            this.Statistic_dgv.Size = new System.Drawing.Size(1136, 290);
             this.Statistic_dgv.TabIndex = 29;
             this.Statistic_dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Statistic_dgv_CellDoubleClick);
             // 
@@ -510,16 +511,6 @@ namespace GUI_QuanLyCafe
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // TOP_lbl
-            // 
-            this.TOP_lbl.AutoSize = true;
-            this.TOP_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TOP_lbl.Location = new System.Drawing.Point(406, 5);
-            this.TOP_lbl.Name = "TOP_lbl";
-            this.TOP_lbl.Size = new System.Drawing.Size(25, 23);
-            this.TOP_lbl.TabIndex = 164;
-            this.TOP_lbl.Text = "...";
-            // 
             // timer2
             // 
             this.timer2.Enabled = true;
@@ -530,20 +521,49 @@ namespace GUI_QuanLyCafe
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.TOP_lbl);
+            this.panel2.AutoRoundedCorners = true;
+            this.panel2.BorderRadius = 16;
+            this.panel2.BorderThickness = 1;
+            this.panel2.Controls.Add(this.Last_lbl);
+            this.panel2.Controls.Add(this.First_lbl);
+            this.panel2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel2.Location = new System.Drawing.Point(183, 90);
             this.panel2.Name = "panel2";
+            this.panel2.ShadowDecoration.Parent = this.panel2;
             this.panel2.Size = new System.Drawing.Size(991, 34);
-            this.panel2.TabIndex = 165;
+            this.panel2.TabIndex = 166;
+            // 
+            // First_lbl
+            // 
+            this.First_lbl.AutoSize = true;
+            this.First_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.First_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.First_lbl.Location = new System.Drawing.Point(483, 6);
+            this.First_lbl.Name = "First_lbl";
+            this.First_lbl.Size = new System.Drawing.Size(25, 23);
+            this.First_lbl.TabIndex = 165;
+            this.First_lbl.Text = "...";
+            // 
+            // Last_lbl
+            // 
+            this.Last_lbl.AutoSize = true;
+            this.Last_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.Last_lbl.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Last_lbl.Location = new System.Drawing.Point(514, 6);
+            this.Last_lbl.Name = "Last_lbl";
+            this.Last_lbl.Size = new System.Drawing.Size(25, 23);
+            this.Last_lbl.TabIndex = 166;
+            this.Last_lbl.Text = "...";
+            this.Last_lbl.Visible = false;
             // 
             // Statistic_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1209, 611);
+            this.ClientSize = new System.Drawing.Size(1209, 621);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Chart_rdo);
             this.Controls.Add(this.Table_rdo);
@@ -569,7 +589,7 @@ namespace GUI_QuanLyCafe
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Statistic_dgv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1225, 650);
+            this.MinimumSize = new System.Drawing.Size(1225, 660);
             this.Name = "Statistic_frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê";
@@ -612,8 +632,9 @@ namespace GUI_QuanLyCafe
         private Guna.UI2.WinForms.Guna2RadioButton Table_rdo;
         private Guna.UI2.WinForms.Guna2RadioButton Chart_rdo;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label TOP_lbl;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Panel panel2;
+        private Guna.UI2.WinForms.Guna2GradientPanel panel2;
+        private System.Windows.Forms.Label First_lbl;
+        private System.Windows.Forms.Label Last_lbl;
     }
 }

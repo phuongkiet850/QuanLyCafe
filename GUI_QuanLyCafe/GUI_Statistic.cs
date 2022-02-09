@@ -891,15 +891,22 @@ namespace GUI_QuanLyCafe
 
         private void Excel_btn_Click(object sender, EventArgs e)
         {
-            SaveFileDialog FD = new SaveFileDialog();
-            FD.Title = "Chọn nơi để lưu";
-            FD.Filter = "Excel XLSX (*.xlsx)|*.xlsx";
-            FD.FileName = "ThongKe";
-            if (FD.ShowDialog() == DialogResult.OK)
+            if (Statistic_dgv.Rows.Count < 1)
             {
-                var filePath = FD.FileName;
-                ExportExcel(Statistic_dgv, filePath);
-            }   
+                MessageBox.Show("Không có dữ liệu để xuất Excel", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                SaveFileDialog FD = new SaveFileDialog();
+                FD.Title = "Chọn nơi để lưu";
+                FD.Filter = "Excel XLSX (*.xlsx)|*.xlsx";
+                FD.FileName = "ThongKe";
+                if (FD.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = FD.FileName;
+                    ExportExcel(Statistic_dgv, filePath);
+                }
+            }
         }
 
         private void Value1_date_KeyDown(object sender, KeyEventArgs e)
@@ -1018,242 +1025,249 @@ namespace GUI_QuanLyCafe
 
         private void Pdf_btn_Click(object sender, EventArgs e)
         {
-            DataSet set = new DataSet();
-            DataTable table = new DataTable();
-            if (Choose_cbb.Text == "Ngày")
+            if (Statistic_dgv.Rows.Count < 1)
             {
-                table.Rows.Clear();
-                table.Columns.Clear();
-                table.Columns.Add("Giờ ra", typeof(string));
-                table.Columns.Add("Ca", typeof(string));
-                table.Columns.Add("Nhân viên", typeof(string));
-                table.Columns.Add("Tống", typeof(string));
-
-                foreach (DataGridViewRow item in Statistic_dgv.Rows)
-                {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value, item.Cells[3].Value.ToString().Replace(" VNĐ", ""));
-                }
-                set.Tables.Add(table);
-                set.WriteXmlSchema("Statictis.xml");
-                Report_frm report = new Report_frm();
-                Statistic statistic = new Statistic();
-                statistic.SetDataSource(set);
-                report.crystalReportViewer1.ReportSource = statistic;
-                TextObject txtheader = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
-                txtheader.Text = "DOANH THU" + Value1_date.Value.ToString(" dd/MM/yyyy 00:00:00") + " ĐẾN " + Value2_date.Value.ToString("dd/MM/yyyy 23:59:59");
-                TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text1"];
-                txtheader3.Text = "Thời gian";
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
-                txtheader2.Text = "Tổng doanh thu : " + Total_txt.Text;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
-                Line.LineStyle = LineStyle.NoLine;
-
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
-                Line2.LineStyle = LineStyle.NoLine;
-
-                report.crystalReportViewer1.Refresh();
-                report.ShowDialog();
+                MessageBox.Show("Không có dữ liệu để xuất PDF", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (Choose_cbb.Text == "Tháng" && Staff_cbb.Text == "Tất cả")
+            else
             {
-                table.Rows.Clear();
-                table.Columns.Clear();
-                table.Columns.Add("Ca", typeof(string));
-                table.Columns.Add("Nhân viên", typeof(string));
-                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                DataSet set = new DataSet();
+                DataTable table = new DataTable();
+                if (Choose_cbb.Text == "Ngày")
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
+                    table.Rows.Clear();
+                    table.Columns.Clear();
+                    table.Columns.Add("Giờ ra", typeof(string));
+                    table.Columns.Add("Ca", typeof(string));
+                    table.Columns.Add("Nhân viên", typeof(string));
+                    table.Columns.Add("Tống", typeof(string));
+
+                    foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                    {
+                        table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value, item.Cells[3].Value.ToString().Replace(" VNĐ", ""));
+                    }
+                    set.Tables.Add(table);
+                    set.WriteXmlSchema("Statictis.xml");
+                    Report_frm report = new Report_frm();
+                    Statistic statistic = new Statistic();
+                    statistic.SetDataSource(set);
+                    report.crystalReportViewer1.ReportSource = statistic;
+                    TextObject txtheader = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
+                    txtheader.Text = "DOANH THU" + Value1_date.Value.ToString(" dd/MM/yyyy 00:00:00") + " ĐẾN " + Value2_date.Value.ToString("dd/MM/yyyy 23:59:59");
+                    TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text1"];
+                    txtheader3.Text = "Thời gian";
+                    TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
+                    txtheader2.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                    LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                    Line.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                    Line2.LineStyle = LineStyle.NoLine;
+
+                    report.crystalReportViewer1.Refresh();
+                    report.ShowDialog();
                 }
-                set.Tables.Add(table);
-                set.WriteXmlSchema("Statictis.xml");
-                Report_frm report = new Report_frm();
-                Statistic statistic = new Statistic();
-                statistic.SetDataSource(set);
-                report.crystalReportViewer1.ReportSource = statistic;
-                TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text8"];
-                txtheader1.Text = "DOANH THU THÁNG " + Month;
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
-                txtheader2.Text = "Thời gian ";
-                txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
-                txtheader3.Text = "Tổng";
-                txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
-                txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
-
-                FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
-                field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-                field1.Color = Color.Red;
-
-                FieldObject field2 = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
-                field2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
-                Box.LineStyle = LineStyle.NoLine;
-                Box.FillColor = Color.White;
-
-                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
-                Box2.LineStyle = LineStyle.NoLine;
-                Box2.FillColor = Color.White;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
-                Line.LineStyle = LineStyle.NoLine;
-
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
-                Line2.LineStyle = LineStyle.NoLine;
-
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
-                Line3.LineStyle = LineStyle.NoLine;
-
-                LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
-                Line4.LineStyle = LineStyle.NoLine;
-
-                report.crystalReportViewer1.Refresh();
-                report.ShowDialog();
-            }
-            else if (Choose_cbb.Text == "Năm" && Staff_cbb.Text == "Tất cả")
-            {
-                table.Rows.Clear();
-                table.Columns.Clear();
-                table.Columns.Add("Ca", typeof(string));
-                table.Columns.Add("Nhân viên", typeof(string));
-                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                else if (Choose_cbb.Text == "Tháng" && Staff_cbb.Text == "Tất cả")
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
+                    table.Rows.Clear();
+                    table.Columns.Clear();
+                    table.Columns.Add("Ca", typeof(string));
+                    table.Columns.Add("Nhân viên", typeof(string));
+                    foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                    {
+                        table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
+                    }
+                    set.Tables.Add(table);
+                    set.WriteXmlSchema("Statictis.xml");
+                    Report_frm report = new Report_frm();
+                    Statistic statistic = new Statistic();
+                    statistic.SetDataSource(set);
+                    report.crystalReportViewer1.ReportSource = statistic;
+                    TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text8"];
+                    txtheader1.Text = "DOANH THU THÁNG " + Month;
+                    TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
+                    txtheader2.Text = "Thời gian ";
+                    txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
+                    txtheader3.Text = "Tổng";
+                    txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
+                    txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                    FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
+                    field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+                    field1.Color = Color.Red;
+
+                    FieldObject field2 = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
+                    field2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                    Box.LineStyle = LineStyle.NoLine;
+                    Box.FillColor = Color.White;
+
+                    BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
+                    Box2.LineStyle = LineStyle.NoLine;
+                    Box2.FillColor = Color.White;
+
+                    LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                    Line.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                    Line2.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
+                    Line3.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                    Line4.LineStyle = LineStyle.NoLine;
+
+                    report.crystalReportViewer1.Refresh();
+                    report.ShowDialog();
                 }
-                set.Tables.Add(table);
-                set.WriteXmlSchema("Statictis.xml");
-                Report_frm report = new Report_frm();
-                Statistic statistic = new Statistic();
-                statistic.SetDataSource(set);
-                report.crystalReportViewer1.ReportSource = statistic;
-                TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text8"];
-                txtheader1.Text = "DOANH THU NĂM " + Year;
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"] ;
-                txtheader2.Text = "Thời gian";
-
-                TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
-                txtheader3.Text = "Tổng";
-                txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
-                txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
-
-                FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
-                field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-                field1.Color = Color.Red;
-
-                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
-                Box.LineStyle = LineStyle.NoLine;
-                Box.FillColor = Color.White;
-
-                BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
-                Box2.LineStyle = LineStyle.NoLine;
-                Box2.FillColor = Color.White;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
-                Line.LineStyle = LineStyle.NoLine;
-
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
-                Line2.LineStyle = LineStyle.NoLine;
-
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
-                Line3.LineStyle = LineStyle.NoLine;
-                
-                LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
-                Line4.LineStyle = LineStyle.NoLine;
-
-                report.crystalReportViewer1.Refresh();
-                report.ShowDialog();
-            }
-            else if (Choose_cbb.Text == "Tháng" && Staff_cbb.Text != "Tất cả")
-            {
-                table.Rows.Clear();
-                table.Columns.Clear();
-                table.Columns.Add("Ca", typeof(string));
-                table.Columns.Add("Nhân viên", typeof(string));
-                table.Columns.Add("Tống", typeof(string));
-                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                else if (Choose_cbb.Text == "Năm" && Staff_cbb.Text == "Tất cả")
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
+                    table.Rows.Clear();
+                    table.Columns.Clear();
+                    table.Columns.Add("Ca", typeof(string));
+                    table.Columns.Add("Nhân viên", typeof(string));
+                    foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                    {
+                        table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value.ToString().Replace(" VNĐ", ""));
+                    }
+                    set.Tables.Add(table);
+                    set.WriteXmlSchema("Statictis.xml");
+                    Report_frm report = new Report_frm();
+                    Statistic statistic = new Statistic();
+                    statistic.SetDataSource(set);
+                    report.crystalReportViewer1.ReportSource = statistic;
+                    TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text8"];
+                    txtheader1.Text = "DOANH THU NĂM " + Year;
+                    TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
+                    txtheader2.Text = "Thời gian";
+
+                    TextObject txtheader3 = (TextObject)statistic.ReportDefinition.ReportObjects["Text3"];
+                    txtheader3.Text = "Tổng";
+                    txtheader3.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text9"];
+                    txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                    FieldObject field1 = statistic.ReportDefinition.ReportObjects["Nhânviên1"] as FieldObject;
+                    field1.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+                    field1.Color = Color.Red;
+
+                    BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                    Box.LineStyle = LineStyle.NoLine;
+                    Box.FillColor = Color.White;
+
+                    BoxObject Box2 = (BoxObject)statistic.ReportDefinition.ReportObjects["Box2"];
+                    Box2.LineStyle = LineStyle.NoLine;
+                    Box2.FillColor = Color.White;
+
+                    LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line10"];
+                    Line.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                    Line2.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
+                    Line3.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line4 = (LineObject)statistic.ReportDefinition.ReportObjects["Line11"];
+                    Line4.LineStyle = LineStyle.NoLine;
+
+                    report.crystalReportViewer1.Refresh();
+                    report.ShowDialog();
                 }
-                set.Tables.Add(table);
-                set.WriteXmlSchema("Statictis.xml");
-                Report_frm report = new Report_frm();
-                Statistic statistic = new Statistic();
-                statistic.SetDataSource(set);
-                report.crystalReportViewer1.ReportSource = statistic;
-                TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
-                txtheader1.Text = "DOANH THU THÁNG " + Month + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
-
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
-                txtheader2.Text = "Thời gian";
-                txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
-                txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
-
-                FieldObject field = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
-                field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
-
-                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
-                Box.LineStyle = LineStyle.NoLine;
-                Box.FillColor = Color.White;
-
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
-                Line.LineStyle = LineStyle.NoLine;
-
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
-                Line2.LineStyle = LineStyle.NoLine;
-
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
-                Line3.LineStyle = LineStyle.NoLine;
-
-                report.crystalReportViewer1.Refresh();
-                report.ShowDialog();
-            }
-            else if (Choose_cbb.Text == "Năm" && Staff_cbb.Text != "Tất cả")
-            {
-                table.Rows.Clear();
-                table.Columns.Clear();
-                table.Columns.Add("Ca", typeof(string));
-                table.Columns.Add("Nhân viên", typeof(string));
-                table.Columns.Add("Tống", typeof(string));
-                foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                else if (Choose_cbb.Text == "Tháng" && Staff_cbb.Text != "Tất cả")
                 {
-                    table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
+                    table.Rows.Clear();
+                    table.Columns.Clear();
+                    table.Columns.Add("Ca", typeof(string));
+                    table.Columns.Add("Nhân viên", typeof(string));
+                    table.Columns.Add("Tống", typeof(string));
+                    foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                    {
+                        table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
+                    }
+                    set.Tables.Add(table);
+                    set.WriteXmlSchema("Statictis.xml");
+                    Report_frm report = new Report_frm();
+                    Statistic statistic = new Statistic();
+                    statistic.SetDataSource(set);
+                    report.crystalReportViewer1.ReportSource = statistic;
+                    TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
+                    txtheader1.Text = "DOANH THU THÁNG " + Month + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
+
+                    TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
+                    txtheader2.Text = "Thời gian";
+                    txtheader2.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
+                    txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+
+                    FieldObject field = statistic.ReportDefinition.ReportObjects["Ca1"] as FieldObject;
+                    field.ObjectFormat.HorizontalAlignment = Alignment.RightAlign;
+
+                    BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                    Box.LineStyle = LineStyle.NoLine;
+                    Box.FillColor = Color.White;
+
+                    LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
+                    Line.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                    Line2.LineStyle = LineStyle.NoLine;
+
+                    LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                    Line3.LineStyle = LineStyle.NoLine;
+
+                    report.crystalReportViewer1.Refresh();
+                    report.ShowDialog();
                 }
-                set.Tables.Add(table);
-                set.WriteXmlSchema("Statictis.xml");
-                Report_frm report = new Report_frm();
-                Statistic statistic = new Statistic();
-                statistic.SetDataSource(set);
-                report.crystalReportViewer1.ReportSource = statistic;
-                TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
-                txtheader1.Text = "DOANH THU NĂM " + Year + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
-                TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
-                txtheader2.Text = "Thời gian";
-                TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
-                txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
+                else if (Choose_cbb.Text == "Năm" && Staff_cbb.Text != "Tất cả")
+                {
+                    table.Rows.Clear();
+                    table.Columns.Clear();
+                    table.Columns.Add("Ca", typeof(string));
+                    table.Columns.Add("Nhân viên", typeof(string));
+                    table.Columns.Add("Tống", typeof(string));
+                    foreach (DataGridViewRow item in Statistic_dgv.Rows)
+                    {
+                        table.Rows.Add(item.Cells[0].Value, item.Cells[1].Value, item.Cells[2].Value.ToString().Replace(" VNĐ", ""));
+                    }
+                    set.Tables.Add(table);
+                    set.WriteXmlSchema("Statictis.xml");
+                    Report_frm report = new Report_frm();
+                    Statistic statistic = new Statistic();
+                    statistic.SetDataSource(set);
+                    report.crystalReportViewer1.ReportSource = statistic;
+                    TextObject txtheader1 = (TextObject)statistic.ReportDefinition.ReportObjects["Text6"];
+                    txtheader1.Text = "DOANH THU NĂM " + Year + " CỦA NHÂN VIÊN " + Staff_cbb.Text.ToUpper();
+                    TextObject txtheader2 = (TextObject)statistic.ReportDefinition.ReportObjects["Text2"];
+                    txtheader2.Text = "Thời gian";
+                    TextObject txtheader4 = (TextObject)statistic.ReportDefinition.ReportObjects["Text7"];
+                    txtheader4.Text = "Tổng doanh thu : " + Total_txt.Text;
 
-                BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
-                Box.LineStyle = LineStyle.NoLine;
-                Box.FillColor = Color.White;
+                    BoxObject Box = (BoxObject)statistic.ReportDefinition.ReportObjects["Box1"];
+                    Box.LineStyle = LineStyle.NoLine;
+                    Box.FillColor = Color.White;
 
-                LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
-                Line.LineStyle = LineStyle.NoLine;
+                    LineObject Line = (LineObject)statistic.ReportDefinition.ReportObjects["Line9"];
+                    Line.LineStyle = LineStyle.NoLine;
 
-                LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
-                Line2.LineStyle = LineStyle.NoLine;
+                    LineObject Line2 = (LineObject)statistic.ReportDefinition.ReportObjects["Line12"];
+                    Line2.LineStyle = LineStyle.NoLine;
 
-                LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
-                Line3.LineStyle = LineStyle.NoLine;
+                    LineObject Line3 = (LineObject)statistic.ReportDefinition.ReportObjects["Line8"];
+                    Line3.LineStyle = LineStyle.NoLine;
 
-                report.crystalReportViewer1.Refresh();
-                report.ShowDialog();
+                    report.crystalReportViewer1.Refresh();
+                    report.ShowDialog();
+                }
             }
         }
 
@@ -1325,13 +1339,25 @@ namespace GUI_QuanLyCafe
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            int x = TOP_lbl.Location.X;
-            x--;
-            TOP_lbl.Location = new Point(x, TOP_lbl.Location.Y);
-            if (x == 0)
+            int x1 = First_lbl.Location.X;
+            int x2 = Last_lbl.Location.X;
+            x1--;
+            First_lbl.Location = new Point(x1, First_lbl.Location.Y);
+
+            x2--;
+            Last_lbl.Location = new Point(x2, Last_lbl.Location.Y);
+
+            if (x1 == 0)
             {
-                x = panel2.Size.Width;
-                TOP_lbl.Location = new Point(x, TOP_lbl.Location.Y);
+                Last_lbl.Visible = true;
+                x2 = panel2.Size.Width;
+                Last_lbl.Location = new Point(x2, Last_lbl.Location.Y);
+            }
+
+            if (x2 == 0)
+            {
+                x1 = panel2.Size.Width;
+                First_lbl.Location = new Point(x1, First_lbl.Location.Y);
             }
         }
 
@@ -1344,20 +1370,23 @@ namespace GUI_QuanLyCafe
                 if (BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows.Count <= 1)
                 {
                     Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1;
+                    First_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1;
+                    Last_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1;
                 }
                 else if (BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows.Count <= 2)
                 {
                     Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[1][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    First_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    Last_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
                 }
                 else
                 {
                     Top1 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[1][1].ToString();
                     Top3 = BUS_Log.Instance.TopDay(Value1_date.Value.ToString("yyyy/MM/dd 00:00:00"), Value2_date.Value.ToString("yyyy/MM/dd 23:59:59")).Rows[2][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    First_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    Last_lbl.Text = "Món bán chạy nhất trong ngày " + Value1_date.Value.ToString("dd/MM/yyyy") + " đến ngày " + Value2_date.Value.ToString("dd/MM/yyyy") + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
                 }
             }
             else
@@ -1375,20 +1404,23 @@ namespace GUI_QuanLyCafe
                 if (BUS_Log.Instance.TopMonth(month, year).Rows.Count <= 1)
                 {
                     Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1;
+                    First_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1;
+                    Last_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1;
                 }
                 else if (BUS_Log.Instance.TopMonth(month, year).Rows.Count <= 2)
                 {
                     Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopMonth(month, year).Rows[1][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    First_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    Last_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
                 }
                 else
                 {
                     Top1 = BUS_Log.Instance.TopMonth(month, year).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopMonth(month, year).Rows[1][1].ToString();
                     Top3 = BUS_Log.Instance.TopMonth(month, year).Rows[2][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    First_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    Last_lbl.Text = "Món bán chạy nhất trong tháng " + month + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
                 }
             }
             else
@@ -1406,20 +1438,23 @@ namespace GUI_QuanLyCafe
                 if (BUS_Log.Instance.TopYear(year).Rows.Count <= 1)
                 {
                     Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1;
+                    First_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1;
+                    Last_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1;
                 }
                 else if (BUS_Log.Instance.TopYear(year).Rows.Count <= 2)
                 {
                     Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopYear(year).Rows[1][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    First_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
+                    Last_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2;
                 }
                 else
                 {
                     Top1 = BUS_Log.Instance.TopYear(year).Rows[0][1].ToString();
                     Top2 = BUS_Log.Instance.TopYear(year).Rows[1][1].ToString();
                     Top3 = BUS_Log.Instance.TopYear(year).Rows[2][1].ToString();
-                    TOP_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    First_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
+                    Last_lbl.Text = "Món bán chạy nhất trong năm " + year + " :      Top 1: " + Top1 + "      Top 2: " + Top2 + "        Top 3: " + Top3;
                 }
             }
             else
